@@ -54,4 +54,10 @@ Las versiones compiladas de este proyecto, creadas con [PyInstaller](https://pyi
 
 Si encuentras problemas relacionados con esta advertencia o tienes dudas sobre las releases, no dudes en abrir un [issue](https://github.com/hxebolax/WASAPIRecording/issues).
 
+## ☕ Invítame a un café
+
+Si este proyecto te ha resultado útil o simplemente quieres apoyar mi trabajo, puedes invitarme a un café. ¡Tu apoyo es muy apreciado! ❤️
+
+[![Invítame a un café](https://img.shields.io/badge/Invítame_a_un_café-PayPal-blue?logo=paypal)](https://www.paypal.com/paypalme/hjbcdonaciones)
+
 Disfruta trabajando con el proyecto WASAPIRecording.
