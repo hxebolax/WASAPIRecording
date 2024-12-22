@@ -1,0 +1,46 @@
+Licencia de Uso de WASAPIRecording
+
+==========================================
+Autorización
+==========================================
+WASAPIRecording es una aplicación desarrollada para grabar audio desde el micrófono y el sistema
+(loopback). Esta aplicación es libre de uso y puede ser utilizada, copiada y distribuida sin restricciones
+para cualquier propósito, siempre y cuando se mantenga esta licencia adjunta al software.
+
+==========================================
+Librerías Utilizadas
+==========================================
+La aplicación utiliza las siguientes librerías de terceros, junto con sus respectivas licencias:
+
+1. wxPython (Licencia: LGPL 2.1)
+   - Biblioteca para construir interfaces gráficas de usuario (GUI).
+   - Más información: https://wxpython.org/
+
+2. numpy (Licencia: BSD)
+   - Biblioteca para cálculos numéricos en Python.
+   - Más información: https://numpy.org/
+
+3. soundcard (Licencia: MIT)
+   - Biblioteca para capturar y reproducir audio usando WASAPI.
+   - Más información: https://github.com/bastibe/SoundCard
+
+4. soundfile (Licencia: BSD)
+   - Biblioteca para leer y escribir archivos de audio.
+   - Más información: https://pysoundfile.readthedocs.io/
+
+5. lameenc (Licencia: LGPL 2.1)
+   - Biblioteca para codificación MP3.
+   - Más información: https://pypi.org/project/lameenc/
+
+==========================================
+Renuncia de Garantías
+==========================================
+El software se proporciona "TAL CUAL", sin ningún tipo de garantía expresa o implícita,
+incluyendo pero no limitado a garantías de comerciabilidad, idoneidad para un propósito
+particular y no infracción. En ningún caso los autores serán responsables de reclamaciones,
+daños o cualquier otra responsabilidad.
+
+==========================================
+Contacto
+==========================================
+Para cualquier duda o comentario, puedes contactar al desarrollador: @HXeBoLaX@comunidad.nvda.es en Mastodon.

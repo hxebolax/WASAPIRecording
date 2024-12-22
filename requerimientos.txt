@@ -1,0 +1,7 @@
+wxPython
+soundcard
+soundfile
+numpy
+lameenc
+pywin32
+pyinstaller
