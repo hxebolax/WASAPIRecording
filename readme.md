@@ -60,8 +60,9 @@ src/locales/fr/LC_MESSAGES/
 7. Coloca los archivos app.po y app.mo en la carpeta correspondiente.
 ### Contacto
 Si tienes traducciones completas o necesitas ayuda, puedes hacerme llegar tus archivos traducidos por los siguientes medios:
-• GitHub: Abre un issue en este repositorio.
-•  Por Mastodon @HXeBoLaX@comunidad.nvda.es.
+
+- GitHub: Abre un issue en este repositorio.
+- Por Mastodon @HXeBoLaX@comunidad.nvda.es.
 
 Gracias por tu colaboración en hacer este proyecto accesible a más idiomas y culturas. 🌐
 ## ⚠️ Advertencia sobre antivirus y falsos positivos
