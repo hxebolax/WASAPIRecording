@@ -42,6 +42,26 @@
 - Asegúrate de utilizar Python 3.11 para evitar problemas de compatibilidad.
 - Antes de ejecutar o compilar, verifica que las dependencias se hayan instalado correctamente.
 
+## 🌍 Colabora añadiendo nuevos idiomas
+
+En cada release de este proyecto, se incluye un archivo `.pot` que contiene todas las cadenas de texto utilizadas en la aplicación. Este archivo es la base para traducir la aplicación a otros idiomas.
+
+### Instrucciones para colaborar:
+1. Descarga el archivo `mensajes.pot` desde la sección de releases.
+2. Utiliza una herramienta como Poedit o cualquier editor compatible con archivos `.po`.
+3. Carga el archivo `.pot` y selecciona el idioma que deseas traducir.
+4. Traduce las cadenas de texto y guarda el archivo como `app.po`.
+5. Compila el archivo a formato `.mo`. Esto se puede hacer con herramientas como `msgfmt` o desde Poedit.
+
+   Ejemplo de compilación con `msgfmt` en terminal:
+   msgfmt -o app.mo app.po
+6. Crea una estructura de carpetas para tu idioma. Por ejemplo, para francés:
+src/locales/fr/LC_MESSAGES/
+7. Coloca los archivos app.po y app.mo en la carpeta correspondiente.
+### Contacto
+Si tienes traducciones completas o necesitas ayuda, puedes hacerme llegar tus archivos traducidos por los siguientes medios:
+• GitHub: Abre un issue en este repositorio.
+Gracias por tu colaboración en hacer este proyecto accesible a más idiomas y culturas. 🌐
 ## ⚠️ Advertencia sobre antivirus y falsos positivos
 
 Las versiones compiladas de este proyecto, creadas con [PyInstaller](https://pyinstaller.org/), pueden ser detectadas como falsos positivos por algunos programas antivirus. Esto ocurre debido a la forma en que PyInstaller empaqueta los archivos ejecutables, lo cual puede ser identificado erróneamente como malicioso.
