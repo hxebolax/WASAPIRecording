@@ -32,7 +32,7 @@
 6. Configuración adicional para la app compilada  
    Una vez compilada la aplicación, copia los siguientes elementos al directorio de salida de la compilación:  
    - El directorio locales (contiene los archivos de traducción).  
-   - El archivo licencia.txt.
+   - El archivo licencia.txt que se encuentra en la raíz del proyecto en el directorio documentos.
 
 7. Generar cadenas para nuevos idiomas  
    Si deseas generar las cadenas para añadir más idiomas, ejecuta el script generar_pot.py desde la raíz del proyecto:  
@@ -58,13 +58,15 @@ En cada release de este proyecto, se incluye un archivo `.pot` que contiene toda
 6. Crea una estructura de carpetas para tu idioma. Por ejemplo, para francés:
 src/locales/fr/LC_MESSAGES/
 7. Coloca los archivos app.po y app.mo en la carpeta correspondiente.
+
 ### Contacto
 Si tienes traducciones completas o necesitas ayuda, puedes hacerme llegar tus archivos traducidos por los siguientes medios:
 
-- GitHub: Abre un issue en este repositorio.
-- Por Mastodon @HXeBoLaX@comunidad.nvda.es.
+- **GitHub**: Abre un issue en este repositorio.
+- **Mastodon**: [@HXeBoLaX](https://comunidad.nvda.es/@HXeBoLaX).
 
 Gracias por tu colaboración en hacer este proyecto accesible a más idiomas y culturas. 🌐
+
 ## ⚠️ Advertencia sobre antivirus y falsos positivos
 
 Las versiones compiladas de este proyecto, creadas con [PyInstaller](https://pyinstaller.org/), pueden ser detectadas como falsos positivos por algunos programas antivirus. Esto ocurre debido a la forma en que PyInstaller empaqueta los archivos ejecutables, lo cual puede ser identificado erróneamente como malicioso.
