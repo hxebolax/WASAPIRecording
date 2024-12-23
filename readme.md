@@ -2,11 +2,12 @@
 
 ## Índice / Table of Contents
 
-- [Español](#español)
+- [Español](#espanol)
 - [English](#english)
 
 ---
 
+<a id="espanol"></a>
 ## Español
 
 **WASAPIRecording** es una aplicación diseñada para grabar audio en tiempo real desde el sistema y el micrófono utilizando WASAPI (Windows Audio Session API). Ofrece características como selección de dispositivos, configuración de calidad y formato, grabación en canales separados o combinados, y una interfaz gráfica intuitiva desarrollada en wxPython.
@@ -114,6 +115,7 @@ Disfruta trabajando con el proyecto WASAPIRecording.
 
 ---
 
+<a id="english"></a>
 ## English
 
 **WASAPIRecording** is an application designed to record audio in real-time from the system and microphone using WASAPI (Windows Audio Session API). It offers features such as device selection, quality and format configuration, recording in separate or combined channels, and an intuitive graphical interface developed in wxPython.
