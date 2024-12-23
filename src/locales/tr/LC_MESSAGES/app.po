@@ -1,52 +1,44 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the WASAPIRecording package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: WASAPIRecording 1.0\n"
+"Project-Id-Version: WASAPIRecording\n"
 "Report-Msgid-Bugs-To: tu_email@ejemplo.com\n"
 "POT-Creation-Date: 2024-12-23 15:27+0100\n"
-"PO-Revision-Date: 2024-12-23 15:29+0100\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: de\n"
+"PO-Revision-Date: 2024-12-23 15:33+0100\n"
+"Last-Translator: Umut KORKMAZ <umutkork@gmail.com>\n"
+"Language-Team: Umut KORKMAZ <umutkork@gmail.com>\n"
+"Language: tr_TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.5\n"
-"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: .\n"
 
 #: src\core\devices.py:31
 msgid "Dispositivos actualizados correctamente."
-msgstr "Korrekt aktualisierte Geräte."
+msgstr "Cihaz listesi başarıyla yenilendi."
 
 #: src\core\devices.py:34
 #, python-brace-format
 msgid "Error al refrescar dispositivos: {error}"
-msgstr "Fehler beim Aktualisieren von Geräten: {error}"
+msgstr "Cihazlar yenilenirken hata oluştu: {error}"
 
 #: src\core\hotkeys.py:114
 msgid "Tecla inválida detectada."
-msgstr "Ungültiger Schlüssel entdeckt."
+msgstr "Geçersiz anahtar algılandı."
 
 #: src\core\hotkeys.py:114 src\core\hotkeys.py:136 src\core\hotkeys.py:148
 #: src\ui\interface.py:745 src\ui\test_audio.py:211 src\ui\test_audio.py:221
 msgid "Error"
-msgstr "Fehler"
+msgstr "Hata"
 
 #: src\core\hotkeys.py:135
 msgid ""
 "La combinación debe tener al menos dos modificadores y una tecla principal."
-msgstr ""
-"Die Kombination muss mindestens zwei Modifikatoren und einen Hauptschlüssel "
-"enthalten."
+msgstr "Kombinasyonda en az iki değiştirici ve bir ana anahtar bulunmalıdır."
 
 #: src\core\hotkeys.py:147
 msgid "La combinación está en uso por otra aplicación: "
-msgstr "Die Kombination wird bereits von einer anderen Anwendung verwendet:"
+msgstr "Kombinasyon başka bir uygulama tarafından kullanılıyor: "
 
 #: src\core\info.py:4
 msgid ""
@@ -199,184 +191,170 @@ msgid ""
 "> invítame a un café” para apoyar su desarrollo.\n"
 msgstr ""
 "\n"
-"1. was ist WASAPIRecording?\n"
+"1. WASAPIRecording nedir?\n"
 " \n"
-"WASAPIRecording ist eine Windows-Anwendung, mit der Sie Ihr Mikrofon-Audio "
-"und Ihr System-Audio (Musik, Videoanrufe usw.) gleichzeitig aufnehmen "
-"können. Sie können beides in einer Datei kombinieren oder getrennt speichern "
-"(eine für das Mikrofon und eine für das Systemaudio).\n"
+"WASAPIRecording, mikrofon ve sistem seslerini (müzik, görüntülü aramalar "
+"vb.) aynı anda kaydedebilmeye imkan verenbir Windows uygulamasıdır. Her "
+"ikisini de tek bir dosyada birleştirebilir veya ayrı ayrı kaydedebilirsiniz "
+"(biri mikrofon için, diğeri sistem sesi için).\n"
 " \n"
-"2. Anforderungen\n"
+"2. Gereksinimler:\n"
 " \n"
-"- Windows 10 oder höher (mit WASAPI).\n"
-"- Berechtigungen zum Ausführen der Anwendung.\n"
+"• Windows 10 vesonrası (WASAPI ile).\n"
+"• Uygulamayı çalıştırma izinleri.\n"
 " \n"
-"3. Starten Sie die Anwendung\n"
+"3. Uygulamayı Başlatma\n"
 " \n"
-"- Führen Sie die Datei oder die Verknüpfung mit dem Namen "
-"\"WASAPIRecording\" aus.\n"
-"- Es öffnet sich das Hauptfenster mit Steuerelementen für Mikrofon, System, "
-"Audioformate usw.\n"
+"• \"WASAPIRecording\" adlı dosyayı veya kısayolu çalıştırın.\n"
+"• Mikrofon, sistem, ses biçimleri vb. için kontrollerin bulunduğu ana "
+"pencere açılacaktır.\n"
 " \n"
-"4. Geräte und Parameter konfigurieren\n"
+"4. Cihazları ve Parametreleri Yapılandırma:\n"
 " \n"
-"- Mikrofon: Wählen Sie das Mikrofon, das Sie verwenden möchten.\n"
-"- System (Loopback): Wählen Sie das Gerät auf Ihrem PC aus, das alles "
-"aufnimmt, was auf dem System erklingt.\n"
-"- Geräte aktualisieren: Wenn Sie ein neues Gerät angeschlossen haben und es "
-"nicht angezeigt wird, klicken Sie hier, um die Liste zu aktualisieren.\n"
-"- Qualität (Hz): Wählen Sie die Abtastrate (22050, 44100 oder 48000). Je "
-"höher die Zahl ist, desto höher ist die Qualität und desto größer ist die "
-"Datei.\n"
-"- Ausgabeformat: Sie können zwischen WAV, MP3, FLAC, OGG oder AIFF wählen.\n"
-"- MP3-Bitrate: Wird nur angezeigt, wenn Sie MP3 wählen; stellen Sie die "
-"Kompressionsqualität ein.\n"
-"- Aufnahmemodus (Mono oder Stereo): Legen Sie fest, wie viele Kanäle Ihre "
-"endgültige Aufnahme haben soll.\n"
-"- Mono-Mischung aktivieren:\n"
-"- Wenn Sie feststellen, dass Ihr Ton getrennt wird (z. B. Mikrofon nur auf "
-"einer Seite, System auf der anderen), aktivieren Sie dieses "
-"Kontrollkästchen, um beide Kanäle zu mischen und den Ton zu bündeln.\n"
-"- In der Praxis werden alle Töne in einem einzigen Kanal kombiniert und nach "
-"links und rechts übertragen, so dass der Eindruck vermieden wird, dass sich "
-"der Ton zu einer Seite \"neigt\".\n"
-"- Separate Dateien speichern:\n"
-"- Wenn dieses Kontrollkästchen aktiviert ist, erstellt die App nicht nur "
-"eine \"kombinierte\" Datei, sondern speichert auch zwei weitere "
-"Einzeldateien: eine nur vom Mikrofon und eine vom System.\n"
+"• Mikrofon: Kullanmak istediğiniz mikrofonu seçin.\n"
+"• Sistem (geridöngü): PC'nizde sistemde oynatılan her şeyi yakalayan cihazı "
+"seçin.\n"
+"• Cihazları Yenile: Yeni bir şey bağladıysanız ve görünmüyorsa, listeyi "
+"yenilemek için burayı tıklayın.\n"
+"• Kalite (Hz): Örnekleme hızını seçin (22050, 44100 veya 48000). Sayı ne "
+"kadar büyük olursa, dosyanın kalitesi ve boyutu da o kadar yüksek olur.\n"
+"• Çıkış Biçimi: WAV, MP3, FLAC, OGG veya AIFF'yi seçebilirsiniz.\n"
+"• MP3 Bit Hızı: Yalnızca MP3'ü seçerseniz gösterilir; sıkıştırma kalitesini "
+"ayarlar.\n"
+"• Kayıt Modu (Mono veya Stereo): Son kaydınızın kaç kanala sahip olacağına "
+"karar verin.\n"
+"• Mono Miksajı Etkinleştir:\n"
+"• Sesinizin ayrıldığını fark ederseniz (örneğin, bir tarafta mikrofon, diğer "
+"tarafta sistem), her iki kanalı karıştırmak ve sesi ortalamak için bu kutuyu "
+"işaretleyin.\n"
+"• Uygulamada tüm sesler tek bir kanalda birleştirilir ve sola ve sağa "
+"kopyalanır, böylece sesin bir tarafa \"eğildiği\" hissi önlenir.\n"
+"• Ayrı dosyalara kaydet:\n"
+"• Bunu işaretlerseniz, \"birleşik\" bir dosya oluşturmanın yanı sıra, "
+"uygulama iki ayrı dosyayı daha kaydedecektir: biri yalnızca mikrofon için, "
+"diğeri sistem için.\n"
 " \n"
-"5. Lautstärke anpassen\n"
+"5. Ses seviyelerini Ayarlama:\n"
 " \n"
-"- Mikrofonlautstärke: Verwenden Sie den Schieberegler, um die "
-"Mikrofonverstärkung zu erhöhen oder zu verringern.\n"
-"- Systemlautstärke: Erhöht oder verringert die Verstärkung der PC-Töne.\n"
+"• Mikrofon Sesi: Mikrofon ses seviyesini artırmak veya azaltmak için "
+"kaydırıcıyı kullanın.\n"
+"• Sistem Sesi: Bilgisayar seslerinin Ses Seviyesini artırın veya azaltın.\n"
 " \n"
-"6. Aufnahme starten und stoppen\n"
+"6. Kaydı Başlatma ve Durdurma:\n"
 " \n"
-"- Drücken Sie auf Aufnahme starten (oder verwenden Sie standardmäßig die "
-"Tastenkombination \"Strg + Umschalt + F1\"). Im Status wird \"Aufnahme...\" "
-"angezeigt.\n"
-"- Um die Aufnahme zu beenden, klicken Sie auf Aufnahme stoppen (oder \"Strg "
-"+ Umschalt + F2\").\n"
-"- Wenn Sie MP3, FLAC, OGG oder AIFF gewählt haben, konvertiert die App die "
-"endgültige Datei nach der Aufnahme; es erscheint die Meldung \"Bitte "
-"warten...\".\n"
-"- Wenn die Konvertierung abgeschlossen ist, wird eine Aufforderung mit dem "
-"Pfad angezeigt, in dem die Dateien gespeichert wurden.\n"
+"• Kaydı Başlat'a basın (veya varsayılan olarak \"Ctrl + Shift + F1\" "
+"varsayılan kısayolu kullanın). Durum “Kaydediliyor…” gösterecektir.\n"
+"• Durdurmak için Kaydı Durdur'a (veya \"Ctrl + Shift + F2\") tıklayın.\n"
+"• MP3, FLAC, OGG veya AIFF'yi seçerseniz uygulama, kayıttan sonra son "
+"dosyayı dönüştürür; “Lütfen bekleyin…” mesajı görünecektir.\n"
+"• İşlem tamamlandığında dosyalarınızın kaydedildiği yolu gösteren bir "
+"bildirim göreceksiniz.\n"
 " \n"
-"7. Wo die Aufnahmen gespeichert werden\n"
+"7. Kayıtların Kaydedildiği Yer:\n"
 " \n"
-"- Sie werden in einem Ordner namens \"Aufnahme\" gespeichert, der sich im "
-"Anwendungsordner befindet.\n"
-"- Vom Hauptfenster aus können Sie diesen Ordner öffnen, indem Sie auf Menü > "
-"Aufzeichnungen öffnen klicken.\n"
+"• Kayıt dosyaları, Uygulama klasörünün içindeki “recording” adı verilen bir "
+"klasörde saklanırlar.\n"
+"• Ana pencereden Menü > Kayıtları Aç'a tıklayarak bu klasörü açabilirsiniz.\n"
 " \n"
-"8. Optionen und Menü\n"
+"8. Menü ve Seçenekler:\n"
 " \n"
-"- Im Hauptfenster gibt es eine Schaltfläche namens Menü:\n"
-"- Über...: Zeigt die Version von WASAPIRecording und den Namen des "
-"Erstellers an.\n"
-"- Aufzeichnungen öffnen: Öffnet den Ordner, in dem sich die aufgezeichneten "
-"Dateien befinden.\n"
-"- Sprache: Wählen Sie Ihre bevorzugte Sprache. Sie müssen die Anwendung neu "
-"starten, um die Änderung zu übernehmen.\n"
-"- Optionen:\n"
-"- Hier finden Sie das Dialogfeld Optionen mit zwei Abschnitten:\n"
-"- Allgemein: Aktivieren Sie das Kontrollkästchen \"In die Taskleiste "
-"minimieren\", um das Fenster auszublenden und ein Symbol in der Taskleiste "
-"zu hinterlassen, wenn Sie es minimieren.\n"
-"- Tastatur: Hier können Sie die globalen Tastenkombinationen zum Starten und "
-"Beenden der Aufnahme ändern. Wenn sie nicht funktionieren oder sich "
-"wiederholen, können Sie sie hier anpassen.\n"
+"• Ana pencerede Menü adında bir düğme vardır:\n"
+"• Hakkında…: WASAPIRecording sürümünü ve Geliştirici adını gösterir.\n"
+"• Kayıtları Aç: Kaydedilen dosyaların bulunduğu klasörü açın.\n"
+"• Diller: Tercih ettiğiniz dili seçin. Değişikliği etkinleştirmek için "
+"uygulamayı yeniden başlatmanız gerekecek.\n"
+"• Seçenekler:\n"
+"• Burada iki bölümlü Seçenekler iletişim kutusunu bulacaksınız:\n"
+"• Genel: Pencereyi gizlemek ve simge durumuna küçülttüğünüzde tepside bir "
+"simge bırakmak için \"Sistem tepsisine küçült\" onay kutusunu işaretleyin.\n"
+"• Klavye: Kaydı başlatmak ve durdurmak için genel kısayolları değiştirmek "
+"için kullanılır. İşinize yaramıyorsa veya tekrarlanıyorsa bunları buradan "
+"ayarlayabilirsiniz.\n"
 " \n"
-"9. Audio-Test\n"
+"9. Ses Testi:\n"
 " \n"
-"- Die Schaltfläche Audiotest öffnet einen Dialog, mit dem Sie einige "
-"Sekunden an Samples aufnehmen und sofort wiedergeben können.\n"
-"- Dieser Dialog:\n"
-"- Wird immer im Vordergrund geöffnet.\n"
-"- Er wird nicht mit \"X\" oder Alt+F4 geschlossen, sondern nur mit der "
-"Schaltfläche \"Schließen\".\n"
-"- Zuerst nehmen Sie auf (\"Stop\"-Taste zum Beenden der Aufnahme).\n"
-"- Dann können Sie das Aufgenommene abspielen\".\n"
-"- Wenn Sie \"Getrennte Dateien speichern\" aktiviert haben, können Sie "
-"wählen, ob nur das Mikrofon, nur das System oder beides wiedergegeben werden "
-"soll.\n"
-"- Wenn Sie diesen Dialog schließen, werden die temporären Dateien gelöscht, "
-"so dass Sie sich vor der endgültigen Aufnahme vergewissern können, dass "
-"alles gut klingt.\n"
+"• Ses Testi düğmesi, birkaç saniyelik örnekleri kaydetmek ve bunları hemen "
+"oynatmak için bir iletişim kutusu açar.\n"
+"• Bu diyalog:\n"
+"• Her zaman ön planda açılır.\n"
+"• “X” veya Alt+F4 ile kapatılamaz; yalnızca Kapat düğmesiyle kapatılabilir.\n"
+"• İlk önce kaydedersiniz (Kaydı bitirmek için “Durdur” düğmesi).\n"
+"• Daha sonra kaydettiğiniz şeyi “Oynatabilirsiniz”.\n"
+"• “Ayrı dosyalara kaydet” seçeneğini işaretlediyseniz yalnızca mikrofonu, "
+"yalnızca sistemi veya her ikisini birden oynatmayı seçebilirsiniz.\n"
+"• Bu iletişim kutusunun kapatılması geçici dosyaları siler, dolayısıyla son "
+"kaydı yapmadan önce her şeyin yolunda olduğunu doğrulamak için mükemmeldir.\n"
 " \n"
-"10. Tastaturkurzbefehle\n"
+"10. Klavye Kısayolları:\n"
 " \n"
-"Globale Tastenkombinationen (standardmäßig, Sie können sie unter Optionen > "
-"Tastatur ändern):\n"
-"- Aufnahme starten: Strg + Umschalt + F1\n"
-"- Aufnahme stoppen: Strg + Umschalttaste + F2\n"
-"Tastenkombinationen innerhalb der Benutzeroberfläche (mit der Alt-Taste):\n"
-"- Mikrofon: Alt + O\n"
-"- System (Rückkopplung): Alt + S\n"
-"- Geräte aktualisieren: Alt + R\n"
-"- Qualität (Hz): Alt + C\n"
-"- Ausgabeformat: Alt + F\n"
-"- MP3-Bitrate (kbps): Alt + B\n"
-"- Aufnahmemodus: Alt + G\n"
-"- Mono-Mix aktivieren: Alt + H\n"
-"- Separate Mikrofon- und Systemdateien speichern: Alt + Y\n"
-"- Mikrofonlautstärke: Alt + V\n"
-"- System-Lautstärke: alt + V\n"
-"- Aufnahme starten: Alt + I\n"
-"- Aufnahme stoppen: Alt + D\n"
-"- Audiotest: Alt + P\n"
-"- Menü: Alt + M\n"
-"- Schließen (in einigen Dialogen): Alt + C\n"
-"- Je nach Sprache können einige Buchstaben variieren.\n"
+"Genel Kısayollar (varsayılan olarak bunları Seçenekler > Klavye'den "
+"değiştirebilirsiniz):\n"
+"• Kaydı Başlat: Ctrl + Shift + F1\n"
+"• Kaydı Durdur: Ctrl + Shift + F2\n"
+"Arayüz içindeki kısayollar (Alt tuşuyla):\n"
+"• Mikrofon: Alt + O\n"
+"• Sistem (geri döngü): Alt + G\n"
+"• Cihazları Yenile: Alt + R\n"
+"• Kalite (Hz): Alt + K\n"
+"• Çıkış Biçimi: Alt + Ç\n"
+"• Bit hızı MP3 (kbps): Alt + B\n"
+"• Kayıt modu: Alt + U\n"
+"• Mono Karıştırmayı Etkinleştir: Alt + N\n"
+"• Mikrofon ve Sistem dosyalarını ayrı ayrı kaydet: Alt + Y\n"
+"• Mikrofon Ses Seviyesi: Alt + S\n"
+"• Sistem Ses Seviyesi: Alt + V\n"
+"• Kaydı Başlat: Alt + ı\n"
+"• Kaydı Durdur: Alt + D\n"
+"• Ses Testi: Alt + T\n"
+"• Menü: Alt + M\n"
+"• Kapat (bazı diyaloglarda): Alt + K\n"
+"• Dile bağlı olarak bazı harfler farklılık gösterebilir.\n"
 " \n"
-"11. In Ablage minimieren\n"
+"11. Sistem Tepsisine Küçült:\n"
 " \n"
-"- Wenn Sie in den Optionen (Registerkarte \"Allgemein\") die Option \"In die "
-"Taskleiste minimieren\" aktiviert haben, verschwindet das Fenster von der "
-"Taskleiste, wenn Sie die Windows-Schaltfläche zum Minimieren drücken, und "
-"ein Symbol wird in der Nähe der Systemuhr angezeigt.\n"
-"- Auf das Symbol in der Taskleiste können Sie doppelklicken, um das Fenster "
-"wiederherzustellen, oder das Kontextmenü verwenden, um die Anwendung "
-"anzuzeigen oder zu schließen.\n"
+"• Seçenekler'de (“Genel” sekmesi) “Tepsiye Küçült” seçeneğini "
+"etkinleştirdiyseniz, Windows simge durumuna küçültme düğmesine bastığınızda, "
+"pencere görev çubuğundan kaybolur ve sistem saatinin yanında bir simge "
+"görüntülenir.\n"
+"• Tepsideki simgeyi çift tıklatarak pencereyi geri yükleyebilir veya içerik "
+"menüsünü kullanarak onu gösterebilir/uygulamayı kapatabilirsiniz.\n"
 " \n"
-"12. Schließen Sie die Anwendung\n"
+"12. Uygulamayı Kapat:\n"
 " \n"
-"- Wenn Sie das Hauptfenster schließen, werden Sie bei einer Aufnahme "
-"gefragt, ob Sie die Aufnahme vor dem Beenden beenden möchten.\n"
-"- Wenn die Datei in MP3/FLAC/etc. konvertiert wird, wartet das Programm, bis "
-"die Konvertierung abgeschlossen ist.\n"
-"- Danach wird das Programm vollständig geschlossen.\n"
+"• Ana pencereyi kapattığınızda eğer kayıt yapıyorsa çıkmadan önce size kaydı "
+"durdurmak isteyip istemediğinizi soracaktır.\n"
+"• Dosya MP3/FLAC/vb. formatına dönüştürülüyorsa dönüşümün bitmesini "
+"bekleyecektir.\n"
+"• Daha sonra tamamen kapanacaktır.\n"
 " \n"
-"13. Abschließende Tipps\n"
+"13. Son İpuçları:\n"
 " \n"
-"- Passen Sie die System- und Mikrofonlautstärke in der App selbst an, um "
-"Ihre Audioquellen auszugleichen.\n"
-"- Wenn etwas nicht richtig klingt, verwenden Sie den Audiotest, um es zu "
-"überprüfen und anzupassen, bevor Sie endgültig aufnehmen.\n"
-"- Wenn der Ton auf einem Kanal (links oder rechts) \"verzerrt\" ist, "
-"aktivieren Sie \"Mono-Mixing aktivieren\", um den Ton zu zentrieren.\n"
+"• Ses kaynaklarınızı dengelemek için sistemin ve mikrofonun ses düzeyini "
+"uygulamanın içinden ayarlayın.\n"
+"• Kulağa hoş gelmeyen bir şey varsa, kalıcı olarak kaydetmeden önce kontrol "
+"etmek ve ayarlamak için Ses Testi'ni kullanın.\n"
+"• Ses bir kanala (sola veya sağa) \"eğik\" geliyorsa, sesi ortalamak için "
+"\"Tek Sesli Karıştırmayı Etkinleştir\" seçeneğini işaretleyin.\n"
 " \n"
-"viel Spaß beim Aufnehmen mit WASAPIRecording! Wenn Ihnen diese Anwendung "
-"gefällt, gehen Sie zu \"Menü > Laden Sie mich auf einen Kaffee ein\", um die "
-"Entwicklung der Anwendung zu unterstützen.\n"
+"WASAPIRecording ile kayıt yapmanın keyfini çıkarın! Bu uygulamayı "
+"beğendiyseniz gelişimini desteklemek için “Menü > İşimi beğendiysen bana bir "
+"kahve ısmarla” seçeneğine gidin.\n"
 
 #: src\ui\interface.py:112
 msgid "Mostrar aplicación"
-msgstr "Anwendung anzeigen"
+msgstr "Uygulamayı göster"
 
 #: src\ui\interface.py:113 src\ui\interface.py:880
 msgid "Cerrar"
-msgstr "Schließen"
+msgstr "Kapat"
 
 #: src\ui\interface.py:134
 msgid "Espere por favor... Procesando"
-msgstr "Bitte warten... Verarbeitung"
+msgstr "Lütfen bekleyin... İşleniyor"
 
 #: src\ui\interface.py:135
 msgid "Procesando"
-msgstr "Verarbeitung"
+msgstr "İşleniyor"
 
 #: src\ui\interface.py:218
 msgid ""
@@ -384,50 +362,50 @@ msgid ""
 "\n"
 "No se pueden tener dos instancias a la vez."
 msgstr ""
-"Die WASAPIR-Aufnahmen sind bereits im Gange.\n"
+"WASAPIRecording zaten çalışıyor.\n"
 "\n"
-"Es ist nicht möglich, zwei Instanzen gleichzeitig laufen zu lassen."
+"Aynı anda iki WASAPIRecording dosyasını çalıştıramazsınız."
 
 #: src\ui\interface.py:276
 msgid "Dispositivos"
-msgstr "Geräte"
+msgstr "Cihazlar"
 
 #: src\ui\interface.py:277
 msgid "Micrófon&o:"
-msgstr "Mikrofon&o:"
+msgstr "Mikróf&on:"
 
 #: src\ui\interface.py:283
 msgid "&Sistema (loopback):"
-msgstr "&System (Loopback):"
+msgstr "Sistem (&geri döngü):"
 
 #: src\ui\interface.py:291
 msgid "&Refrescar Dispositivos"
-msgstr "&Auffrischungsgeräte"
+msgstr "Cihazla&rı Yenile"
 
 #: src\ui\interface.py:303
 msgid "Configuración de Grabación"
-msgstr "Konfiguration der Aufzeichnung"
+msgstr "Kayıt Ayarları"
 
 #: src\ui\interface.py:305
 msgid "&Calidad (Hz):"
-msgstr "&Qualität (Hz):"
+msgstr "&Kalite (Hz):"
 
 #: src\ui\interface.py:311
 msgid "&Formato de salida:"
-msgstr "&Ausgabeformat:"
+msgstr "&Çıkış Biçimi:"
 
 #: src\ui\interface.py:317
 msgid "&Bitrate MP3 (kbps):"
-msgstr "&Bitrate MP3 (kbps):"
+msgstr "&Bit Hızı MP3 (kbps):"
 
 #: src\ui\interface.py:323
 msgid "Modo de &grabación:"
-msgstr "Aufnahme & Aufnahmemodus:"
+msgstr "Kayıt mod&u:"
 
 #: src\ui\interface.py:324 src\ui\interface.py:540 src\ui\interface.py:818
 #: src\ui\interface.py:819 src\ui\interface.py:991
 msgid "Mono"
-msgstr "Affe"
+msgstr "Mono"
 
 #: src\ui\interface.py:324 src\ui\interface.py:817 src\ui\interface.py:818
 msgid "Estéreo"
@@ -435,31 +413,31 @@ msgstr "Stereo"
 
 #: src\ui\interface.py:328
 msgid "&Habilitar Mezcla Monoaural"
-msgstr "mono-Mischung einschalten"
+msgstr "Mo&no Karıştırmayı Etkinleştir"
 
 #: src\ui\interface.py:331
 msgid "Guardar archivos separados de micrófono &y sistema"
-msgstr "Separate Mikrofon- und Systemdateien speichern"
+msgstr "Mikrofon ve sistem dosyalarını ayrı ayrı ka&ydet"
 
 #: src\ui\interface.py:334
 msgid "&Volumen del Micrófono:"
-msgstr "&Mikrofon-Lautstärke:"
+msgstr "Mikrofon Ses &Seviyesi:"
 
 #: src\ui\interface.py:339
 msgid "&Volumen del Sistema:"
-msgstr "&System Lautstärke:"
+msgstr "Sistem Ses Se&viyesi:"
 
 #: src\ui\interface.py:353
 msgid "&Iniciar Grabación"
-msgstr "&Aufnahme starten"
+msgstr "Kayd&ı Başlat"
 
 #: src\ui\interface.py:357
 msgid "&Detener Grabación"
-msgstr "&Aufnahme stoppen"
+msgstr "Kaydı &Durdur"
 
 #: src\ui\interface.py:362
 msgid "&Prueba de Audio"
-msgstr "&Audio Test"
+msgstr "Ses &Testi"
 
 #: src\ui\interface.py:366
 msgid "&Menú"
@@ -468,27 +446,27 @@ msgstr "&Menü"
 #: src\ui\interface.py:380 src\ui\interface.py:974
 #, python-brace-format
 msgid "En espera (Usa {hk} para iniciar)"
-msgstr "Standby (zum Starten {hk} verwenden)"
+msgstr "Bekleniyor (Başlamak için {hk} tuşlarını kullanın)"
 
 #: src\ui\interface.py:382
 msgid "Estado"
-msgstr "Status"
+msgstr "Durum"
 
 #: src\ui\interface.py:450
 msgid "Hay una grabación en curso. ¿Desea detenerla y salir?"
-msgstr "Eine Aufzeichnung läuft. Möchten Sie sie stoppen und beenden?"
+msgstr "Bir kayıt devam ediyor, durdurup çıkmak istiyor musunuz?"
 
 #: src\ui\interface.py:451
 msgid "Confirmar cierre"
-msgstr "Bestätigung der Schließung"
+msgstr "Kapatmayı onaylayın"
 
 #: src\ui\interface.py:465
 msgid "Por favor espere, finalizando conversión..."
-msgstr "Bitte warten, Konvertierung wird abgeschlossen..."
+msgstr "Lütfen bekleyin, dönüştürme işlemi tamamlanıyor..."
 
 #: src\ui\interface.py:590
 msgid "Por favor espere, convirtiendo a formato final..."
-msgstr "Bitte warten, Konvertierung ins Endformat..."
+msgstr "Lütfen bekleyin, son biçime dönüştürülüyor..."
 
 #: src\ui\interface.py:608 src\ui\interface.py:651
 #, python-brace-format
@@ -496,7 +474,7 @@ msgid ""
 "Grabación completada. Archivo guardado como:\n"
 "{file_path}"
 msgstr ""
-"Aufnahme abgeschlossen. Datei gespeichert unter:\n"
+"Kayıt tamamlandı. Dosya şu şekilde kaydedildi:\n"
 "{file_path}"
 
 #: src\ui\interface.py:613
@@ -507,18 +485,18 @@ msgid ""
 "Archivo separado de sistema: {system_path}"
 msgstr ""
 "\n"
-"Separate Mikrofon-Datei: {mic_path}\n"
-"Getrennte Systemdatei: {system_path}"
+"Ayrı Mikrofon Dosyası: {mic_path}\n"
+"Ayrı Sistem Dosyası: {system_path}"
 
 #: src\ui\interface.py:621 src\ui\interface.py:624 src\ui\interface.py:675
 #: src\ui\interface.py:678
 msgid "Grabación"
-msgstr "Aufnahme"
+msgstr "Kayıt"
 
 #: src\ui\interface.py:642
 #, python-brace-format
 msgid "Error al convertir el archivo: {error}"
-msgstr "Fehler beim Konvertieren der Datei: {error}"
+msgstr "Dosya dönüştürülürken hata oluştu: {error}"
 
 #: src\ui\interface.py:668
 #, python-brace-format
@@ -528,8 +506,8 @@ msgid ""
 "Archivo separado de sistema: {sys_path}"
 msgstr ""
 "\n"
-"Separate Mikrofon-Datei: {mic_path}\n"
-"Getrennte Systemdatei: {sys_path}"
+"Ayrı mikrofon dosyası: {mic_path}\n"
+"Ayrı Sistem dosyası: {sys_path}"
 
 #: src\ui\interface.py:727
 msgid ""
@@ -538,140 +516,140 @@ msgid ""
 "Creado por {}"
 msgstr ""
 "WASAPIRecording\n"
-"Version {}\n"
-"Erstellt von {}"
+"Sürüm {}\n"
+"Tarafından oluşturuldu {}"
 
 #: src\ui\interface.py:732
 msgid "Acerca de..."
-msgstr "Über..."
+msgstr "Hakkında..."
 
 #: src\ui\interface.py:742
 #, python-brace-format
 msgid "No se pudo abrir el directorio de grabaciones: {error}"
-msgstr ""
-"Aufnahmeverzeichnis konnte nicht geöffnet werden: {error} {error} {error} "
-"{error} {error} {error} {error} {error} {error} {error} [0"
+msgstr "Kayıt dizini açılamadı: {error}"
 
 #: src\ui\interface.py:748
 msgid "Información"
-msgstr "Informacion"
+msgstr "Bilgi"
 
 #: src\ui\interface.py:831
 msgid "Alemán"
-msgstr "Deutsch"
+msgstr "Almanca"
 
 #: src\ui\interface.py:832
 msgid "Español"
-msgstr "Spanisch"
+msgstr "İspanyolca"
 
 #: src\ui\interface.py:833
 msgid "Francés"
-msgstr "Französisch"
+msgstr "Fransızca"
 
 #: src\ui\interface.py:834
 msgid "Inglés"
-msgstr "Englisch"
+msgstr "İngilizce"
 
 #: src\ui\interface.py:835
 msgid "Italiano"
-msgstr "Italienisch"
+msgstr "İtalyanca"
 
 #: src\ui\interface.py:836
 msgid "Portugués"
-msgstr "Portugiesisch"
+msgstr "Portekizce"
 
 #: src\ui\interface.py:837
 msgid "Turco"
-msgstr "Türkisch"
+msgstr "Türkçe"
 
 #: src\ui\interface.py:863 src\ui\options.py:197
 msgid "Opciones"
-msgstr "Optionen"
+msgstr "Seçenekler"
 
 #: src\ui\interface.py:864
 msgid "Idioma"
-msgstr "Sprache"
+msgstr "Diller"
 
 #: src\ui\interface.py:865 src\ui\interface.py:878
 msgid "Abrir Grabaciones"
-msgstr "Offene Aufzeichnungen"
+msgstr "Kayıtları Aç"
 
 #: src\ui\interface.py:866
 msgid "&Manual de usuario"
-msgstr "&Benutzerhandbuch"
+msgstr "Kullanı&m kılavuzu"
 
 #: src\ui\interface.py:867
 msgid "Acerca &de..."
-msgstr "Über &de..."
+msgstr "&Hakkında..."
 
 #: src\ui\interface.py:868
 msgid "invítame a un &café si te gusta mi trabajo"
-msgstr "laden Sie mich auf einen Kaffee ein, wenn Sie meine Arbeit mögen"
+msgstr "i&şimi beğeniyorsan bana bir kahve ısmarla"
 
 #: src\ui\interface.py:869
 msgid "Salir"
-msgstr "Verlassen"
+msgstr "Çık"
 
 #: src\ui\interface.py:879
 msgid "&invítame a un café si te gusta mi trabajo"
-msgstr "&laden Sie mich zu einem Kaffee ein, wenn Ihnen meine Arbeit gefällt"
+msgstr "i&şimi beğeniyorsan bana bir kahve ısmarla"
 
 #: src\ui\interface.py:890
 msgid ""
 "Para aplicar el nuevo idioma se necesita reiniciar la aplicación.\n"
 "¿Desea continuar?"
 msgstr ""
-"Um die neue Sprache anzuwenden, müssen Sie die Anwendung neu starten.\n"
-"möchten Sie fortfahren?"
+"Seçilen dilin aktif olması için uygulamayı yeniden başlatmanız gerekir.\n"
+"Devam etmek istiyor musunuz?"
 
 #: src\ui\interface.py:891
 msgid "Confirmar cambio de idioma"
-msgstr "Bestätigen Sie die Sprachänderung"
+msgstr "Dil değişikliğini onaylayın"
 
 #: src\ui\interface.py:967
 msgid "Grabando... (No hay hotkey de detener asignada)"
-msgstr "Aufnahme... (Kein Stopp-Hotkey zugewiesen)"
+msgstr "Kaydediliyor... (Durdur kısayol tuşu atanmadı)"
 
 #: src\ui\interface.py:969
 #, python-brace-format
 msgid "Grabando... (Usa {hk} para detener)"
-msgstr "Aufnahme... (Mit {hk} wird die Aufnahme gestoppt)"
+msgstr "Kaydediliyor... (Durdurmak için {hk} tuşunu kullanın)"
 
 #: src\ui\interface.py:972
 msgid "En espera. Asigna teclas en Opciones o inicia manualmente."
-msgstr "Standby. Tasten in den Optionen zuweisen oder manuell starten."
+msgstr ""
+"Bekleme modunda. Seçenekler iletişim kutusunda Kısayol tuşları belirleyin "
+"veya el ile başlatın."
 
 #: src\ui\manual.py:25
 msgid "Manual de Uso"
-msgstr "Benutzerhandbuch"
+msgstr "Kullanım Kılavuzu"
 
 #: src\ui\manual.py:36
 msgid "&Manual de Uso:"
-msgstr "&Benutzerhandbuch:"
+msgstr "Kullanı&m Kılavuzu:"
 
 #: src\ui\options.py:41
 msgid "Minimizar a la bandeja del sistema"
-msgstr "In den Systembereich minimieren"
+msgstr "Sistem tepsisinde simge durumuna küçült"
 
 #: src\ui\options.py:78
 msgid "Combinación para Iniciar Grabación:"
-msgstr "Kombination zum Starten der Aufnahme:"
+msgstr "Kaydı Başlatmak İçin Kombinasyon:"
 
 #: src\ui\options.py:84
 msgid "Capturar Hotkey Inicio"
-msgstr "Capture Hotkey Home"
+msgstr "Başlat Kısayol Tuşu Seç"
 
 #: src\ui\options.py:89
 msgid "Combinación para Detener Grabación:"
-msgstr "Kombination zum Beenden der Aufnahme:"
+msgstr "Kaydı Durdurmak için Kombinasyon:"
 
 #: src\ui\options.py:95
 msgid "Capturar Hotkey Parar"
-msgstr "Erfassen Hotkey Stop"
+msgstr "Durdur Kısayol Tuşu Seç"
 
 #: src\ui\options.py:107 src\ui\options.py:117
 msgid "Esperando combinación..."
-msgstr "Warten auf die Kombination..."
+msgstr "Konbinasyon bekleniyor..."
 
 #: src\ui\options.py:171
 msgid ""
@@ -679,61 +657,61 @@ msgid ""
 "Por favor, elija una diferente.\n"
 "Se revertirán los cambios a los que tenia por defecto."
 msgstr ""
-"Sie können Start und Stopp nicht dieselbe Kombination zuweisen.\n"
-"Bitte wählen Sie eine andere Kombination.\n"
-"Die Änderungen werden auf den Standardwert zurückgesetzt."
+"Aynı kombinasyonu Başlat ve Durdur'a atayamazsınız.\n"
+"Lütfen farklı bir tane seçin.\n"
+"Değişiklikler varsayılan ayarlara geri döndürülecektir."
 
 #: src\ui\options.py:172
 msgid "Error de Hotkeys"
-msgstr "Hotkey-Fehler"
+msgstr "Kısayol Hatası"
 
 #: src\ui\options.py:206
 msgid "General"
-msgstr "Allgemein"
+msgstr "Genel"
 
 #: src\ui\options.py:207
 msgid "Teclado"
-msgstr "Tastatur"
+msgstr "Klavye"
 
 #: src\ui\options.py:212
 msgid "Aceptar"
-msgstr "Akzeptieren"
+msgstr "Kabul et"
 
 #: src\ui\options.py:213
 msgid "Cancelar"
-msgstr "Abbrechen"
+msgstr "İptal"
 
 #: src\ui\test_audio.py:31
 msgid "Prueba de Audio"
-msgstr "Audio-Test"
+msgstr "Ses Testi"
 
 #: src\ui\test_audio.py:79
 msgid "&Información:"
-msgstr "&Information:"
+msgstr "B&ilgi:"
 
 #: src\ui\test_audio.py:93
 msgid "&Selecciona qué archivo reproducir:"
-msgstr "wählen Sie aus, welche Datei abgespielt werden soll:"
+msgstr "Oynatılacak bir dosya &seçin:"
 
 #: src\ui\test_audio.py:95 src\ui\test_audio.py:273
 msgid "Prueba micrófono"
-msgstr "Mikrofon-Test"
+msgstr "Mikrofon testi"
 
 #: src\ui\test_audio.py:95 src\ui\test_audio.py:275
 msgid "Prueba sistema"
-msgstr "Systemprüfung"
+msgstr "Sistem testi"
 
 #: src\ui\test_audio.py:95
 msgid "Ambos"
-msgstr "Beide"
+msgstr "İkiside"
 
 #: src\ui\test_audio.py:106
 msgid "&Detener"
-msgstr "&Halt"
+msgstr "Durdur"
 
 #: src\ui\test_audio.py:111
 msgid "&Cerrar"
-msgstr "&Schließen"
+msgstr "&Kapat"
 
 #: src\ui\test_audio.py:134
 msgid ""
@@ -756,68 +734,64 @@ msgid ""
 "No puedes cerrar con Alt+F4 ni con la X de la ventana; solo con el botón "
 "'Cerrar'.\n"
 msgstr ""
-"In diesem Fenster können Sie eine Testaufnahme und -wiedergabe durchführen.\n"
+"Bu pencere bir kayıt ve oynatma testi gerçekleştirmenizi sağlar.\n"
 "\n"
-"1. Wenn es geöffnet wird, beginnt die Aufnahme mit denselben Einstellungen "
-"wie im Hauptfenster.\n"
-"2. Um die Aufnahme zu beenden, drücken Sie auf \"Stopp\". Die Schaltfläche "
-"ändert sich dann in \"Wiedergabe\".\n"
-"3. Wenn die Option \"Separate Dateien speichern\" im Hauptfenster aktiviert "
-"wurde, wird das Dropdown-Menü angezeigt, in dem Sie wählen können, ob nur "
-"das Mikrofon, nur das System oder beides wiedergegeben werden soll "
-"(Standardeinstellung: \"Beide\").\n"
-"4. Durch Drücken von \"Play\" wird die WAV-Wiedergabe asynchron gestartet. "
-"Die Schaltfläche ändert sich während der Wiedergabe in \"Stop\". Nach "
-"Beendigung des Titels wird sie wieder zu \"Play\".\n"
-"5. Wenn Sie während der Aufnahme auf \"Schließen\" drücken, werden Sie "
-"gefragt, ob Sie den Test abbrechen möchten (die Dateien werden gelöscht). "
-"Wenn Sie bereits aufgezeichnet und/oder die Aufnahme beendet haben, wird sie "
-"einfach geschlossen und die Dateien werden ebenfalls gelöscht.\n"
+"1. Açıldığında ana pencereyle aynı ayarlarla kayda başlar.\n"
+"2. Kaydı sonlandırmak için 'Durdur'a basın. Düğme daha sonra 'Oynat' olarak "
+"değişecektir.\n"
+"3. Ana pencerede 'Ayrı dosyalara kaydet' seçeneği etkinleştirildiyse, "
+"yalnızca mikrofonun, yalnızca sistemin mi yoksa her ikisinin mi (varsayılan "
+"olarak 'Her İkisi') çalınacağını seçmek için açılır menü görüntülenecektir.\n"
+"4. 'Oynat'a basıldığında WAV eşzamansız olarak oynatılmaya başlar. Oynatma "
+"sırasında düğme 'Durdur' olarak değişir. Parça sona erdiğinde 'Oynat' moduna "
+"geri dönecektir.\n"
+"5. Kayıt sırasında 'Kapat' tuşuna basarsanız, testi iptal etmek isteyip "
+"istemediğiniz sorulacaktır (dosyalar silinecektir). Zaten kaydettiyseniz ve/"
+"veya bitirdiyseniz, yalnızca kapanacak ve dosyalar da silinecektir.\n"
 "\n"
-"Sie können nicht mit Alt+F4 oder mit dem X im Fenster schließen, sondern nur "
-"mit der Schaltfläche \"Schließen\".\n"
+"Alt+F4 veya pencerenin X tuşuyla kapatamazsınız; yalnızca 'Kapat' düğmesiyle "
+"kapatılabilir.\n"
 
 #: src\ui\test_audio.py:183 src\ui\test_audio.py:199 src\ui\test_audio.py:238
 msgid "Reproducir"
-msgstr "Wiedergeben"
+msgstr "Oynat"
 
 #: src\ui\test_audio.py:194
 msgid "Detener"
-msgstr "Anhalten"
+msgstr "Durdur"
 
 #: src\ui\test_audio.py:204
 msgid "No se ha grabado nada aún. Primero detenga la grabación."
-msgstr ""
-"Es ist noch nichts aufgenommen worden. Stoppen Sie zuerst die Aufnahme."
+msgstr "Henüz hiçbir şey kaydedilmedi. Önce kaydı durdurun."
 
 #: src\ui\test_audio.py:204
 msgid "Aviso"
-msgstr "Benachrichtigung"
+msgstr "Ayırt Et"
 
 #: src\ui\test_audio.py:211
 msgid "No existe el archivo a reproducir"
-msgstr "Die abzuspielende Datei existiert nicht"
+msgstr "Oynatılacak dosya mevcut değil"
 
 #: src\ui\test_audio.py:245
 msgid "La grabación sigue en curso. ¿Desea cancelar la prueba de sonido?"
-msgstr "Die Aufnahme ist noch im Gange, wollen Sie den Soundcheck absagen?"
+msgstr "Kayıt halen devam ediyor, ses testini iptal etmek istiyor musunuz?"
 
 #: src\ui\test_audio.py:246
 msgid "Cancelar Prueba"
-msgstr "Test abbrechen"
+msgstr "Testi İptal Et"
 
 #: src\ui\widgets.py:89
 msgid "&Aceptar"
-msgstr "&Akzeptieren"
+msgstr "Ka&bul Et"
 
 #: src\ui\widgets.py:91
 msgid "&Cancelar"
-msgstr "&Abbrechen"
+msgstr "İ&ptal"
 
 #: src\ui\widgets.py:93
 msgid "&Sí"
-msgstr "&Ja"
+msgstr "&Evet"
 
 #: src\ui\widgets.py:95
 msgid "&No"
-msgstr "&Nein"
+msgstr "&Hayır"

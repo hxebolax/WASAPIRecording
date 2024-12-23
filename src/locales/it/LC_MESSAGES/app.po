@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WASAPIRecording 1.0\n"
 "Report-Msgid-Bugs-To: tu_email@ejemplo.com\n"
-"POT-Creation-Date: 2024-12-22 15:30+0100\n"
-"PO-Revision-Date: 2024-12-22 17:22+0100\n"
+"POT-Creation-Date: 2024-12-23 15:27+0100\n"
+"PO-Revision-Date: 2024-12-23 15:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: it\n"
@@ -33,7 +33,7 @@ msgid "Tecla inválida detectada."
 msgstr "Rilevato un tasto non valido."
 
 #: src\core\hotkeys.py:114 src\core\hotkeys.py:136 src\core\hotkeys.py:148
-#: src\ui\interface.py:741 src\ui\test_audio.py:211 src\ui\test_audio.py:221
+#: src\ui\interface.py:745 src\ui\test_audio.py:211 src\ui\test_audio.py:221
 msgid "Error"
 msgstr "Errore"
 
@@ -358,7 +358,7 @@ msgstr ""
 msgid "Mostrar aplicación"
 msgstr "Mostra applicazione"
 
-#: src\ui\interface.py:113 src\ui\interface.py:872
+#: src\ui\interface.py:113 src\ui\interface.py:880
 msgid "Cerrar"
 msgstr "Chiudi"
 
@@ -416,12 +416,12 @@ msgstr "bitrate MP3 (kbps):"
 msgid "Modo de &grabación:"
 msgstr "Registrazione e modalità di registrazione:"
 
-#: src\ui\interface.py:324 src\ui\interface.py:540 src\ui\interface.py:814
-#: src\ui\interface.py:815 src\ui\interface.py:983
+#: src\ui\interface.py:324 src\ui\interface.py:540 src\ui\interface.py:818
+#: src\ui\interface.py:819 src\ui\interface.py:991
 msgid "Mono"
 msgstr "Scimmia"
 
-#: src\ui\interface.py:324 src\ui\interface.py:813 src\ui\interface.py:814
+#: src\ui\interface.py:324 src\ui\interface.py:817 src\ui\interface.py:818
 msgid "Estéreo"
 msgstr "Stereo"
 
@@ -457,7 +457,7 @@ msgstr "test audio"
 msgid "&Menú"
 msgstr "&Menu"
 
-#: src\ui\interface.py:380 src\ui\interface.py:966
+#: src\ui\interface.py:380 src\ui\interface.py:974
 #, python-brace-format
 msgid "En espera (Usa {hk} para iniciar)"
 msgstr "Standby (utilizzare {hk} per avviare)"
@@ -524,88 +524,91 @@ msgstr ""
 "File di sistema separato: {sys_path}"
 
 #: src\ui\interface.py:727
-#, python-brace-format
 msgid ""
 "WASAPIRecording\n"
-"Versión {_version}\n"
-"Creado por {_nombre}"
+"Versión {}\n"
+"Creado por {}"
 msgstr ""
 "WASAPIRecording\n"
-"Versione {_version}\n"
-"Creato da {_nombre}"
+"Versione {}\n"
+"Creato da {}"
 
-#: src\ui\interface.py:728
+#: src\ui\interface.py:732
 msgid "Acerca de..."
 msgstr "A proposito di..."
 
-#: src\ui\interface.py:738
+#: src\ui\interface.py:742
 #, python-brace-format
 msgid "No se pudo abrir el directorio de grabaciones: {error}"
 msgstr ""
 "Non è stato possibile aprire la directory di registrazione: {error} {error} "
 "{error} {error} {error} {error} {error} {error} {error} {error} {error} [0"
 
-#: src\ui\interface.py:744
+#: src\ui\interface.py:748
 msgid "Información"
 msgstr "Informazioni"
 
-#: src\ui\interface.py:827
+#: src\ui\interface.py:831
 msgid "Alemán"
 msgstr "Tedesco"
 
-#: src\ui\interface.py:828
+#: src\ui\interface.py:832
 msgid "Español"
 msgstr "Spagnolo"
 
-#: src\ui\interface.py:829
+#: src\ui\interface.py:833
 msgid "Francés"
 msgstr "Francese"
 
-#: src\ui\interface.py:830
+#: src\ui\interface.py:834
 msgid "Inglés"
 msgstr "Inglese"
 
-#: src\ui\interface.py:831
+#: src\ui\interface.py:835
 msgid "Italiano"
 msgstr "Italiano"
 
-#: src\ui\interface.py:832
+#: src\ui\interface.py:836
 msgid "Portugués"
 msgstr "Portoghese"
 
-#: src\ui\interface.py:855 src\ui\options.py:197
+#: src\ui\interface.py:837
+msgid "Turco"
+msgstr "Turco"
+
+#: src\ui\interface.py:863 src\ui\options.py:197
 msgid "Opciones"
 msgstr "Opzioni"
 
-#: src\ui\interface.py:856
+#: src\ui\interface.py:864
 msgid "Idioma"
 msgstr "Lingua"
 
-#: src\ui\interface.py:857 src\ui\interface.py:870
+#: src\ui\interface.py:865 src\ui\interface.py:878
 msgid "Abrir Grabaciones"
 msgstr "Registrazioni aperte"
 
-#: src\ui\interface.py:858
+#: src\ui\interface.py:866
 msgid "&Manual de usuario"
 msgstr "manuale d'uso"
 
-#: src\ui\interface.py:859
+#: src\ui\interface.py:867
 msgid "Acerca &de..."
 msgstr "Informazioni su &de..."
 
-#: src\ui\interface.py:860
+#: src\ui\interface.py:868
 msgid "invítame a un &café si te gusta mi trabajo"
 msgstr "invitatemi per un &caffè se vi piace il mio lavoro"
 
-#: src\ui\interface.py:861
+#: src\ui\interface.py:869
 msgid "Salir"
 msgstr "Uscire"
 
-#: src\ui\interface.py:871
+#: src\ui\interface.py:879
 msgid "&invítame a un café si te gusta mi trabajo"
 msgstr "invitatemi a prendere un caffè se vi piace il mio lavoro"
 
-#: src\ui\interface.py:882
+#: src\ui\interface.py:890
 msgid ""
 "Para aplicar el nuevo idioma se necesita reiniciar la aplicación.\n"
 "¿Desea continuar?"
@@ -613,22 +616,22 @@ msgstr ""
 "Per applicare la nuova lingua è necessario riavviare l'applicazione.\n"
 "volete continuare?"
 
-#: src\ui\interface.py:883
+#: src\ui\interface.py:891
 msgid "Confirmar cambio de idioma"
 msgstr "Confermare il cambio di lingua"
 
-#: src\ui\interface.py:959
+#: src\ui\interface.py:967
 msgid "Grabando... (No hay hotkey de detener asignada)"
 msgstr ""
 "Registrazione... (Non è stato assegnato alcun tasto di scelta rapida per "
 "l'arresto)"
 
-#: src\ui\interface.py:961
+#: src\ui\interface.py:969
 #, python-brace-format
 msgid "Grabando... (Usa {hk} para detener)"
 msgstr "Registrazione... (Utilizzare {hk} per interrompere)"
 
-#: src\ui\interface.py:964
+#: src\ui\interface.py:972
 msgid "En espera. Asigna teclas en Opciones o inicia manualmente."
 msgstr "Standby. Assegnare i tasti in Opzioni o avviare manualmente."
 

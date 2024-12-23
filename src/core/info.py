@@ -1,4 +1,4 @@
-_version = "1.2"
+_version = "1.2.1"
 _nombre = "XeBoLaX"
 _manual = \
 _("""

@@ -723,8 +723,12 @@ class AudioRecorderFrame(wx.Frame):
 		return out_path
 
 	def show_about(self, event):
+		msg = \
+_("""WASAPIRecording
+Versión {}
+Creado por {}""").format(_version, _nombre)
 		self.show_info_message(
-			_(f"WASAPIRecording\nVersión {_version}\nCreado por {_nombre}"),
+			msg,
 			_("Acerca de...")
 		)
 
@@ -830,6 +834,7 @@ class AudioRecorderFrame(wx.Frame):
 			item_en = submenu_idiomas.AppendRadioItem(-1, _("Inglés"))
 			item_it = submenu_idiomas.AppendRadioItem(-1, _("Italiano"))
 			item_pt = submenu_idiomas.AppendRadioItem(-1, _("Portugués"))
+			item_tr = submenu_idiomas.AppendRadioItem(-1, _("Turco"))
 
 			current_language = self.get.lang.current_lang
 			if current_language == "es":
@@ -844,6 +849,8 @@ class AudioRecorderFrame(wx.Frame):
 				item_pt.Check(True)
 			elif current_language == "de":
 				item_de.Check(True)
+			elif current_language == "tr":
+				item_tr.Check(True)
 
 			self.Bind(wx.EVT_MENU, lambda e: self.cambiar_idioma('es'), item_es)
 			self.Bind(wx.EVT_MENU, lambda e: self.cambiar_idioma('en'), item_en)
@@ -851,6 +858,7 @@ class AudioRecorderFrame(wx.Frame):
 			self.Bind(wx.EVT_MENU, lambda e: self.cambiar_idioma('it'), item_it)
 			self.Bind(wx.EVT_MENU, lambda e: self.cambiar_idioma('de'), item_de)
 			self.Bind(wx.EVT_MENU, lambda e: self.cambiar_idioma('pt'), item_pt)
+			self.Bind(wx.EVT_MENU, lambda e: self.cambiar_idioma('tr'), item_tr)
 
 			item_opciones = menu.Append(-1, _("Opciones"))
 			menu.AppendSubMenu(submenu_idiomas, _("Idioma"))
