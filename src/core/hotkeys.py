@@ -13,7 +13,11 @@ import winsound
 import atexit
 from ctypes import wintypes
 from core.config import load_config, save_config, get_base_path
+from core.logger import Logger
 from ui.widgets import mensaje
+
+# Inicialización del logger
+logger = Logger(log_dir=os.path.join(get_base_path(), "logs"))
 
 # Constantes de hook y eventos de teclado
 WH_KEYBOARD_LL = 13
@@ -111,6 +115,7 @@ def validate_combination(combination):
 	"""
 	combination_list = combination.split("+")
 	if any("VK_" in key for key in combination_list):
+		logger.log_error("Tecla inválida detectada.")
 		wx.CallAfter(mensaje, None, _("Tecla inválida detectada."), _("Error"), style=wx.OK | wx.ICON_ERROR)
 		return False
 
@@ -129,30 +134,21 @@ def process_hotkey_result(combination):
 		parent_dialog = wx.GetActiveWindow()
 		if hasattr(parent_dialog, "on_hotkey_captured"):
 			if not validate_combination(combination):
-				wx.CallAfter(
-					mensaje,
-					None,
-					_("La combinación debe tener al menos dos modificadores y una tecla principal."),
-					_("Error"),
-					style=wx.OK | wx.ICON_ERROR,
-				)
+				logger.log_error("La combinación no es válida.")
 				wx.CallAfter(parent_dialog.on_hotkey_error)
 				return
 
 			modifiers, key_code = parse_hotkey(combination)
 			if not can_register_hotkey(parent_dialog, modifiers, key_code):
-				wx.CallAfter(
-					mensaje,
-					None,
-					_("La combinación está en uso por otra aplicación: ") + combination,
-					_("Error"),
-					style=wx.OK | wx.ICON_ERROR,
-				)
+				logger.log_error(f"La combinación está en uso: {combination}")
+				wx.CallAfter(mensaje, None, _(f"La combinación está en uso: {combination}"), _("Error"), style=wx.OK | wx.ICON_ERROR)
 				wx.CallAfter(parent_dialog.on_hotkey_error)
 			else:
+				logger.log_action(f"Hotkey capturada correctamente: {combination}")
 				wx.CallAfter(parent_dialog.on_hotkey_captured, combination)
 	except Exception as e:
-		print(f"Error al procesar la combinación: {e}")
+		logger.log_error(f"Error al procesar la combinación: {e}")
+
 
 def install_hook():
 	global keyboard_hook, hook_proc
@@ -167,15 +163,17 @@ def install_hook():
 		)
 		if not keyboard_hook:
 			raise OSError("No se pudo instalar el hook de teclado.")
+		logger.log_action("Hook de teclado instalado correctamente.")
 		atexit.register(uninstall_hook)
 	except Exception as e:
-		print(f"Error al instalar el hook: {e}")
+		logger.log_error(f"Error al instalar el hook: {e}")
 		uninstall_hook()
 
 def uninstall_hook():
 	global keyboard_hook
 	if keyboard_hook:
 		ctypes.windll.user32.UnhookWindowsHookEx(keyboard_hook)
+		logger.log_action("Hook de teclado desinstalado.")
 		keyboard_hook = None
 
 def start_capturing():
@@ -186,12 +184,14 @@ def start_capturing():
 	is_capturing = True
 	install_hook()
 	winsound.Beep(1000, 200)
+	logger.log_action("Inicio de captura de hotkeys.")
 
 def stop_capturing():
 	global is_capturing
 	is_capturing = False
 	uninstall_hook()
 	winsound.Beep(500, 200)
+	logger.log_action("Captura de hotkeys finalizada.")
 
 def parse_hotkey(hotkey):
 	"""
@@ -236,6 +236,7 @@ def load_hotkeys_from_config():
 		cfg["hotkey_start"] = "Ctrl+Shift+F1"
 	if "hotkey_stop" not in cfg:
 		cfg["hotkey_stop"] = "Ctrl+Shift+F2"
+	logger.log_action("Hotkeys cargadas desde la configuración.")
 	return cfg
 
 def save_hotkeys_to_config(hotkey_start, hotkey_stop):
@@ -247,3 +248,4 @@ def save_hotkeys_to_config(hotkey_start, hotkey_stop):
 	cfg["hotkey_start"] = hotkey_start
 	cfg["hotkey_stop"] = hotkey_stop
 	save_config(config_file, cfg)
+	logger.log_action("Hotkeys guardadas en la configuración.")

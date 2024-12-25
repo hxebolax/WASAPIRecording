@@ -1,3 +1,40 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Módulo de Diálogo y Notificaciones Accesibles
+
+Este módulo proporciona una clase de diálogo personalizada y funciones auxiliares diseñadas 
+para mejorar la accesibilidad y la interacción con los usuarios, especialmente para aquellos 
+que utilizan lectores de pantalla. También incluye la funcionalidad para mostrar notificaciones 
+en el área del sistema.
+
+Clases:
+- AccessibleDialogMenssage: Diálogo personalizado que incluye iconos, botones dinámicos 
+  y soporte de sonidos para mejorar la experiencia del usuario.
+
+Funciones:
+- mensaje: Crea y muestra un cuadro de diálogo accesible con los parámetros especificados.
+- notification_area: Muestra una notificación en el área de notificaciones del sistema 
+  con un tiempo de duración configurable.
+
+Características:
+- Soporte para sonidos de notificación dependiendo del tipo de mensaje (información, 
+  advertencia, error o pregunta).
+- Botones dinámicos según el estilo especificado (OK, Cancel, Yes, No).
+- Notificaciones en el área del sistema utilizando `wx.adv.NotificationMessage`.
+- Diseño responsivo con envoltura automática de texto y centrado del diálogo.
+- Mejora de la accesibilidad para lectores de pantalla mediante atajos y etiquetas descriptivas.
+
+Dependencias:
+- wxPython: Para la interfaz gráfica y las notificaciones.
+- winsound: Para reproducir sonidos de sistema asociados con los tipos de mensaje.
+
+Uso:
+Este módulo puede integrarse en aplicaciones que requieran cuadros de diálogo y notificaciones 
+con características avanzadas de accesibilidad. Proporciona una experiencia de usuario mejorada 
+y consistente en sistemas Windows.
+
+"""
 import wx
 import wx.adv
 import winsound

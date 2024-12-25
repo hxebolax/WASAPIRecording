@@ -21,7 +21,7 @@ Se modificó la lógica de cierre (on_close):
 - Si hay grabación en curso al momento de cerrar, se pregunta al usuario si desea detener y salir.
   - Si dice “No”, se cancela el cierre.
   - Si dice “Sí”, se detiene la grabación, se muestra el diálogo "Por favor espere..." mientras se guarda/convierte,
-    y luego se muestra el mensaje final con la ruta. Al aceptar, se cierra la app.
+	y luego se muestra el mensaje final con la ruta. Al aceptar, se cierra la app.
 - Si no hay grabación pero hay conversión en curso, se muestra el diálogo de espera hasta que termine la conversión,
   y luego se cierra.
 """
@@ -50,9 +50,13 @@ from core.devices import (
 from core.recorder import record_audio, to_mono
 from ui.widgets import mensaje
 from ui.manual import ManualDialog
+from ui.update import UpdateDialog
 from core.hotkeys import load_hotkeys_from_config
 from core.info import _version, _nombre, _manual, _icono
+from core.logger import Logger
 
+# Inicialización del logger
+logger = Logger(log_dir=os.path.join(get_base_path(), "logs"))
 
 # IDs para las hotkeys globales
 HOTKEY_ID_START = wx.NewIdRef()
@@ -71,24 +75,31 @@ class MyTaskBarIcon(wx.adv.TaskBarIcon):
 
 		# Icono en base64 embebido (por ejemplo, en otro módulo)
 		self.icon = self._create_icon_from_base64(_icono)
+		logger.log_action("Icono de la bandeja creado.")
 
 		# Quita cualquier ícono anterior
 		self.RemoveIcon()
 
 		# Vinculamos el evento de doble clic con botón izquierdo
 		self.Bind(wx.adv.EVT_TASKBAR_LEFT_DCLICK, self.on_left_double_click)
+		logger.log_action("Evento de doble clic en el icono de la bandeja vinculado.")
 
 	def _create_icon_from_base64(self, icon_b64):
-		icon_bytes = base64.b64decode(icon_b64)
-		stream = io.BytesIO(icon_bytes)
+		try:
+			icon_bytes = base64.b64decode(icon_b64)
+			stream = io.BytesIO(icon_bytes)
 
-		# IMPORTANTE: El tipo debe coincidir con la imagen. Si es PNG:
-		icon_image = wx.Image(stream, wx.BITMAP_TYPE_PNG)
+			# IMPORTANTE: El tipo debe coincidir con la imagen. Si es PNG:
+			icon_image = wx.Image(stream, wx.BITMAP_TYPE_PNG)
 
-		bitmap = wx.Bitmap(icon_image)
-		icon = wx.Icon()
-		icon.CopyFromBitmap(bitmap)
-		return icon
+			bitmap = wx.Bitmap(icon_image)
+			icon = wx.Icon()
+			icon.CopyFromBitmap(bitmap)
+			logger.log_action("Icono creado desde base64 exitosamente.")
+			return icon
+		except Exception as e:
+			logger.log_error(f"Error al crear icono desde base64: {e}")
+			return wx.Icon()
 
 	def show_icon(self):
 		"""
@@ -96,8 +107,10 @@ class MyTaskBarIcon(wx.adv.TaskBarIcon):
 		"""
 		if self.icon.IsOk():
 			self.SetIcon(self.icon, "WASAPIRecording")
+			logger.log_action("Icono mostrado en la bandeja.")
 		else:
 			self.SetIcon(wx.Icon(), "WASAPIRecording")  # en caso de no cargar bien
+			logger.log_error("Icono no válido. Se muestra un icono por defecto.")
 		self._visible = True
 
 	def hide_icon(self):
@@ -105,6 +118,7 @@ class MyTaskBarIcon(wx.adv.TaskBarIcon):
 		Oculta y elimina el ícono de la bandeja.
 		"""
 		self.RemoveIcon()
+		logger.log_action("Icono ocultado y eliminado de la bandeja.")
 		self._visible = False
 
 	def CreatePopupMenu(self):
@@ -113,18 +127,23 @@ class MyTaskBarIcon(wx.adv.TaskBarIcon):
 		item_close = menu.Append(-1, _("Cerrar"))
 		self.Bind(wx.EVT_MENU, self.on_show_app, item_show)
 		self.Bind(wx.EVT_MENU, self.on_close_app, item_close)
+		logger.log_action("Menú contextual creado en el icono de la bandeja.")
 		return menu
 
 	def on_left_double_click(self, event):
+		logger.log_action("Doble clic detectado en el icono de la bandeja.")
 		self.on_show_app(event)
 
 	def on_show_app(self, event):
+		logger.log_action("Mostrando la ventana principal desde el icono de la bandeja.")
 		self.parent_frame.Show()
 		self.parent_frame.Iconize(False)
 		self.parent_frame.Raise()
 
 	def on_close_app(self, event):
+		logger.log_action("Cerrando la aplicación desde el icono de la bandeja.")
 		self.parent_frame.on_close(None)
+
 
 class PleaseWaitDialog(wx.Dialog):
 	"""
@@ -156,6 +175,7 @@ class PleaseWaitDialog(wx.Dialog):
 		self.keep_playing = True
 		self.sound_thread = Thread(target=self.play_tone, daemon=True)
 		self.sound_thread.start()
+		logger.log_action("Diálogo 'Por favor espere' creado y sonido iniciado.")
 
 	def on_key_down(self, event):
 		key_code = event.GetKeyCode()
@@ -164,14 +184,18 @@ class PleaseWaitDialog(wx.Dialog):
 		event.Skip()
 
 	def play_tone(self):
-		import winsound
-		while self.keep_playing:
-			winsound.Beep(800, 200)
-			time.sleep(0.3)
+		try:
+			import winsound
+			while self.keep_playing:
+				winsound.Beep(800, 200)
+				time.sleep(0.3)
+		except Exception as e:
+			logger.log_error(f"Error al reproducir tono en el diálogo 'Por favor espere': {e}")
 
 	def stop_tone(self):
 		self.keep_playing = False
 		self.sound_thread.join()
+		logger.log_action("Tono del diálogo 'Por favor espere' detenido.")
 
 
 class ConversionThread(Thread):
@@ -191,6 +215,7 @@ class ConversionThread(Thread):
 
 	def run(self):
 		try:
+			logger.log_action(f"Iniciando conversión de {self.wav_path} a {self.target_format}.")
 			self.final_path = self.parent.convert_to_final_format(
 				self.wav_path,
 				self.target_format,
@@ -198,8 +223,10 @@ class ConversionThread(Thread):
 				self.mic_path,
 				self.system_path
 			)
+			logger.log_action(f"Conversión completada: {self.final_path}.")
 		except Exception as e:
 			self.exception = e
+			logger.log_error(f"Error durante la conversión: {e}")
 
 
 class AudioRecorderApp(wx.App):
@@ -214,15 +241,16 @@ class AudioRecorderApp(wx.App):
 		self.name = f"WASAPIRecording{wx.GetUserId()}"
 		self.instance = wx.SingleInstanceChecker(self.name)
 		if self.instance.IsAnotherRunning():
-			from ui.widgets import mensaje
 			msg = _("""WASAPIRecording ya se encuentra en ejecución.
 
 No se pueden tener dos instancias a la vez.""")
 			mensaje(None, msg, "Error", style=wx.OK | wx.ICON_ERROR)
+			logger.log_error("Intento de iniciar una segunda instancia de la aplicación.")
 			return False
 
 		self.frame = AudioRecorderFrame()
 		self.frame.Show()
+		logger.log_action("Aplicación iniciada y ventana principal mostrada.")
 		return True
 
 
@@ -240,10 +268,15 @@ class AudioRecorderFrame(wx.Frame):
 		self.icon = self._create_icon_from_base64(_icono)
 		if self.icon.IsOk():
 			self.SetIcon(self.icon)
+			logger.log_action("Icono de la ventana principal establecido correctamente.")
+		else:
+			logger.log_error("Icono de la ventana principal no es válido.")
+
 		self.SetTitle(f"WASAPIRecording v{_version}")
 		self.output_dir = os.path.join(get_base_path(), "recording")
 		self.CONFIG_FILE = os.path.join(get_base_path(), "WASAPIRecording.dat")
 
+		self.is_update = False
 		self.recording_event = Event()
 		self.recording_thread = None
 		self.sample_rate = 48000
@@ -405,6 +438,7 @@ class AudioRecorderFrame(wx.Frame):
 		self.load_config()
 		self.validate_and_register_hotkeys()
 		self.update_status_message(recording=False)
+		logger.log_action("Interfaz gráfica inicializada correctamente.")
 
 	def on_iconify(self, event):
 		config = load_config(self.CONFIG_FILE)
@@ -413,23 +447,30 @@ class AudioRecorderFrame(wx.Frame):
 		if event.IsIconized() and minimize_to_tray:
 			self.Hide()
 			self.tray_icon.show_icon()
+			logger.log_action("Aplicación minimizada a la bandeja.")
 		else:
 			event.Skip()
 
 	def _create_icon_from_base64(self, icon_b64):
-		icon_bytes = base64.b64decode(icon_b64)
-		stream = io.BytesIO(icon_bytes)
+		try:
+			icon_bytes = base64.b64decode(icon_b64)
+			stream = io.BytesIO(icon_bytes)
 
-		# IMPORTANTE: El tipo debe coincidir con la imagen. Si es PNG:
-		icon_image = wx.Image(stream, wx.BITMAP_TYPE_PNG)
+			# IMPORTANTE: El tipo debe coincidir con la imagen. Si es PNG:
+			icon_image = wx.Image(stream, wx.BITMAP_TYPE_PNG)
 
-		bitmap = wx.Bitmap(icon_image)
-		icon = wx.Icon()
-		icon.CopyFromBitmap(bitmap)
-		return icon
+			bitmap = wx.Bitmap(icon_image)
+			icon = wx.Icon()
+			icon.CopyFromBitmap(bitmap)
+			logger.log_action("Icono creado desde base64 exitosamente.")
+			return icon
+		except Exception as e:
+			logger.log_error(f"Error al crear icono desde base64: {e}")
+			return wx.Icon()
 
 	def on_hotkey(self, event):
 		hotkey_id = event.GetId()
+		logger.log_action(f"Hotkey detectada con ID: {hotkey_id}")
 		if hotkey_id == HOTKEY_ID_START:
 			self.start_recording()
 		elif hotkey_id == HOTKEY_ID_STOP:
@@ -444,6 +485,7 @@ class AudioRecorderFrame(wx.Frame):
 		Si no hay grabación, revisamos si hay conversión. Si la hay, mostramos "espere por favor" hasta que acabe.
 		Luego cerramos.
 		"""
+		logger.log_action("Intento de cierre de la aplicación.")
 		if self.recording_event.is_set():
 			resp = mensaje(
 				None,
@@ -451,9 +493,11 @@ class AudioRecorderFrame(wx.Frame):
 				_("Confirmar cierre"),
 				wx.YES_NO | wx.ICON_WARNING
 			)
+			logger.log_action("Confirmación de cierre solicitada al usuario.")
 			if resp == wx.NO:
 				if event:
 					event.Veto()
+				logger.log_action("Cierre de la aplicación cancelado por el usuario.")
 				return
 			else:
 				# El usuario eligió sí => detener grabación y luego al final se cierra
@@ -462,6 +506,7 @@ class AudioRecorderFrame(wx.Frame):
 		else:
 			# No hay grabación => ver si hay conversión
 			if hasattr(self, "conversion_thread") and self.conversion_thread.is_alive():
+				logger.log_action("Conversión en curso al intentar cerrar la aplicación.")
 				wait_dlg = PleaseWaitDialog(self, _("Por favor espere, finalizando conversión..."))
 				wait_dlg.Show()
 				while self.conversion_thread.is_alive():
@@ -469,6 +514,7 @@ class AudioRecorderFrame(wx.Frame):
 					time.sleep(0.1)
 				wait_dlg.stop_tone()
 				wait_dlg.Destroy()
+				logger.log_action("Conversión finalizada durante el cierre de la aplicación.")
 
 			# Cerrar definitivamente
 			self.final_close()
@@ -477,42 +523,54 @@ class AudioRecorderFrame(wx.Frame):
 		try:
 			self.UnregisterHotKey(HOTKEY_ID_START)
 			self.UnregisterHotKey(HOTKEY_ID_STOP)
-		except:
-			pass
+			logger.log_action("Hotkeys globales desregistradas.")
+		except Exception as e:
+			logger.log_error(f"Error al desregistrar hotkeys: {e}")
 
 		if hasattr(self, "tray_icon"):
 			self.tray_icon.hide_icon()
 			self.tray_icon.Destroy()
+			logger.log_action("Icono de la bandeja ocultado y destruido.")
 
 		self.save_config_wrapper()
+		logger.log_action("Configuración guardada antes del cierre.")
 		self.Destroy()
+		logger.log_action("Aplicación cerrada exitosamente.")
 
 	def on_refresh_devices(self, event):
+		logger.log_action("Actualizando lista de dispositivos.")
 		refresh_devices(self.mic_choice, self.system_choice, self.status_box)
 
 	def on_update_selected_mic(self, event):
 		selected_name = self.mic_choice.GetStringSelection()
 		self.selected_mic = update_selected_mic(selected_name)
+		logger.log_action(f"Micrófono seleccionado: {selected_name}")
 
 	def on_update_selected_system(self, event):
 		selected_name = self.system_choice.GetStringSelection()
 		self.selected_system = update_selected_system(selected_name)
+		logger.log_action(f"Sistema (loopback) seleccionado: {selected_name}")
 
 	def on_update_quality(self, event):
 		self.selected_quality = update_quality(self.quality_choice)
 		self.sample_rate = self.selected_quality
+		logger.log_action(f"Calidad de grabación actualizada a: {self.selected_quality} Hz")
 
 	def on_update_output_format(self, event):
 		self.selected_format = update_output_format(self.format_choice)
+		logger.log_action(f"Formato de salida actualizado a: {self.selected_format}")
 
 	def on_update_bitrate(self, event):
 		self.selected_bitrate = update_bitrate(self.bitrate_choice)
+		logger.log_action(f"Bitrate MP3 actualizado a: {self.selected_bitrate} kbps")
 
 	def on_update_mic_volume(self, event):
 		self.mic_volume = update_mic_volume(self.mic_volume_slider)
+		logger.log_action(f"Volumen del micrófono actualizado a: {self.mic_volume * 100}%")
 
 	def on_update_system_volume(self, event):
 		self.system_volume = update_system_volume(self.system_volume_slider)
+		logger.log_action(f"Volumen del sistema actualizado a: {self.system_volume * 100}%")
 
 	def toggle_controls(self, enable):
 		self.mic_choice.Enable(enable)
@@ -526,13 +584,18 @@ class AudioRecorderFrame(wx.Frame):
 		self.start_button.Enable(enable)
 		self.refresh_button.Enable(enable)
 		self.test_audio_button.Enable(enable)
+		logger.log_action(f"Controles {'habilitados' if enable else 'deshabilitados'}.")
 
 	def start_recording(self, event=None):
+		if self.is_update:
+			logger.log_action("Grabación cancelada debido a una actualización en curso.")
+			return
 		if not self.recording_event.is_set():
 			self.recording_event.set()
 			self.toggle_controls(False)
 			self.stop_button.Enable()
 			self.stop_button.SetFocus()
+			logger.log_action("Inicio de grabación de audio.")
 
 			self.update_status_message(recording=True)
 			winsound.Beep(1000, 200)
@@ -573,6 +636,7 @@ class AudioRecorderFrame(wx.Frame):
 				)
 			)
 			self.recording_thread.start()
+			logger.log_action(f"Thread de grabación iniciado para: {self.combined_output_path}")
 
 	def stop_recording(self, event=None):
 		if self.recording_event.is_set():
@@ -580,15 +644,19 @@ class AudioRecorderFrame(wx.Frame):
 			self.toggle_controls(True)
 			self.stop_button.Disable()
 			self.start_button.SetFocus()
+			logger.log_action("Detención de grabación solicitada.")
+
 			self.update_status_message(recording=False)
 			winsound.Beep(500, 200)
 
 			if self.recording_thread:
 				self.recording_thread.join()
+				logger.log_action("Thread de grabación finalizado.")
 
 			if self.selected_format != "WAV":
 				self.dialog = PleaseWaitDialog(self, _("Por favor espere, convirtiendo a formato final..."))
 				self.dialog.Show()
+				logger.log_action("Diálogo de espera para conversión mostrado.")
 
 				self.conversion_thread = ConversionThread(
 					self,
@@ -599,6 +667,7 @@ class AudioRecorderFrame(wx.Frame):
 					self.system_output_path
 				)
 				self.conversion_thread.start()
+				logger.log_action(f"Thread de conversión iniciado para: {self.combined_output_path}")
 
 				self.timer = wx.Timer(self)
 				self.Bind(wx.EVT_TIMER, self.on_conversion_check, self.timer)
@@ -619,9 +688,11 @@ class AudioRecorderFrame(wx.Frame):
 				# Si queremos cerrar => mostramos mensaje y cerramos
 				if self.want_to_close:
 					res = mensaje(None, message, _("Grabación"), style=wx.OK | wx.ICON_INFORMATION)
+					logger.log_action("Mensaje de grabación completada mostrado al usuario para cierre.")
 					self.final_close()
 				else:
 					self.show_info_message(message, _("Grabación"))
+					logger.log_action("Mensaje de grabación completada mostrado al usuario.")
 
 	def on_conversion_check(self, event):
 		if not hasattr(self, "conversion_thread"):
@@ -633,16 +704,12 @@ class AudioRecorderFrame(wx.Frame):
 		self.timer.Stop()
 		self.dialog.stop_tone()
 		self.dialog.Destroy()
+		logger.log_action("Diálogo de espera para conversión cerrado.")
 
 		if self.conversion_thread.exception:
-			self.show_error_message(
-				f"Error al convertir el archivo: {self.conversion_thread.exception}"
-			)
-			self.show_error_message(
-				_("Error al convertir el archivo: {error}").format(
-					error=self.conversion_thread.exception
-				)
-			)
+			error_message = f"Error al convertir el archivo: {self.conversion_thread.exception}"
+			self.show_error_message(error_message)
+			logger.log_error(error_message)
 			# Si queríamos cerrar, cerramos
 			if self.want_to_close:
 				self.final_close()
@@ -673,54 +740,72 @@ class AudioRecorderFrame(wx.Frame):
 
 			if self.want_to_close:
 				res = mensaje(None, message, _("Grabación"), style=wx.OK | wx.ICON_INFORMATION)
+				logger.log_action("Mensaje de conversión completada mostrado al usuario para cierre.")
 				self.final_close()
 			else:
 				self.show_info_message(message, _("Grabación"))
+				logger.log_action("Mensaje de conversión completada mostrado al usuario.")
 
 	def convert_to_final_format(self, wav_path, target_format, separate_files, mic_path, system_path):
-		if target_format == "MP3":
-			final_path = self.save_as_mp3(wav_path)
-			if separate_files:
-				if mic_path:
-					self.save_as_mp3(mic_path)
-				if system_path:
-					self.save_as_mp3(system_path)
-		else:
-			final_path = self.save_as_format(wav_path, target_format)
-			if separate_files:
-				if mic_path:
-					self.save_as_format(mic_path, target_format)
-				if system_path:
-					self.save_as_format(system_path, target_format)
-		return final_path
+		try:
+			logger.log_action(f"Iniciando conversión de {wav_path} a {target_format}.")
+			if target_format == "MP3":
+				final_path = self.save_as_mp3(wav_path)
+				if separate_files:
+					if mic_path:
+						self.save_as_mp3(mic_path)
+					if system_path:
+						self.save_as_mp3(system_path)
+			else:
+				final_path = self.save_as_format(wav_path, target_format)
+				if separate_files:
+					if mic_path:
+						self.save_as_format(mic_path, target_format)
+					if system_path:
+						self.save_as_format(system_path, target_format)
+			logger.log_action(f"Conversión finalizada: {final_path}.")
+			return final_path
+		except Exception as e:
+			logger.log_error(f"Error en convert_to_final_format: {e}")
+			raise
 
 	def save_as_mp3(self, wav_file_path):
-		import lameenc
-		data, samplerate = sf.read(wav_file_path)
+		try:
+			import lameenc
+			data, samplerate = sf.read(wav_file_path)
 
-		encoder = lameenc.Encoder()
-		encoder.set_bit_rate(self.selected_bitrate)
-		encoder.set_in_sample_rate(samplerate)
-		channels = 2 if len(data.shape) > 1 else 1
-		encoder.set_channels(channels)
-		encoder.set_quality(2)
+			encoder = lameenc.Encoder()
+			encoder.set_bit_rate(self.selected_bitrate)
+			encoder.set_in_sample_rate(samplerate)
+			channels = 2 if len(data.shape) > 1 else 1
+			encoder.set_channels(channels)
+			encoder.set_quality(2)
 
-		data_int16 = (data * 32767).astype(np.int16).tobytes()
-		mp3_data = encoder.encode(data_int16) + encoder.flush()
+			data_int16 = (data * 32767).astype(np.int16).tobytes()
+			mp3_data = encoder.encode(data_int16) + encoder.flush()
 
-		mp3_path = wav_file_path.replace(".wav", ".mp3")
-		with open(mp3_path, "wb") as mp3_file:
-			mp3_file.write(mp3_data)
+			mp3_path = wav_file_path.replace(".wav", ".mp3")
+			with open(mp3_path, "wb") as mp3_file:
+				mp3_file.write(mp3_data)
 
-		os.remove(wav_file_path)
-		return mp3_path
+			os.remove(wav_file_path)
+			logger.log_action(f"Archivo convertido a MP3: {mp3_path}")
+			return mp3_path
+		except Exception as e:
+			logger.log_error(f"Error al convertir a MP3: {e}")
+			raise
 
 	def save_as_format(self, wav_file_path, target_format):
-		data, samplerate = sf.read(wav_file_path)
-		out_path = wav_file_path.replace(".wav", f".{target_format.lower()}")
-		sf.write(out_path, data, samplerate, format=target_format)
-		os.remove(wav_file_path)
-		return out_path
+		try:
+			data, samplerate = sf.read(wav_file_path)
+			out_path = wav_file_path.replace(".wav", f".{target_format.lower()}")
+			sf.write(out_path, data, samplerate, format=target_format)
+			os.remove(wav_file_path)
+			logger.log_action(f"Archivo convertido a {target_format}: {out_path}")
+			return out_path
+		except Exception as e:
+			logger.log_error(f"Error al convertir a {target_format}: {e}")
+			raise
 
 	def show_about(self, event):
 		msg = \
@@ -731,97 +816,123 @@ Creado por {}""").format(_version, _nombre)
 			msg,
 			_("Acerca de...")
 		)
+		logger.log_action("Información 'Acerca de' mostrada al usuario.")
 
 	def open_recordings_directory(self, event):
 		try:
 			if not os.path.exists(self.output_dir):
 				os.makedirs(self.output_dir)
+				logger.log_action(f"Directorio de grabaciones creado: {self.output_dir}")
 			os.startfile(self.output_dir)
+			logger.log_action(f"Directorio de grabaciones abierto: {self.output_dir}")
 		except Exception as e:
-			self.show_error_message(
-				_("No se pudo abrir el directorio de grabaciones: {error}").format(error=e)
-			)
+			error_message = _("No se pudo abrir el directorio de grabaciones: {error}").format(error=e)
+			self.show_error_message(error_message)
+			logger.log_error(f"Error al abrir el directorio de grabaciones: {e}")
 
 	def show_error_message(self, message, title=_("Error")):
 		mensaje(None, message, title, style=wx.OK | wx.ICON_ERROR)
+		logger.log_error(f"Mensaje de error mostrado al usuario: {message}")
 
 	def show_info_message(self, message, title=_("Información")):
 		mensaje(None, message, title, style=wx.OK | wx.ICON_INFORMATION)
+		logger.log_action(f"Mensaje de información mostrado al usuario: {message}")
 
 	def save_config_wrapper(self):
-		config_file = os.path.join(get_base_path(), "WASAPIRecording.dat")
-		config = load_config(config_file)
+		try:
+			config_file = os.path.join(get_base_path(), "WASAPIRecording.dat")
+			config = load_config(config_file)
 
-		config["mic_name"] = self.selected_mic.name if self.selected_mic else ""
-		config["system_name"] = self.selected_system.name if self.selected_system else ""
-		config["quality"] = self.sample_rate
-		config["format"] = self.selected_format
-		config["bitrate"] = self.selected_bitrate
-		config["mic_volume"] = self.mic_volume_slider.GetValue()
-		config["system_volume"] = self.system_volume_slider.GetValue()
-		config["mode"] = self.mode_choice.GetStringSelection()
-		config["mono_mix"] = self.mono_mix_checkbox.GetValue()
-		config["separate_files"] = self.separate_files_checkbox.GetValue()
+			config["mic_name"] = self.selected_mic.name if self.selected_mic else ""
+			config["system_name"] = self.selected_system.name if self.selected_system else ""
+			config["quality"] = self.sample_rate
+			config["format"] = self.selected_format
+			config["bitrate"] = self.selected_bitrate
+			config["mic_volume"] = self.mic_volume_slider.GetValue()
+			config["system_volume"] = self.system_volume_slider.GetValue()
+			config["mode"] = self.mode_choice.GetStringSelection()
+			config["mono_mix"] = self.mono_mix_checkbox.GetValue()
+			config["separate_files"] = self.separate_files_checkbox.GetValue()
 
-		save_config(self.CONFIG_FILE, config)
-		self.get.lang.set_language(self.get.lang.current_lang)
+			save_config(config_file, config)
+			logger.log_action("Configuración guardada exitosamente.")
+			self.get.lang.set_language(self.get.lang.current_lang)
+		except Exception as e:
+			logger.log_error(f"Error al guardar la configuración: {e}")
 
 	def load_config(self):
-		config = load_config(self.CONFIG_FILE)
-		mics = [mic.name for mic in sc.all_microphones()]
-		mic_name = config.get("mic_name", "")
-		if mic_name in mics:
-			self.selected_mic = next(m for m in sc.all_microphones() if m.name == mic_name)
-			self.mic_choice.SetItems(mics)
-			self.mic_choice.SetSelection(mics.index(mic_name))
-		else:
-			self.selected_mic = sc.default_microphone()
-			self.mic_choice.SetItems(mics)
-			if self.selected_mic.name in mics:
-				self.mic_choice.SetSelection(mics.index(self.selected_mic.name))
+		try:
+			config = load_config(self.CONFIG_FILE)
+			logger.log_action("Configuración cargada exitosamente.")
 
-		systems = [s.name for s in sc.all_microphones(include_loopback=True)]
-		system_name = config.get("system_name", "")
-		if system_name in systems:
-			self.selected_system = next(
-				s for s in sc.all_microphones(include_loopback=True) if s.name == system_name
-			)
-			self.system_choice.SetItems(systems)
-			self.system_choice.SetSelection(systems.index(system_name))
-		else:
-			self.selected_system = sc.get_microphone(sc.default_speaker().name, include_loopback=True)
-			self.system_choice.SetItems(systems)
-			if self.selected_system.name in systems:
-				self.system_choice.SetSelection(systems.index(self.selected_system.name))
+			mics = [mic.name for mic in sc.all_microphones()]
+			mic_name = config.get("mic_name", "")
+			if mic_name in mics:
+				self.selected_mic = next(m for m in sc.all_microphones() if m.name == mic_name)
+				self.mic_choice.SetItems(mics)
+				self.mic_choice.SetSelection(mics.index(mic_name))
+				logger.log_action(f"Micrófono configurado: {mic_name}")
+			else:
+				self.selected_mic = sc.default_microphone()
+				self.mic_choice.SetItems(mics)
+				if self.selected_mic.name in mics:
+					self.mic_choice.SetSelection(mics.index(self.selected_mic.name))
+				logger.log_warning(f"Micrófono configurado no encontrado: {mic_name}. Se usa el predeterminado.")
 
-		self.sample_rate = config.get("quality", self.sample_rate)
-		if self.sample_rate in self.quality_options:
-			self.quality_choice.SetSelection(self.quality_options.index(self.sample_rate))
+			systems = [s.name for s in sc.all_microphones(include_loopback=True)]
+			system_name = config.get("system_name", "")
+			if system_name in systems:
+				self.selected_system = next(
+					s for s in sc.all_microphones(include_loopback=True) if s.name == system_name
+				)
+				self.system_choice.SetItems(systems)
+				self.system_choice.SetSelection(systems.index(system_name))
+				logger.log_action(f"Sistema (loopback) configurado: {system_name}")
+			else:
+				self.selected_system = sc.get_microphone(sc.default_speaker().name, include_loopback=True)
+				self.system_choice.SetItems(systems)
+				if self.selected_system.name in systems:
+					self.system_choice.SetSelection(systems.index(self.selected_system.name))
+				logger.log_warning(f"Sistema configurado no encontrado: {system_name}. Se usa el predeterminado.")
 
-		self.selected_format = config.get("format", self.selected_format)
-		if self.selected_format in self.output_formats:
-			self.format_choice.SetSelection(self.output_formats.index(self.selected_format))
+			self.sample_rate = config.get("quality", self.sample_rate)
+			if self.sample_rate in self.quality_options:
+				self.quality_choice.SetSelection(self.quality_options.index(self.sample_rate))
+				logger.log_action(f"Calidad de grabación configurada a: {self.sample_rate} Hz")
 
-		self.selected_bitrate = config.get("bitrate", self.selected_bitrate)
-		if self.selected_bitrate in self.bitrate_options:
-			self.bitrate_choice.SetSelection(self.bitrate_options.index(self.selected_bitrate))
+			self.selected_format = config.get("format", self.selected_format)
+			if self.selected_format in self.output_formats:
+				self.format_choice.SetSelection(self.output_formats.index(self.selected_format))
+				logger.log_action(f"Formato de salida configurado a: {self.selected_format}")
 
-		mic_volume = config.get("mic_volume", 50)
-		self.mic_volume_slider.SetValue(mic_volume)
-		self.mic_volume = mic_volume / 100.0
+			self.selected_bitrate = config.get("bitrate", self.selected_bitrate)
+			if self.selected_bitrate in self.bitrate_options:
+				self.bitrate_choice.SetSelection(self.bitrate_options.index(self.selected_bitrate))
+				logger.log_action(f"Bitrate MP3 configurado a: {self.selected_bitrate} kbps")
 
-		system_volume = config.get("system_volume", 50)
-		self.system_volume_slider.SetValue(system_volume)
-		self.system_volume = system_volume / 100.0
+			mic_volume = config.get("mic_volume", 50)
+			self.mic_volume_slider.SetValue(mic_volume)
+			self.mic_volume = mic_volume / 100.0
+			logger.log_action(f"Volumen del micrófono configurado a: {self.mic_volume * 100}%")
 
-		mode = config.get("mode", _("Estéreo"))
-		if mode in [_("Mono"), _("Estéreo")]:
-			self.mode_choice.SetSelection(0 if mode == _("Mono") else 1)
+			system_volume = config.get("system_volume", 50)
+			self.system_volume_slider.SetValue(system_volume)
+			self.system_volume = system_volume / 100.0
+			logger.log_action(f"Volumen del sistema configurado a: {self.system_volume * 100}%")
 
-		mono_mix = config.get("mono_mix", False)
-		self.mono_mix_checkbox.SetValue(mono_mix)
+			mode = config.get("mode", _("Estéreo"))
+			if mode in [_("Mono"), _("Estéreo")]:
+				self.mode_choice.SetSelection(0 if mode == _("Mono") else 1)
+				logger.log_action(f"Modo de grabación configurado a: {mode}")
 
-		self.separate_files_checkbox.SetValue(config.get("separate_files", False))
+			mono_mix = config.get("mono_mix", False)
+			self.mono_mix_checkbox.SetValue(mono_mix)
+			logger.log_action(f"Mezcla monoaural {'habilitada' if mono_mix else 'deshabilitada'}.")
+
+			self.separate_files_checkbox.SetValue(config.get("separate_files", False))
+			logger.log_action(f"Guardar archivos separados {'activado' if config.get('separate_files', False) else 'desactivado'}.")
+		except Exception as e:
+			logger.log_error(f"Error al cargar la configuración: {e}")
 
 	def on_menu_button(self, event):
 		menu = wx.Menu()
@@ -861,6 +972,7 @@ Creado por {}""").format(_version, _nombre)
 			self.Bind(wx.EVT_MENU, lambda e: self.cambiar_idioma('tr'), item_tr)
 
 			item_opciones = menu.Append(-1, _("Opciones"))
+			item_actualizar = menu.Append(-1, _("Buscar actualizaciones"))
 			menu.AppendSubMenu(submenu_idiomas, _("Idioma"))
 			item_abrir = menu.Append(-1, _("Abrir Grabaciones"))
 			item_manual = menu.Append(-1, _("&Manual de usuario"))
@@ -869,11 +981,13 @@ Creado por {}""").format(_version, _nombre)
 			item_cerrar = menu.Append(-1, _("Salir"))
 
 			self.Bind(wx.EVT_MENU, self.show_options_dialog, item_opciones)
+			self.Bind(wx.EVT_MENU, self.on_update_app, item_actualizar)
 			self.Bind(wx.EVT_MENU, self.open_recordings_directory, item_abrir)
 			self.Bind(wx.EVT_MENU, self.on_show_manual, item_manual)
 			self.Bind(wx.EVT_MENU, self.show_about, item_acerca)
 			self.Bind(wx.EVT_MENU, self.on_donar, item_donar)
 			self.Bind(wx.EVT_MENU, self.on_close, item_cerrar)
+			logger.log_action("Menú principal mostrado y opciones vinculadas.")
 		else:
 			item_abrir = menu.Append(-1, _("Abrir Grabaciones"))
 			item_donar = menu.Append(-1, _("&invítame a un café si te gusta mi trabajo"))
@@ -881,6 +995,7 @@ Creado por {}""").format(_version, _nombre)
 			self.Bind(wx.EVT_MENU, self.open_recordings_directory, item_abrir)
 			self.Bind(wx.EVT_MENU, self.on_donar, item_donar)
 			self.Bind(wx.EVT_MENU, self.on_close, item_cerrar)
+			logger.log_action("Menú simplificado mostrado mientras hay una grabación en curso.")
 
 		self.PopupMenu(menu)
 		menu.Destroy()
@@ -889,9 +1004,13 @@ Creado por {}""").format(_version, _nombre)
 		if nuevo_idioma != self.get.lang.current_lang:
 			msg = _("Para aplicar el nuevo idioma se necesita reiniciar la aplicación.\n¿Desea continuar?")
 			res = mensaje(None, msg, _("Confirmar cambio de idioma"), wx.YES_NO | wx.ICON_QUESTION)
+			logger.log_action(f"Usuario eligió cambiar el idioma a: {nuevo_idioma}")
 			if res == wx.YES:
 				self.get.lang.set_language(nuevo_idioma)
+				logger.log_action(f"Idioma cambiado a: {nuevo_idioma}. Reiniciando aplicación.")
 				self.restart_app()
+			else:
+				logger.log_action("Cambio de idioma cancelado por el usuario.")
 
 	def restart_app(self):
 		"""
@@ -900,6 +1019,7 @@ Creado por {}""").format(_version, _nombre)
 		try:
 			# Cierra la aplicación actual
 			self.Close()
+			logger.log_action("Aplicación cerrada para reinicio.")
 
 			# Prepara los argumentos para reiniciar
 			args = sys.argv[:]
@@ -915,17 +1035,23 @@ Creado por {}""").format(_version, _nombre)
 
 			# Ejecuta el reinicio
 			os.execv(executable, args)
+			logger.log_action("Aplicación reiniciada exitosamente.")
 		except Exception as e:
-			self.show_error_message(f"Error al intentar reiniciar la aplicación: {e}")
+			error_message = f"Error al intentar reiniciar la aplicación: {e}"
+			self.show_error_message(error_message)
+			logger.log_error(error_message)
 
 	def show_options_dialog(self, event):
 		from ui.options import OptionsDialog
 		dlg = OptionsDialog(self)
 		if dlg.ShowModal() == wx.ID_OK:
 			general_changed, keyboard_changed = dlg.save_all_settings2()
+			if general_changed:
+				logger.log_action("Configuraciones generales actualizadas desde el diálogo de opciones.")
 			if keyboard_changed:
 				self.validate_and_register_hotkeys()
 				self.update_status_message(recording=self.recording_event.is_set())
+				logger.log_action("Hotkeys actualizadas desde el diálogo de opciones.")
 		dlg.Destroy()
 
 	def validate_and_register_hotkeys(self):
@@ -934,8 +1060,9 @@ Creado por {}""").format(_version, _nombre)
 		try:
 			self.UnregisterHotKey(HOTKEY_ID_START)
 			self.UnregisterHotKey(HOTKEY_ID_STOP)
-		except:
-			pass
+			logger.log_action("Hotkeys globales desregistradas para actualización.")
+		except Exception as e:
+			logger.log_error(f"Error al desregistrar hotkeys: {e}")
 
 		cfg = load_hotkeys_from_config()
 		changed = False
@@ -945,15 +1072,20 @@ Creado por {}""").format(_version, _nombre)
 			if not self.RegisterHotKey(HOTKEY_ID_START, modifiers, key_code):
 				cfg["hotkey_start"] = "Sin asignar"
 				changed = True
+				logger.log_warning(f"No se pudo registrar la hotkey de inicio: {cfg['hotkey_start']}")
 
 		if cfg["hotkey_stop"] != "Sin asignar":
 			modifiers, key_code = parse_hotkey(cfg["hotkey_stop"])
 			if not self.RegisterHotKey(HOTKEY_ID_STOP, modifiers, key_code):
 				cfg["hotkey_stop"] = "Sin asignar"
 				changed = True
+				logger.log_warning(f"No se pudo registrar la hotkey de detención: {cfg['hotkey_stop']}")
 
 		if changed:
 			save_hotkeys_to_config(cfg["hotkey_start"], cfg["hotkey_stop"])
+			logger.log_action("Hotkeys actualizadas en la configuración debido a fallos de registro.")
+		else:
+			logger.log_action("Hotkeys registradas exitosamente.")
 
 	def update_status_message(self, recording=False):
 		from core.hotkeys import load_hotkeys_from_config
@@ -967,11 +1099,13 @@ Creado por {}""").format(_version, _nombre)
 				self.status_box.SetValue(_("Grabando... (No hay hotkey de detener asignada)"))
 			else:
 				self.status_box.SetValue(_("Grabando... (Usa {hk} para detener)").format(hk=hotkey_stop))
+			logger.log_action("Estado actualizado a: Grabando.")
 		else:
 			if hotkey_start == "Sin asignar":
 				self.status_box.SetValue(_("En espera. Asigna teclas en Opciones o inicia manualmente."))
 			else:
 				self.status_box.SetValue(_("En espera (Usa {hk} para iniciar)").format(hk=hotkey_start))
+			logger.log_action("Estado actualizado a: En espera.")
 
 	def show_test_audio(self, event):
 		from ui.test_audio import TestAudioDialog
@@ -1011,12 +1145,24 @@ Creado por {}""").format(_version, _nombre)
 		)
 		dlg.ShowModal()
 		dlg.Destroy()
+		logger.log_action("Prueba de audio iniciada por el usuario.")
 
 	def on_donar(self, event):
 		wx.LaunchDefaultBrowser("https://paypal.me/hjbcdonaciones")
+		logger.log_action("Usuario abrió la página de donaciones.")
 
 	def on_show_manual(self, event):
 		# Suponiendo que _manual es tu cadena con el manual completo
 		dialogo = ManualDialog(self, _manual)
 		dialogo.ShowModal()
 		dialogo.Destroy()
+		logger.log_action("Manual de usuario mostrado al usuario.")
+
+	def on_update_app(self, event):
+		self.is_update = True
+		logger.log_action("Proceso de actualización iniciado por el usuario.")
+		dialog = UpdateDialog(None, "hxebolax", "WASAPIRecording", _version)
+		dialog.ShowModal()
+		dialog.Destroy()
+		logger.log_action("Proceso de actualización finalizado.")
+		self.is_update = False
