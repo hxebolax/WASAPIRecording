@@ -3,8 +3,26 @@
 
 """
 Módulo para manejar la carga y guardado de configuración en un archivo JSON.
-"""
 
+Funciones principales:
+- Codificar y decodificar datos utilizando XOR y Base64 para mayor seguridad.
+- Detectar el idioma del sistema operativo y configurar el idioma predeterminado.
+- Guardar y cargar configuraciones desde un archivo JSON codificado.
+
+Incluye funcionalidades para:
+- Manejar claves de codificación.
+- Trabajar con archivos de configuración.
+- Detectar y establecer idiomas del sistema.
+
+Se ha añadido la opción de 'buffer_size' para que el usuario pueda elegir el tamaño de buffer 
+de grabación, y soporte para las siguientes hotkeys:
+ - hotkey_start
+ - hotkey_stop
+ - hotkey_pause
+ - hotkey_cancel
+
+Adicionalmente, se contempla 'recording_dir' para la ruta de grabaciones.
+"""
 import json
 import os
 import base64
@@ -52,7 +70,8 @@ def decode_data(data):
 def detect_system_language():
 	"""
 	Detecta el idioma del sistema operativo.
-	Devuelve el código de idioma en formato ISO 639-1 (por ejemplo, 'es', 'en').
+
+	:return: Código de idioma en formato ISO 639-1 (por ejemplo, 'es', 'en').
 	"""
 	try:
 		lang, _ = locale.getdefaultlocale()
@@ -68,6 +87,8 @@ def detect_system_language():
 def get_translation_path():
 	"""
 	Obtiene la ruta base donde están los archivos de traducción.
+
+	:return: Ruta absoluta al directorio de traducciones.
 	"""
 	path = os.path.join(get_base_path(), "locales")
 	logger.log_action(f"Ruta de traducción: {path}")
@@ -76,6 +97,8 @@ def get_translation_path():
 def get_default_language():
 	"""
 	Obtiene el idioma predeterminado desde la configuración o detecta el idioma del sistema.
+
+	:return: Código de idioma predeterminado.
 	"""
 	try:
 		config_file = os.path.join(get_base_path(), "WASAPIRecording.dat")
@@ -90,6 +113,7 @@ def get_default_language():
 def set_language_in_config(lang_code):
 	"""
 	Guarda el idioma seleccionado por el usuario en la configuración.
+
 	:param lang_code: Código de idioma (ejemplo: 'es', 'en').
 	"""
 	try:
@@ -120,7 +144,6 @@ def save_config(config_file, config):
 def load_config(config_file):
 	"""
 	Carga la configuración desde un archivo JSON codificado.
-	Si no existe o hay error, retorna un diccionario vacío.
 
 	:param config_file: Ruta al archivo de configuración.
 	:return: Diccionario con la configuración o vacío si no se pudo cargar.

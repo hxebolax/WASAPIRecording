@@ -18,7 +18,7 @@ Clases:
 Características:
 - Genera automáticamente un directorio para guardar logs si no existe.
 - Captura excepciones globales no controladas con `sys.excepthook`.
-- Registra mensajes en distintos niveles: INFO, ERROR, y CRITICAL.
+- Registra mensajes en distintos niveles: INFO, WARNING, ERROR y CRITICAL.
 - Crea un archivo adicional para registrar las trazas de excepciones (`error_traceback.log`).
 
 Dependencias:
@@ -26,19 +26,20 @@ Dependencias:
 - os: Gestión de directorios y rutas.
 - sys: Captura de excepciones globales y salida estándar.
 - traceback: Generación de trazas detalladas de excepciones.
-
 """
 import logging
 import os
 import sys
 import traceback
 
-
 class Logger:
 	"""
 	Clase para manejar logs y capturar errores en un archivo de texto.
-	"""
 
+	Esta clase configura un sistema de logging que escribe mensajes tanto en consola como 
+	en un archivo. Además, captura excepciones globales no controladas y las registra con 
+	trazas detalladas en un archivo de error.
+	"""
 	def __init__(self, log_dir="logs", log_file="app.log"):
 		"""
 		Inicializa el logger y configura el sistema de registro.
@@ -67,19 +68,35 @@ class Logger:
 
 	def log_action(self, message):
 		"""
-		Registra una acción o evento en el log.
+		Registra una acción o evento en el log (nivel INFO).
 
 		:param message: Mensaje de acción a registrar.
 		"""
 		logging.info(message)
 
+	def log_warning(self, message):
+		"""
+		Registra un mensaje de advertencia en el log (nivel WARNING).
+
+		:param message: Mensaje de advertencia a registrar.
+		"""
+		logging.warning(message)
+
 	def log_error(self, error_message):
 		"""
-		Registra un mensaje de error en el log.
+		Registra un mensaje de error en el log (nivel ERROR).
 
 		:param error_message: Mensaje de error a registrar.
 		"""
 		logging.error(error_message)
+
+	def log_critical(self, message):
+		"""
+		Registra un mensaje crítico en el log (nivel CRITICAL).
+
+		:param message: Mensaje crítico a registrar.
+		"""
+		logging.critical(message)
 
 	def _handle_exception(self, exc_type, exc_value, exc_traceback):
 		"""
@@ -103,11 +120,3 @@ class Logger:
 		traceback_file = os.path.join(self.log_dir, "error_traceback.log")
 		with open(traceback_file, "a", encoding="utf-8") as f:
 			f.write("".join(traceback.format_exception(exc_type, exc_value, exc_traceback)))
-
-	def log_critical(self, message):
-		"""
-		Registra un mensaje crítico en el log.
-
-		:param message: Mensaje crítico a registrar.
-		"""
-		logging.critical(message)

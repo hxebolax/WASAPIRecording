@@ -20,7 +20,6 @@ Dependencias:
 - gettext: Manejo de traducciones basadas en archivos `.mo`.
 - core.config: Obtiene la ruta de traducciones y el idioma por defecto desde la configuración.
 - core.logger: Registra acciones y errores en un archivo de logs.
-
 """
 import gettext
 import os
@@ -34,6 +33,10 @@ class I18n:
 	def __init__(self):
 		"""
 		Inicializa el sistema de traducción.
+
+		- Obtiene el idioma predeterminado desde la configuración.
+		- Carga las traducciones correspondientes al idioma detectado.
+		- Registra en el log el idioma cargado por defecto.
 		"""
 		self.current_lang = get_default_language()
 		self.translator = None
@@ -42,9 +45,12 @@ class I18n:
 
 	def _load_language(self, lang_code):
 		"""
-		Carga las traducciones para un idioma dado.
-		
-		:param lang_code: Código del idioma a cargar.
+		Carga las traducciones para un idioma específico.
+
+		:param lang_code: Código del idioma (ISO 639-1) que se desea cargar.
+		- Busca los archivos de traducción `.mo` en la ruta definida.
+		- Si no encuentra el archivo, utiliza un fallback con los valores por defecto.
+		- Registra en el log si ocurre algún error o si la carga fue exitosa.
 		"""
 		locales_path = get_translation_path()
 		try:
@@ -60,8 +66,11 @@ class I18n:
 	def set_language(self, lang_code):
 		"""
 		Cambia el idioma actual de la aplicación.
-		
-		:param lang_code: Código del idioma a establecer.
+
+		:param lang_code: Código del idioma (ISO 639-1) que se desea establecer.
+		- Llama al método para cargar las traducciones del nuevo idioma.
+		- Actualiza la configuración con el nuevo idioma.
+		- Registra en el log el cambio de idioma o cualquier error durante el proceso.
 		"""
 		try:
 			self._load_language(lang_code)

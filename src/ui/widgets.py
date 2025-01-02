@@ -1,40 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Módulo de Diálogo y Notificaciones Accesibles
-
-Este módulo proporciona una clase de diálogo personalizada y funciones auxiliares diseñadas 
-para mejorar la accesibilidad y la interacción con los usuarios, especialmente para aquellos 
-que utilizan lectores de pantalla. También incluye la funcionalidad para mostrar notificaciones 
-en el área del sistema.
-
-Clases:
-- AccessibleDialogMenssage: Diálogo personalizado que incluye iconos, botones dinámicos 
-  y soporte de sonidos para mejorar la experiencia del usuario.
-
-Funciones:
-- mensaje: Crea y muestra un cuadro de diálogo accesible con los parámetros especificados.
-- notification_area: Muestra una notificación en el área de notificaciones del sistema 
-  con un tiempo de duración configurable.
-
-Características:
-- Soporte para sonidos de notificación dependiendo del tipo de mensaje (información, 
-  advertencia, error o pregunta).
-- Botones dinámicos según el estilo especificado (OK, Cancel, Yes, No).
-- Notificaciones en el área del sistema utilizando `wx.adv.NotificationMessage`.
-- Diseño responsivo con envoltura automática de texto y centrado del diálogo.
-- Mejora de la accesibilidad para lectores de pantalla mediante atajos y etiquetas descriptivas.
-
-Dependencias:
-- wxPython: Para la interfaz gráfica y las notificaciones.
-- winsound: Para reproducir sonidos de sistema asociados con los tipos de mensaje.
-
-Uso:
-Este módulo puede integrarse en aplicaciones que requieran cuadros de diálogo y notificaciones 
-con características avanzadas de accesibilidad. Proporciona una experiencia de usuario mejorada 
-y consistente en sistemas Windows.
 
 """
+Módulo de Diálogo y Notificaciones Accesibles.
+
+Proporciona:
+- Un cuadro de diálogo personalizado con iconos, sonidos y botones según el estilo.
+- Funciones auxiliares para mostrar mensajes y notificaciones en la bandeja del sistema.
+"""
+
 import wx
 import wx.adv
 import winsound
@@ -42,20 +16,30 @@ import winsound
 class AccessibleDialogMenssage(wx.Dialog):
 	"""
 	Cuadro de diálogo personalizado con mejor accesibilidad para lectores de pantalla.
+	Soporta asignar un botón por defecto (NO_DEFAULT) si se desea que 'No' o 'Cancelar' sea el predeterminado.
 	"""
 	def __init__(self, parent, message, caption='Mensaje', style=wx.OK | wx.ICON_INFORMATION):
+		"""
+		Constructor del diálogo accesible.
+
+		:param parent: Ventana padre.
+		:param message: Texto a mostrar en el cuadro de diálogo.
+		:param caption: Título del diálogo.
+		:param style: Estilos combinados (wx.OK, wx.CANCEL, wx.YES_NO, wx.NO_DEFAULT, etc.).
+		"""
 		super().__init__(parent, title=caption, style=wx.DEFAULT_DIALOG_STYLE | wx.STAY_ON_TOP)
 
 		main_sizer = wx.BoxSizer(wx.VERTICAL)
 
 		self._play_sound(style)
+
 		icon = None
-		if style & wx.ICON_INFORMATION:
-			icon = wx.ART_INFORMATION
+		if style & wx.ICON_ERROR:
+			icon = wx.ART_ERROR
 		elif style & wx.ICON_WARNING:
 			icon = wx.ART_WARNING
-		elif style & wx.ICON_ERROR:
-			icon = wx.ART_ERROR
+		elif style & wx.ICON_INFORMATION:
+			icon = wx.ART_INFORMATION
 		elif style & wx.ICON_QUESTION:
 			icon = wx.ART_QUESTION
 
@@ -75,6 +59,11 @@ class AccessibleDialogMenssage(wx.Dialog):
 		self.Centre()
 
 	def _play_sound(self, style):
+		"""
+		Reproduce un sonido de sistema según el tipo de icono (Error, Warning, Info, Question).
+
+		:param style: Estilos combinados que indican el tipo de icono.
+		"""
 		if style & wx.ICON_ERROR:
 			winsound.MessageBeep(winsound.MB_ICONHAND)
 		elif style & wx.ICON_WARNING:
@@ -85,33 +74,66 @@ class AccessibleDialogMenssage(wx.Dialog):
 			winsound.MessageBeep(winsound.MB_ICONQUESTION)
 
 	def _create_button_sizer(self, style):
+		"""
+		Crea los botones según el style (YES_NO, OK, CANCEL, etc.) y asocia los eventos.
+
+		:param style: Estilos combinados.
+		:return: Sizer con los botones correspondientes.
+		"""
 		button_sizer = wx.BoxSizer(wx.HORIZONTAL)
 
+		self.yes_button = None
+		self.no_button = None
+		self.ok_button = None
+		self.cancel_button = None
+
 		if style & wx.YES_NO:
-			yes_button = wx.Button(self, id=wx.ID_YES, label=get_label(wx.ID_YES))
-			yes_button.Bind(wx.EVT_BUTTON, self._on_close)
-			button_sizer.Add(yes_button, 0, wx.ALL, 5)
+			self.yes_button = wx.Button(self, id=wx.ID_YES, label=get_label(wx.ID_YES))
+			self.yes_button.Bind(wx.EVT_BUTTON, self._on_close)
+			button_sizer.Add(self.yes_button, 0, wx.ALL, 5)
 
-			no_button = wx.Button(self, id=wx.ID_NO, label=get_label(wx.ID_NO))
-			no_button.Bind(wx.EVT_BUTTON, self._on_close)
-			button_sizer.Add(no_button, 0, wx.ALL, 5)
+			self.no_button = wx.Button(self, id=wx.ID_NO, label=get_label(wx.ID_NO))
+			self.no_button.Bind(wx.EVT_BUTTON, self._on_close)
+			button_sizer.Add(self.no_button, 0, wx.ALL, 5)
 
-		# Aseguramos que los botones OK y CANCEL no se añaden si ya existe YES_NO
 		if style & wx.OK and not (style & wx.YES_NO):
-			ok_button = wx.Button(self, id=wx.ID_OK, label=get_label(wx.ID_OK))
-			ok_button.Bind(wx.EVT_BUTTON, self._on_close)
-			button_sizer.Add(ok_button, 0, wx.ALL, 5)
+			self.ok_button = wx.Button(self, id=wx.ID_OK, label=get_label(wx.ID_OK))
+			self.ok_button.Bind(wx.EVT_BUTTON, self._on_close)
+			button_sizer.Add(self.ok_button, 0, wx.ALL, 5)
 
 		if style & wx.CANCEL and not (style & wx.YES_NO):
-			cancel_button = wx.Button(self, id=wx.ID_CANCEL, label=get_label(wx.ID_CANCEL))
-			cancel_button.Bind(wx.EVT_BUTTON, self._on_close)
-			button_sizer.Add(cancel_button, 0, wx.ALL, 5)
+			self.cancel_button = wx.Button(self, id=wx.ID_CANCEL, label=get_label(wx.ID_CANCEL))
+			self.cancel_button.Bind(wx.EVT_BUTTON, self._on_close)
+			button_sizer.Add(self.cancel_button, 0, wx.ALL, 5)
 
+		self._assign_default_button(style)
 		return button_sizer
+
+	def _assign_default_button(self, style):
+		"""
+		Asigna el botón por defecto (Sí/OK o No/Cancelar) según wx.NO_DEFAULT.
+
+		:param style: Estilos combinados que determinan la configuración de botones.
+		"""
+		if style & wx.YES_NO:
+			if style & wx.NO_DEFAULT and self.no_button:
+				self.SetDefaultItem(self.no_button)
+				self.no_button.SetFocus()
+			else:
+				if self.yes_button:
+					self.SetDefaultItem(self.yes_button)
+		else:
+			if (style & wx.NO_DEFAULT) and self.cancel_button:
+				self.SetDefaultItem(self.cancel_button)
+			else:
+				if self.ok_button:
+					self.SetDefaultItem(self.ok_button)
 
 	def _on_close(self, event):
 		"""
-		Finaliza el diálogo devolviendo el valor correspondiente.
+		Cierra el diálogo devolviendo el valor correspondiente al botón (OK, CANCEL, YES, NO).
+
+		:param event: Evento de clic en botón.
 		"""
 		id_to_style = {
 			wx.ID_OK: wx.OK,
@@ -122,6 +144,12 @@ class AccessibleDialogMenssage(wx.Dialog):
 		self.EndModal(id_to_style.get(event.GetId(), event.GetId()))
 
 def get_label(button_id):
+	"""
+	Devuelve una etiqueta con atajo en español para un botón dado, según su id.
+
+	:param button_id: Identificador del botón (wx.ID_OK, wx.ID_CANCEL, etc.).
+	:return: Cadena con la etiqueta traducida y atajo de teclado.
+	"""
 	if button_id == wx.ID_OK:
 		return _("&Aceptar")
 	elif button_id == wx.ID_CANCEL:
@@ -134,6 +162,16 @@ def get_label(button_id):
 		return ""
 
 def mensaje(parent, message, caption='Mensaje', style=wx.OK | wx.ICON_INFORMATION):
+	"""
+	Crea y muestra un diálogo accesible con iconos, sonidos y botones según el estilo.
+	Devuelve el resultado de ShowModal() (wx.OK, wx.CANCEL, wx.YES, wx.NO, etc.).
+
+	:param parent: Ventana padre (o None).
+	:param message: Cadena de texto con el mensaje a mostrar.
+	:param caption: Título del cuadro de diálogo.
+	:param style: Estilos combinados (wx.OK, wx.CANCEL, wx.YES_NO, wx.NO_DEFAULT, etc.).
+	:return: Entero que indica qué botón se pulsó (ej. wx.YES, wx.NO, wx.OK, wx.CANCEL).
+	"""
 	dialog = AccessibleDialogMenssage(parent, message, caption, style)
 	result = dialog.ShowModal()
 	dialog.Destroy()
@@ -142,6 +180,11 @@ def mensaje(parent, message, caption='Mensaje', style=wx.OK | wx.ICON_INFORMATIO
 def notification_area(title, message, flag, timeout=5):
 	"""
 	Muestra una notificación en el área de notificaciones del sistema.
+
+	:param title: Título de la notificación.
+	:param message: Texto del mensaje a mostrar.
+	:param flag: Bandera que indica el tipo de ícono (ej. wx.ICON_INFORMATION).
+	:param timeout: Tiempo en segundos antes de que la notificación desaparezca.
 	"""
 	notify = wx.adv.NotificationMessage(
 		title=title,
