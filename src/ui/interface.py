@@ -1535,7 +1535,8 @@ Copyright © 2025
 
 Traductores:
 🇹🇷 Turco: Umut Korkmaz
-🇸🇦 Árabe: moataz geba""").format(_version, _nombre)
+🇸🇦 Árabe: moataz geba
+🇮🇹 Italiano: Alessio Lenzi""").format(_version, _nombre)
 		self.show_info_message(msg, _("Acerca de..."))
 		logger.log_action("Información 'Acerca de' mostrada al usuario.")
 

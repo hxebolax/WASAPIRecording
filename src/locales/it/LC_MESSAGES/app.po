@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WASAPIRecording 1.0\n"
 "Report-Msgid-Bugs-To: tu_email@ejemplo.com\n"
-"POT-Creation-Date: 2025-01-02 12:18+0100\n"
-"PO-Revision-Date: 2025-01-02 12:36+0100\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2025-01-04 12:25+0100\n"
+"PO-Revision-Date: 2025-01-04 12:30+0100\n"
+"Last-Translator: Alessio <lenzone10@gmail.com>\n"
 "Language-Team: \n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -19,22 +19,79 @@ msgstr ""
 "X-Generator: Poedit 3.5\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: src\core\devices.py:53
+#: src\core\devices.py:54
 msgid "Dispositivos actualizados correctamente."
-msgstr "Dispositivi correttamente aggiornati."
+msgstr "Dispositivi aggiornati correttamente."
 
-#: src\core\devices.py:57
+#: src\core\devices.py:58
 #, python-brace-format
 msgid "Error al refrescar dispositivos: {error}"
 msgstr "Errore durante l'aggiornamento dei dispositivi: {error}"
+
+#: src\core\devices.py:187
+msgid ""
+"No se detectó ningún micrófono.\n"
+"Por favor, conecta o habilita al menos un micrófono antes de continuar."
+msgstr ""
+"Non è stato rilevato alcun microfono.\n"
+"Collegare o attivare almeno un microfono prima di continuare."
+
+#: src\core\devices.py:189 src\core\devices.py:200 src\core\devices.py:208
+#: src\core\devices.py:219 src\core\devices.py:230 src\core\devices.py:238
+msgid "Error de Audio"
+msgstr "Errore audio"
+
+#: src\core\devices.py:198
+msgid ""
+"Se detectan micrófonos, pero no hay uno configurado como predeterminado.\n"
+"Por favor, configura un micrófono predeterminado en las opciones de sonido."
+msgstr ""
+"I microfoni vengono rilevati, ma non c'è nessun microfono configurato come "
+"predefinito.\n"
+"Impostare un microfono predefinito nelle opzioni audio."
+
+#: src\core\devices.py:206
+msgid ""
+"Ocurrió un error intentando obtener el micrófono predeterminado.\n"
+"Por favor, revisa tus dispositivos de grabación."
+msgstr ""
+"Si è verificato un errore nel tentativo di ottenere il microfono "
+"predefinito.\n"
+"Controllare i dispositivi di registrazione."
+
+#: src\core\devices.py:217
+msgid ""
+"No se detectó ningún altavoz o tarjeta de sonido habilitada.\n"
+"Revisa tu configuración de audio en el Panel de Control de Windows."
+msgstr ""
+"Non è stato rilevato alcun altoparlante o scheda audio abilitati.\n"
+"Controllare le impostazioni audio nel Pannello di controllo di Windows."
+
+#: src\core\devices.py:228
+msgid ""
+"Se detectan altavoces, pero no hay uno configurado como predeterminado.\n"
+"Por favor, configura un altavoz predeterminado en las opciones de sonido."
+msgstr ""
+"Gli altoparlanti vengono rilevati, ma non è stato configurato un "
+"altoparlante predefinito.\n"
+"Impostare un altoparlante predefinito nelle opzioni audio."
+
+#: src\core\devices.py:236
+msgid ""
+"Ocurrió un error intentando obtener el altavoz/speaker predeterminado.\n"
+"Por favor, revisa tus dispositivos de reproducción."
+msgstr ""
+"Si è verificato un errore nel tentativo di ottenere l'altoparlante "
+"predefinito.\n"
+"Controllare i dispositivi di riproduzione."
 
 #: src\core\hotkeys.py:178
 msgid ""
 "La combinación debe tener al menos 2 modificadores (Ctrl,Shift,Alt) y 1 "
 "tecla principal válida."
 msgstr ""
-"La combinazione deve avere almeno 2 modificatori (Ctrl, Shift, Alt) e una "
-"chiave primaria valida."
+"La combinazione deve avere almeno 2 tasti modificatori (Ctrl, Shift, Alt) e "
+"un tasto principale valido."
 
 #: src\core\hotkeys.py:179 src\core\hotkeys.py:186 src\ui\interface.py:1063
 #: src\ui\test_audio.py:251 src\ui\test_audio.py:263
@@ -43,7 +100,7 @@ msgstr "Errore"
 
 #: src\core\hotkeys.py:186
 msgid "La combinación está en uso: {}"
-msgstr "La combinazione è in uso: {}"
+msgstr "La combinazione è già in uso: {}"
 
 #: src\core\info.py:4
 msgid ""
@@ -246,7 +303,7 @@ msgid ""
 "te gusta mi trabajo”.\n"
 msgstr ""
 "\n"
-"1. che cos'è il WASAPIRecording?\n"
+"1. Che cos'è WASAPIRecording?\n"
 "\n"
 "WASAPIRecording è un'applicazione Windows che consente di registrare "
 "contemporaneamente l'audio del microfono e l'audio del sistema (musica, "
@@ -259,7 +316,7 @@ msgstr ""
 "- Un modulo per cambiare rapidamente la lingua dell'interfaccia e riavviare "
 "l'applicazione, se necessario.\n"
 "- Opzioni di configurazione per personalizzare i tasti di scelta rapida e "
-"minimizzare la finestra nella barra delle applicazioni.\n"
+"minimizzare la finestra nel System Tray.\n"
 "\n"
 "2. Requisiti\n"
 "\n"
@@ -269,7 +326,7 @@ msgstr ""
 "\n"
 "3. Avviare l'applicazione\n"
 "\n"
-"- Eseguite il file o il collegamento chiamato \"WASAPIRecording\".  \n"
+"- Eseguire il file o il collegamento chiamato \"WASAPIRecording\".  \n"
 "- Si aprirà la finestra principale con i controlli per microfono, sistema, "
 "formati audio, opzioni di registrazione, tasti di scelta rapida e altre "
 "impostazioni.\n"
@@ -287,20 +344,20 @@ msgstr ""
 "- Bitrate MP3**: appare solo se si sceglie MP3; regola la qualità della "
 "compressione.  \n"
 "- Modalità di registrazione (Mono o Stereo)**: definisce la modalità di "
-"memorizzazione dei canali (2 canali in stereo o entrambi i canali centrati "
-"se mono).  \n"
-"- Buffer (fotogrammi)**: dimensione del blocco audio che viene elaborato in "
-"ogni ciclo di registrazione.  \n"
-"- Salva file separati**: se selezionata, oltre al file \"combinato\", "
-"l'applicazione salverà altri due file (uno solo con il microfono e uno con "
+"registrazione dei canali (2 canali in stereo o entrambi i canali centrati se "
+"mono).  \n"
+"- Buffer (frames)**: dimensione del blocco audio che viene elaborato in ogni "
+"ciclo di registrazione.  \n"
+"- Salva file separatamente**: se selezionata, oltre al file \"combinato\", "
+"l'applicazione salverà altri due file (uno solo per il microfono e uno per "
 "il sistema).  \n"
 "\n"
 "5. Regola i volumi\n"
 "\n"
 "- Volume del microfono**: utilizzare il cursore per aumentare/diminuire il "
 "guadagno del microfono.  \n"
-"- Volume del sistema**: regolare il guadagno dei suoni del PC che si "
-"desidera registrare.  \n"
+"- Volume di sistema**: regolare il guadagno dei suoni del PC che si desidera "
+"registrare.  \n"
 "\n"
 "6. Avvio e interruzione della registrazione\n"
 "\n"
@@ -320,9 +377,9 @@ msgstr ""
 "7. Dove vengono salvate le registrazioni\n"
 "\n"
 "- Per impostazione predefinita, nella cartella \"recording\" all'interno "
-"della directory dell'applicazione.  \n"
+"della cartella dell'applicazione.  \n"
 "- È possibile modificare la cartella di registrazione in \"Menu > Opzioni > "
-"Generale > Cartella di registrazione\".  \n"
+"Generali > Cartella di registrazione\".  \n"
 "- Per aprire la cartella dall'applicazione, fare clic su \"Menu > Apri "
 "registrazioni\".\n"
 "\n"
@@ -331,8 +388,8 @@ msgstr ""
 "Nella finestra principale è presente un pulsante **Menu** che consente di "
 "accedere a:\n"
 "\n"
-"- **About...**: visualizza la versione attuale di WASAPIRecording e il nome "
-"del creatore.  \n"
+"- **Informazioni su...**: visualizza la versione attuale di WASAPIRecording "
+"e il nome del creatore.  \n"
 "- Apri registrazioni**: apre la cartella in cui sono memorizzati i file "
 "registrati.  \n"
 "- Lingua**: consente di cambiare la lingua dell'interfaccia (es, en, it, fr, "
@@ -347,8 +404,8 @@ msgstr ""
 "Inoltre, all'interno del **Menu**, troverete:\n"
 "\n"
 "- **Opzioni**:\n"
-"  - **Generale**: include la casella di controllo \"Riduci a icona nella "
-"barra delle applicazioni\" e la possibilità di cambiare la cartella delle "
+"  - **Generali**: include la casella di controllo \"Riduci a icona nel "
+"System Tray\" e la possibilità di cambiare la cartella delle "
 "registrazioni.  \n"
 "  - **Tastiera**: consente di personalizzare le scorciatoie globali per "
 "avviare, fermare, mettere in pausa e annullare la registrazione. Viene anche "
@@ -357,15 +414,15 @@ msgstr ""
 "\n"
 "9. Test audio\n"
 "\n"
-"- Il pulsante **Audio Test** apre una finestra di dialogo speciale per "
+"- Il pulsante **Test Audio** apre una finestra di dialogo speciale per "
 "registrare alcuni secondi di audio campione e riprodurlo immediatamente.  \n"
 "- Questa finestra di dialogo appare sempre in primo piano e non può essere "
 "chiusa con \"X\" o Alt+F4, ma solo con il pulsante \"Chiudi\".  \n"
-"- Per prima cosa, avviare la registrazione di prova con il pulsante \"Stop\" "
-"(che viene utilizzato per terminare la breve registrazione).  \n"
-"- Poi, lo stesso pulsante diventa \"Play\", per ascoltare la "
+"- Per prima cosa, si avvia la registrazione di prova. Con il pulsante "
+"\"Arresta\" (che viene utilizzato per terminare la breve registrazione).  \n"
+"- Poi, lo stesso pulsante diventa \"Riprodurre\", per ascoltare la "
 "registrazione.  \n"
-"- Se è stata selezionata l'opzione \"Salva file separati\", è possibile "
+"- Se è stata selezionata l'opzione \"Salva file separatamente\", è possibile "
 "scegliere di riprodurre solo il microfono, solo il sistema o entrambi.  \n"
 "- Quando si chiude la finestra di dialogo, i file temporanei vengono "
 "cancellati, il che è perfetto per verificare che tutto suoni bene prima di "
@@ -376,8 +433,8 @@ msgstr ""
 "**Scorciatoie globali** (predefinite, personalizzabili in \"Opzioni > "
 "Tastiera\"):\n"
 "- Avvia registrazione: **Ctrl + Shift + F1**\n"
-"- Arresto della registrazione: **Ctrl + Shift + F2** Mettere in pausa/"
-"Riprendere la registrazione: *Ctrl + Shift + F2\n"
+"- Arresta registrazione: **Ctrl + Shift + F2** Mettere in pausa/Riprendere "
+"la registrazione: *Ctrl + Shift + F2\n"
 "- Pausa/Ripresa della registrazione: **Ctrl + Shift + F3** Mettere in pausa/"
 "Riprendere la registrazione: *Ctrl + Shift + F3\n"
 "- Annullamento della registrazione: **Ctrl + Shift + F4** Annullamento della "
@@ -388,7 +445,7 @@ msgstr ""
 "- Microfono: **Alt + O** *Sistema (loopback)\n"
 "- Sistema (loopback): **Alt + S**\n"
 "- Aggiorna dispositivi: **Alt + R**\n"
-"- Qualità (Hz): **Alt + C** Formato di uscita: **Alt + F**\n"
+"- Qualità (Hz): **Alt + Q** Formato di uscita: **Alt + F**\n"
 "- Formato di uscita: **Alt + F** Formato di uscita: **Alt + F**\n"
 "- Bitrate MP3 (kbps): **Alt + B**\n"
 "- Modalità microfono: **Alt + O** Modalità di sistema (loopback)\n"
@@ -409,13 +466,13 @@ msgstr ""
 "in alcune lingue può variare o possono essere utilizzati altri tasti a "
 "seconda della traduzione.\n"
 "\n"
-"11. Riduci a icona nel vassoio\n"
+"11. Riduci a icona nel System Tray\n"
 "\n"
-"- Se si attiva l'opzione \"Riduci a icona\" in \"Menu > Opzioni > "
-"Generale\", premendo il pulsante di riduzione a icona (nell'angolo in alto a "
-"destra della finestra) l'applicazione viene nascosta dalla barra delle "
-"applicazioni e viene visualizzata un'icona nella barra delle applicazioni "
-"(vicino all'orologio).  \n"
+"- Se si attiva l'opzione \"Riduci a icona nel System Tray\" in \"Menu > "
+"Opzioni > Generali\", premendo il pulsante di riduzione a icona (nell'angolo "
+"in alto a destra della finestra) l'applicazione viene nascosta dalla barra "
+"delle applicazioni e viene visualizzata un'icona nel System Tray (vicino "
+"all'orologio).  \n"
 "- Facendo doppio clic su tale icona o utilizzando il menu contestuale, è "
 "possibile ripristinare la finestra o chiudere l'applicazione.\n"
 "\n"
@@ -446,8 +503,8 @@ msgstr ""
 "- Regolate il volume del microfono e del sistema nell'applicazione per "
 "bilanciare le fonti audio.  \n"
 "- Se si nota che l'audio è fortemente sbilanciato verso un canale (destro o "
-"sinistro), selezionare l'opzione **Mono** o \"Mono Mix\" (in alcuni testi), "
-"per centrare il suono.  \n"
+"sinistro), selezionare l'opzione **Mono** o \"Mono Mix\" (in alcuni "
+"contesti), per centrare il suono.  \n"
 "- Utilizzare il **Test audio** per verificare che tutto suoni correttamente "
 "prima di effettuare una registrazione importante.  \n"
 "- Non dimenticate di controllare le **Opzioni** e il **Menu** per "
@@ -460,17 +517,17 @@ msgstr ""
 
 #: src\ui\interface.py:125
 msgid "Mostrar aplicación"
-msgstr "Mostra applicazione"
+msgstr "Mostra l'applicazione"
 
 #: src\ui\interface.py:126 src\ui\interface.py:1311 src\ui\update.py:159
 #: src\ui\update.py:182 src\ui\update.py:208 src\ui\update.py:213
 #: src\ui\update.py:371
 msgid "Cerrar"
-msgstr "Chiudi"
+msgstr "Esci"
 
 #: src\ui\interface.py:166
 msgid "Espere por favor... Procesando"
-msgstr "Attendere prego... Elaborazione"
+msgstr "Elaborazione in corso... Attendere prego..."
 
 #: src\ui\interface.py:173
 msgid "Procesando"
@@ -482,7 +539,7 @@ msgid ""
 "No se pueden tener dos instancias a la vez."
 msgstr ""
 "WASAPIRecording è già in esecuzione.\n"
-"Non è possibile avere due istanze contemporaneamente."
+"Non è possibile tenere aperte due istanze contemporaneamente."
 
 #: src\ui\interface.py:382
 msgid "Dispositivos"
@@ -490,7 +547,7 @@ msgstr "Dispositivi"
 
 #: src\ui\interface.py:383
 msgid "Micrófon&o:"
-msgstr "Microfono&o:"
+msgstr "Microfon&o:"
 
 #: src\ui\interface.py:389
 msgid "&Sistema (loopback):"
@@ -498,7 +555,7 @@ msgstr "&Sistema (loopback):"
 
 #: src\ui\interface.py:397
 msgid "&Refrescar Dispositivos"
-msgstr "dispositivi &Refresh"
+msgstr "Aggio&rna dispositivi"
 
 #: src\ui\interface.py:405
 msgid "Configuración de Grabación"
@@ -506,24 +563,24 @@ msgstr "Configurazione della registrazione"
 
 #: src\ui\interface.py:407
 msgid "&Calidad (Hz):"
-msgstr "qualità (Hz):"
+msgstr "&qualità (Hz):"
 
 #: src\ui\interface.py:413
 msgid "&Formato de salida:"
-msgstr "formato di uscita:"
+msgstr "&formato di uscita:"
 
 #: src\ui\interface.py:419
 msgid "&Bitrate MP3 (kbps):"
-msgstr "bitrate MP3 (kbps):"
+msgstr "&Bitrate MP3 (kbps):"
 
 #: src\ui\interface.py:425
 msgid "Modo Micrófon&o:"
-msgstr "Modalità microfono&o:"
+msgstr "Modalità microfon&o:"
 
 #: src\ui\interface.py:426 src\ui\interface.py:432 src\ui\interface.py:1169
 #: src\ui\interface.py:1174
 msgid "Mono"
-msgstr "Scimmia"
+msgstr "Mono"
 
 #: src\ui\interface.py:426 src\ui\interface.py:432 src\ui\interface.py:1168
 #: src\ui\interface.py:1169 src\ui\interface.py:1173 src\ui\interface.py:1174
@@ -536,19 +593,19 @@ msgstr "Modalità &Sistema (loopback):"
 
 #: src\ui\interface.py:437
 msgid "&Tamaño de buffer (frames):"
-msgstr "dimensione del buffer (frame):"
+msgstr "&Dimensione del buffer (frames):"
 
 #: src\ui\interface.py:442
 msgid "Guardar archivos separados de micrófono &y sistema"
-msgstr "Salvate i file separati del microfono e del sistema"
+msgstr "Salva separatamente i file del microfono e di sistema"
 
 #: src\ui\interface.py:445
 msgid "&Volumen del Micrófono:"
-msgstr "volume del microfono:"
+msgstr "&Volume del microfono:"
 
 #: src\ui\interface.py:450
 msgid "&Volumen del Sistema:"
-msgstr "volume del sistema:"
+msgstr "&Volume di sistema:"
 
 #: src\ui\interface.py:459
 msgid "&Iniciar Grabación"
@@ -556,11 +613,11 @@ msgstr "&Avvia la registrazione"
 
 #: src\ui\interface.py:463 src\ui\interface.py:840 src\ui\interface.py:876
 msgid "&Pausar"
-msgstr "pausa"
+msgstr "&Pausa"
 
 #: src\ui\interface.py:468
 msgid "&Detener Grabación"
-msgstr "&Arresta la registrazione"
+msgstr "Arre&sta la registrazione"
 
 #: src\ui\interface.py:473 src\ui\widgets.py:156
 msgid "&Cancelar"
@@ -568,7 +625,7 @@ msgstr "&Annulla"
 
 #: src\ui\interface.py:478
 msgid "&Prueba de Audio"
-msgstr "test audio"
+msgstr "&Test audio"
 
 #: src\ui\interface.py:482
 msgid "&Menú"
@@ -577,7 +634,7 @@ msgstr "&Menu"
 #: src\ui\interface.py:491 src\ui\interface.py:1471
 #, python-brace-format
 msgid "En espera (Usa {hk} para iniciar)"
-msgstr "Standby (utilizzare {hk} per avviare)"
+msgstr "Standby (usa {hk} per avviare)"
 
 #: src\ui\interface.py:493
 msgid "Estado"
@@ -585,23 +642,23 @@ msgstr "Stato"
 
 #: src\ui\interface.py:582
 msgid "Hay una grabación en curso. ¿Desea detenerla y salir?"
-msgstr "È in corso una registrazione, si desidera interromperla e uscire?"
+msgstr "C'è una registrazione in corso. Vuoi interromperla e uscire?"
 
 #: src\ui\interface.py:583
 msgid "Confirmar cierre"
-msgstr "Confermare la chiusura"
+msgstr "Conferma la chiusura"
 
 #: src\ui\interface.py:598
 msgid "Por favor espere, finalizando conversión..."
-msgstr "Attendere prego, finalizzare la conversione..."
+msgstr "Attendere prego, sto finalizzando la conversione..."
 
 #: src\ui\interface.py:834
 msgid "&Reanudar"
-msgstr "&Resume"
+msgstr "&Riprendi"
 
 #: src\ui\interface.py:895
 msgid "Grabación cancelada. Se han eliminado los archivos."
-msgstr "Registrazione annullata. I file sono stati cancellati."
+msgstr "Registrazione annullata. I file sono stati eliminati."
 
 #: src\ui\interface.py:895 src\ui\interface.py:940
 msgid "Grabación"
@@ -609,7 +666,7 @@ msgstr "Registrazione"
 
 #: src\ui\interface.py:900
 msgid "Por favor espere, convirtiendo a formato final..."
-msgstr "Attendere prego, conversione in formato finale..."
+msgstr "Attendere prego, sto convertendo nel formato di uscita..."
 
 #: src\ui\interface.py:927
 #, python-brace-format
@@ -617,7 +674,7 @@ msgid ""
 "Grabación completada. Archivo guardado como:\n"
 "{file_path}"
 msgstr ""
-"Registrazione completata. File salvato come:\n"
+"Registrazione completata. File salvato in:\n"
 "{file_path}"
 
 #: src\ui\interface.py:932
@@ -639,7 +696,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"volete aprire la cartella delle registrazioni?"
+"Vuoi aprire la cartella delle registrazioni?"
 
 #: src\ui\interface.py:1073
 msgid "Información"
@@ -691,27 +748,27 @@ msgstr "Lingua"
 
 #: src\ui\interface.py:1294 src\ui\interface.py:1309
 msgid "Abrir Grabaciones"
-msgstr "Registrazioni aperte"
+msgstr "Apri registrazioni"
 
 #: src\ui\interface.py:1295
 msgid "&Manual de usuario"
-msgstr "manuale d'uso"
+msgstr "&Manuale utente"
 
 #: src\ui\interface.py:1296
 msgid "Acerca &de..."
-msgstr "Informazioni su &de..."
+msgstr "Informazioni su..."
 
 #: src\ui\interface.py:1297
 msgid "invítame a un &café si te gusta mi trabajo"
-msgstr "invitatemi per un &caffè se vi piace il mio lavoro"
+msgstr "invitami per un &caffè se ti piace il mio lavoro"
 
 #: src\ui\interface.py:1298
 msgid "Salir"
-msgstr "Uscire"
+msgstr "Esci"
 
 #: src\ui\interface.py:1310
 msgid "&invítame a un café si te gusta mi trabajo"
-msgstr "invitatemi a prendere un caffè se vi piace il mio lavoro"
+msgstr "&invitami a prendere un caffè se ti piace il mio lavoro"
 
 #: src\ui\interface.py:1327
 msgid ""
@@ -719,11 +776,11 @@ msgid ""
 "¿Desea continuar?"
 msgstr ""
 "Per applicare la nuova lingua è necessario riavviare l'applicazione.\n"
-"volete continuare?"
+"Vuoi continuare?"
 
 #: src\ui\interface.py:1328
 msgid "Confirmar cambio de idioma"
-msgstr "Confermare il cambio di lingua"
+msgstr "Conferma il cambio della lingua"
 
 #: src\ui\interface.py:1459
 msgid "Grabación en pausa."
@@ -732,24 +789,22 @@ msgstr "Registrazione in pausa."
 #: src\ui\interface.py:1463
 msgid "Grabando... (No hay hotkey de detener asignada)"
 msgstr ""
-"Registrazione... (Non è stato assegnato alcun tasto di scelta rapida per "
+"Registrazione... (Non è stato assegnato nessun tasto di scelta rapida per "
 "l'arresto)"
 
 #: src\ui\interface.py:1465
 #, python-brace-format
 msgid "Grabando... (Usa {hk} para detener)"
-msgstr "Registrazione... (Utilizzare {hk} per interrompere)"
+msgstr "Registrazione... (Utilizza {hk} per interrompere)"
 
 #: src\ui\interface.py:1469
 msgid "En espera. Asigna teclas en Opciones o inicia manualmente."
-msgstr "Standby. Assegnare i tasti in Opzioni o avviare manualmente."
+msgstr "Standby. Assegna i tasti nelle Opzioni o avvia manualmente."
 
 #: src\ui\interface.py:1521
 #, python-brace-format
 msgid "No se pudo abrir el directorio de grabaciones: {error}"
-msgstr ""
-"Non è stato possibile aprire la directory di registrazione: {error} {error} "
-"{error} {error} {error} {error} {error} {error} {error} {error} {error} [0"
+msgstr "Non è stato possibile aprire la cartella di registrazione: {error}"
 
 #: src\ui\interface.py:1531
 msgid ""
@@ -760,7 +815,8 @@ msgid ""
 "\n"
 "Traductores:\n"
 "🇹🇷 Turco: Umut Korkmaz\n"
-"🇸🇦 Árabe: moataz geba"
+"🇸🇦 Árabe: moataz geba\n"
+"🇮🇹 Italiano: Alessio Lenzi"
 msgstr ""
 "Registrazione WASAPIR\n"
 "Versione: {}\n"
@@ -769,27 +825,28 @@ msgstr ""
 "\n"
 "Traduttori:\n"
 "🇹🇷 Turco: Umut Korkmaz\n"
-"🇸🇦 Arabo: moataz geba"
+"🇸🇦 Arabo: moataz geba\n"
+"🇮🇹 Italiano: Alessio Lenzi"
 
-#: src\ui\interface.py:1539
+#: src\ui\interface.py:1540
 msgid "Acerca de..."
-msgstr "A proposito di..."
+msgstr "Informazioni su..."
 
 #: src\ui\manual.py:32
 msgid "Manual de Uso"
-msgstr "Manuale d'uso"
+msgstr "Manuale utente"
 
 #: src\ui\manual.py:40
 msgid "&Manual de Uso:"
-msgstr "manuale d'uso:"
+msgstr "&Manuale utente:"
 
 #: src\ui\manual.py:53 src\ui\options.py:333
 msgid "Aceptar"
-msgstr "Accettare"
+msgstr "Ok"
 
 #: src\ui\options.py:46
 msgid "Minimizar a la bandeja del sistema"
-msgstr "Riduci a icona nella barra delle applicazioni"
+msgstr "Riduci a icona nel System Tray"
 
 #: src\ui\options.py:51
 msgid "Carpeta de grabaciones:"
@@ -801,7 +858,7 @@ msgstr "Cambia cartella..."
 
 #: src\ui\options.py:73
 msgid "Selecciona la carpeta donde se guardarán las grabaciones"
-msgstr "Selezionare la cartella in cui salvare le registrazioni"
+msgstr "Seleziona la cartella dove salvare le registrazioni"
 
 #: src\ui\options.py:133
 msgid "Combinación para Iniciar Grabación:"
@@ -809,23 +866,23 @@ msgstr "Combinazione per avviare la registrazione:"
 
 #: src\ui\options.py:142
 msgid "Capturar Hotkey Inicio"
-msgstr "Cattura tasti di scelta rapida Home"
+msgstr "Cattura Hotkey per Avvio"
 
 #: src\ui\options.py:146
 msgid "Combinación para Detener Grabación:"
-msgstr "Combinazione per interrompere la registrazione:"
+msgstr "Combinazione per arrestare la registrazione:"
 
 #: src\ui\options.py:155
 msgid "Capturar Hotkey Detener"
-msgstr "Chiudi"
+msgstr "Cattura Hotkey per Arresto"
 
 #: src\ui\options.py:159
 msgid "Combinación para Pausar/Reanudar:"
-msgstr "Combinazione pausa/ripresa:"
+msgstr "Combinazione per Pausa/Riprendi:"
 
 #: src\ui\options.py:168
 msgid "Capturar Hotkey Pausa"
-msgstr "Cattura con i tasti di scelta rapida Pausa"
+msgstr "Cattura Hotkey per Pausa"
 
 #: src\ui\options.py:172
 msgid "Combinación para Cancelar Grabación:"
@@ -833,7 +890,7 @@ msgstr "Combinazione per annullare la registrazione:"
 
 #: src\ui\options.py:181
 msgid "Capturar Hotkey Cancelar"
-msgstr "Tasto di scelta rapida per la cattura Annullamento"
+msgstr "Cattura Hotkey per Annulla"
 
 #: src\ui\options.py:195 src\ui\options.py:198 src\ui\options.py:201
 #: src\ui\options.py:204
@@ -850,11 +907,11 @@ msgstr ""
 
 #: src\ui\options.py:281
 msgid "Error de Hotkeys"
-msgstr "Errore dei tasti di scelta rapida"
+msgstr "Errore nei tasti di scelta rapida"
 
 #: src\ui\options.py:326
 msgid "General"
-msgstr "Generico"
+msgstr "Generali"
 
 #: src\ui\options.py:327
 msgid "Teclado"
@@ -862,11 +919,11 @@ msgstr "Tastiera"
 
 #: src\ui\options.py:334 src\ui\update.py:65
 msgid "Cancelar"
-msgstr "Annullare"
+msgstr "Annulla"
 
 #: src\ui\test_audio.py:62
 msgid "Prueba de Audio"
-msgstr "Test audio"
+msgstr "Test Audio"
 
 #: src\ui\test_audio.py:112 src\ui\update.py:60
 msgid "&Información:"
@@ -874,7 +931,7 @@ msgstr "&Informazioni:"
 
 #: src\ui\test_audio.py:125
 msgid "&Selecciona qué archivo reproducir:"
-msgstr "selezionare il file da riprodurre:"
+msgstr "&Seleziona il file da riprodurre:"
 
 #: src\ui\test_audio.py:126 src\ui\test_audio.py:343
 msgid "Prueba micrófono"
@@ -882,7 +939,7 @@ msgstr "Test del microfono"
 
 #: src\ui\test_audio.py:126 src\ui\test_audio.py:345
 msgid "Prueba sistema"
-msgstr "Test del sistema"
+msgstr "Test di sistema"
 
 #: src\ui\test_audio.py:126
 msgid "Ambos"
@@ -890,11 +947,11 @@ msgstr "Entrambi"
 
 #: src\ui\test_audio.py:133
 msgid "&Detener"
-msgstr "&Stop"
+msgstr "&Arresta"
 
 #: src\ui\test_audio.py:137
 msgid "&Cerrar"
-msgstr "chiudere"
+msgstr "&Chiudi"
 
 #: src\ui\test_audio.py:164
 msgid ""
@@ -906,25 +963,25 @@ msgid ""
 msgstr ""
 "Questa finestra esegue una registrazione e una riproduzione di prova con le "
 "stesse impostazioni.\n"
-"Premendo 'Stop', è possibile poi 'Riprodurre'. Se si salvano file separati, "
-"si può scegliere il microfono, il sistema o entrambi.\n"
-"Non può essere chiusa con Alt+F4 o X, ma solo con 'Chiudi'."
+"Premendo \"Arresta\", è possibile poi \"Riprodurre\". Se si salvano file "
+"separati, si può scegliere il microfono, il sistema o entrambi.\n"
+"Non può essere chiusa con Alt+F4 o X, ma solo con \"Chiudi\"."
 
 #: src\ui\test_audio.py:222 src\ui\test_audio.py:235 src\ui\test_audio.py:289
 msgid "Reproducir"
-msgstr "Gioco"
+msgstr "Riprodurre"
 
 #: src\ui\test_audio.py:231
 msgid "Detener"
-msgstr "Fermarsi"
+msgstr "Arresta"
 
 #: src\ui\test_audio.py:244
 msgid "No se ha grabado nada aún."
-msgstr "Non è stato ancora registrato nulla."
+msgstr "Non è stato ancora registrato niente."
 
 #: src\ui\test_audio.py:244
 msgid "Aviso"
-msgstr "Notare"
+msgstr "Avviso"
 
 #: src\ui\test_audio.py:251
 msgid "No existe el archivo a reproducir"
@@ -932,11 +989,11 @@ msgstr "Il file da riprodurre non esiste"
 
 #: src\ui\test_audio.py:301
 msgid "La grabación sigue en curso. ¿Deseas cancelar la prueba de sonido?"
-msgstr "La registrazione è ancora in corso, desidera annullare il soundcheck?"
+msgstr "La registrazione è ancora in corso. Vuoi annullare il test audio?"
 
 #: src\ui\test_audio.py:302
 msgid "Cancelar Prueba"
-msgstr "Annullamento del test"
+msgstr "Annulla Test"
 
 #: src\ui\update.py:41
 msgid "Actualización"
@@ -944,34 +1001,33 @@ msgstr "Aggiornamento"
 
 #: src\ui\update.py:66
 msgid "Instalar"
-msgstr "Installare"
+msgstr "Installa"
 
 #: src\ui\update.py:148
 #, python-brace-format
 msgid "Se encontró una nueva versión: {0}. ¿Desea instalarla?"
-msgstr "È stata trovata una nuova versione: {0} Vuoi installarla?"
+msgstr "È disponibile una nuova versione: {0}. Vuoi installarla?"
 
 #: src\ui\update.py:158
 msgid "No hay actualizaciones disponibles. Su aplicación está actualizada."
-msgstr ""
-"Non sono disponibili aggiornamenti. La vostra applicazione è aggiornata."
+msgstr "Non sono disponibili aggiornamenti. L'applicazione è aggiornata."
 
 #: src\ui\update.py:174
 msgid "No se pudo conectar al servidor. Verifique su conexión a Internet."
 msgstr ""
-"Impossibile connettersi al server. Controllare la connessione a Internet."
+"Impossibile connettersi al server. Controlla la connessione a Internet."
 
 #: src\ui\update.py:176
 msgid ""
 "Error en la conexión segura (SSL). Por favor, revise la configuración de "
 "seguridad de su red."
 msgstr ""
-"Errore nella connessione sicura (SSL). Controllare le impostazioni di "
+"Errore nella connessione sicura (SSL). Controlla le impostazioni di "
 "sicurezza della rete."
 
 #: src\ui\update.py:178
 msgid "La conexión tardó demasiado tiempo. Intente nuevamente más tarde."
-msgstr "La connessione ha richiesto troppo tempo. Riprovare più tardi."
+msgstr "La connessione ha richiesto troppo tempo. Riprova più tardi."
 
 #: src\ui\update.py:180
 #, python-brace-format
@@ -989,7 +1045,7 @@ msgstr "Era previsto un file, ma è stata trovata una directory."
 #: src\ui\update.py:190
 msgid "Permiso denegado. Ejecute la aplicación con los permisos adecuados."
 msgstr ""
-"Autorizzazione negata. Eseguite l'applicazione con le autorizzazioni "
+"Autorizzazione negata. Esegui l'applicazione con le autorizzazioni "
 "appropriate."
 
 #: src\ui\update.py:192
@@ -997,7 +1053,7 @@ msgid ""
 "Error al copiar o mover archivos. Verifique los permisos y el espacio "
 "disponible."
 msgstr ""
-"Errore durante la copia o lo spostamento dei file. Controllare le "
+"Errore durante la copia o lo spostamento dei file. Verifica le "
 "autorizzazioni e lo spazio disponibile."
 
 #: src\ui\update.py:194
@@ -1005,16 +1061,15 @@ msgid ""
 "Se produjo un error en los datos proporcionados. Verifique la información "
 "ingresada."
 msgstr ""
-"Si è verificato un errore nei dati forniti. Si prega di verificare le "
-"informazioni inserite."
+"Si è verificato un errore nei dati forniti. Controlla le informazioni "
+"inserite."
 
 #: src\ui\update.py:196
 msgid ""
 "Falta un elemento requerido en los datos. Verifique el formato de la "
 "información."
 msgstr ""
-"Nei dati manca un elemento richiesto. Controllare il formato delle "
-"informazioni."
+"Nei dati manca un elemento richiesto. Verifica il formato delle informazioni."
 
 #: src\ui\update.py:198
 msgid ""
@@ -1022,24 +1077,24 @@ msgid ""
 "configuración interna."
 msgstr ""
 "Si è tentato di accedere a un elemento al di fuori dell'intervallo "
-"consentito. Controllare la configurazione interna."
+"consentito. Controlla la configurazione interna."
 
 #: src\ui\update.py:200
 msgid "No se pudo establecer una conexión. Verifique su conexión a Internet."
 msgstr ""
-"Non è stato possibile stabilire una connessione. Controllare la connessione "
-"a Internet."
+"Non è stato possibile stabilire una connessione. Verifica la connessione a "
+"Internet."
 
 #: src\ui\update.py:202
 msgid ""
 "La operación tardó demasiado tiempo en completarse. Inténtelo más tarde."
 msgstr ""
-"L'operazione ha richiesto troppo tempo per essere completata. Riprovare più "
+"L'operazione ha richiesto troppo tempo per essere completata. Riprova più "
 "tardi."
 
 #: src\ui\update.py:204
 msgid "Se perdió la conexión con el servidor. Intente reconectarse."
-msgstr "La connessione al server è stata persa. Provare a riconnettersi."
+msgstr "La connessione al server è stata persa. Prova a riconnetterti."
 
 #: src\ui\update.py:206
 #, python-brace-format
@@ -1048,7 +1103,9 @@ msgstr "Si è verificato un errore imprevisto: {0}"
 
 #: src\ui\update.py:222
 msgid "Descargando la actualización, esto puede tardar unos momentos..."
-msgstr "Il download dell'aggiornamento può richiedere alcuni istanti..."
+msgstr ""
+"Download dell'aggiornamento in corso. L'operazione potrebbe richiedere "
+"alcuni istanti..."
 
 #: src\ui\update.py:255
 msgid "Descarga cancelada."
@@ -1064,7 +1121,7 @@ msgstr "Creazione del file di installazione automatica..."
 
 #: src\ui\update.py:323
 msgid "Archivo de actualización creado. La aplicación se reiniciará."
-msgstr "File di aggiornamento creato. L'applicazione si riavvia."
+msgstr "File di aggiornamento creato. L'applicazione sarà riavviata."
 
 #: src\ui\update.py:324
 msgid "Reiniciar ahora"
@@ -1076,11 +1133,11 @@ msgstr "Riavvio dell'applicazione..."
 
 #: src\ui\widgets.py:154
 msgid "&Aceptar"
-msgstr "accetta"
+msgstr "&Ok"
 
 #: src\ui\widgets.py:158
 msgid "&Sí"
-msgstr "sì"
+msgstr "&Sì"
 
 #: src\ui\widgets.py:160
 msgid "&No"

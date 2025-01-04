@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WASAPIRecording 1.0\n"
 "Report-Msgid-Bugs-To: tu_email@ejemplo.com\n"
-"POT-Creation-Date: 2025-01-02 12:18+0100\n"
-"PO-Revision-Date: 2025-01-02 12:18+0100\n"
+"POT-Creation-Date: 2025-01-04 12:25+0100\n"
+"PO-Revision-Date: 2025-01-04 12:26+0100\n"
 "Last-Translator: \n"
 "Language-Team: tecwindow team\n"
 "Language: ar\n"
@@ -19,14 +19,57 @@ msgstr ""
 "X-Generator: Poedit 3.5\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: src\core\devices.py:53
+#: src\core\devices.py:54
 msgid "Dispositivos actualizados correctamente."
 msgstr "الأجهزة محدثة بشكل صحيح."
 
-#: src\core\devices.py:57
+#: src\core\devices.py:58
 #, python-brace-format
 msgid "Error al refrescar dispositivos: {error}"
 msgstr "حدث خطأ أثناء تحديث الأجهزة: {error}"
+
+#: src\core\devices.py:187
+msgid ""
+"No se detectó ningún micrófono.\n"
+"Por favor, conecta o habilita al menos un micrófono antes de continuar."
+msgstr ""
+
+#: src\core\devices.py:189 src\core\devices.py:200 src\core\devices.py:208
+#: src\core\devices.py:219 src\core\devices.py:230 src\core\devices.py:238
+#, fuzzy
+#| msgid "Prueba de Audio"
+msgid "Error de Audio"
+msgstr "اختبار الصوت"
+
+#: src\core\devices.py:198
+msgid ""
+"Se detectan micrófonos, pero no hay uno configurado como predeterminado.\n"
+"Por favor, configura un micrófono predeterminado en las opciones de sonido."
+msgstr ""
+
+#: src\core\devices.py:206
+msgid ""
+"Ocurrió un error intentando obtener el micrófono predeterminado.\n"
+"Por favor, revisa tus dispositivos de grabación."
+msgstr ""
+
+#: src\core\devices.py:217
+msgid ""
+"No se detectó ningún altavoz o tarjeta de sonido habilitada.\n"
+"Revisa tu configuración de audio en el Panel de Control de Windows."
+msgstr ""
+
+#: src\core\devices.py:228
+msgid ""
+"Se detectan altavoces, pero no hay uno configurado como predeterminado.\n"
+"Por favor, configura un altavoz predeterminado en las opciones de sonido."
+msgstr ""
+
+#: src\core\devices.py:236
+msgid ""
+"Ocurrió un error intentando obtener el altavoz/speaker predeterminado.\n"
+"Por favor, revisa tus dispositivos de reproducción."
+msgstr ""
 
 #: src\core\hotkeys.py:178
 #, fuzzy
@@ -855,10 +898,11 @@ msgid ""
 "\n"
 "Traductores:\n"
 "🇹🇷 Turco: Umut Korkmaz\n"
-"🇸🇦 Árabe: moataz geba"
+"🇸🇦 Árabe: moataz geba\n"
+"🇮🇹 Italiano: Alessio Lenzi"
 msgstr ""
 
-#: src\ui\interface.py:1539
+#: src\ui\interface.py:1540
 msgid "Acerca de..."
 msgstr "حولة..."
 

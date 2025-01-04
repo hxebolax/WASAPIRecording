@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WASAPIRecording 1.0\n"
 "Report-Msgid-Bugs-To: tu_email@ejemplo.com\n"
-"POT-Creation-Date: 2025-01-02 12:18+0100\n"
-"PO-Revision-Date: 2025-01-02 12:32+0100\n"
+"POT-Creation-Date: 2025-01-04 12:25+0100\n"
+"PO-Revision-Date: 2025-01-04 12:29+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -19,14 +19,69 @@ msgstr ""
 "X-Generator: Poedit 3.5\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: src\core\devices.py:53
+#: src\core\devices.py:54
 msgid "Dispositivos actualizados correctamente."
 msgstr "Dispositifs correctement mis à jour."
 
-#: src\core\devices.py:57
+#: src\core\devices.py:58
 #, python-brace-format
 msgid "Error al refrescar dispositivos: {error}"
 msgstr "Erreur lors de l'actualisation des périphériques : {error}"
+
+#: src\core\devices.py:187
+msgid ""
+"No se detectó ningún micrófono.\n"
+"Por favor, conecta o habilita al menos un micrófono antes de continuar."
+msgstr ""
+"Aucun microphone n'a été détecté.\n"
+"Veuillez connecter ou activer au moins un microphone avant de continuer."
+
+#: src\core\devices.py:189 src\core\devices.py:200 src\core\devices.py:208
+#: src\core\devices.py:219 src\core\devices.py:230 src\core\devices.py:238
+msgid "Error de Audio"
+msgstr "Erreur audio"
+
+#: src\core\devices.py:198
+msgid ""
+"Se detectan micrófonos, pero no hay uno configurado como predeterminado.\n"
+"Por favor, configura un micrófono predeterminado en las opciones de sonido."
+msgstr ""
+"Des microphones sont détectés, mais aucun n'est configuré par défaut.\n"
+"Veuillez définir un microphone par défaut dans les options sonores."
+
+#: src\core\devices.py:206
+msgid ""
+"Ocurrió un error intentando obtener el micrófono predeterminado.\n"
+"Por favor, revisa tus dispositivos de grabación."
+msgstr ""
+"Une erreur s'est produite lors de l'obtention du microphone par défaut.\n"
+"Veuillez vérifier vos appareils d'enregistrement."
+
+#: src\core\devices.py:217
+msgid ""
+"No se detectó ningún altavoz o tarjeta de sonido habilitada.\n"
+"Revisa tu configuración de audio en el Panel de Control de Windows."
+msgstr ""
+"Aucun haut-parleur ou carte son n'a été détecté.\n"
+"Vérifiez vos paramètres audio dans le panneau de configuration de Windows."
+
+#: src\core\devices.py:228
+msgid ""
+"Se detectan altavoces, pero no hay uno configurado como predeterminado.\n"
+"Por favor, configura un altavoz predeterminado en las opciones de sonido."
+msgstr ""
+"Les haut-parleurs sont détectés, mais aucun haut-parleur par défaut n'est "
+"configuré.\n"
+"Veuillez définir un haut-parleur par défaut dans les options sonores."
+
+#: src\core\devices.py:236
+msgid ""
+"Ocurrió un error intentando obtener el altavoz/speaker predeterminado.\n"
+"Por favor, revisa tus dispositivos de reproducción."
+msgstr ""
+"Une erreur s'est produite lors de la recherche de l'enceinte/du haut-parleur "
+"par défaut.\n"
+"Veuillez vérifier vos appareils de lecture."
 
 #: src\core\hotkeys.py:178
 msgid ""
@@ -763,7 +818,8 @@ msgid ""
 "\n"
 "Traductores:\n"
 "🇹🇷 Turco: Umut Korkmaz\n"
-"🇸🇦 Árabe: moataz geba"
+"🇸🇦 Árabe: moataz geba\n"
+"🇮🇹 Italiano: Alessio Lenzi"
 msgstr ""
 "Enregistrement WASAPIR\n"
 "Version : {}\n"
@@ -772,9 +828,10 @@ msgstr ""
 "\n"
 "Traducteurs :\n"
 "🇹🇷 Turc : Umut Korkmaz\n"
-"🇸🇦 Arabe : moataz geba"
+"🇸🇦 Arabe : moataz geba\n"
+"🇮🇹 Italien : Alessio Lenzi"
 
-#: src\ui\interface.py:1539
+#: src\ui\interface.py:1540
 msgid "Acerca de..."
 msgstr "À propos de..."
 

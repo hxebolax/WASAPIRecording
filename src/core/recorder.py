@@ -4,29 +4,20 @@
 """
 Módulo que contiene la lógica de grabación.
 
-Este módulo permite grabar audio desde micrófono y sistema (loopback), mezclarlos en tiempo 
-real y guardar los resultados en archivos de audio con soporte para cancelación y pausa 
-durante la grabación. También asegura que todos los archivos sean consistentes en formato 
+Este módulo permite grabar audio desde micrófono y sistema (loopback), mezclarlos en tiempo
+real y guardar los resultados en archivos de audio con soporte para cancelación y pausa
+durante la grabación. También asegura que todos los archivos sean consistentes en formato
 (2 canales) para evitar problemas relacionados con dispositivos de hardware.
 
 Estrategia:
 - Se configuran los dispositivos con `channels=None` para adaptarse al hardware.
 - Se permite grabar en modos "Mono" o "Estéreo", asegurando siempre 2 canales en los archivos.
 - Se pueden controlar los eventos de grabación, pausa y cancelación.
-
-Funciones principales:
-- Convertir datos de audio entre modos mono y estéreo.
-- Grabar audio en tiempo real con control de eventos.
-- Ajustar dinámicamente el volumen de los canales.
-- Eliminar archivos parciales si se cancela la grabación.
-
-Clases: Ninguna.
-Dependencias:
-- `soundfile`: Para guardar audio en formato compatible.
-- `numpy`: Para procesar datos de audio en arreglos multidimensionales.
-- `core.logger`: Para registrar acciones y errores.
-- `core.utils`: Para manejar rutas y configuraciones.
+- [Modificado] Cuando un dispositivo informa más de 2 canales:
+  - Si user_mode="Mono", promediamos todos para tener un único canal y duplicarlo (L=R).
+  - Si user_mode="Estéreo", conservamos únicamente los dos primeros canales, evitando “mono aural”.
 """
+
 import os
 import sys
 import soundfile as sf
@@ -66,9 +57,10 @@ def _adjust_user_mode(data, user_mode):
 	Ajusta los datos de audio según el modo seleccionado por el usuario.
 
 	- "Mono": Convierte los datos a mono asegurando 2 canales con L=R.
-	- "Estéreo": Asegura que los datos tengan 2 canales sin alterarlos.
+	- "Estéreo": Asegura 2 canales, pero si el hardware da más de 2, solo toma los 2 primeros
+	  (evitando un downmix completo que resulte en “mono aural”).
 
-	:param data: Array numpy devuelto por el hardware.
+	:param data: Array numpy devuelto por el hardware (N,C).
 	:param user_mode: "Mono" o "Estéreo" como cadena.
 	:return: Array numpy ajustado a (N,2).
 	"""
@@ -78,21 +70,33 @@ def _adjust_user_mode(data, user_mode):
 		data = data.reshape(-1, 1)
 
 	num_chan = data.shape[1]
-	# Si hardware da 2 canales y user elige "Mono", downmix a L=R
+
+	# Si el hardware da más de 2 canales, actuamos según user_mode
+	if num_chan > 2:
+		logger.log_action(f"Detectados {num_chan} canales. Ajustando según modo '{user_mode}'.")
+		if user_mode == "Mono":
+			# -> promediamos todos y duplicamos
+			multi_mono = data.mean(axis=1)  # (N,)
+			data = np.column_stack((multi_mono, multi_mono))
+			num_chan = 2
+		else:
+			# user_mode == "Estéreo"
+			# Mantenemos solo las 2 primeras pistas, asumiendo que son L y R reales
+			logger.log_action("Preservando únicamente los dos primeros canales para mantener estéreo.")
+			data = data[:, 0:2]
+			num_chan = 2
+
+	# A continuación, casos usuales (1 ó 2 canales)
 	if num_chan == 2 and user_mode == "Mono":
 		return to_mono(data)
 
-	# Si hardware da 1 canal y user elige "Estéreo", expandimos a (N,2)
 	if num_chan == 1 and user_mode == "Estéreo":
 		return expand_to_stereo(data)
 
-	# Si hardware da 1 canal y user elige "Mono", lo guardamos en L=R (en disco 2 canales)
 	if num_chan == 1 and user_mode == "Mono":
 		return expand_to_stereo(data)
 
-	# Si hardware da 2 canales y user elige "Estéreo", no cambiamos nada
-	# pero aseguramos que sea (N,2)
-	if num_chan == 2:
+	if num_chan == 2 and user_mode == "Estéreo":
 		return data
 
 	# Por si acaso, forzamos a estéreo
@@ -141,12 +145,10 @@ def record_audio(
 	"""
 	try:
 		if pause_event is None:
-			# Si no se pasó un evento de pausa, creamos uno "dummy" en False
 			import threading
 			pause_event = threading.Event()
 
 		if cancel_event is None:
-			# Si no se pasó un evento de cancelar, creamos uno "dummy" en False
 			import threading
 			cancel_event = threading.Event()
 
@@ -171,8 +173,8 @@ def record_audio(
 			logger.log_action(f"Archivo separado sistema: {system_output_path}")
 
 		with selected_system.recorder(samplerate=sample_rate, channels=None) as system_rec, \
-		     selected_mic.recorder(samplerate=sample_rate, channels=None) as mic_rec, \
-		     sf.SoundFile(combined_output_path, mode='w', samplerate=sample_rate, channels=2) as combined_file:
+			 selected_mic.recorder(samplerate=sample_rate, channels=None) as mic_rec, \
+			 sf.SoundFile(combined_output_path, mode='w', samplerate=sample_rate, channels=2) as combined_file:
 
 			mic_file = None
 			system_file = None

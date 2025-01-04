@@ -31,12 +31,16 @@ def main():
 		logger.log_error(f"Error al inicializar COM: {e}")
 	from core.i18n import I18n
 	try:
-		logger.log_action("Iniciando la aplicación de Audio Recorder...")
+		logger.log_action("Iniciando la aplicación WASAPIRecording...")
 
 		# Inicializar la internacionalización
 		i18n = I18n()
 		logger.log_action("Internacionalización inicializada correctamente.")
-
+		from core.devices import check_audio_hardware
+		if not check_audio_hardware():
+			# Si falla la verificación, cerramos la aplicación de inmediato
+			logger.log_error("El hardware de audio no está configurado correctamente. Abortando.")
+			return False
 		# Importar e iniciar la interfaz gráfica
 		from ui.interface import AudioRecorderApp
 		app = AudioRecorderApp(i18n)

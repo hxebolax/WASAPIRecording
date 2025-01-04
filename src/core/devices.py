@@ -17,6 +17,7 @@ import soundcard as sc
 import os
 from core.utils import get_base_path
 from core.logger import Logger
+from ui.widgets import mensaje  # o tu función de diálogo accesible
 import wx
 
 logger = Logger(log_dir=os.path.abspath(os.path.join(get_base_path(), "logs")))
@@ -171,3 +172,73 @@ def update_system_volume(slider):
 	except Exception as e:
 		logger.log_error(f"Error al actualizar volumen del sistema: {e}")
 		return 0.5  # Valor predeterminado
+
+def check_audio_hardware():
+	"""
+	Verifica que haya al menos un micrófono y un dispositivo de salida de audio (speaker).
+	Retorna True si todo OK, o False si falta algo.
+	Muestra un mensaje de error al usuario si detecta problemas.
+	"""
+	# 1) Verificar micrófonos:
+	all_mics = sc.all_microphones()
+	if not all_mics:
+		logger.log_error("No se detectó ningún micrófono en el sistema.")
+		mensaje(None,
+				_("No se detectó ningún micrófono.\n"
+				"Por favor, conecta o habilita al menos un micrófono antes de continuar."),
+				_("Error de Audio"),
+				style=wx.OK | wx.ICON_ERROR)
+		return False
+
+	try:
+		default_mic = sc.default_microphone()
+		if not default_mic:
+			logger.log_error("No se pudo obtener micrófono predeterminado, aunque existan micrófonos.")
+			mensaje(None,
+					_("Se detectan micrófonos, pero no hay uno configurado como predeterminado.\n"
+					"Por favor, configura un micrófono predeterminado en las opciones de sonido."),
+					_("Error de Audio"),
+					style=wx.OK | wx.ICON_ERROR)
+			return False
+	except Exception as e:
+		logger.log_error(f"Error al intentar obtener el micrófono predeterminado: {e}")
+		mensaje(None,
+				_("Ocurrió un error intentando obtener el micrófono predeterminado.\n"
+				"Por favor, revisa tus dispositivos de grabación."),
+				_("Error de Audio"),
+				style=wx.OK | wx.ICON_ERROR)
+		return False
+
+	# 2) Verificar altavoces (dispositivo de salida):
+	all_speakers = sc.all_speakers()
+	if not all_speakers:
+		logger.log_error("No se detectó ningún altavoz/dispositivo de salida en el sistema.")
+		mensaje(None,
+				_("No se detectó ningún altavoz o tarjeta de sonido habilitada.\n"
+				"Revisa tu configuración de audio en el Panel de Control de Windows."),
+				_("Error de Audio"),
+				style=wx.OK | wx.ICON_ERROR)
+		return False
+
+	try:
+		default_spk = sc.default_speaker()
+		if not default_spk:
+			logger.log_error("No hay altavoz predeterminado configurado, aunque existan altavoces.")
+			mensaje(None,
+					_("Se detectan altavoces, pero no hay uno configurado como predeterminado.\n"
+					"Por favor, configura un altavoz predeterminado en las opciones de sonido."),
+					_("Error de Audio"),
+					style=wx.OK | wx.ICON_ERROR)
+			return False
+	except Exception as e:
+		logger.log_error(f"Error al intentar obtener el altavoz predeterminado: {e}")
+		mensaje(None,
+				_("Ocurrió un error intentando obtener el altavoz/speaker predeterminado.\n"
+				"Por favor, revisa tus dispositivos de reproducción."),
+				_("Error de Audio"),
+				style=wx.OK | wx.ICON_ERROR)
+		return False
+
+	# Si pasamos todas las verificaciones:
+	logger.log_action("Verificación de hardware de audio exitosa.")
+	return True
