@@ -1260,6 +1260,7 @@ class AudioRecorderFrame(wx.Frame):
 			item_it = submenu_idiomas.AppendRadioItem(-1, _("Italiano"))
 			item_pt = submenu_idiomas.AppendRadioItem(-1, _("Portugués"))
 			item_tr = submenu_idiomas.AppendRadioItem(-1, _("Turco"))
+			item_vi = submenu_idiomas.AppendRadioItem(-1, _("Vietnamita"))
 
 			current_language = self.get.lang.current_lang
 			if current_language == "es":
@@ -1278,6 +1279,8 @@ class AudioRecorderFrame(wx.Frame):
 				item_tr.Check(True)
 			elif current_language == "ar":
 				item_ar.Check(True)
+			elif current_language == "vi":
+				item_vi.Check(True)
 
 			self.Bind(wx.EVT_MENU, lambda e: self.cambiar_idioma('es'), item_es)
 			self.Bind(wx.EVT_MENU, lambda e: self.cambiar_idioma('en'), item_en)
@@ -1287,6 +1290,7 @@ class AudioRecorderFrame(wx.Frame):
 			self.Bind(wx.EVT_MENU, lambda e: self.cambiar_idioma('pt'), item_pt)
 			self.Bind(wx.EVT_MENU, lambda e: self.cambiar_idioma('tr'), item_tr)
 			self.Bind(wx.EVT_MENU, lambda e: self.cambiar_idioma('ar'), item_ar)
+			self.Bind(wx.EVT_MENU, lambda e: self.cambiar_idioma('vi'), item_vi)
 
 			item_opciones = menu.Append(-1, _("Opciones"))
 			item_actualizar = menu.Append(-1, _("Buscar actualizaciones"))
@@ -1536,7 +1540,8 @@ Copyright © 2025
 Traductores:
 🇹🇷 Turco: Umut Korkmaz
 🇸🇦 Árabe: moataz geba
-🇮🇹 Italiano: Alessio Lenzi""").format(_version, _nombre)
+🇮🇹 Italiano: Alessio Lenzi
+🇻🇳 Vietnamita: Đào Đức Trung""").format(_version, _nombre)
 		self.show_info_message(msg, _("Acerca de..."))
 		logger.log_action("Información 'Acerca de' mostrada al usuario.")
 

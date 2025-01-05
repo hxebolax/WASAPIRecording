@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WASAPIRecording 1.0\n"
 "Report-Msgid-Bugs-To: tu_email@ejemplo.com\n"
-"POT-Creation-Date: 2025-01-04 12:25+0100\n"
-"PO-Revision-Date: 2025-01-04 12:31+0100\n"
+"POT-Creation-Date: 2025-01-05 11:41+0100\n"
+"PO-Revision-Date: 2025-01-05 11:59+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt\n"
@@ -511,7 +511,7 @@ msgstr ""
 msgid "Mostrar aplicación"
 msgstr "Mostrar aplicativo"
 
-#: src\ui\interface.py:126 src\ui\interface.py:1311 src\ui\update.py:159
+#: src\ui\interface.py:126 src\ui\interface.py:1315 src\ui\update.py:159
 #: src\ui\update.py:182 src\ui\update.py:208 src\ui\update.py:213
 #: src\ui\update.py:371
 msgid "Cerrar"
@@ -623,7 +623,7 @@ msgstr "teste de áudio"
 msgid "&Menú"
 msgstr "&Menu"
 
-#: src\ui\interface.py:491 src\ui\interface.py:1471
+#: src\ui\interface.py:491 src\ui\interface.py:1475
 #, python-brace-format
 msgid "En espera (Usa {hk} para iniciar)"
 msgstr "Em espera (use {hk} para iniciar)"
@@ -726,43 +726,47 @@ msgstr "Português"
 msgid "Turco"
 msgstr "Turco"
 
-#: src\ui\interface.py:1291 src\ui\options.py:317
+#: src\ui\interface.py:1263
+msgid "Vietnamita"
+msgstr "Vietnamita"
+
+#: src\ui\interface.py:1295 src\ui\options.py:317
 msgid "Opciones"
 msgstr "Opções"
 
-#: src\ui\interface.py:1292
+#: src\ui\interface.py:1296
 msgid "Buscar actualizaciones"
 msgstr "Verificar se há atualizações"
 
-#: src\ui\interface.py:1293
+#: src\ui\interface.py:1297
 msgid "Idioma"
 msgstr "Idioma"
 
-#: src\ui\interface.py:1294 src\ui\interface.py:1309
+#: src\ui\interface.py:1298 src\ui\interface.py:1313
 msgid "Abrir Grabaciones"
 msgstr "Gravações abertas"
 
-#: src\ui\interface.py:1295
+#: src\ui\interface.py:1299
 msgid "&Manual de usuario"
 msgstr "manual do usuário"
 
-#: src\ui\interface.py:1296
+#: src\ui\interface.py:1300
 msgid "Acerca &de..."
 msgstr "Sobre a &de..."
 
-#: src\ui\interface.py:1297
+#: src\ui\interface.py:1301
 msgid "invítame a un &café si te gusta mi trabajo"
 msgstr "convide-me para um café se você gostar do meu trabalho"
 
-#: src\ui\interface.py:1298
+#: src\ui\interface.py:1302
 msgid "Salir"
 msgstr "Sair"
 
-#: src\ui\interface.py:1310
+#: src\ui\interface.py:1314
 msgid "&invítame a un café si te gusta mi trabajo"
 msgstr "convide-me para um café se gostar do meu trabalho"
 
-#: src\ui\interface.py:1327
+#: src\ui\interface.py:1331
 msgid ""
 "Para aplicar el nuevo idioma se necesita reiniciar la aplicación.\n"
 "¿Desea continuar?"
@@ -770,35 +774,35 @@ msgstr ""
 "Para aplicar o novo idioma, você precisa reiniciar o aplicativo.\n"
 "deseja continuar?"
 
-#: src\ui\interface.py:1328
+#: src\ui\interface.py:1332
 msgid "Confirmar cambio de idioma"
 msgstr "Confirmar a alteração do idioma"
 
-#: src\ui\interface.py:1459
+#: src\ui\interface.py:1463
 msgid "Grabación en pausa."
 msgstr "Gravação pausada."
 
-#: src\ui\interface.py:1463
+#: src\ui\interface.py:1467
 msgid "Grabando... (No hay hotkey de detener asignada)"
 msgstr "Gravando... (Nenhuma tecla de atalho de parada atribuída)"
 
-#: src\ui\interface.py:1465
+#: src\ui\interface.py:1469
 #, python-brace-format
 msgid "Grabando... (Usa {hk} para detener)"
 msgstr "Gravando... (Use {hk} para parar)"
 
-#: src\ui\interface.py:1469
+#: src\ui\interface.py:1473
 msgid "En espera. Asigna teclas en Opciones o inicia manualmente."
 msgstr "Em espera. Atribua teclas em Options ou inicie manualmente."
 
-#: src\ui\interface.py:1521
+#: src\ui\interface.py:1525
 #, python-brace-format
 msgid "No se pudo abrir el directorio de grabaciones: {error}"
 msgstr ""
 "Não foi possível abrir o diretório de gravação: {error} {error} {error} "
 "{error} {error} {error} {error} {error} {error} {error} {error} [0"
 
-#: src\ui\interface.py:1531
+#: src\ui\interface.py:1535
 msgid ""
 "WASAPIRecording\n"
 "Versión: {}\n"
@@ -808,9 +812,10 @@ msgid ""
 "Traductores:\n"
 "🇹🇷 Turco: Umut Korkmaz\n"
 "🇸🇦 Árabe: moataz geba\n"
-"🇮🇹 Italiano: Alessio Lenzi"
+"🇮🇹 Italiano: Alessio Lenzi\n"
+"🇻🇳 Vietnamita: Đào Đức Trung"
 msgstr ""
-"Registro WASAPIR\n"
+"WASAPIRecording\n"
 "Versão: {}\n"
 "Criado por: {}\n"
 "Direitos autorais © 2025\n"
@@ -818,9 +823,10 @@ msgstr ""
 "Tradutores:\n"
 "🇹🇷 Turco: Umut Korkmaz\n"
 "🇸🇦 Árabe: moataz geba\n"
-"🇮🇹 Italiano: Alessio Lenzi"
+"🇮🇹 Italiano: Alessio Lenzi\n"
+"🇻🇳 Vietnamita: Đào Đức Trung"
 
-#: src\ui\interface.py:1540
+#: src\ui\interface.py:1545
 msgid "Acerca de..."
 msgstr "Sobre..."
 

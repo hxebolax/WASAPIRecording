@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WASAPIRecording\n"
 "Report-Msgid-Bugs-To: tu_email@ejemplo.com\n"
-"POT-Creation-Date: 2025-01-04 12:25+0100\n"
-"PO-Revision-Date: 2025-01-04 12:32+0100\n"
+"POT-Creation-Date: 2025-01-05 11:41+0100\n"
+"PO-Revision-Date: 2025-01-05 12:00+0100\n"
 "Last-Translator: Umut KORKMAZ <umutkork@gmail.com>\n"
 "Language-Team: Umut KORKMAZ <umutkork@gmail.com>\n"
 "Language: tr_TR\n"
@@ -450,7 +450,7 @@ msgstr ""
 msgid "Mostrar aplicación"
 msgstr "Uygulamayı göster"
 
-#: src\ui\interface.py:126 src\ui\interface.py:1311 src\ui\update.py:159
+#: src\ui\interface.py:126 src\ui\interface.py:1315 src\ui\update.py:159
 #: src\ui\update.py:182 src\ui\update.py:208 src\ui\update.py:213
 #: src\ui\update.py:371
 msgid "Cerrar"
@@ -562,7 +562,7 @@ msgstr "Ses &Testi"
 msgid "&Menú"
 msgstr "&Menü"
 
-#: src\ui\interface.py:491 src\ui\interface.py:1471
+#: src\ui\interface.py:491 src\ui\interface.py:1475
 #, python-brace-format
 msgid "En espera (Usa {hk} para iniciar)"
 msgstr "Bekleniyor (Başlamak için {hk} tuşlarını kullanın)"
@@ -665,43 +665,47 @@ msgstr "Portekizce"
 msgid "Turco"
 msgstr "Türkçe"
 
-#: src\ui\interface.py:1291 src\ui\options.py:317
+#: src\ui\interface.py:1263
+msgid "Vietnamita"
+msgstr "Vietnamca"
+
+#: src\ui\interface.py:1295 src\ui\options.py:317
 msgid "Opciones"
 msgstr "Seçenekler"
 
-#: src\ui\interface.py:1292
+#: src\ui\interface.py:1296
 msgid "Buscar actualizaciones"
 msgstr "Güncellemeleri Denetle"
 
-#: src\ui\interface.py:1293
+#: src\ui\interface.py:1297
 msgid "Idioma"
 msgstr "Diller"
 
-#: src\ui\interface.py:1294 src\ui\interface.py:1309
+#: src\ui\interface.py:1298 src\ui\interface.py:1313
 msgid "Abrir Grabaciones"
 msgstr "Kayıtları Aç"
 
-#: src\ui\interface.py:1295
+#: src\ui\interface.py:1299
 msgid "&Manual de usuario"
 msgstr "Kullanı&m kılavuzu"
 
-#: src\ui\interface.py:1296
+#: src\ui\interface.py:1300
 msgid "Acerca &de..."
 msgstr "&Hakkında..."
 
-#: src\ui\interface.py:1297
+#: src\ui\interface.py:1301
 msgid "invítame a un &café si te gusta mi trabajo"
 msgstr "i&şimi beğeniyorsan bana bir kahve ısmarla"
 
-#: src\ui\interface.py:1298
+#: src\ui\interface.py:1302
 msgid "Salir"
 msgstr "Çık"
 
-#: src\ui\interface.py:1310
+#: src\ui\interface.py:1314
 msgid "&invítame a un café si te gusta mi trabajo"
 msgstr "i&şimi beğeniyorsan bana bir kahve ısmarla"
 
-#: src\ui\interface.py:1327
+#: src\ui\interface.py:1331
 msgid ""
 "Para aplicar el nuevo idioma se necesita reiniciar la aplicación.\n"
 "¿Desea continuar?"
@@ -709,35 +713,35 @@ msgstr ""
 "Seçilen dilin aktif olması için uygulamayı yeniden başlatmanız gerekir.\n"
 "Devam etmek istiyor musunuz?"
 
-#: src\ui\interface.py:1328
+#: src\ui\interface.py:1332
 msgid "Confirmar cambio de idioma"
 msgstr "Dil değişikliğini onaylayın"
 
-#: src\ui\interface.py:1459
+#: src\ui\interface.py:1463
 msgid "Grabación en pausa."
 msgstr "Kayıt duraklatıldı."
 
-#: src\ui\interface.py:1463
+#: src\ui\interface.py:1467
 msgid "Grabando... (No hay hotkey de detener asignada)"
 msgstr "Kaydediliyor... (Durdur kısayol tuşu atanmadı)"
 
-#: src\ui\interface.py:1465
+#: src\ui\interface.py:1469
 #, python-brace-format
 msgid "Grabando... (Usa {hk} para detener)"
 msgstr "Kaydediliyor... (Durdurmak için {hk} tuşunu kullanın)"
 
-#: src\ui\interface.py:1469
+#: src\ui\interface.py:1473
 msgid "En espera. Asigna teclas en Opciones o inicia manualmente."
 msgstr ""
 "Bekleme modunda. Seçenekler iletişim kutusunda Kısayol tuşları belirleyin "
 "veya el ile başlatın."
 
-#: src\ui\interface.py:1521
+#: src\ui\interface.py:1525
 #, python-brace-format
 msgid "No se pudo abrir el directorio de grabaciones: {error}"
 msgstr "Kayıt dizini açılamadı: {error}"
 
-#: src\ui\interface.py:1531
+#: src\ui\interface.py:1535
 msgid ""
 "WASAPIRecording\n"
 "Versión: {}\n"
@@ -747,7 +751,8 @@ msgid ""
 "Traductores:\n"
 "🇹🇷 Turco: Umut Korkmaz\n"
 "🇸🇦 Árabe: moataz geba\n"
-"🇮🇹 Italiano: Alessio Lenzi"
+"🇮🇹 Italiano: Alessio Lenzi\n"
+"🇻🇳 Vietnamita: Đào Đức Trung"
 msgstr ""
 "WASAPIRecording\n"
 "Sürüm: {}\n"
@@ -757,9 +762,10 @@ msgstr ""
 "Çevirmenler:\n"
 "🇹🇷 Türkçe: Umut Korkmaz\n"
 "🇸🇦 Arapça: moataz geba\n"
-"🇮🇹 İtalyanca: Alessio Lenzi"
+"🇮🇹 İtalyanca: Alessio Lenzi\n"
+"🇻🇳 Vietnamca: Đào Đức Trung"
 
-#: src\ui\interface.py:1540
+#: src\ui\interface.py:1545
 msgid "Acerca de..."
 msgstr "Hakkında..."
 

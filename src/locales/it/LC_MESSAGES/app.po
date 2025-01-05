@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WASAPIRecording 1.0\n"
 "Report-Msgid-Bugs-To: tu_email@ejemplo.com\n"
-"POT-Creation-Date: 2025-01-04 12:25+0100\n"
-"PO-Revision-Date: 2025-01-04 12:30+0100\n"
+"POT-Creation-Date: 2025-01-05 11:41+0100\n"
+"PO-Revision-Date: 2025-01-05 11:54+0100\n"
 "Last-Translator: Alessio <lenzone10@gmail.com>\n"
 "Language-Team: \n"
 "Language: it\n"
@@ -33,8 +33,8 @@ msgid ""
 "No se detectó ningún micrófono.\n"
 "Por favor, conecta o habilita al menos un micrófono antes de continuar."
 msgstr ""
-"Non è stato rilevato alcun microfono.\n"
-"Collegare o attivare almeno un microfono prima di continuare."
+"Nessun microfono rilevato.\n"
+"Per favore, collega o attiva almeno un microfono prima di continuare."
 
 #: src\core\devices.py:189 src\core\devices.py:200 src\core\devices.py:208
 #: src\core\devices.py:219 src\core\devices.py:230 src\core\devices.py:238
@@ -46,44 +46,42 @@ msgid ""
 "Se detectan micrófonos, pero no hay uno configurado como predeterminado.\n"
 "Por favor, configura un micrófono predeterminado en las opciones de sonido."
 msgstr ""
-"I microfoni vengono rilevati, ma non c'è nessun microfono configurato come "
-"predefinito.\n"
-"Impostare un microfono predefinito nelle opzioni audio."
+"Sono stati rilevati microfoni, ma nessuno è impostato come predefinito.\n"
+"Per favore, imposta un microfono predefinito nelle opzioni audio."
 
 #: src\core\devices.py:206
 msgid ""
 "Ocurrió un error intentando obtener el micrófono predeterminado.\n"
 "Por favor, revisa tus dispositivos de grabación."
 msgstr ""
-"Si è verificato un errore nel tentativo di ottenere il microfono "
+"Si è verificato un errore durante l'individuazione del microfono "
 "predefinito.\n"
-"Controllare i dispositivi di registrazione."
+"Per favore, controlla i tuoi dispositivi di registrazione."
 
 #: src\core\devices.py:217
 msgid ""
 "No se detectó ningún altavoz o tarjeta de sonido habilitada.\n"
 "Revisa tu configuración de audio en el Panel de Control de Windows."
 msgstr ""
-"Non è stato rilevato alcun altoparlante o scheda audio abilitati.\n"
-"Controllare le impostazioni audio nel Pannello di controllo di Windows."
+"Non sono stati individuati altoparlanti o schede audio abilitate.\n"
+"Controlla le impostazioni audio nel Pannello di controllo di Windows."
 
 #: src\core\devices.py:228
 msgid ""
 "Se detectan altavoces, pero no hay uno configurado como predeterminado.\n"
 "Por favor, configura un altavoz predeterminado en las opciones de sonido."
 msgstr ""
-"Gli altoparlanti vengono rilevati, ma non è stato configurato un "
-"altoparlante predefinito.\n"
-"Impostare un altoparlante predefinito nelle opzioni audio."
+"Sono stati rilevati altoparlanti, ma nessuno è impostato come predefinito.\n"
+"Per favore, imposta un altoparlante predefinito nelle opzioni audio."
 
 #: src\core\devices.py:236
 msgid ""
 "Ocurrió un error intentando obtener el altavoz/speaker predeterminado.\n"
 "Por favor, revisa tus dispositivos de reproducción."
 msgstr ""
-"Si è verificato un errore nel tentativo di ottenere l'altoparlante "
+"Si è verificato un errore durante l'individuazione dell'altoparlante/speaker "
 "predefinito.\n"
-"Controllare i dispositivi di riproduzione."
+"Per favore, controlla i tuoi dispositivi di riproduzione."
 
 #: src\core\hotkeys.py:178
 msgid ""
@@ -519,7 +517,7 @@ msgstr ""
 msgid "Mostrar aplicación"
 msgstr "Mostra l'applicazione"
 
-#: src\ui\interface.py:126 src\ui\interface.py:1311 src\ui\update.py:159
+#: src\ui\interface.py:126 src\ui\interface.py:1315 src\ui\update.py:159
 #: src\ui\update.py:182 src\ui\update.py:208 src\ui\update.py:213
 #: src\ui\update.py:371
 msgid "Cerrar"
@@ -631,7 +629,7 @@ msgstr "&Test audio"
 msgid "&Menú"
 msgstr "&Menu"
 
-#: src\ui\interface.py:491 src\ui\interface.py:1471
+#: src\ui\interface.py:491 src\ui\interface.py:1475
 #, python-brace-format
 msgid "En espera (Usa {hk} para iniciar)"
 msgstr "Standby (usa {hk} per avviare)"
@@ -734,43 +732,47 @@ msgstr "Portoghese"
 msgid "Turco"
 msgstr "Turco"
 
-#: src\ui\interface.py:1291 src\ui\options.py:317
+#: src\ui\interface.py:1263
+msgid "Vietnamita"
+msgstr "Vietnamita"
+
+#: src\ui\interface.py:1295 src\ui\options.py:317
 msgid "Opciones"
 msgstr "Opzioni"
 
-#: src\ui\interface.py:1292
+#: src\ui\interface.py:1296
 msgid "Buscar actualizaciones"
 msgstr "Controlla gli aggiornamenti"
 
-#: src\ui\interface.py:1293
+#: src\ui\interface.py:1297
 msgid "Idioma"
 msgstr "Lingua"
 
-#: src\ui\interface.py:1294 src\ui\interface.py:1309
+#: src\ui\interface.py:1298 src\ui\interface.py:1313
 msgid "Abrir Grabaciones"
 msgstr "Apri registrazioni"
 
-#: src\ui\interface.py:1295
+#: src\ui\interface.py:1299
 msgid "&Manual de usuario"
 msgstr "&Manuale utente"
 
-#: src\ui\interface.py:1296
+#: src\ui\interface.py:1300
 msgid "Acerca &de..."
 msgstr "Informazioni su..."
 
-#: src\ui\interface.py:1297
+#: src\ui\interface.py:1301
 msgid "invítame a un &café si te gusta mi trabajo"
 msgstr "invitami per un &caffè se ti piace il mio lavoro"
 
-#: src\ui\interface.py:1298
+#: src\ui\interface.py:1302
 msgid "Salir"
 msgstr "Esci"
 
-#: src\ui\interface.py:1310
+#: src\ui\interface.py:1314
 msgid "&invítame a un café si te gusta mi trabajo"
 msgstr "&invitami a prendere un caffè se ti piace il mio lavoro"
 
-#: src\ui\interface.py:1327
+#: src\ui\interface.py:1331
 msgid ""
 "Para aplicar el nuevo idioma se necesita reiniciar la aplicación.\n"
 "¿Desea continuar?"
@@ -778,35 +780,35 @@ msgstr ""
 "Per applicare la nuova lingua è necessario riavviare l'applicazione.\n"
 "Vuoi continuare?"
 
-#: src\ui\interface.py:1328
+#: src\ui\interface.py:1332
 msgid "Confirmar cambio de idioma"
 msgstr "Conferma il cambio della lingua"
 
-#: src\ui\interface.py:1459
+#: src\ui\interface.py:1463
 msgid "Grabación en pausa."
 msgstr "Registrazione in pausa."
 
-#: src\ui\interface.py:1463
+#: src\ui\interface.py:1467
 msgid "Grabando... (No hay hotkey de detener asignada)"
 msgstr ""
 "Registrazione... (Non è stato assegnato nessun tasto di scelta rapida per "
 "l'arresto)"
 
-#: src\ui\interface.py:1465
+#: src\ui\interface.py:1469
 #, python-brace-format
 msgid "Grabando... (Usa {hk} para detener)"
 msgstr "Registrazione... (Utilizza {hk} per interrompere)"
 
-#: src\ui\interface.py:1469
+#: src\ui\interface.py:1473
 msgid "En espera. Asigna teclas en Opciones o inicia manualmente."
 msgstr "Standby. Assegna i tasti nelle Opzioni o avvia manualmente."
 
-#: src\ui\interface.py:1521
+#: src\ui\interface.py:1525
 #, python-brace-format
 msgid "No se pudo abrir el directorio de grabaciones: {error}"
 msgstr "Non è stato possibile aprire la cartella di registrazione: {error}"
 
-#: src\ui\interface.py:1531
+#: src\ui\interface.py:1535
 msgid ""
 "WASAPIRecording\n"
 "Versión: {}\n"
@@ -816,9 +818,10 @@ msgid ""
 "Traductores:\n"
 "🇹🇷 Turco: Umut Korkmaz\n"
 "🇸🇦 Árabe: moataz geba\n"
-"🇮🇹 Italiano: Alessio Lenzi"
+"🇮🇹 Italiano: Alessio Lenzi\n"
+"🇻🇳 Vietnamita: Đào Đức Trung"
 msgstr ""
-"Registrazione WASAPIR\n"
+"WASAPIRecording\n"
 "Versione: {}\n"
 "Creato da: {}\n"
 "Copyright © 2025\n"
@@ -826,9 +829,10 @@ msgstr ""
 "Traduttori:\n"
 "🇹🇷 Turco: Umut Korkmaz\n"
 "🇸🇦 Arabo: moataz geba\n"
-"🇮🇹 Italiano: Alessio Lenzi"
+"🇮🇹 Italiano: Alessio Lenzi\n"
+"🇻🇳 Vietnamita: Đào Đức Trung"
 
-#: src\ui\interface.py:1540
+#: src\ui\interface.py:1545
 msgid "Acerca de..."
 msgstr "Informazioni su..."
 
@@ -1142,6 +1146,25 @@ msgstr "&Sì"
 #: src\ui\widgets.py:160
 msgid "&No"
 msgstr "&No"
+
+#~ msgid ""
+#~ "WASAPIRecording\n"
+#~ "Versión: {}\n"
+#~ "Creado por: {}\n"
+#~ "Copyright © 2025\n"
+#~ "\n"
+#~ "Traductores:\n"
+#~ "🇹🇷 Turco: Umut Korkmaz\n"
+#~ "🇸🇦 Árabe: moataz geba"
+#~ msgstr ""
+#~ "WASAPIRecording\n"
+#~ "Versione: {}\n"
+#~ "Creato da: {}\n"
+#~ "Copyright © 2025\n"
+#~ "\n"
+#~ "Traduttori:\n"
+#~ "🇹🇷 Turco: Umut Korkmaz\n"
+#~ "🇸🇦 Arabo: moataz geba"
 
 #~ msgid "Tecla inválida detectada."
 #~ msgstr "Rilevato un tasto non valido."

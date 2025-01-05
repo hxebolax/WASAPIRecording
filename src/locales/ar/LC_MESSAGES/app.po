@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WASAPIRecording 1.0\n"
 "Report-Msgid-Bugs-To: tu_email@ejemplo.com\n"
-"POT-Creation-Date: 2025-01-04 12:25+0100\n"
-"PO-Revision-Date: 2025-01-04 12:26+0100\n"
+"POT-Creation-Date: 2025-01-05 11:41+0100\n"
+"PO-Revision-Date: 2025-01-05 11:45+0100\n"
 "Last-Translator: \n"
 "Language-Team: tecwindow team\n"
 "Language: ar\n"
@@ -33,53 +33,61 @@ msgid ""
 "No se detectó ningún micrófono.\n"
 "Por favor, conecta o habilita al menos un micrófono antes de continuar."
 msgstr ""
+"لم يتم اكتشاف أي ميكروفون.\n"
+"يرجى توصيل أو تمكين ميكروفون واحد على الأقل قبل المتابعة."
 
 #: src\core\devices.py:189 src\core\devices.py:200 src\core\devices.py:208
 #: src\core\devices.py:219 src\core\devices.py:230 src\core\devices.py:238
-#, fuzzy
-#| msgid "Prueba de Audio"
 msgid "Error de Audio"
-msgstr "اختبار الصوت"
+msgstr "خطأ في الصوت"
 
 #: src\core\devices.py:198
 msgid ""
 "Se detectan micrófonos, pero no hay uno configurado como predeterminado.\n"
 "Por favor, configura un micrófono predeterminado en las opciones de sonido."
 msgstr ""
+"تم اكتشاف الميكروفونات، ولكن لم يتم تعيين أي منها كإعداد افتراضي.\n"
+"يرجى ضبط الميكروفون الافتراضي في خيارات الصوت."
 
 #: src\core\devices.py:206
 msgid ""
 "Ocurrió un error intentando obtener el micrófono predeterminado.\n"
 "Por favor, revisa tus dispositivos de grabación."
 msgstr ""
+"حدث خطأ أثناء محاولة الحصول على الميكروفون الافتراضي.\n"
+"يرجى التحقق من أجهزة التسجيل الخاصة بك."
 
 #: src\core\devices.py:217
 msgid ""
 "No se detectó ningún altavoz o tarjeta de sonido habilitada.\n"
 "Revisa tu configuración de audio en el Panel de Control de Windows."
 msgstr ""
+"لم يتم اكتشاف مكبر صوت أو بطاقة صوت ممكنة.\n"
+"تحقق من إعدادات الصوت في لوحة تحكم Windows."
 
 #: src\core\devices.py:228
 msgid ""
 "Se detectan altavoces, pero no hay uno configurado como predeterminado.\n"
 "Por favor, configura un altavoz predeterminado en las opciones de sonido."
 msgstr ""
+"تم اكتشاف مكبرات الصوت، ولكن لم يتم تعيين أي منها كإعداد افتراضي.\n"
+"يرجى ضبط مكبر الصوت الافتراضي في خيارات الصوت."
 
 #: src\core\devices.py:236
 msgid ""
 "Ocurrió un error intentando obtener el altavoz/speaker predeterminado.\n"
 "Por favor, revisa tus dispositivos de reproducción."
 msgstr ""
+"حدث خطأ أثناء محاولة الحصول على مكبر الصوت الافتراضي.\n"
+"يرجى التحقق من أجهزة التشغيل الخاصة بك."
 
 #: src\core\hotkeys.py:178
-#, fuzzy
-#| msgid ""
-#| "La combinación debe tener al menos dos modificadores y una tecla "
-#| "principal."
 msgid ""
 "La combinación debe tener al menos 2 modificadores (Ctrl,Shift,Alt) y 1 "
 "tecla principal válida."
-msgstr "يجب أن يحتوي الاختصار على مفتاحين تحكم على الأقل ومفتاح رئيسي."
+msgstr ""
+"يجب أن يحتوي الاختصار على مفتاحين تحكم على الأقل مثل control أو shift أو alt "
+"ومفتاح آخر مثل مفاتيح الوظائف أو الحروف أو الأرقم."
 
 #: src\core\hotkeys.py:179 src\core\hotkeys.py:186 src\ui\interface.py:1063
 #: src\ui\test_audio.py:251 src\ui\test_audio.py:263
@@ -87,165 +95,10 @@ msgid "Error"
 msgstr "خطأ"
 
 #: src\core\hotkeys.py:186
-#, fuzzy
-#| msgid "La combinación está en uso por otra aplicación: "
 msgid "La combinación está en uso: {}"
-msgstr "المجموعة قيد الاستخدام من قبل تطبيق آخر: "
+msgstr "المجموعة قيد الاستخدام: {}"
 
 #: src\core\info.py:4
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "1. ¿Qué es WASAPIRecording?\n"
-#| " \n"
-#| "WASAPIRecording es una aplicación para Windows que te permite grabar el "
-#| "audio de tu micrófono y el audio del sistema (música, videollamadas, "
-#| "etc.) de forma simultánea. Puedes combinar ambos en un solo archivo o "
-#| "guardarlos por separado (uno para el micrófono y otro para el sonido del "
-#| "sistema).\n"
-#| " \n"
-#| "2. Requisitos\n"
-#| " \n"
-#| "• Windows 10 o superior (con WASAPI).\n"
-#| "• Permisos para ejecutar la aplicación.\n"
-#| " \n"
-#| "3. Iniciar la Aplicación\n"
-#| " \n"
-#| "• Ejecuta el archivo o acceso directo llamado \"WASAPIRecording\".\n"
-#| "• Se abrirá la ventana principal con controles para micrófono, sistema, "
-#| "formatos de audio, etc.\n"
-#| " \n"
-#| "4. Configurar Dispositivos y Parámetros\n"
-#| " \n"
-#| "• Micrófono: Selecciona el micrófono que quieres usar.\n"
-#| "• Sistema (loopback): Selecciona el dispositivo de tu PC que captura todo "
-#| "lo que suena en el sistema.\n"
-#| "• Refrescar Dispositivos: Si conectaste algo nuevo y no aparece, haz clic "
-#| "aquí para actualizar la lista.\n"
-#| "• Calidad (Hz): Elige la frecuencia de muestreo (22050, 44100 o 48000). A "
-#| "mayor número, más calidad y más peso del archivo.\n"
-#| "• Formato de Salida: Puedes elegir WAV, MP3, FLAC, OGG o AIFF.\n"
-#| "• Bitrate MP3: Se mostrará solo si eliges MP3; ajusta la calidad de "
-#| "compresión.\n"
-#| "• Modo de grabación (Mono o Estéreo): Decide cuántos canales tendrá tu "
-#| "grabación final.\n"
-#| "• Habilitar Mezcla Monoaural:\n"
-#| "• Si notas que tu audio está siendo separado (por ejemplo, micrófono a un "
-#| "solo lado, sistema al otro), activa esta casilla para mezclar ambos "
-#| "canales y centrar el sonido.\n"
-#| "• En la práctica, todos los sonidos se combinan en un solo canal y se "
-#| "replica al izquierdo y derecho, evitando la sensación de que el audio "
-#| "“esté inclinado” a un lado.\n"
-#| "• Guardar archivos separados:\n"
-#| "• Si lo marcas, además de crear un archivo “combinado”, la app guardará "
-#| "otros dos archivos individuales: uno solo del micrófono y otro del "
-#| "sistema.\n"
-#| " \n"
-#| "5. Ajustar Volúmenes\n"
-#| " \n"
-#| "• Volumen del Micrófono: Usa el deslizador para subir o bajar la ganancia "
-#| "del micro.\n"
-#| "• Volumen del Sistema: Sube o baja la ganancia de los sonidos del PC.\n"
-#| " \n"
-#| "6. Iniciar y Detener la Grabación\n"
-#| " \n"
-#| "• Pulsa Iniciar Grabación (o usa el atajo global “Ctrl + Shift + F1” por "
-#| "defecto). El estado mostrará “Grabando…”.\n"
-#| "• Para detener, haz clic en Detener Grabación (o “Ctrl + Shift + F2”).\n"
-#| "• Si elegiste MP3, FLAC, OGG o AIFF, la app convertirá el archivo final "
-#| "tras la grabación; aparecerá un mensaje de “Por favor espere…”.\n"
-#| "• Cuando acabe, verás un aviso con la ruta donde se guardaron tus "
-#| "archivos.\n"
-#| " \n"
-#| "7. Dónde se Guardan las Grabaciones\n"
-#| " \n"
-#| "• Se almacenan en una carpeta llamada “recording”, que está dentro de la "
-#| "carpeta de la aplicación.\n"
-#| "• Desde la ventana principal, puedes abrir esa carpeta haciendo clic en "
-#| "Menú > Abrir Grabaciones.\n"
-#| " \n"
-#| "8. Opciones y Menú\n"
-#| " \n"
-#| "• En la ventana principal, hay un botón llamado Menú:\n"
-#| "• Acerca de…: Muestra la versión de WASAPIRecording y el nombre del "
-#| "creador.\n"
-#| "• Abrir Grabaciones: Abre la carpeta donde están los archivos grabados.\n"
-#| "• Idioma: Elige el idioma que prefieras. Deberás reiniciar la app para "
-#| "aplicar el cambio.\n"
-#| "• Opciones:\n"
-#| "• Aquí encontrarás el diálogo de Opciones, con dos apartados:\n"
-#| "• General: Incluye la casilla “Minimizar a la bandeja del sistema” para "
-#| "ocultar la ventana y dejar un ícono en la bandeja cuando minimizas.\n"
-#| "• Teclado: Sirve para cambiar los atajos globales de iniciar y detener la "
-#| "grabación. Si no te funcionan o están repetidos, aquí puedes ajustarlos.\n"
-#| " \n"
-#| "9. Prueba de Audio\n"
-#| " \n"
-#| "• El botón Prueba de Audio abre un diálogo para grabar unos segundos de "
-#| "muestra y reproducirlos inmediatamente.\n"
-#| "• Este diálogo:\n"
-#| "• Se abre siempre en primer plano.\n"
-#| "• No se cierra con la “X” ni con Alt+F4; solo con el botón Cerrar.\n"
-#| "• Primero grabas (botón “Detener” para terminar la grabación).\n"
-#| "• Luego puedes “Reproducir” lo que grabaste.\n"
-#| "• Si tienes “Guardar archivos separados” marcado, podrás elegir "
-#| "reproducir solo el micrófono, solo el sistema o ambos.\n"
-#| "• Al cerrar este diálogo, los archivos temporales se borran, así que es "
-#| "perfecto para confirmar que todo suena bien antes de hacer una grabación "
-#| "definitiva.\n"
-#| " \n"
-#| "10. Atajos de Teclado\n"
-#| " \n"
-#| "Atajos Globales (por defecto, puedes cambiarlos en Opciones > Teclado):\n"
-#| "• Iniciar Grabación: Ctrl + Shift + F1\n"
-#| "• Detener Grabación: Ctrl + Shift + F2\n"
-#| "Atajos dentro de la interfaz (con la tecla Alt):\n"
-#| "• Micrófono: Alt + O\n"
-#| "• Sistema (loopback): Alt + S\n"
-#| "• Refrescar Dispositivos: Alt + R\n"
-#| "• Calidad (Hz): Alt + C\n"
-#| "• Formato de salida: Alt + F\n"
-#| "• Bitrate MP3 (kbps): Alt + B\n"
-#| "• Modo de grabación: Alt + G\n"
-#| "• Habilitar Mezcla Monoaural: Alt + H\n"
-#| "• Guardar archivos separados de micrófono y sistema: Alt + Y\n"
-#| "• Volumen del Micrófono: Alt + V\n"
-#| "• Volumen del Sistema: : Alt + V\n"
-#| "• Iniciar Grabación: Alt + I\n"
-#| "• Detener Grabación: Alt + D\n"
-#| "• Prueba de Audio: Alt + P\n"
-#| "• Menú: Alt + M\n"
-#| "• Cerrar (en algunos diálogos): Alt + C\n"
-#| "• Dependiendo del idioma, algunas letras pueden variar.\n"
-#| " \n"
-#| "11. Minimizar a la Bandeja\n"
-#| " \n"
-#| "• Si en las Opciones (pestaña “General”) has activado “Minimizar a la "
-#| "bandeja”, al pulsar el botón de minimizar de Windows, la ventana "
-#| "desaparece de la barra de tareas y se muestra un ícono cerca del reloj "
-#| "del sistema.\n"
-#| "• Desde el ícono en la bandeja, puedes hacer doble clic para restaurar la "
-#| "ventana o usar el menú contextual para mostrarla/cerrar la aplicación.\n"
-#| " \n"
-#| "12. Cerrar la Aplicación\n"
-#| " \n"
-#| "• Al cerrar la ventana principal, si se está grabando, te preguntará si "
-#| "deseas detener la grabación antes de salir.\n"
-#| "• Si se está convirtiendo el archivo a MP3/FLAC/etc., esperará a que "
-#| "termine la conversión.\n"
-#| "• Luego se cerrará por completo.\n"
-#| " \n"
-#| "13. Consejos Finales\n"
-#| " \n"
-#| "• Ajusta el volumen del sistema y micrófono dentro de la propia app para "
-#| "equilibrar tus fuentes de audio.\n"
-#| "• Si algo no se oye bien, usa la Prueba de Audio para verificar y ajustar "
-#| "antes de grabar definitivamente.\n"
-#| "• Si el audio se oye “inclinado” a un canal (izquierdo o derecho), marca "
-#| "“Habilitar Mezcla Monoaural” para centrar el sonido.\n"
-#| " \n"
-#| "¡Disfruta grabando con WASAPIRecording! Si te gusta esta app, pasa por "
-#| "“Menú > invítame a un café” para apoyar su desarrollo.\n"
 msgid ""
 "\n"
 "1. ¿Qué es WASAPIRecording?\n"
@@ -453,6 +306,12 @@ msgstr ""
 "يمكنك الجمع بين كليهما في ملف واحد أو حفظهما بشكل منفصل (واحد للميكروفون "
 "والآخر لصوت النظام).\n"
 "\n"
+"بالإضافة إلى وظائف التسجيل الأساسية، يتضمن WASAPIRecording ما يلي:\n"
+"- نظام تحديث تلقائي يبحث عن الإصدارات الجديدة على GitHub.\n"
+"- وحدة لتغيير لغة الواجهة بسرعة وإعادة تشغيل التطبيق إذا لزم الأمر.\n"
+"- خيارات التكوين لتخصيص مفاتيح التشغيل السريع وتصغير النافذة إلى صينية "
+"النظام.\n"
+"\n"
 "2. المتطلبات\n"
 " \n"
 "- Windows 10 أو أعلى (مع WASAPI).\n"
@@ -460,77 +319,81 @@ msgstr ""
 " \n"
 "3. بدء التطبيق\n"
 " \n"
-"- قم بتشغيل الملف أو الاختصار المسمى \"WASAPIRecording\".\n"
+"- قم بتشغيل الملف أو الاختصار المسمى \"WASAPIRecording\".\t\n"
 "- سيتم فتح النافذة الرئيسية مع عناصر التحكم في الميكروفون والنظام وتنسيقات "
-"الصوت وما إلى ذلك. \n"
+"الصوت وخيارات التسجيل ومفاتيح التشغيل السريع والإعدادات الأخرى.\n"
 "\n"
 "4. كيفية استخدام التطبيق\n"
 " \n"
-"- الميكروفون: حدد الميكروفون الذي تريد استخدامه.\n"
-"- نظام (loopback): حدد الجهاز الذي تريده لتسجيل صوت النظام.\n"
-"- تحديث الأجهزة:إذا قمت بتوصيل شيء جديد ولم يظهر، فانقر هنا لتحديث القائمة.\n"
-"- جودة (Hz): اختر معدل العينة (22050 أو 44100 أو 48000). كلما زاد العدد، "
+"- الميكروفون**: حدد الميكروفون الذي تريد استخدامه.\n"
+"- نظام (loopback)**: حدد الجهاز الذي تريده لتسجيل صوت النظام.\n"
+"- تحديث الأجهزة**:إذا قمت بتوصيل شيء جديد ولم يظهر، فانقر هنا لتحديث "
+"القائمة.\n"
+"- جودة (Hz)**: اختر معدل العينة (22050 أو 44100 أو 48000). كلما زاد العدد، "
 "زادت الجودة وأصبح الملف حجمه أكبر.\n"
-"- تنسيق الإخراج: يمكنك اختيار WAV، MP3، FLAC، OGG أو AIFF.\n"
-"- MP3 Bitrate: سيتم عرضه فقط إذا اخترت MP3؛ لضبط جودة الضغط.\n"
-"- وضع التسجيل (مونو أو ستيريو): حدد عدد القنوات التي سيتضمنها تسجيلك "
+"- تنسيق الإخراج**: يمكنك اختيار WAV، MP3، FLAC، OGG أو AIFF.\n"
+"- MP3 Bitrate**: سيتم عرضه فقط إذا اخترت MP3؛ لضبط جودة الضغط.\n"
+"- وضع التسجيل (مونو أو ستيريو)**: حدد عدد القنوات التي سيتضمنها تسجيلك "
 "النهائي.\n"
-"- تمكين الخلط الأحادي:\n"
-"- إذا لاحظت أن الصوت الخاص بك منفصل (على سبيل المثال، الميكروفون على جانب "
-"واحد فقط، والنظام على الجانب الآخر)، حدد هذا المربع لخلط كلتا القناتين "
-"وتوسيط الصوت.\n"
-"\n"
-"- ومن الناحية العملية، يتم دمج جميع الأصوات في قناة واحدة وتكرارها إلى "
-"اليسار واليمين، لتجنب الشعور بأن الصوت مختلط. \"يميل\" إلى جانب واحد.\n"
-"- حفظ ملفات منفصلة:\n"
-"- في حالة تحديده، بالإضافة إلى إنشاء ملف \"مدمج\"، سيحفظ التطبيق ملفين "
-"فرديين آخرين: واحد من الميكروفون فقط وآخر من النظام.\n"
+"المخزن المؤقت (الإطارات)**: حجم كتلة الصوت المراد معالجتها في كل دورة "
+"تسجيل.\n"
+"- حفظ ملفات منفصلة**: في حالة تحديده، بالإضافة إلى إنشاء ملف \"مدمج\"، سيحفظ "
+"التطبيق ملفين فرديين آخرين: واحد من الميكروفون فقط وآخر من النظام.\n"
 " \n"
 "5. ضبط مستوى الصوت\n"
 " \n"
-"- مستوى صوت الميكروفون: استخدم شريط التمرير لرفع أو خفض صوت الميكروفون.\n"
-"- مستوى صوت النظام: استخدم شريط التمرير لرفع أو خفض صوت الكمبيوتر.\n"
+"- مستوى صوت الميكروفون**: استخدم شريط التمرير لرفع أو خفض صوت الميكروفون.\n"
+"- مستوى صوت النظام**: استخدم شريط التمرير لرفع أو خفض صوت الكمبيوتر.\n"
 " \n"
 "6. بدء وإيقاف التسجيل\n"
 " \n"
-"- اضغط على \"بدء التسجيل\" (أو استخدم الاختصار \"Ctrl + Shift + F1\"). ستظهر "
-"الحالة \"جاري التسجيل...\".\n"
-"- للإيقاف، انقر فوق إيقاف التسجيل (أو \"Ctrl + Shift + F2\").\n"
+"- اضغط على **بدء التسجيل** (أو استخدم الاختصار \"Ctrl + Shift + F1\" بشكل "
+"افتراضي). ستظهر الحالة \"جاري التسجيل...\".  \n"
+"- **للإيقاف**، انقر على **إيقاف التسجيل** (أو \"Ctrl + Shift + F2\").  \n"
 "- إذا اخترت MP3 أو FLAC أو OGG أو AIFF، فسيقوم التطبيق بتحويل الملف النهائي "
-"بعد التسجيل؛ ستظهر رسالة \"انتظر من فضلك...\".\n"
-"- عند الانتهاء، سترى رسالة بالمسار الذي تم حفظ ملفاتك فيه.\n"
+"بعد التسجيل؛ ستظهر رسالة \"انتظر من فضلك...\" حتى ينتهي.  \n"
+"- عند الانتهاء، سيتم عرض مربع حوار بالمسار الذي تم حفظ الملفات بداخله. إذا "
+"قمت بتمكين خيار \"فتح مجلد التسجيلات عند الانتهاء\" (أو أجبت بـ \"نعم\" في "
+"النافذة المنبثقة)، فسيتم فتح المجلد الذي يحتوي على الملفات مباشرة.\n"
 " \n"
-"7. حفظ التسجيلات\n"
+"7. مكان حفظ التسجيلات\n"
 "\n"
-"- يتم تخزينها في مجلد يسمى \"recording\"، وهو موجود داخل مجلد التطبيق.\n"
+"- يتم تخزينها بشكل افتراضي في مجلد يسمى \"recording\"، وهو موجود داخل مجلد "
+"التطبيق.\n"
+"- يمكنك تغيير مجلد التسجيل في \"القائمة > الخيارات > عام > مجلد التسجيل\".\n"
+"- لفتح المجلد من التطبيق، انقر فوق \"القائمة > فتح مجلد التسجيلات\". \n"
 "\n"
-"- من النافذة الرئيسية، يمكنك فتح هذا المجلد بالنقر فوق القائمة > فتح ملف "
-"التسجيلات.\n"
-" \n"
 "8. الخيارات والقائمة\n"
 " \n"
-"- يوجد في النافذة الرئيسية زر يسمى القائمة:\n"
-"- حول...: يعرض إصدار WASAPIRecording واسم المنشئ.\n"
-"- فتح ملف التسجيلات: يفتح المجلد الذي توجد به الملفات المسجلة.\n"
-"- اللغة: اختر اللغة التي تختارها. ستحتاج إلى إعادة تشغيل التطبيق لتطبيق "
-"التغيير.\n"
-"- خيارات:\n"
-"- ستجد هنا مربع حوار الخيارات، والذي يتكون من قسمين:\n"
-"- عام: قم بتحديد مربع الاختيار \"لتصغير إلى صينية النظام\" لإخفاء النافذة "
-"وترك رمز في صينية النظام.\n"
-"- لوحة المفاتيح: يتم استخدامها لتغيير الاختصارات العامة لبدء التسجيل "
-"وإيقافه. إذا لم تعمل أو تكررت، يمكنك تعديلها من هنا.\n"
-" \n"
+"- يوجد في النافذة الرئيسية زر يسمى **القائمة** والذي يتيح الوصول إلى:\n"
+"- **حول...**: يعرض إصدار WASAPIRecording واسم المنشئ.  \n"
+"- فتح مجلد التسجيلات**: يفتح المجلد الذي توجد به الملفات المسجلة.  \n"
+"- اللغة**: اختر اللغة التي تختارها. ستحتاج إلى إعادة تشغيل التطبيق لتطبيق "
+"التغيير.  \n"
+"- التحقق من وجود تحديثات**: للتحقق من وجود إصدار جديد من التطبيق على GitHub. "
+"إذا كان هناك، يمكنك تنزيل الإصدار الجديد وتثبيته، ثم إعادة تشغيل التطبيق "
+"للتحديث دون فقدان إعداداتك.  \n"
+"- **ادعوني لتناول القهوة إذا أعجبك عملي**: يعيد توجيهك إلى صفحة التبرع (مثل "
+"PayPal).\n"
+"\n"
+"أيضًا، داخل **القائمة**، ستجد:\n"
+"\n"
+"- **خيارات**:\n"
+"- **عام**: يتضمن مربع الاختيار \"تصغير إلى صينية النظام\" وإمكانية تغيير "
+"مجلد التسجيلات.\n"
+"- **لوحة المفاتيح**: تتيح لك تخصيص الاختصارات العامة لبدء التسجيل وإيقافه "
+"وإيقافه مؤقتًا وإلغائه. ويظهر هنا أيضًا إذا كان الاختصار \"غير معين\" أو إذا "
+"كان هناك تعارض مع إجراء آخر. \n"
+"\n"
 "9. اختبار الصوت\n"
 " \n"
-"- يفتح زر اختبار الصوت مربع حوار لتسجيل بضع ثوانٍ من العينة وتشغيلها على "
-"الفور.\n"
-"\\ مربع الحوار:\n"
-"- يتم فتحه دائمًا في المقدمة.\n"
-"- ولم يتم إغلاقه بـ \"X\" أو Alt+F4؛ فقط من زر إغلاق.\n"
-"- عند الضغط على اختبار الصوت يقوم ببدء الاختبار بشكل مباشر اضغط على (زر "
-"\"إيقاف\" لإنهاء التسجيل).\n"
-"- ثم يمكنك \"تشغيل\" ما قمت بتسجيله.\n"
+"- يفتح زر **اختبار الصوت** مربع حوار لتسجيل بضع ثوانٍ من العينة وتشغيلها على "
+"الفور.  \n"
+"- يظهر مربع الحوار هذا دائمًا في المقدمة **ولا يمكن** إغلاقه باستخدام \"X\" "
+"أو Alt+F4؛ فقط مع زر \"إغلاق\".  \n"
+"- أولاً، عند الضغط على اختبار الصوت يقوم ببدء الاختبار بشكل مباشر اضغط على "
+"(زر \"إيقاف\" لإنهاء التسجيل).  \n"
+"- وبعد ذلك، يصبح الزر نفسه \"تشغيل\"، للاستماع إلى التسجيل.  \n"
 "- إذا قمت بتحديد \"حفظ ملفات الميكروفون والنظام منفصلين\"، فيمكنك اختيار "
 "تشغيل الميكروفون فقط، أو النظام فقط أو كليهما.\n"
 "- عند إغلاق مربع الحوار هذا، يتم حذف الملفات المؤقتة، لذا فهو مثالي للتأكد "
@@ -538,18 +401,22 @@ msgstr ""
 " \n"
 "10. اختصارات لوحة المفاتيح\n"
 " \n"
-"الاختصارات العامة (افتراضيًا، يمكنك تغييرها من الخيارات > لوحة المفاتيح):\n"
-"- بدء التسجيل: Ctrl + Shift + F1\n"
-"- إيقاف التسجيل: Ctrl + Shift + F2\n"
-"الاختصارات داخل الواجهة (باستخدام مفتاح Alt):\n"
+"الاختصارات العامة (افتراضيً، يمكنك تغييرها من الخيارات > لوحة المفاتيح):\n"
+"- بدء التسجيل: **Ctrl + Shift + F1**\n"
+"- إيقاف التسجيل: **Ctrl + Shift + F2**\n"
+"- إيقاف مؤقت واستئناف التسجيل:  **Ctrl + Shift + F3**\n"
+"- إلغاء التسجيل: **Ctrl + Shift + F4 **\n"
+"\n"
+"**الاختصارات داخل الواجهة** (باستخدام مفتاح Alt، قد تختلف حسب اللغة):\n"
 "- ميكروفون: Alt + م\n"
 "- نظام(loopback): Alt + ن\n"
 "- تحديث الأجهزة: Alt + ت\n"
 "- جودة (Hz): Alt + ج\n"
 "- تنسيق الإخراج: Alt + س\n"
 "- معدل البت MP3 (kbps): Alt + ع\n"
-"- وضع التسجيل: Alt + ض\n"
-"- تمكين الخلط الأحادي: Alt + ك\n"
+"وضع الميكروفون: Alt + و\n"
+"وضع النظام (loopback): Alt + ض\n"
+"حجم (الإطارات):  Alt + ط\n"
 "- حفظ ملفات الميكروفون والنظام منفصلين: Alt + ح\n"
 "- مستوى صوت الميكروفون: Alt + ي\n"
 "- مستوى صوت النظام: Alt + ظ\n"
@@ -558,6 +425,7 @@ msgstr ""
 "- اختبار الصوت: Alt + خ\n"
 "- القائمة: Alt + ا\n"
 "- إغلاق (في بعض الحوارات): Alt + غ\n"
+"\n"
 "- اعتمادا على اللغة، قد تختلف بعض الحروف.\n"
 " \n"
 "11. تصغير إلى صينية النظام\n"
@@ -568,24 +436,38 @@ msgstr ""
 "- من الأيقونة الموجودة في صينية النظام، يمكنك النقر نقرًا مزدوجًا لاستعادة "
 "النافذة أو استخدام قائمة السياق لإظهار/إغلاق التطبيق.\n"
 " \n"
-"12. إغلاق التطبيق\n"
+"12. تحديث التطبيق\n"
+"\n"
+"- من \"القائمة > التحقق من وجود تحديثات\"، يتحقق التطبيق من مستودع GitHub "
+"بحثًا عن إصدار أحدث.  \n"
+"- إذا تم العثور عليه، فسوف يظهر لك مطالبة **بالتنزيل والتثبيت**. بعد "
+"التنزيل، سيتم استخراج الملفات وإنشاء برنامج نصي تلقائي (BAT) لِنَسخ التحديث "
+"وإعادة تشغيل البرنامج.  \n"
+"- في نهاية التثبيت، سيتم إغلاق التطبيق وتشغيله مرة أخرى بالإصدار الجديد.  \n"
+"\n"
+"13. إغلاق التطبيق\n"
 " \n"
 "- عند إغلاق النافذة الرئيسية، في حالة التسجيل، سيتم سؤالك عما إذا كنت تريد "
 "إيقاف التسجيل قبل الخروج.\n"
 "- إذا كان الملف يتم تحويله إلى MP3/FLAC/وما إلى ذلك، فسوف ينتظر حتى انتهاء "
-"التحويل.\n"
-"- ثم سوف يغلق تماما.\n"
-" \n"
-"13. النصائح النهائية\n"
+"التحويل.  \n"
+"- وبعد ذلك سيتم إغلاقه بالكامل. إذا قمت بالتصغير إلى صينية النظام، فسيتعين "
+"عليك أولاً استعادة النافذة أو إغلاقها من قائمة السياق من خلال صينية "
+"النظام.  \n"
+"\n"
+"14. النصائح النهائية\n"
 " \n"
 "- اضبط مستوى صوت النظام والميكروفون داخل التطبيق نفسه لموازنة مصادر الصوت "
 "لديك.\n"
-"- إذا كان هناك شيء لا يبدو صحيحًا، فاستخدم اختبار الصوت للتحقق والضبط قبل "
-"التسجيل النهائي.\n"
+"- إذا لاحظت أن الصوت متجه بشكل كبير لقناة واحدة (يسار أو يمين)، فحدد خيار "
+"**Mono** أو \"Mono Mix\" (في بعض النصوص)، لتوسيط الصوت \n"
 "\n"
 "- إذا كان الصوت \"منحرفًا\" إلى قناة واحدة (يسارًا أو يمينًا)، فحدد \"تمكين "
 "الخلط الأحادي\" لتوسيط الصوت.\n"
-" \n"
+" - استخدم **اختبار الصوت** للتأكد من أن كل شيء يبدو صحيحًا قبل إجراء تسجيل "
+"مهم.\n"
+"- لا تنس التحقق من **القائمة > الخيارات** لتخصيص مفاتيح التشغيل السريع "
+"واللغة ومجلد التسجيل والإعدادات الأخرى.\n"
 "استمتع بالتسجيل باستخدام WASAPIRecording! إذا أعجبك هذا التطبيق، توقف عند "
 "\"القائمة > ادعوني لتناول القهوة\" لدعم تطويره.\n"
 
@@ -593,7 +475,7 @@ msgstr ""
 msgid "Mostrar aplicación"
 msgstr "عرض التطبيق"
 
-#: src\ui\interface.py:126 src\ui\interface.py:1311 src\ui\update.py:159
+#: src\ui\interface.py:126 src\ui\interface.py:1315 src\ui\update.py:159
 #: src\ui\update.py:182 src\ui\update.py:208 src\ui\update.py:213
 #: src\ui\update.py:371
 msgid "Cerrar"
@@ -608,17 +490,11 @@ msgid "Procesando"
 msgstr "جارٍ المعالجة"
 
 #: src\ui\interface.py:298
-#, fuzzy
-#| msgid ""
-#| "WASAPIRecording ya se encuentra en ejecución.\n"
-#| "\n"
-#| "No se pueden tener dos instancias a la vez."
 msgid ""
 "WASAPIRecording ya se encuentra en ejecución.\n"
 "No se pueden tener dos instancias a la vez."
 msgstr ""
 "WASAPIRecording قيد التشغيل بالفعل.\n"
-"\n"
 "ليس من الممكن وجود نافذتين في نفس الوقت."
 
 #: src\ui\interface.py:382
@@ -654,10 +530,8 @@ msgid "&Bitrate MP3 (kbps):"
 msgstr "م&عدل البت MP3 (kbps):"
 
 #: src\ui\interface.py:425
-#, fuzzy
-#| msgid "Micrófon&o:"
 msgid "Modo Micrófon&o:"
-msgstr "&ميكروفون:"
+msgstr "&وضع الميكروفون:"
 
 #: src\ui\interface.py:426 src\ui\interface.py:432 src\ui\interface.py:1169
 #: src\ui\interface.py:1174
@@ -670,14 +544,12 @@ msgid "Estéreo"
 msgstr "ستيريو"
 
 #: src\ui\interface.py:431
-#, fuzzy
-#| msgid "&Sistema (loopback):"
 msgid "Modo &Sistema (loopback):"
-msgstr "&نظام (loopback):"
+msgstr "و&ضع النظام (loopback):"
 
 #: src\ui\interface.py:437
 msgid "&Tamaño de buffer (frames):"
-msgstr ""
+msgstr "حجم (الإ&طارات):"
 
 #: src\ui\interface.py:442
 msgid "Guardar archivos separados de micrófono &y sistema"
@@ -697,7 +569,7 @@ msgstr "&بدء التسجيل"
 
 #: src\ui\interface.py:463 src\ui\interface.py:840 src\ui\interface.py:876
 msgid "&Pausar"
-msgstr ""
+msgstr "إ&يقاف مؤقت"
 
 #: src\ui\interface.py:468
 msgid "&Detener Grabación"
@@ -715,14 +587,14 @@ msgstr "ا&ختبار الصوت"
 msgid "&Menú"
 msgstr "&القائمة"
 
-#: src\ui\interface.py:491 src\ui\interface.py:1471
+#: src\ui\interface.py:491 src\ui\interface.py:1475
 #, python-brace-format
 msgid "En espera (Usa {hk} para iniciar)"
 msgstr "متوقف (استخدم {hk} للبدء)"
 
 #: src\ui\interface.py:493
 msgid "Estado"
-msgstr "State"
+msgstr "الحالة"
 
 #: src\ui\interface.py:582
 msgid "Hay una grabación en curso. ¿Desea detenerla y salir?"
@@ -738,11 +610,11 @@ msgstr "انتظر من فضلك، جارٍ الانتهاء من التحويل
 
 #: src\ui\interface.py:834
 msgid "&Reanudar"
-msgstr ""
+msgstr "إ&ستئناف"
 
 #: src\ui\interface.py:895
 msgid "Grabación cancelada. Se han eliminado los archivos."
-msgstr ""
+msgstr "تم إلغاء التسجيل. تم حذف الملفات."
 
 #: src\ui\interface.py:895 src\ui\interface.py:940
 msgid "Grabación"
@@ -773,13 +645,14 @@ msgstr ""
 "ملف منفصل للنظام: {system_path}"
 
 #: src\ui\interface.py:938
-#, fuzzy
-#| msgid "No se pudo abrir el directorio de grabaciones: {error}"
 msgid ""
 "\n"
 "\n"
 "¿Desea abrir la carpeta de grabaciones?"
-msgstr "لا يمكن فتح دليل التسجيلات: {error}"
+msgstr ""
+"\n"
+"\n"
+"هل تريد فتح مجلد التسجيلات؟"
 
 #: src\ui\interface.py:1073
 msgid "Información"
@@ -791,7 +664,7 @@ msgstr "الأ&لمانية"
 
 #: src\ui\interface.py:1256
 msgid "Árabe"
-msgstr ""
+msgstr "العربية"
 
 #: src\ui\interface.py:1257
 msgid "Español"
@@ -817,43 +690,47 @@ msgstr "ال&برتغالية"
 msgid "Turco"
 msgstr "ال&تركية"
 
-#: src\ui\interface.py:1291 src\ui\options.py:317
+#: src\ui\interface.py:1263
+msgid "Vietnamita"
+msgstr "الفيتنامية"
+
+#: src\ui\interface.py:1295 src\ui\options.py:317
 msgid "Opciones"
 msgstr "الخيارات"
 
-#: src\ui\interface.py:1292
+#: src\ui\interface.py:1296
 msgid "Buscar actualizaciones"
-msgstr ""
+msgstr "ال&تحقق من وجود تحديثات"
 
-#: src\ui\interface.py:1293
+#: src\ui\interface.py:1297
 msgid "Idioma"
 msgstr "ا&للغة"
 
-#: src\ui\interface.py:1294 src\ui\interface.py:1309
+#: src\ui\interface.py:1298 src\ui\interface.py:1313
 msgid "Abrir Grabaciones"
-msgstr "فتح ملف التسجيلات"
+msgstr "فتح مجلد التسجيلات"
 
-#: src\ui\interface.py:1295
+#: src\ui\interface.py:1299
 msgid "&Manual de usuario"
 msgstr "&دليل المستخدم"
 
-#: src\ui\interface.py:1296
+#: src\ui\interface.py:1300
 msgid "Acerca &de..."
 msgstr "حول..."
 
-#: src\ui\interface.py:1297
+#: src\ui\interface.py:1301
 msgid "invítame a un &café si te gusta mi trabajo"
-msgstr "ادعوني لتناول ال&قهوة إذا كنت تحب عملي"
+msgstr "ادعوني لتناول ال&قهوة إذا أعجبك عملي"
 
-#: src\ui\interface.py:1298
+#: src\ui\interface.py:1302
 msgid "Salir"
 msgstr "الخ&روج"
 
-#: src\ui\interface.py:1310
+#: src\ui\interface.py:1314
 msgid "&invítame a un café si te gusta mi trabajo"
 msgstr "&ادعوني لتناول القهوة إذا كنت تحب عملي"
 
-#: src\ui\interface.py:1327
+#: src\ui\interface.py:1331
 msgid ""
 "Para aplicar el nuevo idioma se necesita reiniciar la aplicación.\n"
 "¿Desea continuar?"
@@ -861,35 +738,33 @@ msgstr ""
 "لتطبيق اللغة الجديدة تحتاج إلى إعادة تشغيل التطبيق.\n"
 "هل تريد الاستمرار؟"
 
-#: src\ui\interface.py:1328
+#: src\ui\interface.py:1332
 msgid "Confirmar cambio de idioma"
 msgstr "تأكيد تغيير اللغة"
 
-#: src\ui\interface.py:1459
-#, fuzzy
-#| msgid "Grabación"
-msgid "Grabación en pausa."
-msgstr "جارٍ التسجيل"
-
 #: src\ui\interface.py:1463
+msgid "Grabación en pausa."
+msgstr "تم إيقاف التسجيل مؤقتًا."
+
+#: src\ui\interface.py:1467
 msgid "Grabando... (No hay hotkey de detener asignada)"
 msgstr "تسجيل... (لم يتم تعيين مفتاح تشغيل سريع للإيقاف)"
 
-#: src\ui\interface.py:1465
+#: src\ui\interface.py:1469
 #, python-brace-format
 msgid "Grabando... (Usa {hk} para detener)"
 msgstr "تسجيل... (استخدم {hk} للإيقاف)"
 
-#: src\ui\interface.py:1469
+#: src\ui\interface.py:1473
 msgid "En espera. Asigna teclas en Opciones o inicia manualmente."
 msgstr "تعليق. قم بتعيين المفاتيح في الخيارات أو ابدأ يدويًا."
 
-#: src\ui\interface.py:1521
+#: src\ui\interface.py:1525
 #, python-brace-format
 msgid "No se pudo abrir el directorio de grabaciones: {error}"
 msgstr "لا يمكن فتح دليل التسجيلات: {error}"
 
-#: src\ui\interface.py:1531
+#: src\ui\interface.py:1535
 msgid ""
 "WASAPIRecording\n"
 "Versión: {}\n"
@@ -899,10 +774,21 @@ msgid ""
 "Traductores:\n"
 "🇹🇷 Turco: Umut Korkmaz\n"
 "🇸🇦 Árabe: moataz geba\n"
-"🇮🇹 Italiano: Alessio Lenzi"
+"🇮🇹 Italiano: Alessio Lenzi\n"
+"🇻🇳 Vietnamita: Đào Đức Trung"
 msgstr ""
+"تسجيل WASAPIRecording\n"
+"الإصدار: {}\n"
+"تم الإنشاء بواسطة: {}\n"
+"حقوق الطبع والنشر © 2025\n"
+"\n"
+"المترجمون\n"
+"🇹🇷 التركية: أوموت كوركماز\n"
+"🇸🇦 العربية: معتز جيبا\n"
+"🇮🇹 الإيطالية: أليسيو لينزي\n"
+"🇻🇳 الفيتنامية: Đào Đức Trung"
 
-#: src\ui\interface.py:1540
+#: src\ui\interface.py:1545
 msgid "Acerca de..."
 msgstr "حولة..."
 
@@ -923,18 +809,16 @@ msgid "Minimizar a la bandeja del sistema"
 msgstr "تصغير إلى صينية النظام"
 
 #: src\ui\options.py:51
-#, fuzzy
-#| msgid "Modo de &grabación:"
 msgid "Carpeta de grabaciones:"
-msgstr "و&ضع التسجيل:"
+msgstr "مجلد التسجيلات:"
 
 #: src\ui\options.py:59
 msgid "Cambiar carpeta..."
-msgstr ""
+msgstr "تغيير المجلد..."
 
 #: src\ui\options.py:73
 msgid "Selecciona la carpeta donde se guardarán las grabaciones"
-msgstr ""
+msgstr "حدد المجلد الذي سيتم حفظ التسجيلات فيه"
 
 #: src\ui\options.py:133
 msgid "Combinación para Iniciar Grabación:"
@@ -949,34 +833,24 @@ msgid "Combinación para Detener Grabación:"
 msgstr "اختصار إيقاف التسجيل:"
 
 #: src\ui\options.py:155
-#, fuzzy
-#| msgid "Capturar Hotkey Parar"
 msgid "Capturar Hotkey Detener"
 msgstr "إضافة اختصار لإيقاف التسجيل"
 
 #: src\ui\options.py:159
-#, fuzzy
-#| msgid "Combinación para Iniciar Grabación:"
 msgid "Combinación para Pausar/Reanudar:"
-msgstr "اختصار بدء التسجيل:"
+msgstr "اختصار إيقاف واستئناف التسجيل:"
 
 #: src\ui\options.py:168
-#, fuzzy
-#| msgid "Capturar Hotkey Parar"
 msgid "Capturar Hotkey Pausa"
-msgstr "إضافة اختصار لإيقاف التسجيل"
+msgstr "إضافة اختصار لإيقاف وإستئناف التسجيل"
 
 #: src\ui\options.py:172
-#, fuzzy
-#| msgid "Combinación para Iniciar Grabación:"
 msgid "Combinación para Cancelar Grabación:"
-msgstr "اختصار بدء التسجيل:"
+msgstr "اختصار إلغاء التسجيل:"
 
 #: src\ui\options.py:181
-#, fuzzy
-#| msgid "Capturar Hotkey Parar"
 msgid "Capturar Hotkey Cancelar"
-msgstr "إضافة اختصار لإيقاف التسجيل"
+msgstr "إضافة اختصار لإلغاء التسجيل"
 
 #: src\ui\options.py:195 src\ui\options.py:198 src\ui\options.py:201
 #: src\ui\options.py:204
@@ -984,18 +858,12 @@ msgid "Esperando combinación..."
 msgstr "اضغط مفاتيح الاختصار..."
 
 #: src\ui\options.py:280
-#, fuzzy
-#| msgid ""
-#| "No puede asignar la misma combinación a Iniciar y Detener.\n"
-#| "Por favor, elija una diferente.\n"
-#| "Se revertirán los cambios a los que tenia por defecto."
 msgid ""
 "No puede asignar la misma combinación a más de una acción.\n"
 "Se revertirán los cambios."
 msgstr ""
-"لا يمكنك تعيين نفس المجموعة لبدء وإيقاف.\n"
-"الرجاء اختيار واحد مختلف.\n"
-"ستعود التغييرات إلى الوضع الافتراضي."
+"لا يمكنك تعيين نفس المجموعة لأكثر من إجراء واحد.\n"
+"سيتم التراجع عن التغييرات."
 
 #: src\ui\options.py:281
 msgid "Error de Hotkeys"
@@ -1053,6 +921,10 @@ msgid ""
 "separados, podrás elegir micrófono, sistema o ambos.\n"
 "No se puede cerrar con Alt+F4 ni con la X; sólo con 'Cerrar'."
 msgstr ""
+"تقوم هذه النافذة بإجراء اختبار التسجيل والتشغيل بنفس الإعدادات.\n"
+"بالضغط على \"إيقاف\"، يمكنك بعد ذلك \"تشغيل\". إذا قمت بحفظ ملفات منفصلة، ​​"
+"يمكنك اختيار الميكروفون أو النظام أو كليهما.\n"
+"ولا يمكن إغلاقه باستخدام Alt+F4 أو X؛ فقط من \"إغلاق\"."
 
 #: src\ui\test_audio.py:222 src\ui\test_audio.py:235 src\ui\test_audio.py:289
 msgid "Reproducir"
@@ -1063,10 +935,8 @@ msgid "Detener"
 msgstr "إيقاف"
 
 #: src\ui\test_audio.py:244
-#, fuzzy
-#| msgid "No se ha grabado nada aún. Primero detenga la grabación."
 msgid "No se ha grabado nada aún."
-msgstr "لم يتم تسجيل أي شيء حتى الآن. أوقف التسجيل أولاً."
+msgstr "لم يتم تسجيل أي شيء حتى الآن."
 
 #: src\ui\test_audio.py:244
 msgid "Aviso"
@@ -1077,8 +947,6 @@ msgid "No existe el archivo a reproducir"
 msgstr "الملف المطلوب تشغيله غير موجود"
 
 #: src\ui\test_audio.py:301
-#, fuzzy
-#| msgid "La grabación sigue en curso. ¿Desea cancelar la prueba de sonido?"
 msgid "La grabación sigue en curso. ¿Deseas cancelar la prueba de sonido?"
 msgstr "التسجيل لا يزال قيد التقدم، هل تريد إلغاء اختبار الصوت؟"
 
@@ -1087,126 +955,124 @@ msgid "Cancelar Prueba"
 msgstr "إلغاء الاختبار"
 
 #: src\ui\update.py:41
-#, fuzzy
-#| msgid "Mostrar aplicación"
 msgid "Actualización"
-msgstr "عرض التطبيق"
+msgstr "تحديث"
 
 #: src\ui\update.py:66
 msgid "Instalar"
-msgstr ""
+msgstr "مثبت"
 
 #: src\ui\update.py:148
 #, python-brace-format
 msgid "Se encontró una nueva versión: {0}. ¿Desea instalarla?"
-msgstr ""
+msgstr "تم العثور على نسخة جديدة: {0}. هل تريد تثبيتها؟"
 
 #: src\ui\update.py:158
 msgid "No hay actualizaciones disponibles. Su aplicación está actualizada."
-msgstr ""
+msgstr "لا توجد تحديثات متاحة. البرنامج محدث."
 
 #: src\ui\update.py:174
 msgid "No se pudo conectar al servidor. Verifique su conexión a Internet."
-msgstr ""
+msgstr "تعذر الاتصال بالخادم. تحقق من اتصالك بالإنترنت."
 
 #: src\ui\update.py:176
 msgid ""
 "Error en la conexión segura (SSL). Por favor, revise la configuración de "
 "seguridad de su red."
-msgstr ""
+msgstr "خطأ في الاتصال الآمن (SSL). يرجى مراجعة إعدادات أمان الشبكة لديك."
 
 #: src\ui\update.py:178
 msgid "La conexión tardó demasiado tiempo. Intente nuevamente más tarde."
-msgstr ""
+msgstr "استغرق الاتصال وقتا طويلا. يرجى المحاولة مرة أخرى في وقت لاحق."
 
 #: src\ui\update.py:180
 #, python-brace-format
 msgid "Error de red desconocido: {0}"
-msgstr ""
+msgstr "خطأ غير معروف في الشبكة: {0}"
 
 #: src\ui\update.py:186
 msgid "No se encontró el archivo necesario para completar la operación."
-msgstr ""
+msgstr "لم يتم العثور على الملف المطلوب لإكمال العملية."
 
 #: src\ui\update.py:188
 msgid "Se esperaba un archivo, pero se encontró un directorio."
-msgstr ""
+msgstr "توقعت ملفًا، ولكن وجدت دليلاً."
 
 #: src\ui\update.py:190
 msgid "Permiso denegado. Ejecute la aplicación con los permisos adecuados."
-msgstr ""
+msgstr "تم رفض الإذن. قم بتشغيل التطبيق بالأذونات المناسبة."
 
 #: src\ui\update.py:192
 msgid ""
 "Error al copiar o mover archivos. Verifique los permisos y el espacio "
 "disponible."
-msgstr ""
+msgstr "حدث خطأ أثناء نسخ الملفات أو نقلها. تحقق من الأذونات والمساحة المتاحة."
 
 #: src\ui\update.py:194
 msgid ""
 "Se produjo un error en los datos proporcionados. Verifique la información "
 "ingresada."
-msgstr ""
+msgstr "حدث خطأ في البيانات المقدمة. التحقق من المعلومات المدخلة."
 
 #: src\ui\update.py:196
 msgid ""
 "Falta un elemento requerido en los datos. Verifique el formato de la "
 "información."
-msgstr ""
+msgstr "هناك عنصر مطلوب مفقود من البيانات. التحقق من تنسيق المعلومات."
 
 #: src\ui\update.py:198
 msgid ""
 "Se intentó acceder a un elemento fuera del rango permitido. Revise la "
 "configuración interna."
 msgstr ""
+"جرت محاولة للوصول إلى عنصر خارج النطاق المسموح به. تحقق من التكوين الداخلي."
 
 #: src\ui\update.py:200
 msgid "No se pudo establecer una conexión. Verifique su conexión a Internet."
-msgstr ""
+msgstr "لا يمكن التحقق من الاتصال. تحقق من اتصالك بالإنترنت."
 
 #: src\ui\update.py:202
 msgid ""
 "La operación tardó demasiado tiempo en completarse. Inténtelo más tarde."
 msgstr ""
+"استغرقت العملية وقتًا طويلاً حتى تكتمل. يرجى المحاولة مرة أخرى في وقت لاحق."
 
 #: src\ui\update.py:204
 msgid "Se perdió la conexión con el servidor. Intente reconectarse."
-msgstr ""
+msgstr "تم فقدان الاتصال بالخادم. حاول إعادة الاتصال."
 
 #: src\ui\update.py:206
 #, python-brace-format
 msgid "Ocurrió un error inesperado: {0}"
-msgstr ""
+msgstr "حدث خطأ غير متوقع: {0}"
 
 #: src\ui\update.py:222
 msgid "Descargando la actualización, esto puede tardar unos momentos..."
-msgstr ""
+msgstr "جارٍ تنزيل التحديث، قد يستغرق ذلك بضع دقائق..."
 
 #: src\ui\update.py:255
 msgid "Descarga cancelada."
-msgstr ""
+msgstr "تم إلغاء التنزيل."
 
 #: src\ui\update.py:271
-#, fuzzy
-#| msgid "Esperando combinación..."
 msgid "Extrayendo la actualización..."
-msgstr "اضغط مفاتيح الاختصار..."
+msgstr "استخراج التحديث..."
 
 #: src\ui\update.py:299
 msgid "Creando el archivo de instalación automática..."
-msgstr ""
+msgstr "جارٍ إنشاء ملف التثبيت التلقائي..."
 
 #: src\ui\update.py:323
 msgid "Archivo de actualización creado. La aplicación se reiniciará."
-msgstr ""
+msgstr "تم إنشاء ملف التحديث. سيتم إعادة تشغيل التطبيق."
 
 #: src\ui\update.py:324
 msgid "Reiniciar ahora"
-msgstr ""
+msgstr "أعد التشغيل الآن"
 
 #: src\ui\update.py:340
 msgid "Reiniciando la aplicación..."
-msgstr ""
+msgstr "جارٍ إعادة تشغيل التطبيق..."
 
 #: src\ui\widgets.py:154
 msgid "&Aceptar"
