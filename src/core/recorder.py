@@ -74,7 +74,7 @@ def _adjust_user_mode(data, user_mode):
 	# Si el hardware da más de 2 canales, actuamos según user_mode
 	if num_chan > 2:
 		logger.log_action(f"Detectados {num_chan} canales. Ajustando según modo '{user_mode}'.")
-		if user_mode == "Mono":
+		if user_mode == _("Mono"):
 			# -> promediamos todos y duplicamos
 			multi_mono = data.mean(axis=1)  # (N,)
 			data = np.column_stack((multi_mono, multi_mono))
@@ -87,16 +87,16 @@ def _adjust_user_mode(data, user_mode):
 			num_chan = 2
 
 	# A continuación, casos usuales (1 ó 2 canales)
-	if num_chan == 2 and user_mode == "Mono":
+	if num_chan == 2 and user_mode == _("Mono"):
 		return to_mono(data)
 
-	if num_chan == 1 and user_mode == "Estéreo":
+	if num_chan == 1 and user_mode == _("Estéreo"):
 		return expand_to_stereo(data)
 
-	if num_chan == 1 and user_mode == "Mono":
+	if num_chan == 1 and user_mode == _("Mono"):
 		return expand_to_stereo(data)
 
-	if num_chan == 2 and user_mode == "Estéreo":
+	if num_chan == 2 and user_mode == _("Estéreo"):
 		return data
 
 	# Por si acaso, forzamos a estéreo
@@ -114,8 +114,8 @@ def record_audio(
 	system_output_path=None,
 	mic_volume=1.0,
 	system_volume=0.5,
-	mic_mode="Estéreo",
-	system_mode="Estéreo",
+	mic_mode=_("Estéreo"),
+	system_mode=_("Estéreo"),
 	buffer_size=1024,
 	pause_event=None,
 	cancel_event=None

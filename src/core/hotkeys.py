@@ -19,10 +19,9 @@ import wx
 import json
 import os
 import ctypes
-import winsound
 import atexit
 from ctypes import wintypes
-from core.config import load_config, save_config, get_base_path
+from core.config import load_config, save_config, get_base_path, test_winsound_beep
 from core.logger import Logger
 from ui.widgets import mensaje
 
@@ -234,7 +233,7 @@ def start_capturing():
 	captura_completa = False
 	is_capturing = True
 	install_hook()
-	winsound.Beep(1000, 200)
+	test_winsound_beep(1000, 200)
 	logger.log_action("Inicio de captura de hotkeys.")
 
 def stop_capturing():
@@ -244,7 +243,7 @@ def stop_capturing():
 	global is_capturing
 	is_capturing = False
 	uninstall_hook()
-	winsound.Beep(500, 200)
+	test_winsound_beep(500, 200)
 	logger.log_action("Captura de hotkeys finalizada.")
 
 def parse_hotkey(hotkey):

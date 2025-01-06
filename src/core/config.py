@@ -27,6 +27,7 @@ import json
 import os
 import base64
 import locale
+import winsound
 from core.utils import get_base_path
 from core.logger import Logger  # Importar Logger
 
@@ -160,3 +161,37 @@ def load_config(config_file):
 	except (json.JSONDecodeError, Exception) as e:
 		logger.log_error(f"Error al cargar configuración desde {config_file}: {e}")
 		return {}
+
+def test_winsound_beep(frequency=440, duration=1000):
+	"""
+	Prueba el uso de winsound.Beep y registra posibles errores durante su ejecución.
+
+	:param frequency: Frecuencia del tono en Hertz (por defecto, 440 Hz).
+	:param duration: Duración del tono en milisegundos (por defecto, 1000 ms).
+	:return: None
+	"""
+	try:
+		# Validar si la plataforma es compatible
+		if os.name != "nt":  # Solo funciona en Windows
+			raise RuntimeError("El módulo winsound solo está disponible en Windows.")
+
+		# Validar rango de frecuencia y duración
+		if not (37 <= frequency <= 32767):
+			raise ValueError("La frecuencia debe estar entre 37 y 32767 Hertz.")
+		if duration <= 0:
+			raise ValueError("La duración debe ser mayor a 0 milisegundos.")
+
+		# Intentar ejecutar winsound.Beep
+		logger.log_action(f"Intentando reproducir un tono: frecuencia={frequency}Hz, duración={duration}ms")
+		winsound.Beep(frequency, duration)
+		logger.log_action("Tono reproducido exitosamente.")
+	except ValueError as ve:
+		# Error en los parámetros
+		logger.log_error(f"Error de validación en winsound.Beep: {ve}")
+	except RuntimeError as re:
+		# Error de compatibilidad de plataforma
+		logger.log_error(f"Error de plataforma en winsound.Beep: {re}")
+	except Exception as e:
+		# Cualquier otro error inesperado
+		logger.log_error(f"Error inesperado en winsound.Beep: {e}")
+

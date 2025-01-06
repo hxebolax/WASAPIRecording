@@ -19,7 +19,6 @@ import sys
 import wx
 import wx.adv
 import soundcard as sc
-import winsound
 import datetime
 import numpy as np
 import soundfile as sf
@@ -30,7 +29,7 @@ import base64
 import io
 
 from core.utils import get_base_path
-from core.config import save_config, load_config
+from core.config import save_config, load_config, test_winsound_beep
 from core.devices import (
 	update_selected_mic, update_selected_system, refresh_devices,
 	update_quality, update_output_format, update_bitrate,
@@ -212,7 +211,7 @@ class PleaseWaitDialog(wx.Dialog):
 		try:
 			import winsound
 			while self.keep_playing:
-				winsound.Beep(800, 200)
+				test_winsound_beep(800, 200)
 				time.sleep(0.3)
 		except Exception as e:
 			logger.log_error(f"Error al reproducir tono en el diálogo 'Por favor espere': {e}")
@@ -364,8 +363,8 @@ class AudioRecorderFrame(wx.Frame):
 		self.bitrate_options = [32, 64, 96, 128, 160, 192, 256, 320]
 		self.selected_bitrate = 192
 
-		self.mic_mode = "Estéreo"
-		self.system_mode = "Estéreo"
+		self.mic_mode = _("Estéreo")
+		self.system_mode = _("Estéreo")
 
 		self.separate_files = False
 		self.combined_output_path = None
@@ -773,7 +772,7 @@ class AudioRecorderFrame(wx.Frame):
 
 			logger.log_action("Inicio de grabación de audio.")
 			self.update_status_message(recording=True)
-			winsound.Beep(1000, 200)
+			test_winsound_beep(1000, 200)
 
 			self.separate_files = self.separate_files_checkbox.GetValue()
 			final_channels = 2
@@ -834,13 +833,13 @@ class AudioRecorderFrame(wx.Frame):
 				self.pause_button.SetLabel(_("&Reanudar"))
 				self.update_status_message(recording=True, paused=True)
 				logger.log_action("Grabación pausada por el usuario.")
-				winsound.Beep(700, 150)
+				test_winsound_beep(700, 150)
 			else:
 				self.pause_event.clear()
 				self.pause_button.SetLabel(_("&Pausar"))
 				self.update_status_message(recording=True, paused=False)
 				logger.log_action("Grabación reanudada por el usuario.")
-				winsound.Beep(1400, 150)
+				test_winsound_beep(1400, 150)
 
 	def on_cancel_recording(self, event):
 		"""
@@ -882,7 +881,7 @@ class AudioRecorderFrame(wx.Frame):
 		self.start_button.SetFocus()
 
 		self.update_status_message(recording=False)
-		winsound.Beep(500, 200)
+		test_winsound_beep(500, 200)
 
 		if self.recording_thread:
 			self.recording_thread.join()
