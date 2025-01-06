@@ -924,14 +924,14 @@ class AudioRecorderFrame(wx.Frame):
 		Si se cierra la aplicación, procede con final_close().
 		"""
 		message = _("Grabación completada. Archivo guardado como:\n{file_path}").format(
-			file_path=self.combined_output_path
+			file_path=self.combined_output_path.replace(".wav", f".{self.selected_format.lower()}")
 		)
 		if self.separate_files and self.mic_output_path and self.system_output_path:
 			message += _(
 				"\nArchivo separado de micrófono: {mic_path}\nArchivo separado de sistema: {system_path}"
 			).format(
-				mic_path=self.mic_output_path,
-				system_path=self.system_output_path
+				mic_path=self.mic_output_path.replace(".wav", f".{self.selected_format.lower()}"),
+				system_path=self.system_output_path.replace(".wav", f".{self.selected_format.lower()}")
 			)
 
 		message += _("\n\n¿Desea abrir la carpeta de grabaciones?")
@@ -1009,36 +1009,56 @@ class AudioRecorderFrame(wx.Frame):
 
 	def save_as_mp3(self, wav_file_path):
 		"""
-		Convierte un archivo WAV a MP3 utilizando la librería `lameenc`.
+		Convierte un archivo WAV a MP3 leyendo y codificando por bloques (chunks),
+		para evitar uso excesivo de memoria. Usa el bitrate y otros ajustes
+		de la propia interfaz (self.selected_bitrate, etc.).
 
 		:param wav_file_path: Ruta del archivo WAV a convertir.
 		:return: Ruta del archivo MP3 generado.
 		"""
+		import lameenc
+
+		# Obtener el bitrate MP3 desde la configuración de la interfaz
+		bitrate = self.selected_bitrate  # Por ejemplo, 128, 192, etc.
+
+		# Tamaño de bloque para leer frames del WAV en cada iteración
+		block_size = 65536
+
+		# Configuramos el encoder LAME
+		encoder = lameenc.Encoder()
+		encoder.set_bit_rate(bitrate)     # kbps
+		encoder.set_quality(2)           # 0 = mejor, 9 = peor
+
+		# Preparar la ruta de salida MP3
+		mp3_path = wav_file_path.replace(".wav", ".mp3")
+
 		try:
-			import lameenc
-			data, samplerate = sf.read(wav_file_path)
+			with sf.SoundFile(wav_file_path, mode='r') as snd_in, open(mp3_path, 'wb') as mp3_f:
+				samplerate = snd_in.samplerate
+				channels = snd_in.channels
 
-			channels = data.shape[1] if len(data.shape) > 1 else 1
+				# Ajustar samplerate y canales en el encoder
+				encoder.set_in_sample_rate(samplerate)
+				encoder.set_channels(channels)
 
-			encoder = lameenc.Encoder()
-			encoder.set_bit_rate(self.selected_bitrate)
-			encoder.set_in_sample_rate(samplerate)
-			encoder.set_channels(channels)
-			encoder.set_quality(2)
+				# Leemos y convertimos en bloques
+				for block in snd_in.blocks(blocksize=block_size, dtype='int16'):
+					# block es un ndarray shape (N_frames, n_channels), dtype=int16
+					# Convertimos a bytes y codificamos con LAME
+					mp3_data = encoder.encode(block.tobytes())
+					mp3_f.write(mp3_data)
 
-			data_int16 = (data * 32767).astype(np.int16).tobytes()
-			mp3_data = encoder.encode(data_int16) + encoder.flush()
+				# Terminamos de vaciar el buffer interno del encoder
+				mp3_f.write(encoder.flush())
 
-			mp3_path = wav_file_path.replace(".wav", ".mp3")
-			with open(mp3_path, "wb") as mp3_file:
-				mp3_file.write(mp3_data)
-
+			# Tras la conversión, eliminamos el archivo WAV original
 			os.remove(wav_file_path)
-			logger.log_action(f"Archivo convertido a MP3 y borrado WAV original: {mp3_path}")
-			return mp3_path
+			logger.log_action(f"Archivo convertido a MP3 (chunks) y WAV original eliminado: {mp3_path}")
 		except Exception as e:
-			logger.log_error(f"Error al convertir a MP3: {e}")
+			logger.log_error(f"Error al convertir a MP3 (chunks): {e}")
 			raise
+		return mp3_path
+
 
 	def save_as_format(self, wav_file_path, target_format):
 		"""
