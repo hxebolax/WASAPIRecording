@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WASAPIRecording\n"
 "Report-Msgid-Bugs-To: tu_email@ejemplo.com\n"
 "POT-Creation-Date: 2025-01-05 11:41+0100\n"
-"PO-Revision-Date: 2025-01-05 15:49+0300\n"
+"PO-Revision-Date: 2025-01-07 00:36+0300\n"
 "Last-Translator: Umut KORKMAZ <umutkork@gmail.com>\n"
 "Language-Team: Umut KORKMAZ <umutkork@gmail.com>\n"
 "Language: tr_TR\n"
@@ -741,16 +741,6 @@ msgid "No se pudo abrir el directorio de grabaciones: {error}"
 msgstr "Kayıt dizini açılamadı: {error}"
 
 #: src\ui\interface.py:1535
-#| msgid ""
-#| "WASAPIRecording\n"
-#| "Versión: {}\n"
-#| "Creado por: {}\n"
-#| "Copyright © 2025\n"
-#| "\n"
-#| "Traductores:\n"
-#| "🇹🇷 Turco: Umut Korkmaz\n"
-#| "🇸🇦 Árabe: moataz geba\n"
-#| "🇮🇹 Italiano: Alessio Lenzi"
 msgid ""
 "WASAPIRecording\n"
 "Versión: {}\n"
@@ -788,7 +778,7 @@ msgstr "Kullanı&m Kılavuzu:"
 
 #: src\ui\manual.py:53 src\ui\options.py:333
 msgid "Aceptar"
-msgstr "Kabul et"
+msgstr "Tamam"
 
 #: src\ui\options.py:46
 msgid "Minimizar a la bandeja del sistema"
@@ -812,7 +802,7 @@ msgstr "Kaydı Başlatmak İçin Kombinasyon:"
 
 #: src\ui\options.py:142
 msgid "Capturar Hotkey Inicio"
-msgstr "Başlat Kısayol Tuşu Seç"
+msgstr "Başlat Tuşunu Seç"
 
 #: src\ui\options.py:146
 msgid "Combinación para Detener Grabación:"
@@ -1066,7 +1056,7 @@ msgstr "Uygulama yeniden başlatılıyor..."
 
 #: src\ui\widgets.py:154
 msgid "&Aceptar"
-msgstr "Ka&bul Et"
+msgstr "&Tamam"
 
 #: src\ui\widgets.py:158
 msgid "&Sí"

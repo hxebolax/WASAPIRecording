@@ -211,7 +211,7 @@ class PleaseWaitDialog(wx.Dialog):
 		try:
 			import winsound
 			while self.keep_playing:
-				test_winsound_beep(800, 200)
+				winsound.Beep(800, 200)
 				time.sleep(0.3)
 		except Exception as e:
 			logger.log_error(f"Error al reproducir tono en el diálogo 'Por favor espere': {e}")
@@ -298,6 +298,12 @@ class AudioRecorderApp(wx.App):
 No se pueden tener dos instancias a la vez.""")
 			mensaje(None, msg, "Error", style=wx.OK | wx.ICON_ERROR)
 			logger.log_error("Intento de iniciar una segunda instancia de la aplicación.")
+			return False
+
+		from core.devices import check_audio_hardware
+		if not check_audio_hardware():
+			# Si falla la verificación, cerramos la aplicación de inmediato
+			logger.log_error("El hardware de audio no está configurado correctamente. Abortando.")
 			return False
 
 		self.frame = AudioRecorderFrame()
@@ -1008,50 +1014,33 @@ class AudioRecorderFrame(wx.Frame):
 			raise
 
 	def save_as_mp3(self, wav_file_path):
-		"""
-		Convierte un archivo WAV a MP3 leyendo y codificando por bloques (chunks),
-		para evitar uso excesivo de memoria. Usa el bitrate y otros ajustes
-		de la propia interfaz (self.selected_bitrate, etc.).
-
-		:param wav_file_path: Ruta del archivo WAV a convertir.
-		:return: Ruta del archivo MP3 generado.
-		"""
 		import lameenc
 
-		# Obtener el bitrate MP3 desde la configuración de la interfaz
-		bitrate = self.selected_bitrate  # Por ejemplo, 128, 192, etc.
-
-		# Tamaño de bloque para leer frames del WAV en cada iteración
+		bitrate = self.selected_bitrate
 		block_size = 65536
 
-		# Configuramos el encoder LAME
 		encoder = lameenc.Encoder()
-		encoder.set_bit_rate(bitrate)     # kbps
-		encoder.set_quality(2)           # 0 = mejor, 9 = peor
+		encoder.set_bit_rate(bitrate)  # kbps
+		encoder.set_quality(2)        # 0 = mejor, 9 = peor
 
-		# Preparar la ruta de salida MP3
 		mp3_path = wav_file_path.replace(".wav", ".mp3")
-
 		try:
 			with sf.SoundFile(wav_file_path, mode='r') as snd_in, open(mp3_path, 'wb') as mp3_f:
 				samplerate = snd_in.samplerate
 				channels = snd_in.channels
 
-				# Ajustar samplerate y canales en el encoder
 				encoder.set_in_sample_rate(samplerate)
 				encoder.set_channels(channels)
 
-				# Leemos y convertimos en bloques
 				for block in snd_in.blocks(blocksize=block_size, dtype='int16'):
-					# block es un ndarray shape (N_frames, n_channels), dtype=int16
-					# Convertimos a bytes y codificamos con LAME
 					mp3_data = encoder.encode(block.tobytes())
 					mp3_f.write(mp3_data)
+					# Ceder un poco de tiempo al event-loop en cada bloque
+					if wx.GetApp():
+						wx.CallAfter(lambda: None)
 
-				# Terminamos de vaciar el buffer interno del encoder
 				mp3_f.write(encoder.flush())
 
-			# Tras la conversión, eliminamos el archivo WAV original
 			os.remove(wav_file_path)
 			logger.log_action(f"Archivo convertido a MP3 (chunks) y WAV original eliminado: {mp3_path}")
 		except Exception as e:
@@ -1059,19 +1048,29 @@ class AudioRecorderFrame(wx.Frame):
 			raise
 		return mp3_path
 
-
 	def save_as_format(self, wav_file_path, target_format):
 		"""
-		Convierte un archivo WAV a un formato soportado por `soundfile` (FLAC, OGG, AIFF...).
-
-		:param wav_file_path: Ruta del archivo WAV a convertir.
-		:param target_format: Formato de salida (FLAC, OGG, AIFF, etc.).
-		:return: Ruta final del archivo convertido.
+		Convierte un archivo WAV a un formato soportado por `soundfile` (FLAC, OGG, AIFF, etc.)
+		de forma BLOQUE a BLOQUE, para evitar usar toda la memoria y no congelar la interfaz.
 		"""
 		try:
-			data, samplerate = sf.read(wav_file_path)
+			import time
+			chunk_size = 65536
 			out_path = wav_file_path.replace(".wav", f".{target_format.lower()}")
-			sf.write(out_path, data, samplerate, format=target_format)
+
+			with sf.SoundFile(wav_file_path, mode='r') as in_file, \
+			     sf.SoundFile(out_path,
+			                  mode='w',
+			                  samplerate=in_file.samplerate,
+			                  channels=in_file.channels,
+			                  format=target_format) as out_file:
+
+				for block in in_file.blocks(blocksize=chunk_size, dtype='float32'):
+					out_file.write(block)
+					# Para no congelar la GUI, cedemos control brevemente:
+					if wx.GetApp():
+						wx.CallAfter(lambda: None)
+
 			os.remove(wav_file_path)
 			logger.log_action(f"Archivo convertido a {target_format} y borrado WAV original: {out_path}")
 			return out_path
