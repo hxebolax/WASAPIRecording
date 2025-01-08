@@ -29,7 +29,7 @@ import base64
 import io
 
 from core.utils import get_base_path
-from core.config import save_config, load_config, test_winsound_beep
+from core.config import save_config, load_config, play_beep
 from core.devices import (
 	update_selected_mic, update_selected_system, refresh_devices,
 	update_quality, update_output_format, update_bitrate,
@@ -209,9 +209,8 @@ class PleaseWaitDialog(wx.Dialog):
 		Reproduce un tono de manera recurrente mientras keep_playing sea True.
 		"""
 		try:
-			import winsound
 			while self.keep_playing:
-				winsound.Beep(800, 200)
+				play_beep(800, 200, False)
 				time.sleep(0.3)
 		except Exception as e:
 			logger.log_error(f"Error al reproducir tono en el diálogo 'Por favor espere': {e}")
@@ -778,7 +777,7 @@ class AudioRecorderFrame(wx.Frame):
 
 			logger.log_action("Inicio de grabación de audio.")
 			self.update_status_message(recording=True)
-			test_winsound_beep(1000, 200)
+			play_beep(1000, 200)
 
 			self.separate_files = self.separate_files_checkbox.GetValue()
 			final_channels = 2
@@ -839,13 +838,13 @@ class AudioRecorderFrame(wx.Frame):
 				self.pause_button.SetLabel(_("&Reanudar"))
 				self.update_status_message(recording=True, paused=True)
 				logger.log_action("Grabación pausada por el usuario.")
-				test_winsound_beep(700, 150)
+				play_beep(700, 150)
 			else:
 				self.pause_event.clear()
 				self.pause_button.SetLabel(_("&Pausar"))
 				self.update_status_message(recording=True, paused=False)
 				logger.log_action("Grabación reanudada por el usuario.")
-				test_winsound_beep(1400, 150)
+				play_beep(1400, 150)
 
 	def on_cancel_recording(self, event):
 		"""
@@ -887,7 +886,7 @@ class AudioRecorderFrame(wx.Frame):
 		self.start_button.SetFocus()
 
 		self.update_status_message(recording=False)
-		test_winsound_beep(500, 200)
+		play_beep(500, 200)
 
 		if self.recording_thread:
 			self.recording_thread.join()

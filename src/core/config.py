@@ -27,7 +27,7 @@ import json
 import os
 import base64
 import locale
-import winsound
+import ctypes
 from core.utils import get_base_path
 from core.logger import Logger  # Importar Logger
 
@@ -162,9 +162,13 @@ def load_config(config_file):
 		logger.log_error(f"Error al cargar configuración desde {config_file}: {e}")
 		return {}
 
-def test_winsound_beep(frequency=440, duration=1000):
+import os
+import ctypes
+
+def play_beep(frequency=440, duration=1000, info=True):
 	"""
-	Prueba el uso de winsound.Beep y registra posibles errores durante su ejecución.
+	Prueba el uso de ctypes para llamar a la API de Windows y reproducir un tono,
+	registrando posibles errores durante su ejecución.
 
 	:param frequency: Frecuencia del tono en Hertz (por defecto, 440 Hz).
 	:param duration: Duración del tono en milisegundos (por defecto, 1000 ms).
@@ -173,7 +177,7 @@ def test_winsound_beep(frequency=440, duration=1000):
 	try:
 		# Validar si la plataforma es compatible
 		if os.name != "nt":  # Solo funciona en Windows
-			raise RuntimeError("El módulo winsound solo está disponible en Windows.")
+			raise RuntimeError("La función ctypes.Beep solo está disponible en Windows.")
 
 		# Validar rango de frecuencia y duración
 		if not (37 <= frequency <= 32767):
@@ -181,17 +185,26 @@ def test_winsound_beep(frequency=440, duration=1000):
 		if duration <= 0:
 			raise ValueError("La duración debe ser mayor a 0 milisegundos.")
 
-		# Intentar ejecutar winsound.Beep
-		logger.log_action(f"Intentando reproducir un tono: frecuencia={frequency}Hz, duración={duration}ms")
-		winsound.Beep(frequency, duration)
-		logger.log_action("Tono reproducido exitosamente.")
+		# Cargar la biblioteca kernel32
+		kernel32 = ctypes.WinDLL('kernel32', use_last_error=True)
+
+		# Intentar ejecutar Beep
+		if info:
+			logger.log_action(f"Intentando reproducir un tono: frecuencia={frequency}Hz, duración={duration}ms")
+		result = kernel32.Beep(frequency, duration)
+		
+		# Comprobar el resultado de la función Beep
+		if result == 0:  # La función Beep devuelve 0 en caso de error
+			raise ctypes.WinError(ctypes.get_last_error())
+
+		if info:
+			logger.log_action("Tono reproducido exitosamente.")
 	except ValueError as ve:
 		# Error en los parámetros
-		logger.log_error(f"Error de validación en winsound.Beep: {ve}")
+		logger.log_error(f"Error de validación en ctypes.Beep: {ve}")
 	except RuntimeError as re:
 		# Error de compatibilidad de plataforma
-		logger.log_error(f"Error de plataforma en winsound.Beep: {re}")
+		logger.log_error(f"Error de plataforma en ctypes.Beep: {re}")
 	except Exception as e:
 		# Cualquier otro error inesperado
-		logger.log_error(f"Error inesperado en winsound.Beep: {e}")
-
+		logger.log_error(f"Error inesperado en ctypes.Beep: {e}")
