@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WASAPIRecording 1.0\n"
 "Report-Msgid-Bugs-To: tu_email@ejemplo.com\n"
-"POT-Creation-Date: 2025-01-05 11:41+0100\n"
-"PO-Revision-Date: 2025-01-07 13:21+0700\n"
+"POT-Creation-Date: 2025-01-23 19:29+0100\n"
+"PO-Revision-Date: 2025-01-23 19:40+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: vi\n"
@@ -83,7 +83,7 @@ msgstr ""
 "Đã xảy ra lỗi khi cố gắng lấy loa/loa mặc định.\n"
 "Hãy kiểm tra thiết bị phát lại của bạn."
 
-#: src\core\hotkeys.py:178
+#: src\core\hotkeys.py:177
 msgid ""
 "La combinación debe tener al menos 2 modificadores (Ctrl,Shift,Alt) y 1 "
 "tecla principal válida."
@@ -91,12 +91,12 @@ msgstr ""
 "Tổ hợp phím phải có ít nhất 2 phím bổ trợ (Ctrl,Shift,Alt) và 1 phím chính "
 "hợp lệ."
 
-#: src\core\hotkeys.py:179 src\core\hotkeys.py:186 src\ui\interface.py:1063
+#: src\core\hotkeys.py:178 src\core\hotkeys.py:185 src\ui\interface.py:1080
 #: src\ui\test_audio.py:251 src\ui\test_audio.py:263
 msgid "Error"
 msgstr "Lỗi"
 
-#: src\core\hotkeys.py:186
+#: src\core\hotkeys.py:185
 msgid "La combinación está en uso: {}"
 msgstr "Tổ hợp phím đang được sử dụng: {}"
 
@@ -300,6 +300,7 @@ msgid ""
 "recuerda que puedes apoyarla haciendo clic en “Menú > invítame a un café si "
 "te gusta mi trabajo”.\n"
 msgstr ""
+"\n"
 "1. WASAPIRecording là gì?\n"
 "WASAPIRecording là một Phần mềm dành cho Windows, cho phép bạn ghi âm cả âm "
 "thanh từ micro và âm thanh hệ thống (như nhạc, cuộc gọi video, v.v.) cùng "
@@ -388,25 +389,38 @@ msgstr ""
 "• Nếu thích Phần mềm, đừng quên ủng hộ tác giả bằng cách \"mời cà phê\". 😊\n"
 "Phần mềm dịch bởi Đào Đức Trung từ dự án ddt.one.\n"
 
-#: src\ui\interface.py:125
+#: src\core\recorder.py:77 src\core\recorder.py:90 src\core\recorder.py:96
+#: src\ui\interface.py:430 src\ui\interface.py:436 src\ui\interface.py:1186
+#: src\ui\interface.py:1191
+msgid "Mono"
+msgstr "Mono"
+
+#: src\core\recorder.py:93 src\core\recorder.py:99 src\core\recorder.py:117
+#: src\core\recorder.py:118 src\ui\interface.py:371 src\ui\interface.py:372
+#: src\ui\interface.py:430 src\ui\interface.py:436 src\ui\interface.py:1185
+#: src\ui\interface.py:1186 src\ui\interface.py:1190 src\ui\interface.py:1191
+msgid "Estéreo"
+msgstr "Stereo"
+
+#: src\ui\interface.py:124
 msgid "Mostrar aplicación"
 msgstr "Hiển thị Phần mềm"
 
-#: src\ui\interface.py:126 src\ui\interface.py:1315 src\ui\update.py:159
+#: src\ui\interface.py:125 src\ui\interface.py:1336 src\ui\update.py:159
 #: src\ui\update.py:182 src\ui\update.py:208 src\ui\update.py:213
 #: src\ui\update.py:371
 msgid "Cerrar"
 msgstr "Đóng"
 
-#: src\ui\interface.py:166
+#: src\ui\interface.py:165
 msgid "Espere por favor... Procesando"
 msgstr "Vui lòng đợi... Đang xử lý"
 
-#: src\ui\interface.py:173
+#: src\ui\interface.py:172
 msgid "Procesando"
 msgstr "Đang Xử lý"
 
-#: src\ui\interface.py:298
+#: src\ui\interface.py:296
 msgid ""
 "WASAPIRecording ya se encuentra en ejecución.\n"
 "No se pueden tener dos instancias a la vez."
@@ -414,134 +428,124 @@ msgstr ""
 "WASAPIRecording đang chạy.\n"
 "Không thể có hai lần chạy cùng một lúc."
 
-#: src\ui\interface.py:382
+#: src\ui\interface.py:386
 msgid "Dispositivos"
 msgstr "Thiết bị"
 
-#: src\ui\interface.py:383
+#: src\ui\interface.py:387
 msgid "Micrófon&o:"
 msgstr "&Micrô:"
 
-#: src\ui\interface.py:389
+#: src\ui\interface.py:393
 msgid "&Sistema (loopback):"
 msgstr "&Hệ thống(loopback):"
 
-#: src\ui\interface.py:397
+#: src\ui\interface.py:401
 msgid "&Refrescar Dispositivos"
 msgstr "&Làm mới thiết bị"
 
-#: src\ui\interface.py:405
+#: src\ui\interface.py:409
 msgid "Configuración de Grabación"
 msgstr "Cài đặt ghi âm"
 
-#: src\ui\interface.py:407
+#: src\ui\interface.py:411
 msgid "&Calidad (Hz):"
 msgstr "&Chất lượng (Hz):"
 
-#: src\ui\interface.py:413
+#: src\ui\interface.py:417
 msgid "&Formato de salida:"
 msgstr "&Đầu ra & định dạng:"
 
-#: src\ui\interface.py:419
+#: src\ui\interface.py:423
 msgid "&Bitrate MP3 (kbps):"
 msgstr "&Tốc độ bit MP3 (kbps):"
 
-#: src\ui\interface.py:425
+#: src\ui\interface.py:429
 msgid "Modo Micrófon&o:"
 msgstr "&Chế độ micrô:"
 
-#: src\ui\interface.py:426 src\ui\interface.py:432 src\ui\interface.py:1169
-#: src\ui\interface.py:1174
-msgid "Mono"
-msgstr "Mono"
-
-#: src\ui\interface.py:426 src\ui\interface.py:432 src\ui\interface.py:1168
-#: src\ui\interface.py:1169 src\ui\interface.py:1173 src\ui\interface.py:1174
-msgid "Estéreo"
-msgstr "Stereo"
-
-#: src\ui\interface.py:431
+#: src\ui\interface.py:435
 msgid "Modo &Sistema (loopback):"
 msgstr "&Chế độ hệ thống (loopback):"
 
-#: src\ui\interface.py:437
+#: src\ui\interface.py:441
 msgid "&Tamaño de buffer (frames):"
 msgstr "&Kích thước bộ đệm (frames):"
 
-#: src\ui\interface.py:442
+#: src\ui\interface.py:446
 msgid "Guardar archivos separados de micrófono &y sistema"
 msgstr "&Lưu tệp ghi hệ thống và micrô riêng biệt"
 
-#: src\ui\interface.py:445
+#: src\ui\interface.py:449
 msgid "&Volumen del Micrófono:"
 msgstr "&Âm lượng micrô:"
 
-#: src\ui\interface.py:450
+#: src\ui\interface.py:454
 msgid "&Volumen del Sistema:"
 msgstr "&Âm lượng hệ thống:"
 
-#: src\ui\interface.py:459
+#: src\ui\interface.py:463
 msgid "&Iniciar Grabación"
 msgstr "&Bắt đầu ghi"
 
-#: src\ui\interface.py:463 src\ui\interface.py:840 src\ui\interface.py:876
+#: src\ui\interface.py:467 src\ui\interface.py:844 src\ui\interface.py:880
 msgid "&Pausar"
 msgstr "&Tạm dừng"
 
-#: src\ui\interface.py:468
+#: src\ui\interface.py:472
 msgid "&Detener Grabación"
 msgstr "&Dừng ghi"
 
-#: src\ui\interface.py:473 src\ui\widgets.py:156
+#: src\ui\interface.py:477 src\ui\widgets.py:156
 msgid "&Cancelar"
 msgstr "&Hủy bỏ"
 
-#: src\ui\interface.py:478
+#: src\ui\interface.py:482
 msgid "&Prueba de Audio"
 msgstr "&Kiểm tra âm thanh"
 
-#: src\ui\interface.py:482
+#: src\ui\interface.py:486
 msgid "&Menú"
 msgstr "&Trình đơn"
 
-#: src\ui\interface.py:491 src\ui\interface.py:1475
+#: src\ui\interface.py:495 src\ui\interface.py:1496
 #, python-brace-format
 msgid "En espera (Usa {hk} para iniciar)"
 msgstr "Đang chờ (Sử dụng {hk} để bắt đầu)"
 
-#: src\ui\interface.py:493
+#: src\ui\interface.py:497
 msgid "Estado"
 msgstr "Tình trạng"
 
-#: src\ui\interface.py:582
+#: src\ui\interface.py:586
 msgid "Hay una grabación en curso. ¿Desea detenerla y salir?"
 msgstr "Đang ghi, bạn có muốn dừng và thoát không?"
 
-#: src\ui\interface.py:583
+#: src\ui\interface.py:587
 msgid "Confirmar cierre"
 msgstr "Xác nhận đóng"
 
-#: src\ui\interface.py:598
+#: src\ui\interface.py:602
 msgid "Por favor espere, finalizando conversión..."
 msgstr "Vui lòng đợi, đang hoàn tất chuyển đổi..."
 
-#: src\ui\interface.py:834
+#: src\ui\interface.py:838
 msgid "&Reanudar"
 msgstr "&Tiếp tục"
 
-#: src\ui\interface.py:895
+#: src\ui\interface.py:899
 msgid "Grabación cancelada. Se han eliminado los archivos."
 msgstr "Đã hủy ghi âm. Tệp đã bị xóa."
 
-#: src\ui\interface.py:895 src\ui\interface.py:940
+#: src\ui\interface.py:899 src\ui\interface.py:944
 msgid "Grabación"
 msgstr "Ghi âm"
 
-#: src\ui\interface.py:900
+#: src\ui\interface.py:904
 msgid "Por favor espere, convirtiendo a formato final..."
 msgstr "Vui lòng đợi, đang chuyển đổi sang định dạng cuối cùng..."
 
-#: src\ui\interface.py:927
+#: src\ui\interface.py:931
 #, python-brace-format
 msgid ""
 "Grabación completada. Archivo guardado como:\n"
@@ -550,100 +554,108 @@ msgstr ""
 "Ghi âm hoàn tất. Tệp được lưu tại:\n"
 "{file_path}"
 
-#: src\ui\interface.py:932
+#: src\ui\interface.py:936
 #, python-brace-format
 msgid ""
 "\n"
 "Archivo separado de micrófono: {mic_path}\n"
 "Archivo separado de sistema: {system_path}"
 msgstr ""
+"\n"
 "Tệp micrô riêng biệt: {mic_path}\n"
 "Tệp hệ thống riêng biệt: {system_path}"
 
-#: src\ui\interface.py:938
+#: src\ui\interface.py:942
 msgid ""
 "\n"
 "\n"
 "¿Desea abrir la carpeta de grabaciones?"
-msgstr "Bạn có muốn mở thư mục ghi âm không?"
+msgstr ""
+"\n"
+"\n"
+"Bạn có muốn mở thư mục ghi âm không?"
 
-#: src\ui\interface.py:1073
+#: src\ui\interface.py:1090
 msgid "Información"
 msgstr "Thông tin"
 
-#: src\ui\interface.py:1255
+#: src\ui\interface.py:1272
 msgid "Alemán"
 msgstr "tiếng Đức"
 
-#: src\ui\interface.py:1256
+#: src\ui\interface.py:1273
 msgid "Árabe"
 msgstr "tiếng Ả Rập"
 
-#: src\ui\interface.py:1257
+#: src\ui\interface.py:1274
 msgid "Español"
 msgstr "tiếng Tây Ban Nha"
 
-#: src\ui\interface.py:1258
+#: src\ui\interface.py:1275
 msgid "Francés"
 msgstr "tiếng Pháp"
 
-#: src\ui\interface.py:1259
+#: src\ui\interface.py:1276
 msgid "Inglés"
 msgstr "Tiếng Anh"
 
-#: src\ui\interface.py:1260
+#: src\ui\interface.py:1277
 msgid "Italiano"
 msgstr "tiếng Ý"
 
-#: src\ui\interface.py:1261
+#: src\ui\interface.py:1278
 msgid "Portugués"
 msgstr "tiếng Bồ Đào Nha"
 
-#: src\ui\interface.py:1262
+#: src\ui\interface.py:1279
+msgid "Serbio"
+msgstr "tiếng Serbia"
+
+#: src\ui\interface.py:1280
 msgid "Turco"
 msgstr "tiếng Thổ Nhĩ Kỳ"
 
-#: src\ui\interface.py:1263
+#: src\ui\interface.py:1281
 msgid "Vietnamita"
 msgstr "Tiếng Việt"
 
-#: src\ui\interface.py:1295 src\ui\options.py:317
+#: src\ui\interface.py:1316 src\ui\options.py:317
 msgid "Opciones"
 msgstr "Tùy chọn"
 
-#: src\ui\interface.py:1296
+#: src\ui\interface.py:1317
 msgid "Buscar actualizaciones"
 msgstr "Kiểm tra cập nhật"
 
-#: src\ui\interface.py:1297
+#: src\ui\interface.py:1318
 msgid "Idioma"
 msgstr "Ngôn ngữ"
 
-#: src\ui\interface.py:1298 src\ui\interface.py:1313
+#: src\ui\interface.py:1319 src\ui\interface.py:1334
 msgid "Abrir Grabaciones"
 msgstr "Mở bản ghi"
 
-#: src\ui\interface.py:1299
+#: src\ui\interface.py:1320
 msgid "&Manual de usuario"
 msgstr "&Hướng dẫn sử dụng"
 
-#: src\ui\interface.py:1300
+#: src\ui\interface.py:1321
 msgid "Acerca &de..."
 msgstr "&Giới thiệu..."
 
-#: src\ui\interface.py:1301
+#: src\ui\interface.py:1322
 msgid "invítame a un &café si te gusta mi trabajo"
 msgstr "&Mời nhà phát triển một li cà phê nếu bạn thích phần mềm này"
 
-#: src\ui\interface.py:1302
+#: src\ui\interface.py:1323
 msgid "Salir"
 msgstr "Thoát"
 
-#: src\ui\interface.py:1314
+#: src\ui\interface.py:1335
 msgid "&invítame a un café si te gusta mi trabajo"
 msgstr "&Mời nhà phát triển một li cà phê nếu bạn thích phần mềm này"
 
-#: src\ui\interface.py:1331
+#: src\ui\interface.py:1352
 msgid ""
 "Para aplicar el nuevo idioma se necesita reiniciar la aplicación.\n"
 "¿Desea continuar?"
@@ -651,33 +663,33 @@ msgstr ""
 "Để áp dụng ngôn ngữ mới bạn cần khởi động lại Phần mềm.\n"
 "bạn có muốn tiếp tục không?"
 
-#: src\ui\interface.py:1332
+#: src\ui\interface.py:1353
 msgid "Confirmar cambio de idioma"
 msgstr "Xác nhận thay đổi ngôn ngữ"
 
-#: src\ui\interface.py:1463
+#: src\ui\interface.py:1484
 msgid "Grabación en pausa."
 msgstr "Đã tạm dừng ghi."
 
-#: src\ui\interface.py:1467
+#: src\ui\interface.py:1488
 msgid "Grabando... (No hay hotkey de detener asignada)"
 msgstr "Đang ghi... (Không có phím nóng dừng được chỉ định)"
 
-#: src\ui\interface.py:1469
+#: src\ui\interface.py:1490
 #, python-brace-format
 msgid "Grabando... (Usa {hk} para detener)"
 msgstr "Đang ghi... (Sử dụng {hk} để dừng)"
 
-#: src\ui\interface.py:1473
+#: src\ui\interface.py:1494
 msgid "En espera. Asigna teclas en Opciones o inicia manualmente."
 msgstr "Tạm dừng. Gán phím trong Tùy chọn hoặc bắt đầu thủ công."
 
-#: src\ui\interface.py:1525
+#: src\ui\interface.py:1546
 #, python-brace-format
 msgid "No se pudo abrir el directorio de grabaciones: {error}"
 msgstr "Không thể mở thư mục bản ghi: {error}"
 
-#: src\ui\interface.py:1535
+#: src\ui\interface.py:1556
 msgid ""
 "WASAPIRecording\n"
 "Versión: {}\n"
@@ -688,7 +700,8 @@ msgid ""
 "🇹🇷 Turco: Umut Korkmaz\n"
 "🇸🇦 Árabe: moataz geba\n"
 "🇮🇹 Italiano: Alessio Lenzi\n"
-"🇻🇳 Vietnamita: Đào Đức Trung"
+"🇻🇳 Vietnamita: Đào Đức Trung\n"
+"🇷🇸 Serbio: Mila Kuran (IA)"
 msgstr ""
 "WASAPIRecording\n"
 "Version: {}\n"
@@ -699,9 +712,10 @@ msgstr ""
 "🇹🇷 Turkish: Umut Korkmaz\n"
 "🇸🇦 Arabic: moataz geba\n"
 "🇮🇹 Italian: Alessio Lenzi\n"
-"🇻🇳 Vietnamese: Đào Đức Trung"
+"🇻🇳 Vietnamese: Đào Đức Trung\n"
+"🇷🇸 Serbio: Mila Kuran (IA)"
 
-#: src\ui\interface.py:1545
+#: src\ui\interface.py:1567
 msgid "Acerca de..."
 msgstr "Giới thiệu..."
 

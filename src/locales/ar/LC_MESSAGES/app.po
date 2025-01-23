@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WASAPIRecording 1.0\n"
 "Report-Msgid-Bugs-To: tu_email@ejemplo.com\n"
-"POT-Creation-Date: 2025-01-05 11:41+0100\n"
-"PO-Revision-Date: 2025-01-05 11:45+0100\n"
+"POT-Creation-Date: 2025-01-23 19:29+0100\n"
+"PO-Revision-Date: 2025-01-23 19:30+0100\n"
 "Last-Translator: \n"
 "Language-Team: tecwindow team\n"
 "Language: ar\n"
@@ -81,7 +81,7 @@ msgstr ""
 "حدث خطأ أثناء محاولة الحصول على مكبر الصوت الافتراضي.\n"
 "يرجى التحقق من أجهزة التشغيل الخاصة بك."
 
-#: src\core\hotkeys.py:178
+#: src\core\hotkeys.py:177
 msgid ""
 "La combinación debe tener al menos 2 modificadores (Ctrl,Shift,Alt) y 1 "
 "tecla principal válida."
@@ -89,12 +89,12 @@ msgstr ""
 "يجب أن يحتوي الاختصار على مفتاحين تحكم على الأقل مثل control أو shift أو alt "
 "ومفتاح آخر مثل مفاتيح الوظائف أو الحروف أو الأرقم."
 
-#: src\core\hotkeys.py:179 src\core\hotkeys.py:186 src\ui\interface.py:1063
+#: src\core\hotkeys.py:178 src\core\hotkeys.py:185 src\ui\interface.py:1080
 #: src\ui\test_audio.py:251 src\ui\test_audio.py:263
 msgid "Error"
 msgstr "خطأ"
 
-#: src\core\hotkeys.py:186
+#: src\core\hotkeys.py:185
 msgid "La combinación está en uso: {}"
 msgstr "المجموعة قيد الاستخدام: {}"
 
@@ -471,25 +471,38 @@ msgstr ""
 "استمتع بالتسجيل باستخدام WASAPIRecording! إذا أعجبك هذا التطبيق، توقف عند "
 "\"القائمة > ادعوني لتناول القهوة\" لدعم تطويره.\n"
 
-#: src\ui\interface.py:125
+#: src\core\recorder.py:77 src\core\recorder.py:90 src\core\recorder.py:96
+#: src\ui\interface.py:430 src\ui\interface.py:436 src\ui\interface.py:1186
+#: src\ui\interface.py:1191
+msgid "Mono"
+msgstr "مونو"
+
+#: src\core\recorder.py:93 src\core\recorder.py:99 src\core\recorder.py:117
+#: src\core\recorder.py:118 src\ui\interface.py:371 src\ui\interface.py:372
+#: src\ui\interface.py:430 src\ui\interface.py:436 src\ui\interface.py:1185
+#: src\ui\interface.py:1186 src\ui\interface.py:1190 src\ui\interface.py:1191
+msgid "Estéreo"
+msgstr "ستيريو"
+
+#: src\ui\interface.py:124
 msgid "Mostrar aplicación"
 msgstr "عرض التطبيق"
 
-#: src\ui\interface.py:126 src\ui\interface.py:1315 src\ui\update.py:159
+#: src\ui\interface.py:125 src\ui\interface.py:1336 src\ui\update.py:159
 #: src\ui\update.py:182 src\ui\update.py:208 src\ui\update.py:213
 #: src\ui\update.py:371
 msgid "Cerrar"
 msgstr "إغلاق"
 
-#: src\ui\interface.py:166
+#: src\ui\interface.py:165
 msgid "Espere por favor... Procesando"
 msgstr "انتظر من فضلك... جارٍ المعالجة"
 
-#: src\ui\interface.py:173
+#: src\ui\interface.py:172
 msgid "Procesando"
 msgstr "جارٍ المعالجة"
 
-#: src\ui\interface.py:298
+#: src\ui\interface.py:296
 msgid ""
 "WASAPIRecording ya se encuentra en ejecución.\n"
 "No se pueden tener dos instancias a la vez."
@@ -497,134 +510,124 @@ msgstr ""
 "WASAPIRecording قيد التشغيل بالفعل.\n"
 "ليس من الممكن وجود نافذتين في نفس الوقت."
 
-#: src\ui\interface.py:382
+#: src\ui\interface.py:386
 msgid "Dispositivos"
 msgstr "الأجهزة"
 
-#: src\ui\interface.py:383
+#: src\ui\interface.py:387
 msgid "Micrófon&o:"
 msgstr "&ميكروفون:"
 
-#: src\ui\interface.py:389
+#: src\ui\interface.py:393
 msgid "&Sistema (loopback):"
 msgstr "&نظام (loopback):"
 
-#: src\ui\interface.py:397
+#: src\ui\interface.py:401
 msgid "&Refrescar Dispositivos"
 msgstr "&تحديث الأجهزة"
 
-#: src\ui\interface.py:405
+#: src\ui\interface.py:409
 msgid "Configuración de Grabación"
 msgstr "إعدادات التسجيل"
 
-#: src\ui\interface.py:407
+#: src\ui\interface.py:411
 msgid "&Calidad (Hz):"
 msgstr "&جودة (Hz):"
 
-#: src\ui\interface.py:413
+#: src\ui\interface.py:417
 msgid "&Formato de salida:"
 msgstr "تن&سيق الإخراج:"
 
-#: src\ui\interface.py:419
+#: src\ui\interface.py:423
 msgid "&Bitrate MP3 (kbps):"
 msgstr "م&عدل البت MP3 (kbps):"
 
-#: src\ui\interface.py:425
+#: src\ui\interface.py:429
 msgid "Modo Micrófon&o:"
 msgstr "&وضع الميكروفون:"
 
-#: src\ui\interface.py:426 src\ui\interface.py:432 src\ui\interface.py:1169
-#: src\ui\interface.py:1174
-msgid "Mono"
-msgstr "مونو"
-
-#: src\ui\interface.py:426 src\ui\interface.py:432 src\ui\interface.py:1168
-#: src\ui\interface.py:1169 src\ui\interface.py:1173 src\ui\interface.py:1174
-msgid "Estéreo"
-msgstr "ستيريو"
-
-#: src\ui\interface.py:431
+#: src\ui\interface.py:435
 msgid "Modo &Sistema (loopback):"
 msgstr "و&ضع النظام (loopback):"
 
-#: src\ui\interface.py:437
+#: src\ui\interface.py:441
 msgid "&Tamaño de buffer (frames):"
 msgstr "حجم (الإ&طارات):"
 
-#: src\ui\interface.py:442
+#: src\ui\interface.py:446
 msgid "Guardar archivos separados de micrófono &y sistema"
 msgstr "&حفظ ملفات الميكروفون والنظام منفصلين"
 
-#: src\ui\interface.py:445
+#: src\ui\interface.py:449
 msgid "&Volumen del Micrófono:"
 msgstr "مستوى صوت الم&يكروفون:"
 
-#: src\ui\interface.py:450
+#: src\ui\interface.py:454
 msgid "&Volumen del Sistema:"
 msgstr "مستوى صوت الن&ظام:"
 
-#: src\ui\interface.py:459
+#: src\ui\interface.py:463
 msgid "&Iniciar Grabación"
 msgstr "&بدء التسجيل"
 
-#: src\ui\interface.py:463 src\ui\interface.py:840 src\ui\interface.py:876
+#: src\ui\interface.py:467 src\ui\interface.py:844 src\ui\interface.py:880
 msgid "&Pausar"
 msgstr "إ&يقاف مؤقت"
 
-#: src\ui\interface.py:468
+#: src\ui\interface.py:472
 msgid "&Detener Grabación"
 msgstr "إي&قاف التسجيل"
 
-#: src\ui\interface.py:473 src\ui\widgets.py:156
+#: src\ui\interface.py:477 src\ui\widgets.py:156
 msgid "&Cancelar"
 msgstr "إ&لغاء"
 
-#: src\ui\interface.py:478
+#: src\ui\interface.py:482
 msgid "&Prueba de Audio"
 msgstr "ا&ختبار الصوت"
 
-#: src\ui\interface.py:482
+#: src\ui\interface.py:486
 msgid "&Menú"
 msgstr "&القائمة"
 
-#: src\ui\interface.py:491 src\ui\interface.py:1475
+#: src\ui\interface.py:495 src\ui\interface.py:1496
 #, python-brace-format
 msgid "En espera (Usa {hk} para iniciar)"
 msgstr "متوقف (استخدم {hk} للبدء)"
 
-#: src\ui\interface.py:493
+#: src\ui\interface.py:497
 msgid "Estado"
 msgstr "الحالة"
 
-#: src\ui\interface.py:582
+#: src\ui\interface.py:586
 msgid "Hay una grabación en curso. ¿Desea detenerla y salir?"
 msgstr "هناك تسجيل قيد التقدم، هل تريد إيقافه والخروج؟"
 
-#: src\ui\interface.py:583
+#: src\ui\interface.py:587
 msgid "Confirmar cierre"
 msgstr "تأكيد الإغلاق"
 
-#: src\ui\interface.py:598
+#: src\ui\interface.py:602
 msgid "Por favor espere, finalizando conversión..."
 msgstr "انتظر من فضلك، جارٍ الانتهاء من التحويل..."
 
-#: src\ui\interface.py:834
+#: src\ui\interface.py:838
 msgid "&Reanudar"
 msgstr "إ&ستئناف"
 
-#: src\ui\interface.py:895
+#: src\ui\interface.py:899
 msgid "Grabación cancelada. Se han eliminado los archivos."
 msgstr "تم إلغاء التسجيل. تم حذف الملفات."
 
-#: src\ui\interface.py:895 src\ui\interface.py:940
+#: src\ui\interface.py:899 src\ui\interface.py:944
 msgid "Grabación"
 msgstr "جارٍ التسجيل"
 
-#: src\ui\interface.py:900
+#: src\ui\interface.py:904
 msgid "Por favor espere, convirtiendo a formato final..."
 msgstr "انتظر من فضلك، جارٍ التحويل إلى التنسيق النهائي..."
 
-#: src\ui\interface.py:927
+#: src\ui\interface.py:931
 #, python-brace-format
 msgid ""
 "Grabación completada. Archivo guardado como:\n"
@@ -633,7 +636,7 @@ msgstr ""
 "اكتمل التسجيل. تم حفظ الملف في المسار:\n"
 "{file_path}"
 
-#: src\ui\interface.py:932
+#: src\ui\interface.py:936
 #, python-brace-format
 msgid ""
 "\n"
@@ -644,7 +647,7 @@ msgstr ""
 "ملف منفصل للميكروفون: {mic_path}\n"
 "ملف منفصل للنظام: {system_path}"
 
-#: src\ui\interface.py:938
+#: src\ui\interface.py:942
 msgid ""
 "\n"
 "\n"
@@ -654,83 +657,87 @@ msgstr ""
 "\n"
 "هل تريد فتح مجلد التسجيلات؟"
 
-#: src\ui\interface.py:1073
+#: src\ui\interface.py:1090
 msgid "Información"
 msgstr "معلومة"
 
-#: src\ui\interface.py:1255
+#: src\ui\interface.py:1272
 msgid "Alemán"
 msgstr "الأ&لمانية"
 
-#: src\ui\interface.py:1256
+#: src\ui\interface.py:1273
 msgid "Árabe"
 msgstr "العربية"
 
-#: src\ui\interface.py:1257
+#: src\ui\interface.py:1274
 msgid "Español"
 msgstr "الإ&سبانية"
 
-#: src\ui\interface.py:1258
+#: src\ui\interface.py:1275
 msgid "Francés"
 msgstr "ال&فرنسية"
 
-#: src\ui\interface.py:1259
+#: src\ui\interface.py:1276
 msgid "Inglés"
 msgstr "الإ&نجليزية"
 
-#: src\ui\interface.py:1260
+#: src\ui\interface.py:1277
 msgid "Italiano"
 msgstr "الإ&طالية"
 
-#: src\ui\interface.py:1261
+#: src\ui\interface.py:1278
 msgid "Portugués"
 msgstr "ال&برتغالية"
 
-#: src\ui\interface.py:1262
+#: src\ui\interface.py:1279
+msgid "Serbio"
+msgstr "الصربية"
+
+#: src\ui\interface.py:1280
 msgid "Turco"
 msgstr "ال&تركية"
 
-#: src\ui\interface.py:1263
+#: src\ui\interface.py:1281
 msgid "Vietnamita"
 msgstr "الفيتنامية"
 
-#: src\ui\interface.py:1295 src\ui\options.py:317
+#: src\ui\interface.py:1316 src\ui\options.py:317
 msgid "Opciones"
 msgstr "الخيارات"
 
-#: src\ui\interface.py:1296
+#: src\ui\interface.py:1317
 msgid "Buscar actualizaciones"
 msgstr "ال&تحقق من وجود تحديثات"
 
-#: src\ui\interface.py:1297
+#: src\ui\interface.py:1318
 msgid "Idioma"
 msgstr "ا&للغة"
 
-#: src\ui\interface.py:1298 src\ui\interface.py:1313
+#: src\ui\interface.py:1319 src\ui\interface.py:1334
 msgid "Abrir Grabaciones"
 msgstr "فتح مجلد التسجيلات"
 
-#: src\ui\interface.py:1299
+#: src\ui\interface.py:1320
 msgid "&Manual de usuario"
 msgstr "&دليل المستخدم"
 
-#: src\ui\interface.py:1300
+#: src\ui\interface.py:1321
 msgid "Acerca &de..."
 msgstr "حول..."
 
-#: src\ui\interface.py:1301
+#: src\ui\interface.py:1322
 msgid "invítame a un &café si te gusta mi trabajo"
 msgstr "ادعوني لتناول ال&قهوة إذا أعجبك عملي"
 
-#: src\ui\interface.py:1302
+#: src\ui\interface.py:1323
 msgid "Salir"
 msgstr "الخ&روج"
 
-#: src\ui\interface.py:1314
+#: src\ui\interface.py:1335
 msgid "&invítame a un café si te gusta mi trabajo"
 msgstr "&ادعوني لتناول القهوة إذا كنت تحب عملي"
 
-#: src\ui\interface.py:1331
+#: src\ui\interface.py:1352
 msgid ""
 "Para aplicar el nuevo idioma se necesita reiniciar la aplicación.\n"
 "¿Desea continuar?"
@@ -738,33 +745,33 @@ msgstr ""
 "لتطبيق اللغة الجديدة تحتاج إلى إعادة تشغيل التطبيق.\n"
 "هل تريد الاستمرار؟"
 
-#: src\ui\interface.py:1332
+#: src\ui\interface.py:1353
 msgid "Confirmar cambio de idioma"
 msgstr "تأكيد تغيير اللغة"
 
-#: src\ui\interface.py:1463
+#: src\ui\interface.py:1484
 msgid "Grabación en pausa."
 msgstr "تم إيقاف التسجيل مؤقتًا."
 
-#: src\ui\interface.py:1467
+#: src\ui\interface.py:1488
 msgid "Grabando... (No hay hotkey de detener asignada)"
 msgstr "تسجيل... (لم يتم تعيين مفتاح تشغيل سريع للإيقاف)"
 
-#: src\ui\interface.py:1469
+#: src\ui\interface.py:1490
 #, python-brace-format
 msgid "Grabando... (Usa {hk} para detener)"
 msgstr "تسجيل... (استخدم {hk} للإيقاف)"
 
-#: src\ui\interface.py:1473
+#: src\ui\interface.py:1494
 msgid "En espera. Asigna teclas en Opciones o inicia manualmente."
 msgstr "تعليق. قم بتعيين المفاتيح في الخيارات أو ابدأ يدويًا."
 
-#: src\ui\interface.py:1525
+#: src\ui\interface.py:1546
 #, python-brace-format
 msgid "No se pudo abrir el directorio de grabaciones: {error}"
 msgstr "لا يمكن فتح دليل التسجيلات: {error}"
 
-#: src\ui\interface.py:1535
+#: src\ui\interface.py:1556
 msgid ""
 "WASAPIRecording\n"
 "Versión: {}\n"
@@ -775,7 +782,8 @@ msgid ""
 "🇹🇷 Turco: Umut Korkmaz\n"
 "🇸🇦 Árabe: moataz geba\n"
 "🇮🇹 Italiano: Alessio Lenzi\n"
-"🇻🇳 Vietnamita: Đào Đức Trung"
+"🇻🇳 Vietnamita: Đào Đức Trung\n"
+"🇷🇸 Serbio: Mila Kuran (IA)"
 msgstr ""
 "تسجيل WASAPIRecording\n"
 "الإصدار: {}\n"
@@ -786,9 +794,10 @@ msgstr ""
 "🇹🇷 التركية: أوموت كوركماز\n"
 "🇸🇦 العربية: معتز جيبا\n"
 "🇮🇹 الإيطالية: أليسيو لينزي\n"
-"🇻🇳 الفيتنامية: Đào Đức Trung"
+"🇻🇳 الفيتنامية: Đào Đào Đức Trung\n"
+"🇷🇸 الصربية: ميلا كوران (IA)"
 
-#: src\ui\interface.py:1545
+#: src\ui\interface.py:1567
 msgid "Acerca de..."
 msgstr "حولة..."
 
