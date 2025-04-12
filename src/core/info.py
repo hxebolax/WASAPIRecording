@@ -1,4 +1,4 @@
-_version = "1.3.6"
+_version = "1.3.7"
 _nombre = "Héctor J. Benítez Corredera"
 _manual = \
 _("""

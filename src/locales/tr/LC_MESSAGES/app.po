@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WASAPIRecording\n"
 "Report-Msgid-Bugs-To: tu_email@ejemplo.com\n"
-"POT-Creation-Date: 2025-01-23 19:29+0100\n"
-"PO-Revision-Date: 2025-01-23 19:34+0100\n"
+"POT-Creation-Date: 2025-01-05 11:41+0100\n"
+"PO-Revision-Date: 2025-04-12 18:22+0200\n"
 "Last-Translator: Umut KORKMAZ <umutkork@gmail.com>\n"
 "Language-Team: Umut KORKMAZ <umutkork@gmail.com>\n"
 "Language: tr_TR\n"
@@ -75,7 +75,7 @@ msgstr ""
 "Varsayılan hoparlör algılanmaya çalışılırken bir hata oluştu.\n"
 "Lütfen oynatma cihazlarınızı kontrol edin."
 
-#: src\core\hotkeys.py:177
+#: src\core\hotkeys.py:178
 msgid ""
 "La combinación debe tener al menos 2 modificadores (Ctrl,Shift,Alt) y 1 "
 "tecla principal válida."
@@ -83,12 +83,12 @@ msgstr ""
 "Kombinasyonun en az 2 değiştiriciye (Ctrl,Shift,Alt) ve 1 geçerli birincil "
 "anahtara sahip olması gerekir."
 
-#: src\core\hotkeys.py:178 src\core\hotkeys.py:185 src\ui\interface.py:1080
+#: src\core\hotkeys.py:179 src\core\hotkeys.py:186 src\ui\interface.py:1063
 #: src\ui\test_audio.py:251 src\ui\test_audio.py:263
 msgid "Error"
 msgstr "Hata"
 
-#: src\core\hotkeys.py:185
+#: src\core\hotkeys.py:186
 msgid "La combinación está en uso: {}"
 msgstr "Kombinasyon kullanılıyor: {}"
 
@@ -445,38 +445,25 @@ msgstr ""
 "bulduysanız “Menü > çalışmalarımı beğendiyseniz bana bir kahve ısmarla” "
 "seçeneğine tıklayarak destek olabileceğinizi unutmayın.\n"
 
-#: src\core\recorder.py:77 src\core\recorder.py:90 src\core\recorder.py:96
-#: src\ui\interface.py:430 src\ui\interface.py:436 src\ui\interface.py:1186
-#: src\ui\interface.py:1191
-msgid "Mono"
-msgstr "Mono"
-
-#: src\core\recorder.py:93 src\core\recorder.py:99 src\core\recorder.py:117
-#: src\core\recorder.py:118 src\ui\interface.py:371 src\ui\interface.py:372
-#: src\ui\interface.py:430 src\ui\interface.py:436 src\ui\interface.py:1185
-#: src\ui\interface.py:1186 src\ui\interface.py:1190 src\ui\interface.py:1191
-msgid "Estéreo"
-msgstr "Stereo"
-
-#: src\ui\interface.py:124
+#: src\ui\interface.py:125
 msgid "Mostrar aplicación"
 msgstr "Uygulamayı göster"
 
-#: src\ui\interface.py:125 src\ui\interface.py:1336 src\ui\update.py:159
+#: src\ui\interface.py:126 src\ui\interface.py:1315 src\ui\update.py:159
 #: src\ui\update.py:182 src\ui\update.py:208 src\ui\update.py:213
 #: src\ui\update.py:371
 msgid "Cerrar"
 msgstr "Kapat"
 
-#: src\ui\interface.py:165
+#: src\ui\interface.py:166
 msgid "Espere por favor... Procesando"
 msgstr "Lütfen bekleyin... İşleniyor"
 
-#: src\ui\interface.py:172
+#: src\ui\interface.py:173
 msgid "Procesando"
 msgstr "İşleniyor"
 
-#: src\ui\interface.py:296
+#: src\ui\interface.py:298
 msgid ""
 "WASAPIRecording ya se encuentra en ejecución.\n"
 "No se pueden tener dos instancias a la vez."
@@ -484,124 +471,134 @@ msgstr ""
 "WASAPIRecording zaten çalışıyor.\n"
 "Aynı anda iki pencere çalıştırılamaz."
 
-#: src\ui\interface.py:386
+#: src\ui\interface.py:382
 msgid "Dispositivos"
 msgstr "Cihazlar"
 
-#: src\ui\interface.py:387
+#: src\ui\interface.py:383
 msgid "Micrófon&o:"
 msgstr "Mikróf&on:"
 
-#: src\ui\interface.py:393
+#: src\ui\interface.py:389
 msgid "&Sistema (loopback):"
 msgstr "Sistem (&geri döngü):"
 
-#: src\ui\interface.py:401
+#: src\ui\interface.py:397
 msgid "&Refrescar Dispositivos"
 msgstr "Cihazla&rı Yenile"
 
-#: src\ui\interface.py:409
+#: src\ui\interface.py:405
 msgid "Configuración de Grabación"
 msgstr "Kayıt Ayarları"
 
-#: src\ui\interface.py:411
+#: src\ui\interface.py:407
 msgid "&Calidad (Hz):"
 msgstr "&Kalite (Hz):"
 
-#: src\ui\interface.py:417
+#: src\ui\interface.py:413
 msgid "&Formato de salida:"
 msgstr "&Çıkış Biçimi:"
 
-#: src\ui\interface.py:423
+#: src\ui\interface.py:419
 msgid "&Bitrate MP3 (kbps):"
 msgstr "&Bit Hızı MP3 (kbps):"
 
-#: src\ui\interface.py:429
+#: src\ui\interface.py:425
 msgid "Modo Micrófon&o:"
 msgstr "Mikr&ofon Modu:"
 
-#: src\ui\interface.py:435
+#: src\ui\interface.py:426 src\ui\interface.py:432 src\ui\interface.py:1169
+#: src\ui\interface.py:1174
+msgid "Mono"
+msgstr "Mono"
+
+#: src\ui\interface.py:426 src\ui\interface.py:432 src\ui\interface.py:1168
+#: src\ui\interface.py:1169 src\ui\interface.py:1173 src\ui\interface.py:1174
+msgid "Estéreo"
+msgstr "Stereo"
+
+#: src\ui\interface.py:431
 msgid "Modo &Sistema (loopback):"
 msgstr "&Sistem modu (geri döngü):"
 
-#: src\ui\interface.py:441
+#: src\ui\interface.py:437
 msgid "&Tamaño de buffer (frames):"
 msgstr "Arabellek boyu&tu (çerçeveler):"
 
-#: src\ui\interface.py:446
+#: src\ui\interface.py:442
 msgid "Guardar archivos separados de micrófono &y sistema"
 msgstr "Mikrofon ve sistem dosyalarını ayrı ayrı ka&ydet"
 
-#: src\ui\interface.py:449
+#: src\ui\interface.py:445
 msgid "&Volumen del Micrófono:"
 msgstr "Mikrofon Ses &Seviyesi:"
 
-#: src\ui\interface.py:454
+#: src\ui\interface.py:450
 msgid "&Volumen del Sistema:"
 msgstr "Sistem Ses Se&viyesi:"
 
-#: src\ui\interface.py:463
+#: src\ui\interface.py:459
 msgid "&Iniciar Grabación"
 msgstr "Kayd&ı Başlat"
 
-#: src\ui\interface.py:467 src\ui\interface.py:844 src\ui\interface.py:880
+#: src\ui\interface.py:463 src\ui\interface.py:840 src\ui\interface.py:876
 msgid "&Pausar"
 msgstr "&Duraklat"
 
-#: src\ui\interface.py:472
+#: src\ui\interface.py:468
 msgid "&Detener Grabación"
 msgstr "Kaydı &Durdur"
 
-#: src\ui\interface.py:477 src\ui\widgets.py:156
+#: src\ui\interface.py:473 src\ui\widgets.py:156
 msgid "&Cancelar"
 msgstr "İ&ptal"
 
-#: src\ui\interface.py:482
+#: src\ui\interface.py:478
 msgid "&Prueba de Audio"
 msgstr "Ses &Testi"
 
-#: src\ui\interface.py:486
+#: src\ui\interface.py:482
 msgid "&Menú"
 msgstr "&Menü"
 
-#: src\ui\interface.py:495 src\ui\interface.py:1496
+#: src\ui\interface.py:491 src\ui\interface.py:1475
 #, python-brace-format
 msgid "En espera (Usa {hk} para iniciar)"
 msgstr "Bekleniyor (Başlamak için {hk} tuşlarını kullanın)"
 
-#: src\ui\interface.py:497
+#: src\ui\interface.py:493
 msgid "Estado"
 msgstr "Durum"
 
-#: src\ui\interface.py:586
+#: src\ui\interface.py:582
 msgid "Hay una grabación en curso. ¿Desea detenerla y salir?"
 msgstr "Bir kayıt devam ediyor, durdurup çıkmak istiyor musunuz?"
 
-#: src\ui\interface.py:587
+#: src\ui\interface.py:583
 msgid "Confirmar cierre"
 msgstr "Kapatmayı onaylayın"
 
-#: src\ui\interface.py:602
+#: src\ui\interface.py:598
 msgid "Por favor espere, finalizando conversión..."
 msgstr "Lütfen bekleyin, dönüştürme işlemi tamamlanıyor..."
 
-#: src\ui\interface.py:838
+#: src\ui\interface.py:834
 msgid "&Reanudar"
 msgstr "Sü&rdür"
 
-#: src\ui\interface.py:899
+#: src\ui\interface.py:895
 msgid "Grabación cancelada. Se han eliminado los archivos."
 msgstr "Kayıt iptal edildi. Dosyalar silindi."
 
-#: src\ui\interface.py:899 src\ui\interface.py:944
+#: src\ui\interface.py:895 src\ui\interface.py:940
 msgid "Grabación"
 msgstr "Kayıt"
 
-#: src\ui\interface.py:904
+#: src\ui\interface.py:900
 msgid "Por favor espere, convirtiendo a formato final..."
 msgstr "Lütfen bekleyin, son biçime dönüştürülüyor..."
 
-#: src\ui\interface.py:931
+#: src\ui\interface.py:927
 #, python-brace-format
 msgid ""
 "Grabación completada. Archivo guardado como:\n"
@@ -610,7 +607,7 @@ msgstr ""
 "Kayıt tamamlandı. Dosya şu şekilde kaydedildi:\n"
 "{file_path}"
 
-#: src\ui\interface.py:936
+#: src\ui\interface.py:932
 #, python-brace-format
 msgid ""
 "\n"
@@ -621,7 +618,7 @@ msgstr ""
 "Ayrı Mikrofon Dosyası: {mic_path}\n"
 "Ayrı Sistem Dosyası: {system_path}"
 
-#: src\ui\interface.py:942
+#: src\ui\interface.py:938
 msgid ""
 "\n"
 "\n"
@@ -631,87 +628,83 @@ msgstr ""
 "\n"
 "Kayıtlar klasörünü açmak istiyor musunuz?"
 
-#: src\ui\interface.py:1090
+#: src\ui\interface.py:1073
 msgid "Información"
 msgstr "Bilgi"
 
-#: src\ui\interface.py:1272
+#: src\ui\interface.py:1255
 msgid "Alemán"
 msgstr "Almanca"
 
-#: src\ui\interface.py:1273
+#: src\ui\interface.py:1256
 msgid "Árabe"
 msgstr "Arapça"
 
-#: src\ui\interface.py:1274
+#: src\ui\interface.py:1257
 msgid "Español"
 msgstr "İspanyolca"
 
-#: src\ui\interface.py:1275
+#: src\ui\interface.py:1258
 msgid "Francés"
 msgstr "Fransızca"
 
-#: src\ui\interface.py:1276
+#: src\ui\interface.py:1259
 msgid "Inglés"
 msgstr "İngilizce"
 
-#: src\ui\interface.py:1277
+#: src\ui\interface.py:1260
 msgid "Italiano"
 msgstr "İtalyanca"
 
-#: src\ui\interface.py:1278
+#: src\ui\interface.py:1261
 msgid "Portugués"
 msgstr "Portekizce"
 
-#: src\ui\interface.py:1279
-msgid "Serbio"
-msgstr "Sırpça"
-
-#: src\ui\interface.py:1280
+#: src\ui\interface.py:1262
 msgid "Turco"
 msgstr "Türkçe"
 
-#: src\ui\interface.py:1281
+#: src\ui\interface.py:1263
 msgid "Vietnamita"
 msgstr "Vietnamca"
 
-#: src\ui\interface.py:1316 src\ui\options.py:317
+#: src\ui\interface.py:1295 src\ui\options.py:317
 msgid "Opciones"
 msgstr "Seçenekler"
 
-#: src\ui\interface.py:1317
+#: src\ui\interface.py:1296
 msgid "Buscar actualizaciones"
 msgstr "Güncellemeleri Denetle"
 
-#: src\ui\interface.py:1318
+#: src\ui\interface.py:1297
 msgid "Idioma"
 msgstr "Diller"
 
-#: src\ui\interface.py:1319 src\ui\interface.py:1334
+#: src\ui\interface.py:1298 src\ui\interface.py:1313
 msgid "Abrir Grabaciones"
 msgstr "Kayıtları Aç"
 
-#: src\ui\interface.py:1320
+#: src\ui\interface.py:1299
 msgid "&Manual de usuario"
 msgstr "Kullanı&m kılavuzu"
 
-#: src\ui\interface.py:1321
+#: src\ui\interface.py:1300
 msgid "Acerca &de..."
 msgstr "&Hakkında..."
 
-#: src\ui\interface.py:1322
+#: src\ui\interface.py:1301
 msgid "invítame a un &café si te gusta mi trabajo"
 msgstr "i&şimi beğeniyorsan bana bir kahve ısmarla"
 
-#: src\ui\interface.py:1323
+#: src\ui\interface.py:1302
 msgid "Salir"
 msgstr "Çık"
 
-#: src\ui\interface.py:1335
+#: src\ui\interface.py:1314
 msgid "&invítame a un café si te gusta mi trabajo"
 msgstr "i&şimi beğeniyorsan bana bir kahve ısmarla"
 
-#: src\ui\interface.py:1352
+#: src\ui\interface.py:1331
 msgid ""
 "Para aplicar el nuevo idioma se necesita reiniciar la aplicación.\n"
 "¿Desea continuar?"
@@ -719,35 +712,35 @@ msgstr ""
 "Seçilen dilin aktif olması için uygulamayı yeniden başlatmanız gerekir.\n"
 "Devam etmek istiyor musunuz?"
 
-#: src\ui\interface.py:1353
+#: src\ui\interface.py:1332
 msgid "Confirmar cambio de idioma"
 msgstr "Dil değişikliğini onaylayın"
 
-#: src\ui\interface.py:1484
+#: src\ui\interface.py:1463
 msgid "Grabación en pausa."
 msgstr "Kayıt duraklatıldı."
 
-#: src\ui\interface.py:1488
+#: src\ui\interface.py:1467
 msgid "Grabando... (No hay hotkey de detener asignada)"
 msgstr "Kaydediliyor... (Durdur kısayol tuşu atanmadı)"
 
-#: src\ui\interface.py:1490
+#: src\ui\interface.py:1469
 #, python-brace-format
 msgid "Grabando... (Usa {hk} para detener)"
 msgstr "Kaydediliyor... (Durdurmak için {hk} tuşunu kullanın)"
 
-#: src\ui\interface.py:1494
+#: src\ui\interface.py:1473
 msgid "En espera. Asigna teclas en Opciones o inicia manualmente."
 msgstr ""
 "Bekleme modunda. Seçenekler iletişim kutusunda Kısayol tuşları belirleyin "
 "veya el ile başlatın."
 
-#: src\ui\interface.py:1546
+#: src\ui\interface.py:1525
 #, python-brace-format
 msgid "No se pudo abrir el directorio de grabaciones: {error}"
 msgstr "Kayıt dizini açılamadı: {error}"
 
-#: src\ui\interface.py:1556
+#: src\ui\interface.py:1535
 msgid ""
 "WASAPIRecording\n"
 "Versión: {}\n"
@@ -758,8 +751,7 @@ msgid ""
 "🇹🇷 Turco: Umut Korkmaz\n"
 "🇸🇦 Árabe: moataz geba\n"
 "🇮🇹 Italiano: Alessio Lenzi\n"
-"🇻🇳 Vietnamita: Đào Đức Trung\n"
-"🇷🇸 Serbio: Mila Kuran (IA)"
+"🇻🇳 Vietnamita: Đào Đức Trung"
 msgstr ""
 "WASAPIRecording\n"
 "Sürüm: {}\n"
@@ -770,10 +762,9 @@ msgstr ""
 "🇹🇷 Türkçe: Umut Korkmaz\n"
 "🇸🇦 Arapça: moataz geba\n"
 "🇮🇹 İtalyanca: Alessio Lenzi\n"
-"🇻🇳 Vietnamca: Đào Đức Trung\n"
-"🇷🇸 Serbio: Mila Kuran (IA)"
+"🇻🇳 Vietnamca: Đào Đức Trung"
 
-#: src\ui\interface.py:1567
+#: src\ui\interface.py:1545
 msgid "Acerca de..."
 msgstr "Hakkında..."
 
