@@ -379,132 +379,169 @@ class AudioRecorderFrame(wx.Frame):
 
 		self.buffer_size = 1024
 
+		# --- Panel Principal ---
 		panel = wx.Panel(self)
 		main_sizer = wx.BoxSizer(wx.VERTICAL)
 
-		# Sección Dispositivos
+		# --- Sección Dispositivos (Refactorizada con FlexGridSizer) ---
 		device_box = wx.StaticBoxSizer(wx.StaticBox(panel, label=_("Dispositivos")), wx.VERTICAL)
-		device_box.Add(wx.StaticText(panel, label=_("Micrófon&o:")), 0, wx.ALL, 5)
+		device_grid = wx.FlexGridSizer(rows=3, cols=2, vgap=5, hgap=5)
+		device_grid.AddGrowableCol(1, 1) # Columna de controles expandible
+
+		# Fila Micrófono
+		mic_label = wx.StaticText(panel, label=_("Micrófon&o:"))
+		device_grid.Add(mic_label, 0, wx.ALIGN_CENTER_VERTICAL | wx.ALL, 5)
 		self.mic_choice = wx.Choice(panel, choices=[mic.name for mic in sc.all_microphones()])
-		self.mic_choice.SetSelection(0)
+		self.mic_choice.SetSelection(0) # Establecer selección inicial si es posible
 		self.mic_choice.Bind(wx.EVT_CHOICE, self.on_update_selected_mic)
-		device_box.Add(self.mic_choice, 0, wx.ALL | wx.EXPAND, 5)
+		device_grid.Add(self.mic_choice, 1, wx.EXPAND | wx.ALL, 5) # EXPAND para que el choice use el ancho
 
-		device_box.Add(wx.StaticText(panel, label=_("&Sistema (loopback):")), 0, wx.ALL, 5)
-		self.system_choice = wx.Choice(
-			panel, choices=[sysdev.name for sysdev in sc.all_microphones(include_loopback=True)]
-		)
-		self.system_choice.SetSelection(0)
+		# Fila Sistema (Loopback)
+		system_label = wx.StaticText(panel, label=_("&Sistema (loopback):"))
+		device_grid.Add(system_label, 0, wx.ALIGN_CENTER_VERTICAL | wx.ALL, 5)
+		self.system_choice = wx.Choice(panel, choices=[sysdev.name for sysdev in sc.all_microphones(include_loopback=True)])
+		self.system_choice.SetSelection(0) # Establecer selección inicial si es posible
 		self.system_choice.Bind(wx.EVT_CHOICE, self.on_update_selected_system)
-		device_box.Add(self.system_choice, 0, wx.ALL | wx.EXPAND, 5)
+		device_grid.Add(self.system_choice, 1, wx.EXPAND | wx.ALL, 5) # EXPAND
 
+		# Fila Botón Refrescar
+		device_grid.Add((0, 0), 0) # Placeholder en la primera columna
 		self.refresh_button = wx.Button(panel, label=_("&Refrescar Dispositivos"))
 		self.refresh_button.Bind(wx.EVT_BUTTON, self.on_refresh_devices)
-		device_box.Add(self.refresh_button, 0, wx.ALL | wx.CENTER, 5)
+		device_grid.Add(self.refresh_button, 0, wx.ALIGN_CENTER | wx.ALL, 5) # Centrado en la segunda columna
+
+		device_box.Add(device_grid, 1, wx.EXPAND | wx.ALL, 5) # El grid se expande dentro del box
 		main_sizer.Add(device_box, 0, wx.ALL | wx.EXPAND, 10)
 
 		main_sizer.Add(wx.StaticLine(panel), 0, wx.ALL | wx.EXPAND, 10)
 
-		# Sección Configuración
+		# --- Sección Configuración (Refactorizada con FlexGridSizer) ---
 		config_box = wx.StaticBoxSizer(wx.StaticBox(panel, label=_("Configuración de Grabación")), wx.VERTICAL)
+		config_grid = wx.FlexGridSizer(rows=9, cols=2, vgap=5, hgap=5) # 9 filas para todos los controles
+		config_grid.AddGrowableCol(1, 1) # Columna de controles expandible
 
-		config_box.Add(wx.StaticText(panel, label=_("&Calidad (Hz):")), 0, wx.ALL, 5)
+		# Fila Calidad
+		quality_label = wx.StaticText(panel, label=_("&Calidad (Hz):"))
+		config_grid.Add(quality_label, 0, wx.ALIGN_CENTER_VERTICAL | wx.ALL, 5)
 		self.quality_choice = wx.Choice(panel, choices=[str(q) for q in self.quality_options])
 		self.quality_choice.SetSelection(2)
 		self.quality_choice.Bind(wx.EVT_CHOICE, self.on_update_quality)
-		config_box.Add(self.quality_choice, 0, wx.ALL | wx.EXPAND, 5)
+		config_grid.Add(self.quality_choice, 1, wx.EXPAND | wx.ALL, 5)
 
-		config_box.Add(wx.StaticText(panel, label=_("&Formato de salida:")), 0, wx.ALL, 5)
+		# Fila Formato de Salida
+		format_label = wx.StaticText(panel, label=_("&Formato de salida:"))
+		config_grid.Add(format_label, 0, wx.ALIGN_CENTER_VERTICAL | wx.ALL, 5)
 		self.format_choice = wx.Choice(panel, choices=self.output_formats)
 		self.format_choice.SetSelection(0)
 		self.format_choice.Bind(wx.EVT_CHOICE, self.on_update_output_format)
-		config_box.Add(self.format_choice, 0, wx.ALL | wx.EXPAND, 5)
+		config_grid.Add(self.format_choice, 1, wx.EXPAND | wx.ALL, 5)
 
-		config_box.Add(wx.StaticText(panel, label=_("&Bitrate MP3 (kbps):")), 0, wx.ALL, 5)
+		# Fila Bitrate MP3
+		bitrate_label = wx.StaticText(panel, label=_("&Bitrate MP3 (kbps):"))
+		config_grid.Add(bitrate_label, 0, wx.ALIGN_CENTER_VERTICAL | wx.ALL, 5)
 		self.bitrate_choice = wx.Choice(panel, choices=[str(b) for b in self.bitrate_options])
-		self.bitrate_choice.SetSelection(1)
+		self.bitrate_choice.SetSelection(5) # Índice para 192kbps si es el default
 		self.bitrate_choice.Bind(wx.EVT_CHOICE, self.on_update_bitrate)
-		config_box.Add(self.bitrate_choice, 0, wx.ALL | wx.EXPAND, 5)
+		config_grid.Add(self.bitrate_choice, 1, wx.EXPAND | wx.ALL, 5)
 
-		config_box.Add(wx.StaticText(panel, label=_("Modo Micrófon&o:")), 0, wx.ALL, 5)
+		# Fila Modo Micrófono
+		mic_mode_label = wx.StaticText(panel, label=_("Modo Micrófon&o:"))
+		config_grid.Add(mic_mode_label, 0, wx.ALIGN_CENTER_VERTICAL | wx.ALL, 5)
 		self.mic_mode_choice = wx.Choice(panel, choices=[_("Mono"), _("Estéreo")])
-		self.mic_mode_choice.SetSelection(1)
+		self.mic_mode_choice.SetSelection(1) # Estéreo
 		self.mic_mode_choice.Bind(wx.EVT_CHOICE, self.on_update_mic_mode)
-		config_box.Add(self.mic_mode_choice, 0, wx.ALL | wx.EXPAND, 5)
+		config_grid.Add(self.mic_mode_choice, 1, wx.EXPAND | wx.ALL, 5)
 
-		config_box.Add(wx.StaticText(panel, label=_("Modo &Sistema (loopback):")), 0, wx.ALL, 5)
+		# Fila Modo Sistema
+		system_mode_label = wx.StaticText(panel, label=_("Modo &Sistema (loopback):"))
+		config_grid.Add(system_mode_label, 0, wx.ALIGN_CENTER_VERTICAL | wx.ALL, 5)
 		self.system_mode_choice = wx.Choice(panel, choices=[_("Mono"), _("Estéreo")])
-		self.system_mode_choice.SetSelection(1)
+		self.system_mode_choice.SetSelection(1) # Estéreo
 		self.system_mode_choice.Bind(wx.EVT_CHOICE, self.on_update_system_mode)
-		config_box.Add(self.system_mode_choice, 0, wx.ALL | wx.EXPAND, 5)
+		config_grid.Add(self.system_mode_choice, 1, wx.EXPAND | wx.ALL, 5)
 
-		config_box.Add(wx.StaticText(panel, label=_("&Tamaño de buffer (frames):")), 0, wx.ALL, 5)
+		# Fila Tamaño de Buffer
+		buffer_label = wx.StaticText(panel, label=_("&Tamaño de buffer (frames):"))
+		config_grid.Add(buffer_label, 0, wx.ALIGN_CENTER_VERTICAL | wx.ALL, 5)
 		self.buffer_spin = wx.SpinCtrl(panel, value=str(self.buffer_size), min=128, max=8192)
 		self.buffer_spin.Bind(wx.EVT_SPINCTRL, self.on_update_buffer_size)
-		config_box.Add(self.buffer_spin, 0, wx.ALL | wx.EXPAND, 5)
+		config_grid.Add(self.buffer_spin, 1, wx.EXPAND | wx.ALL, 5)
 
+		# Fila Checkbox Archivos Separados
+		config_grid.Add((0, 0), 0) # Placeholder en la primera columna
 		self.separate_files_checkbox = wx.CheckBox(panel, label=_("Guardar archivos separados de micrófono &y sistema"))
-		config_box.Add(self.separate_files_checkbox, 0, wx.ALL, 5)
+		config_grid.Add(self.separate_files_checkbox, 1, wx.EXPAND | wx.ALL, 5) # Checkbox en la segunda columna
 
-		config_box.Add(wx.StaticText(panel, label=_("&Volumen del Micrófono:")), 0, wx.ALL, 5)
-		self.mic_volume_slider = wx.Slider(panel, value=100, minValue=0, maxValue=100, style=wx.SL_HORIZONTAL)
+		# Fila Volumen Micrófono
+		mic_vol_label = wx.StaticText(panel, label=_("&Volumen del Micrófono:"))
+		config_grid.Add(mic_vol_label, 0, wx.ALIGN_CENTER_VERTICAL | wx.ALL, 5)
+		self.mic_volume_slider = wx.Slider(panel, value=int(self.mic_volume * 100), minValue=0, maxValue=100, style=wx.SL_HORIZONTAL) # Ajustado para usar self.mic_volume
 		self.mic_volume_slider.Bind(wx.EVT_SLIDER, self.on_update_mic_volume)
-		config_box.Add(self.mic_volume_slider, 0, wx.ALL | wx.EXPAND, 5)
+		config_grid.Add(self.mic_volume_slider, 1, wx.EXPAND | wx.ALL, 5)
 
-		config_box.Add(wx.StaticText(panel, label=_("&Volumen del Sistema:")), 0, wx.ALL, 5)
-		self.system_volume_slider = wx.Slider(panel, value=50, minValue=0, maxValue=100, style=wx.SL_HORIZONTAL)
+		# Fila Volumen Sistema
+		sys_vol_label = wx.StaticText(panel, label=_("&Volumen del Sistema:"))
+		config_grid.Add(sys_vol_label, 0, wx.ALIGN_CENTER_VERTICAL | wx.ALL, 5)
+		self.system_volume_slider = wx.Slider(panel, value=int(self.system_volume * 100), minValue=0, maxValue=100, style=wx.SL_HORIZONTAL) # Ajustado para usar self.system_volume
 		self.system_volume_slider.Bind(wx.EVT_SLIDER, self.on_update_system_volume)
-		config_box.Add(self.system_volume_slider, 0, wx.ALL | wx.EXPAND, 5)
+		config_grid.Add(self.system_volume_slider, 1, wx.EXPAND | wx.ALL, 5)
 
+		config_box.Add(config_grid, 1, wx.EXPAND | wx.ALL, 5) # El grid se expande dentro del box
 		main_sizer.Add(config_box, 0, wx.ALL | wx.EXPAND, 10)
+
 		main_sizer.Add(wx.StaticLine(panel), 0, wx.ALL | wx.EXPAND, 10)
 
+		# --- Sección Controles (Sin cambios) ---
 		control_box = wx.BoxSizer(wx.HORIZONTAL)
 		self.start_button = wx.Button(panel, label=_("&Iniciar Grabación"))
 		self.start_button.Bind(wx.EVT_BUTTON, self.start_recording)
-		control_box.Add(self.start_button, 0, wx.ALL | wx.EXPAND, 5)
+		control_box.Add(self.start_button, 1, wx.ALL | wx.EXPAND, 5) # Usar proporción 1 para que se expandan
 
 		self.pause_button = wx.Button(panel, label=_("&Pausar"))
 		self.pause_button.Disable()
 		self.pause_button.Bind(wx.EVT_BUTTON, self.on_pause_recording)
-		control_box.Add(self.pause_button, 0, wx.ALL | wx.EXPAND, 5)
+		control_box.Add(self.pause_button, 1, wx.ALL | wx.EXPAND, 5) # Usar proporción 1
 
 		self.stop_button = wx.Button(panel, label=_("&Detener Grabación"))
 		self.stop_button.Disable()
 		self.stop_button.Bind(wx.EVT_BUTTON, self.stop_recording)
-		control_box.Add(self.stop_button, 0, wx.ALL | wx.EXPAND, 5)
+		control_box.Add(self.stop_button, 1, wx.ALL | wx.EXPAND, 5) # Usar proporción 1
 
 		self.cancel_button = wx.Button(panel, label=_("&Cancelar"))
 		self.cancel_button.Disable()
 		self.cancel_button.Bind(wx.EVT_BUTTON, self.on_cancel_recording)
-		control_box.Add(self.cancel_button, 0, wx.ALL | wx.EXPAND, 5)
+		control_box.Add(self.cancel_button, 1, wx.ALL | wx.EXPAND, 5) # Usar proporción 1
 
 		self.test_audio_button = wx.Button(panel, label=_("&Prueba de Audio"))
 		self.test_audio_button.Bind(wx.EVT_BUTTON, self.show_test_audio)
-		control_box.Add(self.test_audio_button, 0, wx.ALL | wx.EXPAND, 5)
+		control_box.Add(self.test_audio_button, 1, wx.ALL | wx.EXPAND, 5) # Usar proporción 1
 
 		self.menu_button = wx.Button(panel, label=_("&Menú"))
 		self.menu_button.Bind(wx.EVT_BUTTON, self.on_menu_button)
-		control_box.Add(self.menu_button, 0, wx.ALL | wx.EXPAND, 5)
+		control_box.Add(self.menu_button, 1, wx.ALL | wx.EXPAND, 5) # Usar proporción 1
 
-		main_sizer.Add(control_box, 0, wx.ALL | wx.CENTER, 10)
+		main_sizer.Add(control_box, 0, wx.EXPAND | wx.ALL, 10) # Permitir que la caja de controles se expanda horizontalmente
 		main_sizer.Add(wx.StaticLine(panel), 0, wx.ALL | wx.EXPAND, 10)
 
+		# --- Sección Estado (Sin cambios) ---
 		cfg = load_hotkeys_from_config()
 		hotkey_start = cfg["hotkey_start"]
 		initial_text = _("En espera (Usa {hk} para iniciar)").format(hk=hotkey_start)
 
-		status_box = wx.StaticBoxSizer(wx.StaticBox(panel, label=_("Estado")), wx.VERTICAL)
+		status_box_sizer = wx.StaticBoxSizer(wx.StaticBox(panel, label=_("Estado")), wx.VERTICAL)
 		self.status_box = wx.TextCtrl(panel, value=initial_text,
 			style=wx.HSCROLL | wx.TE_MULTILINE | wx.TE_READONLY)
-		status_box.Add(self.status_box, 1, wx.ALL | wx.EXPAND, 5)
-		main_sizer.Add(status_box, 1, wx.ALL | wx.EXPAND, 10)
+		status_box_sizer.Add(self.status_box, 1, wx.ALL | wx.EXPAND, 5) # Proporción 1 para que expanda verticalmente
+		main_sizer.Add(status_box_sizer, 1, wx.ALL | wx.EXPAND, 10) # Proporción 1 para que el estado ocupe espacio restante
 
+		# --- Finalización del Layout ---
 		panel.SetSizer(main_sizer)
+		# Volvemos al método estándar: dejar que el sizer calcule el tamaño óptimo
 		main_sizer.Fit(self)
-		self.SetMinSize(self.GetSize())
+		self.SetMinSize(self.GetSize()) # Establecer el tamaño mínimo a lo calculado
 		self.Centre()
 
+		# --- Resto de la inicialización ---
 		self.tray_icon = MyTaskBarIcon(self)
 		self.tray_icon.hide_icon()
 
@@ -512,11 +549,11 @@ class AudioRecorderFrame(wx.Frame):
 		self.Bind(wx.EVT_ICONIZE, self.on_iconify)
 		self.Bind(wx.EVT_HOTKEY, self.on_hotkey)
 
-		self.load_config()
+		self.load_config() # Cargar configuración DESPUÉS de crear los widgets
 		self.validate_and_register_hotkeys()
 		self.update_status_message(recording=False)
 
-		logger.log_action("Interfaz gráfica inicializada correctamente.")
+		logger.log_action("Interfaz gráfica inicializada correctamente con FlexGridSizer.")
 		logger.log_action(f"DEBUG: output_dir => {self.output_dir}")
 
 	def _create_icon_from_base64(self, icon_b64):
