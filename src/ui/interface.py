@@ -18,7 +18,7 @@ import os
 import sys
 import wx
 import wx.adv
-import soundcard as sc
+# import soundcard as sc (removed)
 import datetime
 import numpy as np
 import soundfile as sf
@@ -33,7 +33,7 @@ from core.config import save_config, load_config, play_beep
 from core.devices import (
 	update_selected_mic, update_selected_system, refresh_devices,
 	update_quality, update_output_format, update_bitrate,
-	update_mic_volume, update_system_volume
+	update_mic_volume, update_system_volume, get_wasapi_devices
 )
 from core.recorder import record_audio
 from ui.widgets import mensaje
@@ -359,8 +359,8 @@ class AudioRecorderFrame(wx.Frame):
 
 		self.mic_volume = 0.5
 		self.system_volume = 0.5
-		self.selected_mic = sc.default_microphone()
-		self.selected_system = sc.get_microphone(sc.default_speaker().name, include_loopback=True)
+		self.selected_mic = -1
+		self.selected_system = -1
 		self.quality_options = [22050, 44100, 48000]
 		self.selected_quality = 48000
 		self.output_formats = ["MP3", "WAV", "FLAC", "OGG", "AIFF"]
@@ -391,18 +391,16 @@ class AudioRecorderFrame(wx.Frame):
 		# Fila Micrófono
 		mic_label = wx.StaticText(panel, label=_("Micrófon&o:"))
 		device_grid.Add(mic_label, 0, wx.ALIGN_CENTER_VERTICAL | wx.ALL, 5)
-		self.mic_choice = wx.Choice(panel, choices=[mic.name for mic in sc.all_microphones()])
-		self.mic_choice.SetSelection(0) # Establecer selección inicial si es posible
+		self.mic_choice = wx.Choice(panel)
 		self.mic_choice.Bind(wx.EVT_CHOICE, self.on_update_selected_mic)
-		device_grid.Add(self.mic_choice, 1, wx.EXPAND | wx.ALL, 5) # EXPAND para que el choice use el ancho
+		device_grid.Add(self.mic_choice, 1, wx.EXPAND | wx.ALL, 5)
 
 		# Fila Sistema (Loopback)
 		system_label = wx.StaticText(panel, label=_("&Sistema (loopback):"))
 		device_grid.Add(system_label, 0, wx.ALIGN_CENTER_VERTICAL | wx.ALL, 5)
-		self.system_choice = wx.Choice(panel, choices=[sysdev.name for sysdev in sc.all_microphones(include_loopback=True)])
-		self.system_choice.SetSelection(0) # Establecer selección inicial si es posible
+		self.system_choice = wx.Choice(panel)
 		self.system_choice.Bind(wx.EVT_CHOICE, self.on_update_selected_system)
-		device_grid.Add(self.system_choice, 1, wx.EXPAND | wx.ALL, 5) # EXPAND
+		device_grid.Add(self.system_choice, 1, wx.EXPAND | wx.ALL, 5)
 
 		# Fila Botón Refrescar
 		device_grid.Add((0, 0), 0) # Placeholder en la primera columna
@@ -549,6 +547,7 @@ class AudioRecorderFrame(wx.Frame):
 		self.Bind(wx.EVT_ICONIZE, self.on_iconify)
 		self.Bind(wx.EVT_HOTKEY, self.on_hotkey)
 
+		self.on_refresh_devices(None) # Cargar dispositivos inicialmente
 		self.load_config() # Cargar configuración DESPUÉS de crear los widgets
 		self.validate_and_register_hotkeys()
 		self.update_status_message(recording=False)
@@ -687,8 +686,8 @@ class AudioRecorderFrame(wx.Frame):
 		:param event: Evento wx.EVT_CHOICE de mic_choice.
 		"""
 		selected_name = self.mic_choice.GetStringSelection()
-		self.selected_mic = update_selected_mic(selected_name)
-		logger.log_action(f"Micrófono seleccionado: {selected_name}")
+		self.selected_mic = update_selected_mic(selected_name, self.mic_choice)
+		logger.log_action(f"Micrófono seleccionado (index): {self.selected_mic}")
 
 	def on_update_selected_system(self, event):
 		"""
@@ -697,8 +696,8 @@ class AudioRecorderFrame(wx.Frame):
 		:param event: Evento wx.EVT_CHOICE de system_choice.
 		"""
 		selected_name = self.system_choice.GetStringSelection()
-		self.selected_system = update_selected_system(selected_name)
-		logger.log_action(f"Sistema (loopback) seleccionado: {selected_name}")
+		self.selected_system = update_selected_system(selected_name, self.system_choice)
+		logger.log_action(f"Sistema (loopback) seleccionado (index): {self.selected_system}")
 
 	def on_update_quality(self, event):
 		"""
@@ -1142,8 +1141,8 @@ class AudioRecorderFrame(wx.Frame):
 			config_file = os.path.abspath(os.path.join(get_base_path(), "WASAPIRecording.dat"))
 			config = load_config(config_file)
 
-			config["mic_name"] = self.selected_mic.name if self.selected_mic else ""
-			config["system_name"] = self.selected_system.name if self.selected_system else ""
+			config["mic_name"] = self.mic_choice.GetStringSelection()
+			config["system_name"] = self.system_choice.GetStringSelection()
 			config["quality"] = self.sample_rate
 			config["format"] = self.selected_format
 			config["bitrate"] = self.selected_bitrate
@@ -1171,33 +1170,22 @@ class AudioRecorderFrame(wx.Frame):
 			config = load_config(self.CONFIG_FILE)
 			logger.log_action("Configuración cargada exitosamente.")
 
-			mics = [mic.name for mic in sc.all_microphones()]
+			# Dispositivos
 			mic_name = config.get("mic_name", "")
-			if mic_name in mics:
-				self.selected_mic = next(m for m in sc.all_microphones() if m.name == mic_name)
-				self.mic_choice.SetItems(mics)
-				self.mic_choice.SetSelection(mics.index(mic_name))
-			else:
-				self.selected_mic = sc.default_microphone()
-				self.mic_choice.SetItems(mics)
-				if self.selected_mic.name in mics:
-					self.mic_choice.SetSelection(mics.index(self.selected_mic.name))
-				logger.log_warning(f"Micrófono configurado no encontrado: {mic_name}. Se usa el predeterminado.")
-
-			systems = [s.name for s in sc.all_microphones(include_loopback=True)]
+			if mic_name:
+				for i in range(self.mic_choice.GetCount()):
+					if self.mic_choice.GetString(i) == mic_name:
+						self.mic_choice.SetSelection(i)
+						self.selected_mic = self.mic_choice.GetClientData(i)
+						break
+			
 			system_name = config.get("system_name", "")
-			if system_name in systems:
-				self.selected_system = next(
-					s for s in sc.all_microphones(include_loopback=True) if s.name == system_name
-				)
-				self.system_choice.SetItems(systems)
-				self.system_choice.SetSelection(systems.index(system_name))
-			else:
-				self.selected_system = sc.get_microphone(sc.default_speaker().name, include_loopback=True)
-				self.system_choice.SetItems(systems)
-				if self.selected_system.name in systems:
-					self.system_choice.SetSelection(systems.index(self.selected_system.name))
-				logger.log_warning(f"Sistema configurado no encontrado: {system_name}. Se usa el predeterminado.")
+			if system_name:
+				for i in range(self.system_choice.GetCount()):
+					if self.system_choice.GetString(i) == system_name:
+						self.system_choice.SetSelection(i)
+						self.selected_system = self.system_choice.GetClientData(i)
+						break
 
 			self.sample_rate = config.get("quality", self.sample_rate)
 			if self.sample_rate in self.quality_options:
@@ -1264,12 +1252,10 @@ class AudioRecorderFrame(wx.Frame):
 		final_channels = 2
 
 		mic_index = self.mic_choice.GetSelection()
-		mic_name = self.mic_choice.GetString(mic_index)
-		selected_mic = update_selected_mic(mic_name)
+		selected_mic = self.mic_choice.GetClientData(mic_index) if mic_index != wx.NOT_FOUND else -1
 
 		system_index = self.system_choice.GetSelection()
-		system_name = self.system_choice.GetString(system_index)
-		selected_system = update_selected_system(system_name)
+		selected_system = self.system_choice.GetClientData(system_index) if system_index != wx.NOT_FOUND else -1
 
 		buffer_size = self.buffer_spin.GetValue()
 

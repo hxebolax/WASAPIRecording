@@ -33,6 +33,13 @@ def main():
 	try:
 		logger.log_action("Iniciando la aplicación WASAPIRecording...")
 
+		# Inicializar BASS
+		import sound_lib.external.pybass as pybass
+		if not pybass.BASS_Init(-1, 48000, 0, 0, 0):
+			logger.log_error(f"Error al inicializar BASS: {pybass.BASS_ErrorGetCode()}")
+		else:
+			logger.log_action("BASS inicializado correctamente.")
+
 		# Inicializar la internacionalización
 		i18n = I18n()
 		logger.log_action("Internacionalización inicializada correctamente.")
@@ -41,6 +48,10 @@ def main():
 		app = AudioRecorderApp(i18n)
 		logger.log_action("Interfaz gráfica iniciada. Entrando en el bucle principal.")
 		app.MainLoop()
+		
+		# Liberar BASS al salir
+		pybass.BASS_Free()
+		logger.log_action("BASS liberado.")
 	except SystemExit:
 		logger.log_action("La aplicación se cerró normalmente.")
 	except Exception as e:

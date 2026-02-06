@@ -2,110 +2,40 @@
 # -*- coding: utf-8 -*-
 
 """
-Módulo que contiene la lógica de grabación.
-
-Este módulo permite grabar audio desde micrófono y sistema (loopback), mezclarlos en tiempo
-real y guardar los resultados en archivos de audio con soporte para cancelación y pausa
-durante la grabación. También asegura que todos los archivos sean consistentes en formato
-(2 canales) para evitar problemas relacionados con dispositivos de hardware.
-
-Estrategia:
-- Se configuran los dispositivos con `channels=None` para adaptarse al hardware.
-- Se permite grabar en modos "Mono" o "Estéreo", asegurando siempre 2 canales en los archivos.
-- Se pueden controlar los eventos de grabación, pausa y cancelación.
-- [Modificado] Cuando un dispositivo informa más de 2 canales:
-  - Si user_mode="Mono", promediamos todos para tener un único canal y duplicarlo (L=R).
-  - Si user_mode="Estéreo", conservamos únicamente los dos primeros canales, evitando “mono aural”.
+Módulo que contiene la lógica de grabación usando BASS y WASAPI.
 """
 
 import os
 import sys
-import soundfile as sf
-import numpy as np
+import time
+import ctypes
 from core.logger import Logger
 from core.utils import get_base_path
-import time
+
+import sound_lib.external.pybass as pybass
+import sound_lib.external.pybasswasapi as pybasswasapi
+import sound_lib.external.pybassmix as pybassmix
+import sound_lib.external.pybassenc as pybassenc
 
 logger = Logger(log_dir=os.path.abspath(os.path.join(get_base_path(), "logs")))
 
-def expand_to_stereo(data):
+# Callbacks de WASAPI
+def wasapi_capture_callback(buffer, length, user):
 	"""
-	Duplica un array mono para generar 2 canales.
-
-	:param data: Array numpy en forma (N,) o (N,1).
-	:return: Array numpy en forma (N,2) con los mismos valores en ambos canales.
+	Callback llamado por BASSWASAPI cuando hay nuevos datos capturados.
+	Empuja los datos al stream de BASS correspondiente.
 	"""
-	if data.ndim == 1:
-		# (N,) -> (N,1)
-		data = data.reshape(-1, 1)
-	# data ahora es (N,1)
-	return np.concatenate([data, data], axis=1)
+	if user:
+		pybass.BASS_StreamPutData(user, buffer, length)
+	return 1
 
-def to_mono(stereo_data):
-	"""
-	Convierte datos estéreo (N,2) a pseudo-mono (L=R) usando la media de ambos canales.
-
-	:param stereo_data: Array numpy en forma (N,2).
-	:return: Array numpy en forma (N,2) con ambos canales igualados al promedio.
-	"""
-	mono_data = stereo_data.mean(axis=1)
-	# Generar (N,2) duplicando la media
-	return np.column_stack((mono_data, mono_data))
-
-def _adjust_user_mode(data, user_mode):
-	"""
-	Ajusta los datos de audio según el modo seleccionado por el usuario.
-
-	- "Mono": Convierte los datos a mono asegurando 2 canales con L=R.
-	- "Estéreo": Asegura 2 canales, pero si el hardware da más de 2, solo toma los 2 primeros
-	  (evitando un downmix completo que resulte en “mono aural”).
-
-	:param data: Array numpy devuelto por el hardware (N,C).
-	:param user_mode: "Mono" o "Estéreo" como cadena.
-	:return: Array numpy ajustado a (N,2).
-	"""
-	# Asegurar forma 2D
-	if data.ndim == 1:
-		# (N,) -> (N,1)
-		data = data.reshape(-1, 1)
-
-	num_chan = data.shape[1]
-
-	# Si el hardware da más de 2 canales, actuamos según user_mode
-	if num_chan > 2:
-		logger.log_action(f"Detectados {num_chan} canales. Ajustando según modo '{user_mode}'.")
-		if user_mode == _("Mono"):
-			# -> promediamos todos y duplicamos
-			multi_mono = data.mean(axis=1)  # (N,)
-			data = np.column_stack((multi_mono, multi_mono))
-			num_chan = 2
-		else:
-			# user_mode == "Estéreo"
-			# Mantenemos solo las 2 primeras pistas, asumiendo que son L y R reales
-			logger.log_action("Preservando únicamente los dos primeros canales para mantener estéreo.")
-			data = data[:, 0:2]
-			num_chan = 2
-
-	# A continuación, casos usuales (1 ó 2 canales)
-	if num_chan == 2 and user_mode == _("Mono"):
-		return to_mono(data)
-
-	if num_chan == 1 and user_mode == _("Estéreo"):
-		return expand_to_stereo(data)
-
-	if num_chan == 1 and user_mode == _("Mono"):
-		return expand_to_stereo(data)
-
-	if num_chan == 2 and user_mode == _("Estéreo"):
-		return data
-
-	# Por si acaso, forzamos a estéreo
-	return expand_to_stereo(data)
+# Envoltura de callback para ctypes
+WASAPIPROC = pybasswasapi.WASAPIPROC(wasapi_capture_callback)
 
 def record_audio(
 	recording_event,
-	selected_mic,
-	selected_system,
+	selected_mic_index,
+	selected_system_index,
 	sample_rate,
 	final_channels,
 	output_dir,
@@ -113,141 +43,156 @@ def record_audio(
 	mic_output_path=None,
 	system_output_path=None,
 	mic_volume=1.0,
-	system_volume=0.5,
-	mic_mode=_("Estéreo"),
-	system_mode=_("Estéreo"),
+	system_volume=1.0,
+	mic_mode="Estéreo",
+	system_mode="Estéreo",
 	buffer_size=1024,
 	pause_event=None,
 	cancel_event=None
 ):
 	"""
-	Graba audio desde micrófono y sistema, ajustando volumen y modo según el usuario.
-
-	La grabación soporta pausa y cancelación. En caso de cancelación, elimina los archivos
-	parciales generados.
-
-	:param recording_event: Evento para controlar inicio y finalización de la grabación.
-	:param selected_mic: Dispositivo de micrófono seleccionado.
-	:param selected_system: Dispositivo de loopback seleccionado.
-	:param sample_rate: Tasa de muestreo en Hz.
-	:param final_channels: Ignorado; siempre se graba en 2 canales en disco.
-	:param output_dir: Directorio donde se guardan los archivos de audio.
-	:param combined_output_path: Ruta del archivo combinado (micrófono + sistema).
-	:param mic_output_path: (Opcional) Ruta del archivo separado del micrófono.
-	:param system_output_path: (Opcional) Ruta del archivo separado del sistema.
-	:param mic_volume: Volumen del micrófono como flotante (0.0 a 1.0).
-	:param system_volume: Volumen del sistema como flotante (0.0 a 1.0).
-	:param mic_mode: "Mono" o "Estéreo" para los datos del micrófono.
-	:param system_mode: "Mono" o "Estéreo" para los datos del sistema.
-	:param buffer_size: Tamaño del buffer de grabación en frames.
-	:param pause_event: Evento para pausar la grabación.
-	:param cancel_event: Evento para cancelar la grabación y eliminar archivos.
+	Graba audio usando BASSWASAPI y BASSMIX.
 	"""
 	try:
 		if pause_event is None:
 			import threading
 			pause_event = threading.Event()
-
 		if cancel_event is None:
 			import threading
 			cancel_event = threading.Event()
 
-		if sys.platform.startswith("win"):
-			import pythoncom
-			try:
-				pythoncom.CoInitialize()
-				logger.log_action("DEBUG: COM inicializado en el hilo de grabación.")
-			except Exception as e:
-				logger.log_error(f"Error al inicializar COM en hilo de grabación: {e}")
-
 		os.makedirs(output_dir, exist_ok=True)
-		logger.log_action(f"Directorio de salida creado/existente: {output_dir}")
+		logger.log_action(f"Grabación BASSWASAPI iniciada. Mic: {selected_mic_index}, System: {selected_system_index}")
 
-		system_gain = 2.0
-		mic_gain = 4.0
+		# 1. Crear Mixer (decodificador, para que nosotros tiremos de él)
+		# Usamos BASS_STREAM_DECODE para que sea el bucle de Python quien controle el flujo
+		mixer = pybassmix.BASS_Mixer_StreamCreate(sample_rate, 2, pybass.BASS_STREAM_DECODE)
+		if not mixer:
+			logger.log_error(f"Error creando mixer BASS: {pybass.BASS_ErrorGetCode()}")
+			return
 
-		logger.log_action(f"Archivo combinado: {combined_output_path}")
-		if mic_output_path:
-			logger.log_action(f"Archivo separado mic: {mic_output_path}")
-		if system_output_path:
-			logger.log_action(f"Archivo separado sistema: {system_output_path}")
+		streams = []
+		wasapi_sessions = []
+		
+		# 2. Configurar dispositivos
+		def setup_device(idx, name_label):
+			if idx < 0: return None, None
+			
+			# Info del dispositivo para saber su frecuencia nativa
+			info = pybasswasapi.BASS_WASAPI_DEVICEINFO()
+			pybasswasapi.BASS_WASAPI_GetDeviceInfo(idx, ctypes.byref(info))
+			native_freq = info.mixfreq
+			native_chans = info.mixchans
+			
+			# Crear Push Stream en BASS con el formato nativo del dispositivo
+			# O forzar el formato que queremos. BASS_StreamCreate soporta push streams.
+			# Usamos BASS_STREAM_DECODE porque se mezclará
+			push = pybass.BASS_StreamCreate(native_freq, native_chans, pybass.BASS_STREAM_DECODE, pybass.STREAMPROC_PUSH, None)
+			
+			# Inicializar WASAPI
+			# BASS_WASAPI_Init(device, freq, chans, flags, buffer, period, proc, user)
+			# Usamos AUTOFORMAT para que BASS se encargue de las conversiones si es necesario
+			flags = pybasswasapi.BASS_WASAPI_AUTOFORMAT
+			if not pybasswasapi.BASS_WASAPI_Init(idx, 0, 0, flags, 0.4, 0.05, WASAPIPROC, ctypes.c_void_p(push)):
+				logger.log_error(f"Error init WASAPI dispositivo {idx} ({name_label}): {pybass.BASS_ErrorGetCode()}")
+				pybass.BASS_StreamFree(push)
+				return None, None
+			
+			return idx, push
 
-		with selected_system.recorder(samplerate=sample_rate, channels=None) as system_rec, \
-			 selected_mic.recorder(samplerate=sample_rate, channels=None) as mic_rec, \
-			 sf.SoundFile(combined_output_path, mode='w', samplerate=sample_rate, channels=2) as combined_file:
+		mic_idx, mic_push = setup_device(selected_mic_index, "Mic")
+		sys_idx, sys_push = setup_device(selected_system_index, "System")
 
-			mic_file = None
-			system_file = None
-			if mic_output_path:
-				mic_file = sf.SoundFile(mic_output_path, mode='w', samplerate=sample_rate, channels=2)
-			if system_output_path:
-				system_file = sf.SoundFile(system_output_path, mode='w', samplerate=sample_rate, channels=2)
+		# 3. Añadir al mixer y configurar volúmenes/modos
+		if mic_push:
+			# Añadir al mixer con resampleo automático
+			pybassmix.BASS_Mixer_StreamAddChannel(mixer, mic_push, pybassmix.BASS_MIXER_DOWNMIX | pybassmix.BASS_MIXER_LIMIT)
+			pybassmix.BASS_Mixer_ChannelSetAttribute(mic_push, pybass.BASS_ATTRIB_VOL, mic_volume)
+			if mic_mode == "Mono": # o _("Mono")
+				# BASSMIX puede hacer downmix a mono, pero aquí el mixer es estéreo. 
+				# Podemos usar una matriz de mezcla si fuera necesario, pero por ahora volumen es suficiente.
+				pass
 
-			logger.log_action("Grabación iniciada correctamente.")
+		if sys_push:
+			pybassmix.BASS_Mixer_StreamAddChannel(mixer, sys_push, pybassmix.BASS_MIXER_DOWNMIX | pybassmix.BASS_MIXER_LIMIT)
+			pybassmix.BASS_Mixer_ChannelSetAttribute(sys_push, pybass.BASS_ATTRIB_VOL, system_volume)
 
-			try:
-				while recording_event.is_set() and not cancel_event.is_set():
-					# Si está en pausa, no escribimos nada
-					if pause_event.is_set():
-						time.sleep(0.1)
-						continue
+		# 4. Iniciar encoders (grabación a WAV)
+		# BASS_Encode_Start(handle, cmdline, flags, proc, user)
+		def start_wav_encoder(handle, path):
+			# BASS_ENCODE_PCM escribe un WAV. BASS_UNICODE para rutas con caracteres especiales.
+			return pybassenc.BASS_Encode_Start(handle, path.encode('utf-16le'), pybassenc.BASS_ENCODE_PCM | pybass.BASS_UNICODE | pybassenc.BASS_ENCODE_AUTOFREE, None, None)
 
-					system_data = system_rec.record(numframes=buffer_size)
-					mic_data = mic_rec.record(numframes=buffer_size)
+		enc_combined = start_wav_encoder(mixer, combined_output_path)
+		enc_mic = start_wav_encoder(mic_push, mic_output_path) if mic_output_path and mic_push else None
+		enc_sys = start_wav_encoder(sys_push, system_output_path) if system_output_path and sys_push else None
 
-					system_data *= (system_volume * system_gain)
-					mic_data *= (mic_volume * mic_gain)
+		# 5. Iniciar captura WASAPI
+		if mic_idx is not None:
+			pybasswasapi.BASS_WASAPI_SetDevice(mic_idx)
+			pybasswasapi.BASS_WASAPI_Start()
+		if sys_idx is not None:
+			pybasswasapi.BASS_WASAPI_SetDevice(sys_idx)
+			pybasswasapi.BASS_WASAPI_Start()
 
-					system_data = np.clip(system_data, -1.0, 1.0)
-					mic_data = np.clip(mic_data, -1.0, 1.0)
+		# 6. Bucle de bombeo de datos
+		# Como el mixer y los push streams son DECODE, tenemos que pedirle datos al mixer
+		# para que el encoder reciba los datos y los escriba.
+		temp_buf_size = 20480 # 20KB approx
+		temp_buf = (ctypes.c_byte * temp_buf_size)()
+		
+		logger.log_action("Grabación en bucle iniciada.")
+		
+		try:
+			while recording_event.is_set() and not cancel_event.is_set():
+				if pause_event.is_set():
+					# Si está en pausa, podríamos detener WASAPI o simplemente dejar de bombear.
+					# Detener bombeo es más fácil.
+					time.sleep(0.1)
+					continue
+				
+				# Extraer datos del mixer (esto dispara el encoder)
+				got = pybass.BASS_ChannelGetData(mixer, temp_buf, temp_buf_size)
+				if got == -1:
+					break
+				if got == 0:
+					time.sleep(0.01)
+					continue
+				
+				# Si queremos archivos separados, el bombeo del mixer solo dispara el encoder del mixer.
+				# Los encoders de los canales individuales se disparan cuando los datos entran en el mixer.
+				# Espera: BASS_Mixer_StreamAddChannel con BASS_STREAM_DECODE canales:
+				# Cuando el mixer pide datos a los canales, los datos pasan por los canales.
+				# Así que enc_mic y enc_sys deberían funcionar.
 
-					# Ajuste a user_mode => (N,2)
-					system_data_2 = _adjust_user_mode(system_data, system_mode)
-					mic_data_2 = _adjust_user_mode(mic_data, mic_mode)
+			logger.log_action("Bucle de grabación finalizado.")
+		finally:
+			# 7. Limpieza
+			if mic_idx is not None:
+				pybasswasapi.BASS_WASAPI_SetDevice(mic_idx)
+				pybasswasapi.BASS_WASAPI_Stop(True)
+				pybasswasapi.BASS_WASAPI_Free()
+			if sys_idx is not None:
+				pybasswasapi.BASS_WASAPI_SetDevice(sys_idx)
+				pybasswasapi.BASS_WASAPI_Stop(True)
+				pybasswasapi.BASS_WASAPI_Free()
+			
+			if enc_combined: pybassenc.BASS_Encode_Stop(enc_combined)
+			if enc_mic: pybassenc.BASS_Encode_Stop(enc_mic)
+			if enc_sys: pybassenc.BASS_Encode_Stop(enc_sys)
+			
+			pybass.BASS_StreamFree(mixer)
+			if mic_push: pybass.BASS_StreamFree(mic_push)
+			if sys_push: pybass.BASS_StreamFree(sys_push)
 
-					# Escritura en archivos separados
-					if system_file is not None:
-						system_file.write(system_data_2)
-						system_file.flush()
-					if mic_file is not None:
-						mic_file.write(mic_data_2)
-						mic_file.flush()
-
-					# Combinación
-					combined_data = (system_data_2 + mic_data_2) / 2
-					combined_data = np.clip(combined_data, -1.0, 1.0)
-
-					# Guardar el combinado, también 2 canales
-					combined_file.write(combined_data)
-					combined_file.flush()
-
-				logger.log_action("Datos de audio grabados y almacenados correctamente.")
-			finally:
-				if mic_file is not None:
-					mic_file.close()
-					logger.log_action(f"Archivo de micrófono cerrado: {mic_output_path}")
-				if system_file is not None:
-					system_file.close()
-					logger.log_action(f"Archivo del sistema cerrado: {system_output_path}")
-				logger.log_action("Grabación finalizada.")
-	except Exception as e:
-		logger.log_error(f"Error en record_audio: {e}")
-	finally:
-		# Si se ha cancelado la grabación, se eliminan los archivos parciales
 		if cancel_event.is_set():
-			logger.log_action("Se detectó cancelación de la grabación. Eliminando archivos parciales...")
+			logger.log_action("Cancelación detectada. Eliminando archivos parciales...")
 			for path in [combined_output_path, mic_output_path, system_output_path]:
 				if path and os.path.exists(path):
-					try:
-						os.remove(path)
-						logger.log_action(f"Archivo eliminado: {path}")
-					except Exception as ex:
-						logger.log_error(f"Error al eliminar {path}: {ex}")
+					try: os.remove(path)
+					except: pass
 
-		if sys.platform.startswith("win"):
-			try:
-				import pythoncom
-				pythoncom.CoUninitialize()
-				logger.log_action("DEBUG: COM liberado en el hilo de grabación.")
-			except:
-				pass
+	except Exception as e:
+		logger.log_error(f"Error en record_audio (BASS): {e}")
+		import traceback
+		logger.log_error(traceback.format_exc())

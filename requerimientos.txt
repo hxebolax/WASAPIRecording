@@ -1,7 +1,8 @@
 wxPython
-soundcard
 soundfile
 numpy
 lameenc
 pywin32
 pyinstaller
+platform_utils
+libloader

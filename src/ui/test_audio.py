@@ -16,8 +16,6 @@ import winsound
 import time
 from threading import Thread, Event
 import soundfile as sf
-import soundcard as sc
-
 from core.recorder import record_audio
 from ui.widgets import mensaje
 from core.logger import Logger
