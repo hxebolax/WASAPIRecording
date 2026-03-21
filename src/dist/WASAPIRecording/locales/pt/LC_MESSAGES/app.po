@@ -1,0 +1,1219 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the WASAPIRecording package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: WASAPIRecording 1.0\n"
+"Report-Msgid-Bugs-To: tu_email@ejemplo.com\n"
+"POT-Creation-Date: 2025-01-23 19:29+0100\n"
+"PO-Revision-Date: 2025-01-23 19:34+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: src\core\devices.py:54
+msgid "Dispositivos actualizados correctamente."
+msgstr "Dispositivos atualizados corretamente."
+
+#: src\core\devices.py:58
+#, python-brace-format
+msgid "Error al refrescar dispositivos: {error}"
+msgstr "Erro ao atualizar dispositivos: {error}"
+
+#: src\core\devices.py:187
+msgid ""
+"No se detectó ningún micrófono.\n"
+"Por favor, conecta o habilita al menos un micrófono antes de continuar."
+msgstr ""
+"Nenhum microfone foi detectado.\n"
+"Conecte ou ative pelo menos um microfone antes de continuar."
+
+#: src\core\devices.py:189 src\core\devices.py:200 src\core\devices.py:208
+#: src\core\devices.py:219 src\core\devices.py:230 src\core\devices.py:238
+msgid "Error de Audio"
+msgstr "Erro de áudio"
+
+#: src\core\devices.py:198
+msgid ""
+"Se detectan micrófonos, pero no hay uno configurado como predeterminado.\n"
+"Por favor, configura un micrófono predeterminado en las opciones de sonido."
+msgstr ""
+"Os microfones são detectados, mas não há nenhum microfone configurado como "
+"padrão.\n"
+"Defina um microfone padrão nas opções de som."
+
+#: src\core\devices.py:206
+msgid ""
+"Ocurrió un error intentando obtener el micrófono predeterminado.\n"
+"Por favor, revisa tus dispositivos de grabación."
+msgstr ""
+"Ocorreu um erro ao tentar obter o microfone padrão.\n"
+"Verifique seus dispositivos de gravação."
+
+#: src\core\devices.py:217
+msgid ""
+"No se detectó ningún altavoz o tarjeta de sonido habilitada.\n"
+"Revisa tu configuración de audio en el Panel de Control de Windows."
+msgstr ""
+"Nenhum alto-falante ou placa de som habilitado foi detectado.\n"
+"Verifique as configurações de áudio no Painel de Controle do Windows."
+
+#: src\core\devices.py:228
+msgid ""
+"Se detectan altavoces, pero no hay uno configurado como predeterminado.\n"
+"Por favor, configura un altavoz predeterminado en las opciones de sonido."
+msgstr ""
+"Os alto-falantes são detectados, mas não há um alto-falante padrão "
+"configurado.\n"
+"Defina um alto-falante padrão nas opções de som."
+
+#: src\core\devices.py:236
+msgid ""
+"Ocurrió un error intentando obtener el altavoz/speaker predeterminado.\n"
+"Por favor, revisa tus dispositivos de reproducción."
+msgstr ""
+"Ocorreu um erro ao tentar obter o alto-falante/alto-falante padrão.\n"
+"Verifique seus dispositivos de reprodução."
+
+#: src\core\hotkeys.py:177
+msgid ""
+"La combinación debe tener al menos 2 modificadores (Ctrl,Shift,Alt) y 1 "
+"tecla principal válida."
+msgstr ""
+"A combinação deve ter pelo menos 2 modificadores (Ctrl, Shift, Alt) e 1 "
+"chave primária válida."
+
+#: src\core\hotkeys.py:178 src\core\hotkeys.py:185 src\ui\interface.py:1080
+#: src\ui\test_audio.py:251 src\ui\test_audio.py:263
+msgid "Error"
+msgstr "Erro"
+
+#: src\core\hotkeys.py:185
+msgid "La combinación está en uso: {}"
+msgstr "A combinação está em uso: {}"
+
+#: src\core\info.py:4
+msgid ""
+"\n"
+"1. ¿Qué es WASAPIRecording?\n"
+"\n"
+"WASAPIRecording es una aplicación para Windows que te permite grabar el "
+"audio de tu micrófono y el audio del sistema (música, videollamadas, etc.) "
+"de forma simultánea. Puedes combinar ambos en un solo archivo o guardarlos "
+"por separado (uno para el micrófono y otro para el sonido del sistema).\n"
+"\n"
+"Además de las funciones básicas de grabación, WASAPIRecording incluye:\n"
+"• Un sistema de actualización automática que busca nuevas versiones en "
+"GitHub.\n"
+"• Un módulo para cambiar rápidamente el idioma de la interfaz y reiniciar la "
+"aplicación si es necesario.\n"
+"• Opciones de configuración para personalizar hotkeys y minimizar la ventana "
+"a la bandeja del sistema.\n"
+"\n"
+"2. Requisitos\n"
+"\n"
+"• Windows 10 o superior (con WASAPI).\n"
+"• Permisos para ejecutar la aplicación (administrador no siempre es "
+"necesario, pero ayuda en casos de permisos restringidos).\n"
+"\n"
+"3. Iniciar la Aplicación\n"
+"\n"
+"• Ejecuta el archivo o acceso directo llamado “WASAPIRecording”.  \n"
+"• Se abrirá la ventana principal con controles para micrófono, sistema, "
+"formatos de audio, opciones de grabación, hotkeys y otros ajustes.\n"
+"\n"
+"4. Configurar Dispositivos y Parámetros\n"
+"\n"
+"• **Micrófono**: Selecciona el micrófono que quieres usar.  \n"
+"• **Sistema (loopback)**: Selecciona el dispositivo de tu PC que captura "
+"todo lo que suena en el sistema.  \n"
+"• **Refrescar Dispositivos**: Si conectaste un nuevo dispositivo y no "
+"aparece en la lista, haz clic para actualizar.  \n"
+"• **Calidad (Hz)**: Frecuencia de muestreo (22050, 44100 o 48000). A mayor "
+"valor, mayor calidad y tamaño de archivo.  \n"
+"• **Formato de Salida**: WAV, MP3, FLAC, OGG o AIFF.  \n"
+"• **Bitrate MP3**: Solo aparece si eliges MP3; ajusta la calidad de "
+"compresión.  \n"
+"• **Modo de grabación (Mono o Estéreo)**: Define la forma en que se "
+"guardarán los canales (2 canales en estéreo o ambos canales centrados si es "
+"mono).  \n"
+"• **Buffer (frames)**: Tamaño de bloque de audio que se procesa en cada "
+"ciclo de grabación.  \n"
+"• **Guardar archivos separados**: Si lo marcas, además del archivo "
+"“combinado”, la app guardará otros dos archivos (uno solo con el micrófono y "
+"otro con el sistema).  \n"
+"\n"
+"5. Ajustar Volúmenes\n"
+"\n"
+"• **Volumen del Micrófono**: Usa el deslizador para subir/bajar la ganancia "
+"del micrófono.  \n"
+"• **Volumen del Sistema**: Ajusta la ganancia de los sonidos del PC que "
+"quieras grabar.  \n"
+"\n"
+"6. Iniciar y Detener la Grabación\n"
+"\n"
+"• Pulsa **Iniciar Grabación** (o la hotkey global “Ctrl + Shift + F1” por "
+"defecto). El estado mostrará “Grabando…”.  \n"
+"• Para **detener**, haz clic en **Detener Grabación** (o usa “Ctrl + Shift + "
+"F2”).  \n"
+"• Si elegiste MP3, FLAC, OGG o AIFF, la app convertirá el archivo final tras "
+"la grabación, mostrando un diálogo de “Por favor espere…” hasta que "
+"termine.  \n"
+"• Al finalizar, se mostrará un aviso con la ruta de los archivos generados. "
+"Si habilitaste la opción de “Abrir carpeta de grabaciones al terminar” (o "
+"respondiste “Sí” en la ventana emergente), se abrirá directamente la carpeta "
+"que contiene los archivos.\n"
+"\n"
+"7. Dónde se Guardan las Grabaciones\n"
+"\n"
+"• Por defecto, en la carpeta “recording” dentro del directorio de la "
+"aplicación.  \n"
+"• Puedes cambiar la carpeta de grabaciones en “Menú > Opciones > General > "
+"Carpeta de grabaciones”.  \n"
+"• Para abrir la carpeta desde la aplicación, haz clic en “Menú > Abrir "
+"Grabaciones”.\n"
+"\n"
+"8. Opciones y Menú\n"
+"\n"
+"En la ventana principal, verás un botón **Menú** que da acceso a:\n"
+"\n"
+"• **Acerca de…**: Muestra la versión actual de WASAPIRecording y el nombre "
+"del creador.  \n"
+"• **Abrir Grabaciones**: Abre la carpeta donde se almacenan los archivos "
+"grabados.  \n"
+"• **Idioma**: Te permite cambiar el idioma de la interfaz (es, en, it, fr, "
+"etc.). El cambio se aplica tras reiniciar la app.  \n"
+"• **Buscar actualizaciones**: Comprueba si hay una nueva versión de la "
+"aplicación en GitHub. Si existe, podrás descargar e instalar la nueva "
+"versión, y luego reiniciar la app para actualizarte sin perder tus "
+"configuraciones.  \n"
+"• **invítame a un café si te gusta mi trabajo**: Te redirige a una página de "
+"donación (por ejemplo, PayPal).  \n"
+"\n"
+"Además, dentro del **Menú**, encontrarás:\n"
+"\n"
+"• **Opciones**:  \n"
+"  - **General**: Incluye la casilla “Minimizar a la bandeja del sistema” y "
+"la posibilidad de cambiar la carpeta de grabaciones.  \n"
+"  - **Teclado**: Permite personalizar los atajos globales para iniciar, "
+"detener, pausar y cancelar la grabación. También se muestra aquí si un atajo "
+"queda “Sin asignar” o si hay conflicto con otra acción.\n"
+"\n"
+"9. Prueba de Audio\n"
+"\n"
+"• El botón **Prueba de Audio** abre un diálogo especial para grabar unos "
+"segundos de muestra y reproducirlos de inmediato.  \n"
+"• Este diálogo aparece siempre en primer plano y **no** se puede cerrar con "
+"la “X” ni con Alt+F4; solo con el botón “Cerrar”.  \n"
+"• Primero, comienza la grabación de prueba con el botón “Detener” (que sirve "
+"para finalizar la pequeña grabación).  \n"
+"• Después, el mismo botón se transforma en “Reproducir”, para escuchar lo "
+"grabado.  \n"
+"• Si marcaste “Guardar archivos separados”, podrás elegir reproducir solo el "
+"micrófono, solo el sistema o ambos.  \n"
+"• Al cerrar el diálogo, los archivos temporales se borran, perfecto para "
+"verificar que todo suena bien antes de hacer una grabación definitiva.\n"
+"\n"
+"10. Atajos de Teclado\n"
+"\n"
+"**Atajos Globales** (por defecto, personalizables en “Opciones > "
+"Teclado”):  \n"
+"• Iniciar Grabación: **Ctrl + Shift + F1**  \n"
+"• Detener Grabación: **Ctrl + Shift + F2**  \n"
+"• Pausar/Reanudar Grabación: **Ctrl + Shift + F3**  \n"
+"• Cancelar Grabación: **Ctrl + Shift + F4**  \n"
+"\n"
+"**Atajos dentro de la interfaz** (con la tecla Alt, pueden variar según el "
+"idioma):  \n"
+"• Micrófono: **Alt + O**  \n"
+"• Sistema (loopback): **Alt + S**  \n"
+"• Refrescar Dispositivos: **Alt + R**  \n"
+"• Calidad (Hz): **Alt + C**  \n"
+"• Formato de salida: **Alt + F**  \n"
+"• Bitrate MP3 (kbps): **Alt + B**  \n"
+"• Modo Micrófono: **Alt + O**  \n"
+"• Modo Sistema (loopback): **Alt + S**  \n"
+"• Tamaño de buffer (frames): **Alt + T**  \n"
+"• Guardar archivos separados: **Alt + Y**  \n"
+"• Volumen del Micrófono: **Alt + V**  \n"
+"• Volumen del Sistema: **Alt + V**\n"
+"• Iniciar Grabación: **Alt + I**  \n"
+"• Detener Grabación: **Alt + D**  \n"
+"• Prueba de Audio: **Alt + P**  \n"
+"• Menú: **Alt + M**  \n"
+"• Cerrar (en algunos diálogos): **Alt + C**  \n"
+"\n"
+"\n"
+"en algunos idiomas puede variar o usarse otras teclas dependiendo de la "
+"traducción.\n"
+"\n"
+"11. Minimizar a la Bandeja\n"
+"\n"
+"• Si activas “Minimizar a la bandeja” en “Menú > Opciones > General”, al "
+"pulsar el botón de minimizar (esquina superior derecha de la ventana), la "
+"aplicación se ocultará de la barra de tareas y aparecerá un ícono en la "
+"bandeja del sistema (cerca del reloj).  \n"
+"• Al hacer doble clic en ese ícono o usar el menú contextual, podrás "
+"restaurar la ventana o cerrar la aplicación.\n"
+"\n"
+"12. Actualizar la Aplicación\n"
+"\n"
+"• Desde “Menú > Buscar actualizaciones”, la app revisa el repositorio de "
+"GitHub para ver si hay una versión más reciente.  \n"
+"• Si la encuentra, te mostrará un aviso para **descargar** e **instalar**. "
+"Tras la descarga, se extraerán los archivos y se creará un script automático "
+"(BAT) para copiar la actualización y reiniciar el programa.  \n"
+"• Al finalizar la instalación, la app se cerrará y se volverá a ejecutar con "
+"la nueva versión.\n"
+"\n"
+"13. Cerrar la Aplicación\n"
+"\n"
+"• Al cerrar la ventana principal, si se está grabando, se te preguntará si "
+"deseas detener la grabación antes de salir.  \n"
+"• Si la aplicación está convirtiendo el archivo (p.ej., a MP3), esperará a "
+"que la conversión termine.  \n"
+"• Luego se cerrará por completo. Si minimizaste a la bandeja, primero "
+"tendrás que restaurar la ventana o cerrarla desde el menú contextual de la "
+"bandeja.\n"
+"\n"
+"14. Consejos Finales\n"
+"\n"
+"• Ajusta los volúmenes de micrófono y sistema en la app para equilibrar las "
+"fuentes de audio.  \n"
+"• Si notas que el audio está muy inclinado a un canal (izquierdo o derecho), "
+"marca la opción **Mono** o “Mezcla monoaural” (en algunos textos), para "
+"centrar el sonido.  \n"
+"• Utiliza la **Prueba de Audio** para verificar que todo se escucha "
+"correctamente antes de hacer una grabación importante.  \n"
+"• No olvides revisar las **Opciones** y **Menú** para personalizar tus "
+"hotkeys, idioma, carpeta de grabaciones y otras configuraciones.  \n"
+"\n"
+"¡Disfruta grabando con WASAPIRecording! Si encuentras útil esta aplicación, "
+"recuerda que puedes apoyarla haciendo clic en “Menú > invítame a un café si "
+"te gusta mi trabajo”.\n"
+msgstr ""
+"\n"
+"1. o que é WASAPIRecording?\n"
+"\n"
+"O WASAPIRecording é um aplicativo do Windows que permite gravar o áudio do "
+"microfone e o áudio do sistema (música, chamadas de vídeo etc.) "
+"simultaneamente. É possível combinar ambos em um único arquivo ou salvá-los "
+"separadamente (um para o microfone e outro para o áudio do sistema).\n"
+"\n"
+"Além das funções básicas de gravação, o WASAPIRecording inclui:\n"
+"- Um sistema de atualização automática que verifica se há novas versões no "
+"GitHub.\n"
+"- Um módulo para alterar rapidamente o idioma da interface e reiniciar o "
+"aplicativo, se necessário.\n"
+"- Opções de configuração para personalizar as teclas de atalho e minimizar a "
+"janela na bandeja do sistema.\n"
+"\n"
+"2. Requisitos\n"
+"\n"
+"- Windows 10 ou superior (com WASAPI).\n"
+"- Permissões para executar o aplicativo (administrador nem sempre é "
+"necessário, mas ajuda em casos de permissões restritas).\n"
+"\n"
+"3. Iniciar o aplicativo\n"
+"\n"
+"- Execute o arquivo ou atalho chamado \"WASAPIRecording\".  \n"
+"- A janela principal será aberta com controles para microfone, sistema, "
+"formatos de áudio, opções de gravação, teclas de atalho e outras "
+"configurações.\n"
+"\n"
+"4. Configurar dispositivos e parâmetros\n"
+"\n"
+"- Microfone**: Selecione o microfone que deseja usar.  \n"
+"- Sistema (loopback)**: Selecione o dispositivo em seu PC que captura tudo o "
+"que soa no sistema.  \n"
+"- Refresh Devices**: Se você conectou um novo dispositivo e ele não aparece "
+"na lista, clique para atualizar.  \n"
+"- Quality (Hz)**: Frequência de amostragem (22050, 44100 ou 48000). Quanto "
+"maior o valor, maior a qualidade e o tamanho do arquivo.  \n"
+"- Formato de saída**: WAV, MP3, FLAC, OGG ou AIFF.  \n"
+"- Bitrate MP3**: Aparece somente se você escolher MP3; ajusta a qualidade da "
+"compactação.  \n"
+"- Modo de gravação (mono ou estéreo)**: Define como os canais serão "
+"armazenados (2 canais em estéreo ou ambos os canais centralizados se forem "
+"mono).  \n"
+"- Buffer (frames)**: Tamanho do bloco de áudio que é processado em cada "
+"ciclo de gravação.  \n"
+"- Save separate files**: Se marcada, além do arquivo \"combinado\", o "
+"aplicativo salvará dois outros arquivos (um somente com o microfone e outro "
+"com o sistema).  \n"
+"\n"
+"5. Ajustar volumes\n"
+"\n"
+"- Volume do microfone**: Use o controle deslizante para aumentar/diminuir o "
+"ganho do microfone.  \n"
+"- Volume do sistema**: Ajuste o ganho dos sons do PC que você deseja "
+"gravar.  \n"
+"\n"
+"6. Iniciar e parar a gravação\n"
+"\n"
+"- Pressione **Start Recording** (ou a tecla de atalho global \"Ctrl + Shift "
+"+ F1\" por padrão). O status mostrará \"Recording...\" (Gravando...).  \n"
+"- Para **parar**, clique em **Stop Recording** (ou use \"Ctrl + Shift + "
+"F2\").  \n"
+"- Se você escolher MP3, FLAC, OGG ou AIFF, o aplicativo converterá o arquivo "
+"final após a gravação, exibindo uma caixa de diálogo \"Please wait...\" "
+"(Aguarde...) até que seja concluído.  \n"
+"- Quando terminar, será exibido um prompt com o caminho para os arquivos "
+"gerados. Se você tiver ativado a opção \"Open recordings folder on "
+"completion\" (ou respondido \"Yes\" na janela pop-up), a pasta que contém os "
+"arquivos será aberta diretamente.\n"
+"\n"
+"7. Onde as gravações são salvas\n"
+"\n"
+"- Por padrão, na pasta \"recording\" (gravação) dentro do diretório do "
+"aplicativo.  \n"
+"- Você pode alterar a pasta de gravação em \"Menu > Options > General > "
+"Recording folder\" (Menu > Opções > Geral > Pasta de gravação).  \n"
+"- Para abrir a pasta no aplicativo, clique em \"Menu > Open Recordings\" "
+"(Menu > Abrir gravações).\n"
+"\n"
+"8. Opções e menu\n"
+"\n"
+"Na janela principal, você verá um botão **Menu** que dá acesso a:\n"
+"\n"
+"- **About...**: Exibe a versão atual do WASAPIRecording e o nome do "
+"criador.  \n"
+"- Open Recordings**: Abre a pasta onde os arquivos gravados estão "
+"armazenados.  \n"
+"- Language**: Permite que você altere o idioma da interface (es, en, it, fr, "
+"etc.). A alteração é aplicada após a reinicialização do aplicativo.  \n"
+"- Check for updates**: Verifica se há uma nova versão do aplicativo no "
+"GitHub. Se houver, você poderá fazer download e instalar a nova versão e, em "
+"seguida, reiniciar o aplicativo para atualizar sem perder suas "
+"configurações.  \n"
+"- **invite-me para um café se você gostar do meu trabalho**: redireciona "
+"você para uma página de doação (por exemplo, PayPal).  \n"
+"\n"
+"Além disso, no **Menu**, você encontrará:\n"
+"\n"
+"- **Opções**:\n"
+"  - **General**: Inclui a caixa de seleção \"Minimizar para a bandeja do "
+"sistema\" e a possibilidade de alterar a pasta de gravações.  \n"
+"  - **Keyboard**: Permite personalizar os atalhos globais para iniciar, "
+"parar, pausar e cancelar a gravação. Também é mostrado aqui se um atalho "
+"está \"Não atribuído\" ou se há um conflito com outra ação.\n"
+"\n"
+"9. Teste de áudio\n"
+"\n"
+"- O botão **Audio Test** abre uma caixa de diálogo especial para gravar "
+"alguns segundos de amostra de áudio e reproduzi-lo imediatamente.  \n"
+"- Essa caixa de diálogo é sempre exibida em primeiro plano e não pode ser "
+"fechada com \"X\" ou Alt+F4; somente com o botão \"Fechar\".  \n"
+"- Primeiro, inicie a gravação de teste com o botão \"Stop\" (que é usado "
+"para encerrar a gravação curta).  \n"
+"- Em seguida, o mesmo botão se torna \"Play\", para ouvir a gravação.  \n"
+"- Se tiver marcado \"Save separate files\" (Salvar arquivos separados), você "
+"poderá optar por reproduzir somente o microfone, somente o sistema ou "
+"ambos.  \n"
+"- Quando você fecha a caixa de diálogo, os arquivos temporários são "
+"excluídos, o que é perfeito para verificar se tudo soa bem antes de fazer "
+"uma gravação final.\n"
+"\n"
+"10. Atalhos de teclado\n"
+"\n"
+"**Atalhos globais** (padrão, personalizável em \"Options > Keyboard\"):\n"
+"- Iniciar gravação: **Ctrl + Shift + F1**\n"
+"- Parar gravação: **Ctrl + Shift + F2** Pausar/Retomar a gravação: *Ctrl + "
+"Shift + F2\n"
+"- Pausar/Retomar a gravação: *pausar/retomar a gravação: *Ctrl + Shift + "
+"F3** Pausar/retomar a gravação: *Ctrl + Shift + F3\n"
+"- Cancelar gravação: *cancelar gravação: *Ctrl + Shift + F4** Cancelar "
+"gravação: *Ctrl + Shift + F4\n"
+"\n"
+"**Atalhos na interface** (com a tecla Alt, pode variar dependendo do "
+"idioma):\n"
+"- Microfone: **Alt + O** *Sistema (loopback)\n"
+"- Sistema (loopback): **Alt + S**\n"
+"- Atualizar dispositivos: **Alt + R**\n"
+"- Qualidade (Hz): **Alt + C** Formato de saída: **Alt + F**\n"
+"- Formato de saída: **Alt + F** Formato de saída: **Alt + F**\n"
+"- Taxa de bits de MP3 (kbps): **Alt + B**\n"
+"- Modo de microfone: **Alt + O** Modo do sistema (loopback)\n"
+"- Modo do sistema (loopback): **Alt + S** Modo do sistema (loopback): *Alt + "
+"S**\n"
+"- Tamanho do buffer (quadros): **Alt + T**\n"
+"- Salvar arquivos separados: *alt + Y** Salvar arquivos separados: *Alt + "
+"Y**\n"
+"- Volume do microfone: **Alt + V**\n"
+"- Volume do sistema: **Alt + V**\n"
+"- Iniciar gravação: **Alt + I**\n"
+"- Stop Recording (Parar gravação): **Alt + D** Parar gravação: *Alt + D**\n"
+"- Teste de áudio: **Alt + P**\n"
+"- Menu: **Alt + M**\n"
+"- Fechar (em alguns diálogos): **Alt + C**\n"
+"\n"
+"\n"
+"em alguns idiomas pode variar ou outras teclas podem ser usadas, dependendo "
+"da tradução.\n"
+"\n"
+"11. Minimizar para a bandeja\n"
+"\n"
+"- Se você ativar \"Minimizar na bandeja\" em \"Menu > Opções > Geral\", "
+"pressionar o botão minimizar (canto superior direito da janela) ocultará o "
+"aplicativo da barra de tarefas e um ícone será exibido na bandeja do sistema "
+"(próximo ao relógio).  \n"
+"- Ao clicar duas vezes nesse ícone ou usar o menu de contexto, você pode "
+"restaurar a janela ou fechar o aplicativo.\n"
+"\n"
+"12. Atualizar o aplicativo\n"
+"\n"
+"- Em \"Menu > Check for updates\", o aplicativo verifica se há uma versão "
+"mais recente no repositório do GitHub.  \n"
+"- Se for encontrada, ele mostrará um prompt para **download** e "
+"**instalação**. Após o download, os arquivos serão extraídos e um script "
+"automático (BAT) será criado para copiar a atualização e reiniciar o "
+"programa.  \n"
+"- Ao final da instalação, o aplicativo será fechado e executado novamente "
+"com a nova versão.\n"
+"\n"
+"13. Fechar o aplicativo\n"
+"\n"
+"- Ao fechar a janela principal, se a gravação estiver em andamento, você "
+"será perguntado se deseja interromper a gravação antes de sair.  \n"
+"- Se o aplicativo estiver convertendo o arquivo (por exemplo, para MP3), ele "
+"aguardará a conclusão da conversão.  \n"
+"- Em seguida, ele será fechado completamente. Se você tiver minimizado para "
+"a bandeja, primeiro terá que restaurar a janela ou fechá-la no menu de "
+"contexto da bandeja.\n"
+"\n"
+"14. Dicas finais\n"
+"\n"
+"- Ajuste os volumes do microfone e do sistema no aplicativo para equilibrar "
+"as fontes de áudio.  \n"
+"- Se você perceber que o áudio está muito inclinado para um canal (esquerdo "
+"ou direito), marque a opção **Mono** ou \"Mono Mix\" (em alguns textos) para "
+"centralizar o som.  \n"
+"- Use o **Teste de áudio** para verificar se tudo soa corretamente antes de "
+"fazer uma gravação importante.  \n"
+"- Não se esqueça de verificar as **Opções** e o **Menu** para personalizar "
+"as teclas de atalho, o idioma, a pasta de gravação e outras "
+"configurações.  \n"
+"\n"
+"divirta-se gravando com o WASAPIRecording! Se você achar este aplicativo "
+"útil, lembre-se de que pode apoiá-lo clicando em \"Menu > invite me for a "
+"coffee if you like my work\" (Menu > convide-me para um café se gostar do "
+"meu trabalho).\n"
+
+#: src\core\recorder.py:77 src\core\recorder.py:90 src\core\recorder.py:96
+#: src\ui\interface.py:430 src\ui\interface.py:436 src\ui\interface.py:1186
+#: src\ui\interface.py:1191
+msgid "Mono"
+msgstr "Macaco"
+
+#: src\core\recorder.py:93 src\core\recorder.py:99 src\core\recorder.py:117
+#: src\core\recorder.py:118 src\ui\interface.py:371 src\ui\interface.py:372
+#: src\ui\interface.py:430 src\ui\interface.py:436 src\ui\interface.py:1185
+#: src\ui\interface.py:1186 src\ui\interface.py:1190 src\ui\interface.py:1191
+msgid "Estéreo"
+msgstr "Estéreo"
+
+#: src\ui\interface.py:124
+msgid "Mostrar aplicación"
+msgstr "Mostrar aplicativo"
+
+#: src\ui\interface.py:125 src\ui\interface.py:1336 src\ui\update.py:159
+#: src\ui\update.py:182 src\ui\update.py:208 src\ui\update.py:213
+#: src\ui\update.py:371
+msgid "Cerrar"
+msgstr "Fechar"
+
+#: src\ui\interface.py:165
+msgid "Espere por favor... Procesando"
+msgstr "Por favor, aguarde... Processando"
+
+#: src\ui\interface.py:172
+msgid "Procesando"
+msgstr "Processamento"
+
+#: src\ui\interface.py:296
+msgid ""
+"WASAPIRecording ya se encuentra en ejecución.\n"
+"No se pueden tener dos instancias a la vez."
+msgstr ""
+"O WASAPIRecording já está em execução.\n"
+"Não é possível ter duas instâncias ao mesmo tempo."
+
+#: src\ui\interface.py:386
+msgid "Dispositivos"
+msgstr "Dispositivos"
+
+#: src\ui\interface.py:387
+msgid "Micrófon&o:"
+msgstr "Microfone&o:"
+
+#: src\ui\interface.py:393
+msgid "&Sistema (loopback):"
+msgstr "&System (loopback):"
+
+#: src\ui\interface.py:401
+msgid "&Refrescar Dispositivos"
+msgstr "dispositivos &Refresh"
+
+#: src\ui\interface.py:409
+msgid "Configuración de Grabación"
+msgstr "Configuração de gravação"
+
+#: src\ui\interface.py:411
+msgid "&Calidad (Hz):"
+msgstr "&Qualidade (Hz):"
+
+#: src\ui\interface.py:417
+msgid "&Formato de salida:"
+msgstr "&Formato de saída:"
+
+#: src\ui\interface.py:423
+msgid "&Bitrate MP3 (kbps):"
+msgstr "&Bitrate MP3 (kbps):"
+
+#: src\ui\interface.py:429
+msgid "Modo Micrófon&o:"
+msgstr "Modo de microfone&o:"
+
+#: src\ui\interface.py:435
+msgid "Modo &Sistema (loopback):"
+msgstr "Modo &System (loopback):"
+
+#: src\ui\interface.py:441
+msgid "&Tamaño de buffer (frames):"
+msgstr "tamanho do buffer (quadros):"
+
+#: src\ui\interface.py:446
+msgid "Guardar archivos separados de micrófono &y sistema"
+msgstr "Salvar arquivos separados do microfone e do sistema"
+
+#: src\ui\interface.py:449
+msgid "&Volumen del Micrófono:"
+msgstr "volume do microfone:"
+
+#: src\ui\interface.py:454
+msgid "&Volumen del Sistema:"
+msgstr "volume do sistema:"
+
+#: src\ui\interface.py:463
+msgid "&Iniciar Grabación"
+msgstr "&Iniciar gravação"
+
+#: src\ui\interface.py:467 src\ui\interface.py:844 src\ui\interface.py:880
+msgid "&Pausar"
+msgstr "&Pausa"
+
+#: src\ui\interface.py:472
+msgid "&Detener Grabación"
+msgstr "&Stop Recording (Parar gravação)"
+
+#: src\ui\interface.py:477 src\ui\widgets.py:156
+msgid "&Cancelar"
+msgstr "&Cancelar"
+
+#: src\ui\interface.py:482
+msgid "&Prueba de Audio"
+msgstr "teste de áudio"
+
+#: src\ui\interface.py:486
+msgid "&Menú"
+msgstr "&Menu"
+
+#: src\ui\interface.py:495 src\ui\interface.py:1496
+#, python-brace-format
+msgid "En espera (Usa {hk} para iniciar)"
+msgstr "Em espera (use {hk} para iniciar)"
+
+#: src\ui\interface.py:497
+msgid "Estado"
+msgstr "Estado"
+
+#: src\ui\interface.py:586
+msgid "Hay una grabación en curso. ¿Desea detenerla y salir?"
+msgstr "Uma gravação está em andamento. Deseja interrompê-la e sair?"
+
+#: src\ui\interface.py:587
+msgid "Confirmar cierre"
+msgstr "Confirmar o fechamento"
+
+#: src\ui\interface.py:602
+msgid "Por favor espere, finalizando conversión..."
+msgstr "Aguarde, estamos finalizando a conversão..."
+
+#: src\ui\interface.py:838
+msgid "&Reanudar"
+msgstr "&Resumo"
+
+#: src\ui\interface.py:899
+msgid "Grabación cancelada. Se han eliminado los archivos."
+msgstr "Gravação cancelada. Os arquivos foram excluídos."
+
+#: src\ui\interface.py:899 src\ui\interface.py:944
+msgid "Grabación"
+msgstr "Gravação"
+
+#: src\ui\interface.py:904
+msgid "Por favor espere, convirtiendo a formato final..."
+msgstr "Aguarde, a conversão para o formato final..."
+
+#: src\ui\interface.py:931
+#, python-brace-format
+msgid ""
+"Grabación completada. Archivo guardado como:\n"
+"{file_path}"
+msgstr ""
+"Gravação concluída. Arquivo salvo como:\n"
+"{file_path}"
+
+#: src\ui\interface.py:936
+#, python-brace-format
+msgid ""
+"\n"
+"Archivo separado de micrófono: {mic_path}\n"
+"Archivo separado de sistema: {system_path}"
+msgstr ""
+"\n"
+"Arquivo de microfone separado: {mic_path}\n"
+"Arquivo de sistema separado: {system_path}"
+
+#: src\ui\interface.py:942
+msgid ""
+"\n"
+"\n"
+"¿Desea abrir la carpeta de grabaciones?"
+msgstr ""
+"\n"
+"\n"
+"deseja abrir a pasta de gravações?"
+
+#: src\ui\interface.py:1090
+msgid "Información"
+msgstr "Informação"
+
+#: src\ui\interface.py:1272
+msgid "Alemán"
+msgstr "Alemão"
+
+#: src\ui\interface.py:1273
+msgid "Árabe"
+msgstr "Árabe"
+
+#: src\ui\interface.py:1274
+msgid "Español"
+msgstr "Espanhol"
+
+#: src\ui\interface.py:1275
+msgid "Francés"
+msgstr "Francês"
+
+#: src\ui\interface.py:1276
+msgid "Inglés"
+msgstr "Inglês"
+
+#: src\ui\interface.py:1277
+msgid "Italiano"
+msgstr "Italiano"
+
+#: src\ui\interface.py:1278
+msgid "Portugués"
+msgstr "Português"
+
+#: src\ui\interface.py:1279
+msgid "Serbio"
+msgstr "Sérvio"
+
+#: src\ui\interface.py:1280
+msgid "Turco"
+msgstr "Turco"
+
+#: src\ui\interface.py:1281
+msgid "Vietnamita"
+msgstr "Vietnamita"
+
+#: src\ui\interface.py:1316 src\ui\options.py:317
+msgid "Opciones"
+msgstr "Opções"
+
+#: src\ui\interface.py:1317
+msgid "Buscar actualizaciones"
+msgstr "Verificar se há atualizações"
+
+#: src\ui\interface.py:1318
+msgid "Idioma"
+msgstr "Idioma"
+
+#: src\ui\interface.py:1319 src\ui\interface.py:1334
+msgid "Abrir Grabaciones"
+msgstr "Gravações abertas"
+
+#: src\ui\interface.py:1320
+msgid "&Manual de usuario"
+msgstr "manual do usuário"
+
+#: src\ui\interface.py:1321
+msgid "Acerca &de..."
+msgstr "Sobre a &de..."
+
+#: src\ui\interface.py:1322
+msgid "invítame a un &café si te gusta mi trabajo"
+msgstr "convide-me para um café se você gostar do meu trabalho"
+
+#: src\ui\interface.py:1323
+msgid "Salir"
+msgstr "Sair"
+
+#: src\ui\interface.py:1335
+msgid "&invítame a un café si te gusta mi trabajo"
+msgstr "convide-me para um café se gostar do meu trabalho"
+
+#: src\ui\interface.py:1352
+msgid ""
+"Para aplicar el nuevo idioma se necesita reiniciar la aplicación.\n"
+"¿Desea continuar?"
+msgstr ""
+"Para aplicar o novo idioma, você precisa reiniciar o aplicativo.\n"
+"deseja continuar?"
+
+#: src\ui\interface.py:1353
+msgid "Confirmar cambio de idioma"
+msgstr "Confirmar a alteração do idioma"
+
+#: src\ui\interface.py:1484
+msgid "Grabación en pausa."
+msgstr "Gravação pausada."
+
+#: src\ui\interface.py:1488
+msgid "Grabando... (No hay hotkey de detener asignada)"
+msgstr "Gravando... (Nenhuma tecla de atalho de parada atribuída)"
+
+#: src\ui\interface.py:1490
+#, python-brace-format
+msgid "Grabando... (Usa {hk} para detener)"
+msgstr "Gravando... (Use {hk} para parar)"
+
+#: src\ui\interface.py:1494
+msgid "En espera. Asigna teclas en Opciones o inicia manualmente."
+msgstr "Em espera. Atribua teclas em Options ou inicie manualmente."
+
+#: src\ui\interface.py:1546
+#, python-brace-format
+msgid "No se pudo abrir el directorio de grabaciones: {error}"
+msgstr ""
+"Não foi possível abrir o diretório de gravação: {error} {error} {error} "
+"{error} {error} {error} {error} {error} {error} {error} {error} [0"
+
+#: src\ui\interface.py:1556
+msgid ""
+"WASAPIRecording\n"
+"Versión: {}\n"
+"Creado por: {}\n"
+"Copyright © 2025\n"
+"\n"
+"Traductores:\n"
+"🇹🇷 Turco: Umut Korkmaz\n"
+"🇸🇦 Árabe: moataz geba\n"
+"🇮🇹 Italiano: Alessio Lenzi\n"
+"🇻🇳 Vietnamita: Đào Đức Trung\n"
+"🇷🇸 Serbio: Mila Kuran (IA)"
+msgstr ""
+"Registro WASAPIR\n"
+"Versão: {}\n"
+"Criado por: {}\n"
+"Direitos autorais © 2025\n"
+"\n"
+"Tradutores:\n"
+"🇹🇷 Turco: Umut Korkmaz\n"
+"🇸🇦 Árabe: moataz geba\n"
+"🇮🇹 Italiano: Alessio Lenzi\n"
+"🇻🇳 Vietnamita: Đào Đức Trung\n"
+"🇷🇸 Sérvio: Mila Kuran (IA)"
+
+#: src\ui\interface.py:1567
+msgid "Acerca de..."
+msgstr "Sobre..."
+
+#: src\ui\manual.py:32
+msgid "Manual de Uso"
+msgstr "Manual do usuário"
+
+#: src\ui\manual.py:40
+msgid "&Manual de Uso:"
+msgstr "&Manual de uso:"
+
+#: src\ui\manual.py:53 src\ui\options.py:333
+msgid "Aceptar"
+msgstr "Aceitar"
+
+#: src\ui\options.py:46
+msgid "Minimizar a la bandeja del sistema"
+msgstr "Minimizar na bandeja do sistema"
+
+#: src\ui\options.py:51
+msgid "Carpeta de grabaciones:"
+msgstr "Pasta de gravações:"
+
+#: src\ui\options.py:59
+msgid "Cambiar carpeta..."
+msgstr "Alterar pasta..."
+
+#: src\ui\options.py:73
+msgid "Selecciona la carpeta donde se guardarán las grabaciones"
+msgstr "Selecione a pasta onde as gravações serão salvas"
+
+#: src\ui\options.py:133
+msgid "Combinación para Iniciar Grabación:"
+msgstr "Combinação para iniciar a gravação:"
+
+#: src\ui\options.py:142
+msgid "Capturar Hotkey Inicio"
+msgstr "Página inicial da tecla de atalho Capture"
+
+#: src\ui\options.py:146
+msgid "Combinación para Detener Grabación:"
+msgstr "Combinação para parar a gravação:"
+
+#: src\ui\options.py:155
+msgid "Capturar Hotkey Detener"
+msgstr "Capturar tecla de atalho Parar"
+
+#: src\ui\options.py:159
+msgid "Combinación para Pausar/Reanudar:"
+msgstr "Combinação de pausa/retomada:"
+
+#: src\ui\options.py:168
+msgid "Capturar Hotkey Pausa"
+msgstr "Pausa na tecla de atalho de captura"
+
+#: src\ui\options.py:172
+msgid "Combinación para Cancelar Grabación:"
+msgstr "Combinação para cancelar a gravação:"
+
+#: src\ui\options.py:181
+msgid "Capturar Hotkey Cancelar"
+msgstr "Tecla de atalho Capturar Cancelar"
+
+#: src\ui\options.py:195 src\ui\options.py:198 src\ui\options.py:201
+#: src\ui\options.py:204
+msgid "Esperando combinación..."
+msgstr "Aguardando a combinação..."
+
+#: src\ui\options.py:280
+msgid ""
+"No puede asignar la misma combinación a más de una acción.\n"
+"Se revertirán los cambios."
+msgstr ""
+"Não é possível atribuir a mesma combinação a mais de uma ação.\n"
+"As alterações serão revertidas."
+
+#: src\ui\options.py:281
+msgid "Error de Hotkeys"
+msgstr "Erro de tecla de atalho"
+
+#: src\ui\options.py:326
+msgid "General"
+msgstr "Geral"
+
+#: src\ui\options.py:327
+msgid "Teclado"
+msgstr "Teclado"
+
+#: src\ui\options.py:334 src\ui\update.py:65
+msgid "Cancelar"
+msgstr "Cancelar"
+
+#: src\ui\test_audio.py:62
+msgid "Prueba de Audio"
+msgstr "Teste de áudio"
+
+#: src\ui\test_audio.py:112 src\ui\update.py:60
+msgid "&Información:"
+msgstr "&Informações:"
+
+#: src\ui\test_audio.py:125
+msgid "&Selecciona qué archivo reproducir:"
+msgstr "selecione o arquivo a ser reproduzido:"
+
+#: src\ui\test_audio.py:126 src\ui\test_audio.py:343
+msgid "Prueba micrófono"
+msgstr "Teste de microfone"
+
+#: src\ui\test_audio.py:126 src\ui\test_audio.py:345
+msgid "Prueba sistema"
+msgstr "Teste do sistema"
+
+#: src\ui\test_audio.py:126
+msgid "Ambos"
+msgstr "Ambos"
+
+#: src\ui\test_audio.py:133
+msgid "&Detener"
+msgstr "&Stop"
+
+#: src\ui\test_audio.py:137
+msgid "&Cerrar"
+msgstr "&Fechar"
+
+#: src\ui\test_audio.py:164
+msgid ""
+"Esta ventana realiza una prueba de grabación y reproducción con los mismos "
+"ajustes.\n"
+"Al pulsar 'Detener', podrás luego 'Reproducir'. Si guardas archivos "
+"separados, podrás elegir micrófono, sistema o ambos.\n"
+"No se puede cerrar con Alt+F4 ni con la X; sólo con 'Cerrar'."
+msgstr ""
+"Essa janela executa um teste de gravação e reprodução com as mesmas "
+"configurações.\n"
+"Ao pressionar \"Stop\" (Parar), você pode então \"Play\" (Reproduzir). Se "
+"você salvar arquivos separados, poderá escolher o microfone, o sistema ou "
+"ambos.\n"
+"Ela não pode ser fechada com Alt+F4 ou X; somente com \"Close\"."
+
+#: src\ui\test_audio.py:222 src\ui\test_audio.py:235 src\ui\test_audio.py:289
+msgid "Reproducir"
+msgstr "Reproduzir"
+
+#: src\ui\test_audio.py:231
+msgid "Detener"
+msgstr "Parar"
+
+#: src\ui\test_audio.py:244
+msgid "No se ha grabado nada aún."
+msgstr "Nada foi registrado ainda."
+
+#: src\ui\test_audio.py:244
+msgid "Aviso"
+msgstr "Aviso"
+
+#: src\ui\test_audio.py:251
+msgid "No existe el archivo a reproducir"
+msgstr "O arquivo a ser reproduzido não existe"
+
+#: src\ui\test_audio.py:301
+msgid "La grabación sigue en curso. ¿Deseas cancelar la prueba de sonido?"
+msgstr ""
+"A gravação ainda está em andamento, você deseja cancelar a passagem de som?"
+
+#: src\ui\test_audio.py:302
+msgid "Cancelar Prueba"
+msgstr "Cancelar teste"
+
+#: src\ui\update.py:41
+msgid "Actualización"
+msgstr "Atualização"
+
+#: src\ui\update.py:66
+msgid "Instalar"
+msgstr "Instalar"
+
+#: src\ui\update.py:148
+#, python-brace-format
+msgid "Se encontró una nueva versión: {0}. ¿Desea instalarla?"
+msgstr "Uma nova versão foi encontrada: {0} Deseja instalá-la?"
+
+#: src\ui\update.py:158
+msgid "No hay actualizaciones disponibles. Su aplicación está actualizada."
+msgstr "Não há atualizações disponíveis. Seu aplicativo está atualizado."
+
+#: src\ui\update.py:174
+msgid "No se pudo conectar al servidor. Verifique su conexión a Internet."
+msgstr ""
+"Não foi possível conectar-se ao servidor. Verifique sua conexão com a "
+"Internet."
+
+#: src\ui\update.py:176
+msgid ""
+"Error en la conexión segura (SSL). Por favor, revise la configuración de "
+"seguridad de su red."
+msgstr ""
+"Erro na conexão segura (SSL). Verifique as configurações de segurança de sua "
+"rede."
+
+#: src\ui\update.py:178
+msgid "La conexión tardó demasiado tiempo. Intente nuevamente más tarde."
+msgstr "A conexão demorou muito tempo. Tente novamente mais tarde."
+
+#: src\ui\update.py:180
+#, python-brace-format
+msgid "Error de red desconocido: {0}"
+msgstr "Erro de rede desconhecido: {0}"
+
+#: src\ui\update.py:186
+msgid "No se encontró el archivo necesario para completar la operación."
+msgstr "O arquivo necessário para concluir a operação não foi encontrado."
+
+#: src\ui\update.py:188
+msgid "Se esperaba un archivo, pero se encontró un directorio."
+msgstr "Um arquivo era esperado, mas um diretório foi encontrado."
+
+#: src\ui\update.py:190
+msgid "Permiso denegado. Ejecute la aplicación con los permisos adecuados."
+msgstr "Permissão negada. Execute o aplicativo com as permissões apropriadas."
+
+#: src\ui\update.py:192
+msgid ""
+"Error al copiar o mover archivos. Verifique los permisos y el espacio "
+"disponible."
+msgstr ""
+"Erro ao copiar ou mover arquivos. Verifique as permissões e o espaço "
+"disponível."
+
+#: src\ui\update.py:194
+msgid ""
+"Se produjo un error en los datos proporcionados. Verifique la información "
+"ingresada."
+msgstr ""
+"Houve um erro nos dados fornecidos. Verifique as informações inseridas."
+
+#: src\ui\update.py:196
+msgid ""
+"Falta un elemento requerido en los datos. Verifique el formato de la "
+"información."
+msgstr ""
+"Um elemento obrigatório está faltando nos dados. Verifique o formato das "
+"informações."
+
+#: src\ui\update.py:198
+msgid ""
+"Se intentó acceder a un elemento fuera del rango permitido. Revise la "
+"configuración interna."
+msgstr ""
+"Foi feita uma tentativa de acessar um item fora do intervalo permitido. "
+"Verifique a configuração interna."
+
+#: src\ui\update.py:200
+msgid "No se pudo establecer una conexión. Verifique su conexión a Internet."
+msgstr ""
+"Não foi possível estabelecer uma conexão. Verifique sua conexão com a "
+"Internet."
+
+#: src\ui\update.py:202
+msgid ""
+"La operación tardó demasiado tiempo en completarse. Inténtelo más tarde."
+msgstr ""
+"A operação levou muito tempo para ser concluída. Tente novamente mais tarde."
+
+#: src\ui\update.py:204
+msgid "Se perdió la conexión con el servidor. Intente reconectarse."
+msgstr "A conexão com o servidor foi perdida. Tente se conectar novamente."
+
+#: src\ui\update.py:206
+#, python-brace-format
+msgid "Ocurrió un error inesperado: {0}"
+msgstr "Ocorreu um erro inesperado: {0}"
+
+#: src\ui\update.py:222
+msgid "Descargando la actualización, esto puede tardar unos momentos..."
+msgstr "Faça o download da atualização, o que pode levar alguns minutos..."
+
+#: src\ui\update.py:255
+msgid "Descarga cancelada."
+msgstr "Download cancelado."
+
+#: src\ui\update.py:271
+msgid "Extrayendo la actualización..."
+msgstr "Extraindo a atualização..."
+
+#: src\ui\update.py:299
+msgid "Creando el archivo de instalación automática..."
+msgstr "Criação do arquivo de instalação automática..."
+
+#: src\ui\update.py:323
+msgid "Archivo de actualización creado. La aplicación se reiniciará."
+msgstr "Arquivo de atualização criado. O aplicativo será reiniciado."
+
+#: src\ui\update.py:324
+msgid "Reiniciar ahora"
+msgstr "Reiniciar agora"
+
+#: src\ui\update.py:340
+msgid "Reiniciando la aplicación..."
+msgstr "Reiniciar o aplicativo..."
+
+#: src\ui\widgets.py:154
+msgid "&Aceptar"
+msgstr "&Aceitar"
+
+#: src\ui\widgets.py:158
+msgid "&Sí"
+msgstr "&Sim"
+
+#: src\ui\widgets.py:160
+msgid "&No"
+msgstr "&Não"
+
+#~ msgid "Tecla inválida detectada."
+#~ msgstr "Chave inválida detectada."
+
+#~ msgid "&Habilitar Mezcla Monoaural"
+#~ msgstr "ativar mixagem mono"
+
+#, python-brace-format
+#~ msgid "Error al convertir el archivo: {error}"
+#~ msgstr "Erro ao converter o arquivo: {error}"
+
+#, python-brace-format
+#~ msgid ""
+#~ "\n"
+#~ "Archivo separado de micrófono: {mic_path}\n"
+#~ "Archivo separado de sistema: {sys_path}"
+#~ msgstr ""
+#~ "\n"
+#~ "Arquivo de microfone separado: {mic_path}\n"
+#~ "Arquivo de sistema separado: {sys_path}"
+
+#~ msgid ""
+#~ "WASAPIRecording\n"
+#~ "Versión {}\n"
+#~ "Creado por {}"
+#~ msgstr ""
+#~ "Registro WASAPIR\n"
+#~ "Versão {}\n"
+#~ "Criado por {}"
+
+#~ msgid ""
+#~ "Esta ventana permite realizar una prueba de grabación y reproducción.\n"
+#~ "\n"
+#~ "1. Al abrirse, inicia la grabación con los mismos ajustes que la ventana "
+#~ "principal.\n"
+#~ "2. Para finalizar la grabación, pulsa 'Detener'. Entonces, el botón "
+#~ "cambiará a 'Reproducir'.\n"
+#~ "3. Si estaba activada la opción de 'Guardar archivos separados' en la "
+#~ "ventana principal, se mostrará el menú desplegable para elegir si "
+#~ "reproducir sólo micrófono, solo sistema o ambos (por defecto 'Ambos').\n"
+#~ "4. Al pulsar 'Reproducir', se inicia la reproducción del WAV de forma "
+#~ "asíncrona. El botón cambia a 'Detener' durante la reproducción. Al "
+#~ "terminar la pista, volverá a 'Reproducir'.\n"
+#~ "5. Si pulsas 'Cerrar' mientras graba, te preguntará si deseas cancelar la "
+#~ "prueba (se borrarán los archivos). Si ya grabaste y/o terminaste, "
+#~ "simplemente cerrará y también borrará los archivos.\n"
+#~ "\n"
+#~ "No puedes cerrar con Alt+F4 ni con la X de la ventana; solo con el botón "
+#~ "'Cerrar'.\n"
+#~ msgstr ""
+#~ "Essa janela permite que você realize um teste de gravação e reprodução.\n"
+#~ "\n"
+#~ "1. Quando aberta, ela inicia a gravação com as mesmas configurações da "
+#~ "janela principal.\n"
+#~ "2. Para encerrar a gravação, pressione \"Stop\" (Parar). Em seguida, o "
+#~ "botão mudará para \"Reproduzir\".\n"
+#~ "3. Se a opção \"Save separate files\" (Salvar arquivos separados) tiver "
+#~ "sido ativada na janela principal, o menu suspenso será exibido para "
+#~ "escolher se deseja reproduzir somente o microfone, somente o sistema ou "
+#~ "ambos (padrão \"Both\" (Ambos)).\n"
+#~ "4. Pressionar \"Play\" inicia a reprodução do WAV de forma assíncrona. O "
+#~ "botão muda para \"Stop\" (Parar) durante a reprodução. Quando a faixa for "
+#~ "concluída, ele voltará a \"Play\".\n"
+#~ "5. Se você pressionar \"Close\" (Fechar) durante a gravação, será "
+#~ "perguntado se deseja cancelar o teste (os arquivos serão excluídos). Se "
+#~ "você já tiver gravado e/ou terminado, ele simplesmente fechará e também "
+#~ "excluirá os arquivos.\n"
+#~ "\n"
+#~ "Não é possível fechar com Alt+F4 ou com o X na janela; somente com o "
+#~ "botão 'Close'.\n"

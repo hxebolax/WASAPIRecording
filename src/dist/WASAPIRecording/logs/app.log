@@ -1,0 +1,148 @@
+2026-03-21 16:00:01,188 - INFO - Ejecutando el módulo principal de la aplicación.
+2026-03-21 16:00:01,192 - INFO - Librería pythoncom inicializada correctamente.
+2026-03-21 16:00:01,195 - INFO - Iniciando la aplicación WASAPIRecording...
+2026-03-21 16:00:01,236 - DEBUG - Attempting to load library: bass
+2026-03-21 16:00:01,236 - DEBUG - x86_path: D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x86, x64_path: D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64, arm64_path: None
+2026-03-21 16:00:01,236 - DEBUG - Library name with prefix: bass
+2026-03-21 16:00:01,236 - DEBUG - Detected Python interpreter bitness: 64-bit
+2026-03-21 16:00:01,236 - DEBUG - Detected machine architecture: amd64
+2026-03-21 16:00:01,236 - DEBUG - Using x64 path (64-bit Python): D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64
+2026-03-21 16:00:01,236 - DEBUG - Using library extension: .dll
+2026-03-21 16:00:01,236 - DEBUG - Path exists: True
+2026-03-21 16:00:01,236 - DEBUG - Resolved library path: D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64\bass.dll
+2026-03-21 16:00:01,236 - DEBUG - Using loader for system: Windows
+2026-03-21 16:00:01,237 - INFO - Successfully loaded library: bass.dll
+2026-03-21 16:00:01,238 - DEBUG - Attempting to load library: bassopus
+2026-03-21 16:00:01,238 - DEBUG - x86_path: D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x86, x64_path: D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64, arm64_path: None
+2026-03-21 16:00:01,238 - DEBUG - Library name with prefix: bassopus
+2026-03-21 16:00:01,238 - DEBUG - Detected Python interpreter bitness: 64-bit
+2026-03-21 16:00:01,238 - DEBUG - Detected machine architecture: amd64
+2026-03-21 16:00:01,238 - DEBUG - Using x64 path (64-bit Python): D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64
+2026-03-21 16:00:01,238 - DEBUG - Using library extension: .dll
+2026-03-21 16:00:01,238 - DEBUG - Path exists: True
+2026-03-21 16:00:01,238 - DEBUG - Resolved library path: D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64\bassopus.dll
+2026-03-21 16:00:01,238 - DEBUG - Using loader for system: Windows
+2026-03-21 16:00:01,238 - INFO - Successfully loaded library: bassopus.dll
+2026-03-21 16:00:01,238 - DEBUG - Library name with prefix: bassopus
+2026-03-21 16:00:01,238 - DEBUG - Detected Python interpreter bitness: 64-bit
+2026-03-21 16:00:01,238 - DEBUG - Detected machine architecture: amd64
+2026-03-21 16:00:01,238 - DEBUG - Using x64 path (64-bit Python): D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64
+2026-03-21 16:00:01,239 - DEBUG - Using library extension: .dll
+2026-03-21 16:00:01,239 - DEBUG - Path exists: True
+2026-03-21 16:00:01,239 - DEBUG - Attempting to load library: basswma
+2026-03-21 16:00:01,239 - DEBUG - x86_path: D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x86, x64_path: D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64, arm64_path: None
+2026-03-21 16:00:01,239 - DEBUG - Library name with prefix: basswma
+2026-03-21 16:00:01,239 - DEBUG - Detected Python interpreter bitness: 64-bit
+2026-03-21 16:00:01,239 - DEBUG - Detected machine architecture: amd64
+2026-03-21 16:00:01,239 - DEBUG - Using x64 path (64-bit Python): D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64
+2026-03-21 16:00:01,239 - DEBUG - Using library extension: .dll
+2026-03-21 16:00:01,239 - DEBUG - Path exists: True
+2026-03-21 16:00:01,239 - DEBUG - Resolved library path: D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64\basswma.dll
+2026-03-21 16:00:01,239 - DEBUG - Using loader for system: Windows
+2026-03-21 16:00:01,239 - INFO - Successfully loaded library: basswma.dll
+2026-03-21 16:00:01,239 - DEBUG - Library name with prefix: basswma
+2026-03-21 16:00:01,239 - DEBUG - Detected Python interpreter bitness: 64-bit
+2026-03-21 16:00:01,239 - DEBUG - Detected machine architecture: amd64
+2026-03-21 16:00:01,239 - DEBUG - Using x64 path (64-bit Python): D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64
+2026-03-21 16:00:01,239 - DEBUG - Using library extension: .dll
+2026-03-21 16:00:01,239 - DEBUG - Path exists: True
+2026-03-21 16:00:01,240 - DEBUG - Attempting to load library: bass_aac
+2026-03-21 16:00:01,240 - DEBUG - x86_path: D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x86, x64_path: D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64, arm64_path: None
+2026-03-21 16:00:01,240 - DEBUG - Library name with prefix: bass_aac
+2026-03-21 16:00:01,240 - DEBUG - Detected Python interpreter bitness: 64-bit
+2026-03-21 16:00:01,240 - DEBUG - Detected machine architecture: amd64
+2026-03-21 16:00:01,240 - DEBUG - Using x64 path (64-bit Python): D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64
+2026-03-21 16:00:01,240 - DEBUG - Using library extension: .dll
+2026-03-21 16:00:01,240 - DEBUG - Path exists: True
+2026-03-21 16:00:01,240 - DEBUG - Resolved library path: D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64\bass_aac.dll
+2026-03-21 16:00:01,240 - DEBUG - Using loader for system: Windows
+2026-03-21 16:00:01,240 - INFO - Successfully loaded library: bass_aac.dll
+2026-03-21 16:00:01,240 - DEBUG - Library name with prefix: bass_aac
+2026-03-21 16:00:01,240 - DEBUG - Detected Python interpreter bitness: 64-bit
+2026-03-21 16:00:01,240 - DEBUG - Detected machine architecture: amd64
+2026-03-21 16:00:01,240 - DEBUG - Using x64 path (64-bit Python): D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64
+2026-03-21 16:00:01,240 - DEBUG - Using library extension: .dll
+2026-03-21 16:00:01,240 - DEBUG - Path exists: True
+2026-03-21 16:00:01,240 - DEBUG - Attempting to load library: bass_alac
+2026-03-21 16:00:01,240 - DEBUG - x86_path: D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x86, x64_path: D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64, arm64_path: None
+2026-03-21 16:00:01,240 - DEBUG - Library name with prefix: bass_alac
+2026-03-21 16:00:01,240 - DEBUG - Detected Python interpreter bitness: 64-bit
+2026-03-21 16:00:01,240 - DEBUG - Detected machine architecture: amd64
+2026-03-21 16:00:01,240 - DEBUG - Using x64 path (64-bit Python): D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64
+2026-03-21 16:00:01,240 - DEBUG - Using library extension: .dll
+2026-03-21 16:00:01,241 - DEBUG - Path exists: True
+2026-03-21 16:00:01,241 - DEBUG - Resolved library path: D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64\bass_alac.dll
+2026-03-21 16:00:01,241 - DEBUG - Using loader for system: Windows
+2026-03-21 16:00:01,241 - INFO - Successfully loaded library: bass_alac.dll
+2026-03-21 16:00:01,241 - DEBUG - Library name with prefix: bass_alac
+2026-03-21 16:00:01,241 - DEBUG - Detected Python interpreter bitness: 64-bit
+2026-03-21 16:00:01,241 - DEBUG - Detected machine architecture: amd64
+2026-03-21 16:00:01,241 - DEBUG - Using x64 path (64-bit Python): D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64
+2026-03-21 16:00:01,241 - DEBUG - Using library extension: .dll
+2026-03-21 16:00:01,241 - DEBUG - Path exists: True
+2026-03-21 16:00:01,241 - DEBUG - Attempting to load library: bassflac
+2026-03-21 16:00:01,241 - DEBUG - x86_path: D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x86, x64_path: D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64, arm64_path: None
+2026-03-21 16:00:01,241 - DEBUG - Library name with prefix: bassflac
+2026-03-21 16:00:01,241 - DEBUG - Detected Python interpreter bitness: 64-bit
+2026-03-21 16:00:01,241 - DEBUG - Detected machine architecture: amd64
+2026-03-21 16:00:01,241 - DEBUG - Using x64 path (64-bit Python): D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64
+2026-03-21 16:00:01,241 - DEBUG - Using library extension: .dll
+2026-03-21 16:00:01,242 - DEBUG - Path exists: True
+2026-03-21 16:00:01,242 - DEBUG - Resolved library path: D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64\bassflac.dll
+2026-03-21 16:00:01,242 - DEBUG - Using loader for system: Windows
+2026-03-21 16:00:01,242 - INFO - Successfully loaded library: bassflac.dll
+2026-03-21 16:00:01,242 - DEBUG - Library name with prefix: bassflac
+2026-03-21 16:00:01,242 - DEBUG - Detected Python interpreter bitness: 64-bit
+2026-03-21 16:00:01,242 - DEBUG - Detected machine architecture: amd64
+2026-03-21 16:00:01,242 - DEBUG - Using x64 path (64-bit Python): D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64
+2026-03-21 16:00:01,242 - DEBUG - Using library extension: .dll
+2026-03-21 16:00:01,242 - DEBUG - Path exists: True
+2026-03-21 16:00:01,242 - DEBUG - Attempting to load library: bassmidi
+2026-03-21 16:00:01,242 - DEBUG - x86_path: D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x86, x64_path: D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64, arm64_path: None
+2026-03-21 16:00:01,242 - DEBUG - Library name with prefix: bassmidi
+2026-03-21 16:00:01,242 - DEBUG - Detected Python interpreter bitness: 64-bit
+2026-03-21 16:00:01,242 - DEBUG - Detected machine architecture: amd64
+2026-03-21 16:00:01,242 - DEBUG - Using x64 path (64-bit Python): D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64
+2026-03-21 16:00:01,242 - DEBUG - Using library extension: .dll
+2026-03-21 16:00:01,242 - DEBUG - Path exists: True
+2026-03-21 16:00:01,242 - DEBUG - Resolved library path: D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64\bassmidi.dll
+2026-03-21 16:00:01,242 - DEBUG - Using loader for system: Windows
+2026-03-21 16:00:01,242 - INFO - Successfully loaded library: bassmidi.dll
+2026-03-21 16:00:01,243 - DEBUG - Library name with prefix: bassmidi
+2026-03-21 16:00:01,243 - DEBUG - Detected Python interpreter bitness: 64-bit
+2026-03-21 16:00:01,243 - DEBUG - Detected machine architecture: amd64
+2026-03-21 16:00:01,243 - DEBUG - Using x64 path (64-bit Python): D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64
+2026-03-21 16:00:01,243 - DEBUG - Using library extension: .dll
+2026-03-21 16:00:01,243 - DEBUG - Path exists: True
+2026-03-21 16:00:01,262 - INFO - BASS inicializado correctamente.
+2026-03-21 16:00:01,262 - INFO - No se encontró el archivo de configuración: D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\WASAPIRecording.dat
+2026-03-21 16:00:01,262 - INFO - Idioma del sistema detectado: es_ES
+2026-03-21 16:00:01,262 - INFO - Idioma predeterminado obtenido: es
+2026-03-21 16:00:01,262 - INFO - Idioma por defecto detectado: es
+2026-03-21 16:00:01,262 - INFO - Ruta de traducción: D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\locales
+2026-03-21 16:00:01,263 - INFO - Traducciones cargadas para el idioma: es
+2026-03-21 16:00:01,263 - INFO - Internacionalización inicializada correctamente.
+2026-03-21 16:00:01,305 - DEBUG - Attempting to load library: basswasapi
+2026-03-21 16:00:01,305 - DEBUG - x86_path: D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x86, x64_path: D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64, arm64_path: None
+2026-03-21 16:00:01,305 - DEBUG - Library name with prefix: basswasapi
+2026-03-21 16:00:01,305 - DEBUG - Detected Python interpreter bitness: 64-bit
+2026-03-21 16:00:01,305 - DEBUG - Detected machine architecture: amd64
+2026-03-21 16:00:01,306 - DEBUG - Using x64 path (64-bit Python): D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64
+2026-03-21 16:00:01,306 - DEBUG - Using library extension: .dll
+2026-03-21 16:00:01,306 - DEBUG - Path exists: True
+2026-03-21 16:00:01,306 - DEBUG - Resolved library path: D:\Repositorios\WASAPIRecording\src\dist\WASAPIRecording\_internal\sound_lib\lib\x64\basswasapi.dll
+2026-03-21 16:00:01,306 - DEBUG - Using loader for system: Windows
+2026-03-21 16:00:01,306 - INFO - Successfully loaded library: basswasapi.dll
+2026-03-21 16:00:01,307 - ERROR - Se produjo un error inesperado: No module named 'pybass'
+2026-03-21 16:00:01,307 - ERROR - Excepción no capturada
+Traceback (most recent call last):
+  File "WASAPIRecording.pyw", line 76, in <module>
+  File "WASAPIRecording.pyw", line 47, in main
+  File "pyimod02_importers.py", line 457, in exec_module
+  File "ui\interface.py", line 38, in <module>
+  File "pyimod02_importers.py", line 457, in exec_module
+  File "core\recorder.py", line 17, in <module>
+  File "pyimod02_importers.py", line 457, in exec_module
+  File "sound_lib\external\pybassmix.py", line 17, in <module>
+    import os, sys, ctypes, platform, pybass
+ModuleNotFoundError: No module named 'pybass'

@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "WASAPIRecording.pyw", line 76, in <module>
+  File "WASAPIRecording.pyw", line 47, in main
+  File "pyimod02_importers.py", line 457, in exec_module
+  File "ui\interface.py", line 38, in <module>
+  File "pyimod02_importers.py", line 457, in exec_module
+  File "core\recorder.py", line 17, in <module>
+  File "pyimod02_importers.py", line 457, in exec_module
+  File "sound_lib\external\pybassmix.py", line 17, in <module>
+    import os, sys, ctypes, platform, pybass
+ModuleNotFoundError: No module named 'pybass'

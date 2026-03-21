@@ -1,0 +1,1191 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the WASAPIRecording package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: WASAPIRecording 1.0\n"
+"Report-Msgid-Bugs-To: tu_email@ejemplo.com\n"
+"POT-Creation-Date: 2025-01-23 19:29+0100\n"
+"PO-Revision-Date: 2025-01-23 19:41+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: sr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: src\core\devices.py:54
+msgid "Dispositivos actualizados correctamente."
+msgstr "Uređaji su uspešno ažurirani."
+
+#: src\core\devices.py:58
+#, python-brace-format
+msgid "Error al refrescar dispositivos: {error}"
+msgstr "Greška prilikom osvežavanja uređaja: {error}"
+
+#: src\core\devices.py:187
+msgid ""
+"No se detectó ningún micrófono.\n"
+"Por favor, conecta o habilita al menos un micrófono antes de continuar."
+msgstr ""
+"Nijedan mikrofon nije otkriven  \n"
+"Molimo vas da povežete ili omogućite bar jedan mikrofon pre nego što "
+"nastavite"
+
+#: src\core\devices.py:189 src\core\devices.py:200 src\core\devices.py:208
+#: src\core\devices.py:219 src\core\devices.py:230 src\core\devices.py:238
+msgid "Error de Audio"
+msgstr "Greška u zvuku"
+
+#: src\core\devices.py:198
+msgid ""
+"Se detectan micrófonos, pero no hay uno configurado como predeterminado.\n"
+"Por favor, configura un micrófono predeterminado en las opciones de sonido."
+msgstr ""
+"Otkriveni su mikrofoni, ali nijedan nije podešen kao podrazumevani.  \n"
+"Molimo vas da postavite podrazumevani mikrofon u opcijama zvuka."
+
+#: src\core\devices.py:206
+msgid ""
+"Ocurrió un error intentando obtener el micrófono predeterminado.\n"
+"Por favor, revisa tus dispositivos de grabación."
+msgstr ""
+"Došlo je do greške prilikom pokušaja dobijanja podrazumevanog mikrofona.  \n"
+"Molimo vas da proverite uređaje za snimanje."
+
+#: src\core\devices.py:217
+msgid ""
+"No se detectó ningún altavoz o tarjeta de sonido habilitada.\n"
+"Revisa tu configuración de audio en el Panel de Control de Windows."
+msgstr ""
+"Nijedan zvučnik ili zvučna kartica nisu otkriveni.  \n"
+"Molimo vas da proverite podešavanja zvuka u Kontrolnoj tabli sistema Windows."
+
+#: src\core\devices.py:228
+msgid ""
+"Se detectan altavoces, pero no hay uno configurado como predeterminado.\n"
+"Por favor, configura un altavoz predeterminado en las opciones de sonido."
+msgstr ""
+"Otkriveni su zvučnici, ali nijedan nije podešen kao podrazumevani.  \n"
+"Molimo vas da postavite podrazumevani zvučnik u opcijama zvuka."
+
+#: src\core\devices.py:236
+msgid ""
+"Ocurrió un error intentando obtener el altavoz/speaker predeterminado.\n"
+"Por favor, revisa tus dispositivos de reproducción."
+msgstr ""
+"Došlo je do greške prilikom pokušaja dobijanja podrazumevanog zvučnika.  \n"
+"Molimo vas da proverite svoje uređaje za reprodukciju."
+
+#: src\core\hotkeys.py:177
+msgid ""
+"La combinación debe tener al menos 2 modificadores (Ctrl,Shift,Alt) y 1 "
+"tecla principal válida."
+msgstr ""
+"Kombinacija mora sadržati najmanje 2 modifikatorska tastera (Ctrl, Shift, "
+"Alt) i 1 važeći glavni taster."
+
+#: src\core\hotkeys.py:178 src\core\hotkeys.py:185 src\ui\interface.py:1080
+#: src\ui\test_audio.py:251 src\ui\test_audio.py:263
+msgid "Error"
+msgstr "Greška"
+
+#: src\core\hotkeys.py:185
+msgid "La combinación está en uso: {}"
+msgstr "Kombinacija je već u upotrebi: {}"
+
+#: src\core\info.py:4
+msgid ""
+"\n"
+"1. ¿Qué es WASAPIRecording?\n"
+"\n"
+"WASAPIRecording es una aplicación para Windows que te permite grabar el "
+"audio de tu micrófono y el audio del sistema (música, videollamadas, etc.) "
+"de forma simultánea. Puedes combinar ambos en un solo archivo o guardarlos "
+"por separado (uno para el micrófono y otro para el sonido del sistema).\n"
+"\n"
+"Además de las funciones básicas de grabación, WASAPIRecording incluye:\n"
+"• Un sistema de actualización automática que busca nuevas versiones en "
+"GitHub.\n"
+"• Un módulo para cambiar rápidamente el idioma de la interfaz y reiniciar la "
+"aplicación si es necesario.\n"
+"• Opciones de configuración para personalizar hotkeys y minimizar la ventana "
+"a la bandeja del sistema.\n"
+"\n"
+"2. Requisitos\n"
+"\n"
+"• Windows 10 o superior (con WASAPI).\n"
+"• Permisos para ejecutar la aplicación (administrador no siempre es "
+"necesario, pero ayuda en casos de permisos restringidos).\n"
+"\n"
+"3. Iniciar la Aplicación\n"
+"\n"
+"• Ejecuta el archivo o acceso directo llamado “WASAPIRecording”.  \n"
+"• Se abrirá la ventana principal con controles para micrófono, sistema, "
+"formatos de audio, opciones de grabación, hotkeys y otros ajustes.\n"
+"\n"
+"4. Configurar Dispositivos y Parámetros\n"
+"\n"
+"• **Micrófono**: Selecciona el micrófono que quieres usar.  \n"
+"• **Sistema (loopback)**: Selecciona el dispositivo de tu PC que captura "
+"todo lo que suena en el sistema.  \n"
+"• **Refrescar Dispositivos**: Si conectaste un nuevo dispositivo y no "
+"aparece en la lista, haz clic para actualizar.  \n"
+"• **Calidad (Hz)**: Frecuencia de muestreo (22050, 44100 o 48000). A mayor "
+"valor, mayor calidad y tamaño de archivo.  \n"
+"• **Formato de Salida**: WAV, MP3, FLAC, OGG o AIFF.  \n"
+"• **Bitrate MP3**: Solo aparece si eliges MP3; ajusta la calidad de "
+"compresión.  \n"
+"• **Modo de grabación (Mono o Estéreo)**: Define la forma en que se "
+"guardarán los canales (2 canales en estéreo o ambos canales centrados si es "
+"mono).  \n"
+"• **Buffer (frames)**: Tamaño de bloque de audio que se procesa en cada "
+"ciclo de grabación.  \n"
+"• **Guardar archivos separados**: Si lo marcas, además del archivo "
+"“combinado”, la app guardará otros dos archivos (uno solo con el micrófono y "
+"otro con el sistema).  \n"
+"\n"
+"5. Ajustar Volúmenes\n"
+"\n"
+"• **Volumen del Micrófono**: Usa el deslizador para subir/bajar la ganancia "
+"del micrófono.  \n"
+"• **Volumen del Sistema**: Ajusta la ganancia de los sonidos del PC que "
+"quieras grabar.  \n"
+"\n"
+"6. Iniciar y Detener la Grabación\n"
+"\n"
+"• Pulsa **Iniciar Grabación** (o la hotkey global “Ctrl + Shift + F1” por "
+"defecto). El estado mostrará “Grabando…”.  \n"
+"• Para **detener**, haz clic en **Detener Grabación** (o usa “Ctrl + Shift + "
+"F2”).  \n"
+"• Si elegiste MP3, FLAC, OGG o AIFF, la app convertirá el archivo final tras "
+"la grabación, mostrando un diálogo de “Por favor espere…” hasta que "
+"termine.  \n"
+"• Al finalizar, se mostrará un aviso con la ruta de los archivos generados. "
+"Si habilitaste la opción de “Abrir carpeta de grabaciones al terminar” (o "
+"respondiste “Sí” en la ventana emergente), se abrirá directamente la carpeta "
+"que contiene los archivos.\n"
+"\n"
+"7. Dónde se Guardan las Grabaciones\n"
+"\n"
+"• Por defecto, en la carpeta “recording” dentro del directorio de la "
+"aplicación.  \n"
+"• Puedes cambiar la carpeta de grabaciones en “Menú > Opciones > General > "
+"Carpeta de grabaciones”.  \n"
+"• Para abrir la carpeta desde la aplicación, haz clic en “Menú > Abrir "
+"Grabaciones”.\n"
+"\n"
+"8. Opciones y Menú\n"
+"\n"
+"En la ventana principal, verás un botón **Menú** que da acceso a:\n"
+"\n"
+"• **Acerca de…**: Muestra la versión actual de WASAPIRecording y el nombre "
+"del creador.  \n"
+"• **Abrir Grabaciones**: Abre la carpeta donde se almacenan los archivos "
+"grabados.  \n"
+"• **Idioma**: Te permite cambiar el idioma de la interfaz (es, en, it, fr, "
+"etc.). El cambio se aplica tras reiniciar la app.  \n"
+"• **Buscar actualizaciones**: Comprueba si hay una nueva versión de la "
+"aplicación en GitHub. Si existe, podrás descargar e instalar la nueva "
+"versión, y luego reiniciar la app para actualizarte sin perder tus "
+"configuraciones.  \n"
+"• **invítame a un café si te gusta mi trabajo**: Te redirige a una página de "
+"donación (por ejemplo, PayPal).  \n"
+"\n"
+"Además, dentro del **Menú**, encontrarás:\n"
+"\n"
+"• **Opciones**:  \n"
+"  - **General**: Incluye la casilla “Minimizar a la bandeja del sistema” y "
+"la posibilidad de cambiar la carpeta de grabaciones.  \n"
+"  - **Teclado**: Permite personalizar los atajos globales para iniciar, "
+"detener, pausar y cancelar la grabación. También se muestra aquí si un atajo "
+"queda “Sin asignar” o si hay conflicto con otra acción.\n"
+"\n"
+"9. Prueba de Audio\n"
+"\n"
+"• El botón **Prueba de Audio** abre un diálogo especial para grabar unos "
+"segundos de muestra y reproducirlos de inmediato.  \n"
+"• Este diálogo aparece siempre en primer plano y **no** se puede cerrar con "
+"la “X” ni con Alt+F4; solo con el botón “Cerrar”.  \n"
+"• Primero, comienza la grabación de prueba con el botón “Detener” (que sirve "
+"para finalizar la pequeña grabación).  \n"
+"• Después, el mismo botón se transforma en “Reproducir”, para escuchar lo "
+"grabado.  \n"
+"• Si marcaste “Guardar archivos separados”, podrás elegir reproducir solo el "
+"micrófono, solo el sistema o ambos.  \n"
+"• Al cerrar el diálogo, los archivos temporales se borran, perfecto para "
+"verificar que todo suena bien antes de hacer una grabación definitiva.\n"
+"\n"
+"10. Atajos de Teclado\n"
+"\n"
+"**Atajos Globales** (por defecto, personalizables en “Opciones > "
+"Teclado”):  \n"
+"• Iniciar Grabación: **Ctrl + Shift + F1**  \n"
+"• Detener Grabación: **Ctrl + Shift + F2**  \n"
+"• Pausar/Reanudar Grabación: **Ctrl + Shift + F3**  \n"
+"• Cancelar Grabación: **Ctrl + Shift + F4**  \n"
+"\n"
+"**Atajos dentro de la interfaz** (con la tecla Alt, pueden variar según el "
+"idioma):  \n"
+"• Micrófono: **Alt + O**  \n"
+"• Sistema (loopback): **Alt + S**  \n"
+"• Refrescar Dispositivos: **Alt + R**  \n"
+"• Calidad (Hz): **Alt + C**  \n"
+"• Formato de salida: **Alt + F**  \n"
+"• Bitrate MP3 (kbps): **Alt + B**  \n"
+"• Modo Micrófono: **Alt + O**  \n"
+"• Modo Sistema (loopback): **Alt + S**  \n"
+"• Tamaño de buffer (frames): **Alt + T**  \n"
+"• Guardar archivos separados: **Alt + Y**  \n"
+"• Volumen del Micrófono: **Alt + V**  \n"
+"• Volumen del Sistema: **Alt + V**\n"
+"• Iniciar Grabación: **Alt + I**  \n"
+"• Detener Grabación: **Alt + D**  \n"
+"• Prueba de Audio: **Alt + P**  \n"
+"• Menú: **Alt + M**  \n"
+"• Cerrar (en algunos diálogos): **Alt + C**  \n"
+"\n"
+"\n"
+"en algunos idiomas puede variar o usarse otras teclas dependiendo de la "
+"traducción.\n"
+"\n"
+"11. Minimizar a la Bandeja\n"
+"\n"
+"• Si activas “Minimizar a la bandeja” en “Menú > Opciones > General”, al "
+"pulsar el botón de minimizar (esquina superior derecha de la ventana), la "
+"aplicación se ocultará de la barra de tareas y aparecerá un ícono en la "
+"bandeja del sistema (cerca del reloj).  \n"
+"• Al hacer doble clic en ese ícono o usar el menú contextual, podrás "
+"restaurar la ventana o cerrar la aplicación.\n"
+"\n"
+"12. Actualizar la Aplicación\n"
+"\n"
+"• Desde “Menú > Buscar actualizaciones”, la app revisa el repositorio de "
+"GitHub para ver si hay una versión más reciente.  \n"
+"• Si la encuentra, te mostrará un aviso para **descargar** e **instalar**. "
+"Tras la descarga, se extraerán los archivos y se creará un script automático "
+"(BAT) para copiar la actualización y reiniciar el programa.  \n"
+"• Al finalizar la instalación, la app se cerrará y se volverá a ejecutar con "
+"la nueva versión.\n"
+"\n"
+"13. Cerrar la Aplicación\n"
+"\n"
+"• Al cerrar la ventana principal, si se está grabando, se te preguntará si "
+"deseas detener la grabación antes de salir.  \n"
+"• Si la aplicación está convirtiendo el archivo (p.ej., a MP3), esperará a "
+"que la conversión termine.  \n"
+"• Luego se cerrará por completo. Si minimizaste a la bandeja, primero "
+"tendrás que restaurar la ventana o cerrarla desde el menú contextual de la "
+"bandeja.\n"
+"\n"
+"14. Consejos Finales\n"
+"\n"
+"• Ajusta los volúmenes de micrófono y sistema en la app para equilibrar las "
+"fuentes de audio.  \n"
+"• Si notas que el audio está muy inclinado a un canal (izquierdo o derecho), "
+"marca la opción **Mono** o “Mezcla monoaural” (en algunos textos), para "
+"centrar el sonido.  \n"
+"• Utiliza la **Prueba de Audio** para verificar que todo se escucha "
+"correctamente antes de hacer una grabación importante.  \n"
+"• No olvides revisar las **Opciones** y **Menú** para personalizar tus "
+"hotkeys, idioma, carpeta de grabaciones y otras configuraciones.  \n"
+"\n"
+"¡Disfruta grabando con WASAPIRecording! Si encuentras útil esta aplicación, "
+"recuerda que puedes apoyarla haciendo clic en “Menú > invítame a un café si "
+"te gusta mi trabajo”.\n"
+msgstr ""
+"\n"
+"---\n"
+"\n"
+"**1. Šta je WASAPIRecording?**\n"
+"\n"
+"WASAPIRecording je aplikacija za Windows koja vam omogućava da istovremeno "
+"snimate zvuk sa vašeg mikrofona i zvuk sa sistema (muziku, video pozive, "
+"itd.). Možete kombinovati oba u jedan fajl ili ih čuvati odvojeno (jedan za "
+"mikrofon i drugi za zvuk sistema).\n"
+"\n"
+"Osim osnovnih funkcija snimanja, WASAPIRecording uključuje:  \n"
+"• Sistem za automatsko ažuriranje koji traži nove verzije na GitHubu.  \n"
+"• Modul za brzo menjanje jezika interfejsa i restartovanje aplikacije ako je "
+"potrebno.  \n"
+"• Opcije podešavanja za personalizaciju tastera prečica i minimizaciju "
+"prozora u sistemsku traku.\n"
+"\n"
+"**2. Zahtevi**\n"
+"\n"
+"• Windows 10 ili noviji (sa WASAPI podrškom).  \n"
+"• Dozvole za pokretanje aplikacije (administrator obično nije potreban, ali "
+"pomaže u slučajevima sa restriktivnim dozvolama).\n"
+"\n"
+"**3. Pokretanje aplikacije**\n"
+"\n"
+"• Pokrenite fajl ili prečicu pod imenom “WASAPIRecording”.  \n"
+"• Otvoriće se glavni prozor sa kontrolama za mikrofon, sistem, audio "
+"formate, opcije snimanja, prečice i druge postavke.\n"
+"\n"
+"**4. Podešavanje uređaja i parametara**\n"
+"\n"
+"• **Mikrofon**: Izaberite mikrofon koji želite da koristite.  \n"
+"• **Sistem (loopback)**: Izaberite uređaj na vašem računaru koji snima sve "
+"što se čuje na sistemu.  \n"
+"• **Osveži uređaje**: Ako ste povezali novi uređaj i ne pojavljuje se na "
+"listi, kliknite da osvežite.  \n"
+"• **Kvalitet (Hz)**: Frekvencija uzorkovanja (22050, 44100 ili 48000). Što "
+"je veća vrednost, veći je kvalitet i veličina fajla.  \n"
+"• **Izlazni format**: WAV, MP3, FLAC, OGG ili AIFF.  \n"
+"• **Bitrate MP3**: Pojavljuje se samo ako izaberete MP3; podešava kvalitet "
+"kompresije.  \n"
+"• **Režim snimanja (Mono ili Stereo)**: Definiše način na koji će se čuvati "
+"kanali (2 kanala u stereo režimu ili oba kanala centrirana u mono "
+"režimu).  \n"
+"• **Bafer (okviri)**: Veličina audio bloka koji se procesuira u svakom "
+"ciklusu snimanja.  \n"
+"• **Čuvanje odvojenih fajlova**: Ako označite, pored “kombinovanog” fajla, "
+"aplikacija će sačuvati još dva fajla (jedan samo sa mikrofonom i drugi sa "
+"sistemskim zvukom).\n"
+"\n"
+"**5. Podešavanje jačine zvuka**\n"
+"\n"
+"• **Jačina mikrofona**: Koristite klizač za povećanje/smanjenje jačine "
+"mikrofona.  \n"
+"• **Jačina sistema**: Podešavajte jačinu zvukova sa vašeg računara koje "
+"želite da snimate.\n"
+"\n"
+"**6. Pokretanje i zaustavljanje snimanja**\n"
+"\n"
+"• Pritisnite **Pokreni snimanje** (ili globalnu prečicu “Ctrl + Shift + F1” "
+"po defaultu). Status će prikazati “Snimam…”.  \n"
+"• Da biste **zaustavili**, kliknite na **Zaustavi snimanje** (ili koristite "
+"“Ctrl + Shift + F2”).  \n"
+"• Ako ste izabrali MP3, FLAC, OGG ili AIFF, aplikacija će konvertovati "
+"finalni fajl nakon snimanja, prikazivaće dijalog “Molimo sačekajte…” dok se "
+"proces ne završi.  \n"
+"• Kada završi, prikazaće vam obaveštenje sa putanjom do generisanih fajlova. "
+"Ako ste omogućili opciju “Otvorite folder sa snimcima nakon završetka” (ili "
+"odgovorili sa “Da” u iskačućem prozoru), folder sa fajlovima će se "
+"automatski otvoriti.\n"
+"\n"
+"**7. Gde se čuvaju snimci**\n"
+"\n"
+"• Po zadanom, u folderu “recording” unutar direktorijuma aplikacije.  \n"
+"• Možete promeniti folder za snimke u “Menj > Opcije > General > Folder sa "
+"snimcima”.  \n"
+"• Da biste otvorili folder iz aplikacije, kliknite na “Menj > Otvori "
+"snimke”.\n"
+"\n"
+"**8. Opcije i meni**\n"
+"\n"
+"U glavnom prozoru, videćete dugme **Meni** koje daje pristup:  \n"
+"• **O aplikaciji…**: Prikazuje trenutnu verziju WASAPIRecording-a i ime "
+"tvorca.  \n"
+"• **Otvoriti snimke**: Otvara folder u kojem se čuvaju snimljeni fajlovi.  \n"
+"• **Jezik**: Omogućava promenu jezika interfejsa (es, en, it, fr, itd.). "
+"Promene se primenjuju nakon restartovanja aplikacije.  \n"
+"• **Proveri ažuriranja**: Proverava da li postoji nova verzija aplikacije na "
+"GitHubu. Ako postoji, možete preuzeti i instalirati novu verziju, a zatim "
+"restartovati aplikaciju da biste ažurirali aplikaciju bez gubitka "
+"podešavanja.  \n"
+"• **Pozovi me na kafu ako vam se dopada moj rad**: Preusmerava vas na "
+"stranicu za donacije (npr. PayPal).\n"
+"\n"
+"Takođe, unutar **Menija**, naći ćete:  \n"
+"• **Opcije**:  \n"
+"  - **General**: Uključuje opciju “Minimizuj u sistemsku traku” i mogućnost "
+"promene foldera sa snimcima.  \n"
+"  - **Tastatura**: Omogućava personalizaciju globalnih prečica za "
+"pokretanje, zaustavljanje, pauziranje i otkazivanje snimanja. Takođe će biti "
+"prikazano ako neka prečica nije dodeljena ili ako postoji konflikt sa drugom "
+"akcijom.\n"
+"\n"
+"**9. Audio test**\n"
+"\n"
+"• Dugme **Audio test** otvara poseban dijalog za snimanje nekoliko sekundi "
+"uzorka i njegovo trenutno reprodukovanje.  \n"
+"• Ovaj dijalog je uvek u prvom planu i **ne** može se zatvoriti klikom na "
+"“X” ili Alt+F4; samo klikom na dugme “Zatvori”.  \n"
+"• Prvo, započnite snimanje testa sa dugmetom “Završi” (koje služi za "
+"završavanje male snimke).  \n"
+"• Zatim, isto dugme postaje “Reprodukuj”, da biste čuli snimljeno.  \n"
+"• Ako ste označili “Čuvaj odvojene fajlove”, možete odabrati da "
+"reprodukujete samo mikrofon, samo sistem ili oba.  \n"
+"• Kada zatvorite dijalog, privremeni fajlovi će biti obrisani, što je "
+"idealno za proveru da li sve zvuči dobro pre nego što započnete definitivno "
+"snimanje.\n"
+"\n"
+"**10. Prečice na tastaturi**\n"
+"\n"
+"**Globalne prečice** (po defaultu, mogu se prilagoditi u “Opcije > "
+"Tastatura”):  \n"
+"• Pokreni snimanje: **Ctrl + Shift + F1**  \n"
+"• Zaustavi snimanje: **Ctrl + Shift + F2**  \n"
+"• Pauza/Ponovno snimanje: **Ctrl + Shift + F3**  \n"
+"• Otkaži snimanje: **Ctrl + Shift + F4**\n"
+"\n"
+"**Prečice u interfejsu** (koristeći taster Alt, mogu se promeniti u "
+"zavisnosti od jezika):  \n"
+"• Mikrofon: **Alt + O**  \n"
+"• Sistem (loopback): **Alt + S**  \n"
+"• Osveži uređaje: **Alt + R**  \n"
+"• Kvalitet (Hz): **Alt + C**  \n"
+"• Izlazni format: **Alt + F**  \n"
+"• Bitrate MP3 (kbps): **Alt + B**  \n"
+"• Režim mikrofona: **Alt + O**  \n"
+"• Režim sistema (loopback): **Alt + S**  \n"
+"• Veličina bafera (okviri): **Alt + T**  \n"
+"• Čuvanje odvojenih fajlova: **Alt + Y**  \n"
+"• Jačina mikrofona: **Alt + V**  \n"
+"• Jačina sistema: **Alt + V**  \n"
+"• Pokreni snimanje: **Alt + I**  \n"
+"• Zaustavi snimanje: **Alt + D**  \n"
+"• Audio test: **Alt + P**  \n"
+"• Meni: **Alt + M**  \n"
+"• Zatvori (u nekim dijalozima): **Alt + C**\n"
+"\n"
+"**11. Minimizuj u sistemsku traku**\n"
+"\n"
+"• Ako aktivirate opciju “Minimizuj u traku” u “Meni > Opcije > Opšte”, "
+"klikom na dugme za minimizovanje (gore desno u prozoru), aplikacija će se "
+"sakriti sa trake i pojaviće se ikona u sistemskoj traci (blizu sata).  \n"
+"• Dvoklikom na tu ikonu ili korišćenjem kontekstualnog menija, možete "
+"obnoviti prozor ili zatvoriti aplikaciju.\n"
+"\n"
+"**12. Ažuriranje aplikacije**\n"
+"\n"
+"• Iz “Meni > Proveri ažuriranja”, aplikacija proverava GitHub repozitorijum "
+"da vidi da li postoji novija verzija.  \n"
+"• Ako je pronađe, prikazaće obaveštenje da **preuzmete** i **instalirate** "
+"novu verziju. Nakon preuzimanja, fajlovi će biti raspakovani i kreiraće se "
+"automatski skript (BAT) za kopiranje ažuriranja i restartovanje programa.  \n"
+"• Kada instalacija završi, aplikacija će se zatvoriti i ponovo pokrenuti sa "
+"novom verzijom.\n"
+"\n"
+"**13. Zatvaranje aplikacije**\n"
+"\n"
+"• Kada zatvorite glavni prozor, ako se snima, bićete pitani da li želite da "
+"zaustavite snimanje pre nego što izađete.  \n"
+"• Ako aplikacija konvertuje fajl (npr. u MP3), sačekajte da se konverzija "
+"završi.  \n"
+"• Nakon toga, aplikacija će se potpuno zatvoriti. Ako ste minimizovali u "
+"traku, prvo ćete morati da obnovite prozor ili je zatvorite iz "
+"kontekstualnog menija trake.\n"
+"\n"
+"**14. Poslednji saveti**\n"
+"\n"
+"• Podesite jačinu zvuka mikrofona i sistema u aplikaciji da biste "
+"uravnotežili izvore zvuka.  \n"
+"• Ako primetite da je zvuk jako naglašen na jednom kanalu (levo ili desno), "
+"označite opciju **Mono** ili “Mešavina monauralna” (u nekim tekstovima) da "
+"biste centrirali zvuk.  \n"
+"• Koristite **Audio test** da proverite da li sve zvuči kako treba pre nego "
+"što započnete važno snimanje.  \n"
+"• Ne zaboravite da proverite **Opcije** i **Meni** kako biste "
+"personalizovali svoje prečice, jezik, folder za snimke i druge postavke.\n"
+"\n"
+"Uživajte u snimanju sa WASAPIRecording-om! Ako vam se dopada ova aplikacija, "
+"ne zaboravite da je podržite klikom na “Menj > Pozovi me na kafu ako vam se "
+"dopada moj rad”.\n"
+"\n"
+"--- \n"
+"\n"
+
+#: src\core\recorder.py:77 src\core\recorder.py:90 src\core\recorder.py:96
+#: src\ui\interface.py:430 src\ui\interface.py:436 src\ui\interface.py:1186
+#: src\ui\interface.py:1191
+msgid "Mono"
+msgstr "Mono"
+
+#: src\core\recorder.py:93 src\core\recorder.py:99 src\core\recorder.py:117
+#: src\core\recorder.py:118 src\ui\interface.py:371 src\ui\interface.py:372
+#: src\ui\interface.py:430 src\ui\interface.py:436 src\ui\interface.py:1185
+#: src\ui\interface.py:1186 src\ui\interface.py:1190 src\ui\interface.py:1191
+msgid "Estéreo"
+msgstr "Stereo"
+
+#: src\ui\interface.py:124
+msgid "Mostrar aplicación"
+msgstr "Prikazivanje aplikacije"
+
+#: src\ui\interface.py:125 src\ui\interface.py:1336 src\ui\update.py:159
+#: src\ui\update.py:182 src\ui\update.py:208 src\ui\update.py:213
+#: src\ui\update.py:371
+msgid "Cerrar"
+msgstr "Zatvori"
+
+#: src\ui\interface.py:165
+msgid "Espere por favor... Procesando"
+msgstr "Sačekajte molim vas... Obrada je u toku"
+
+#: src\ui\interface.py:172
+msgid "Procesando"
+msgstr "Obrada"
+
+#: src\ui\interface.py:296
+msgid ""
+"WASAPIRecording ya se encuentra en ejecución.\n"
+"No se pueden tener dos instancias a la vez."
+msgstr ""
+"WASAPIRecording je već pokrenut.  \n"
+"Ne mogu biti pokrenute dve instance istovremeno."
+
+#: src\ui\interface.py:386
+msgid "Dispositivos"
+msgstr "Uređaji"
+
+#: src\ui\interface.py:387
+msgid "Micrófon&o:"
+msgstr "mikrofon:"
+
+#: src\ui\interface.py:393
+msgid "&Sistema (loopback):"
+msgstr "& Sistem (loopback):"
+
+#: src\ui\interface.py:401
+msgid "&Refrescar Dispositivos"
+msgstr "&Osveži uređaje"
+
+#: src\ui\interface.py:409
+msgid "Configuración de Grabación"
+msgstr "Podešavanja snimanja"
+
+#: src\ui\interface.py:411
+msgid "&Calidad (Hz):"
+msgstr "&Kvalitet (Hz):"
+
+#: src\ui\interface.py:417
+msgid "&Formato de salida:"
+msgstr "&Izlazni format:"
+
+#: src\ui\interface.py:423
+msgid "&Bitrate MP3 (kbps):"
+msgstr "&MP3 Brzina prenosa (kbps):"
+
+#: src\ui\interface.py:429
+msgid "Modo Micrófon&o:"
+msgstr "Način rada mikrofona:"
+
+#: src\ui\interface.py:435
+msgid "Modo &Sistema (loopback):"
+msgstr "Način &Sistem (povratni zvuk):"
+
+#: src\ui\interface.py:441
+msgid "&Tamaño de buffer (frames):"
+msgstr "&Veličina međuspremnika (okviri):"
+
+#: src\ui\interface.py:446
+msgid "Guardar archivos separados de micrófono &y sistema"
+msgstr "Sačuvajte odvojene datoteke mikrofona i sistema"
+
+#: src\ui\interface.py:449
+msgid "&Volumen del Micrófono:"
+msgstr "&Jačina zvuka mikrofona:"
+
+#: src\ui\interface.py:454
+msgid "&Volumen del Sistema:"
+msgstr "&Jačina zvuka sistema:"
+
+#: src\ui\interface.py:463
+msgid "&Iniciar Grabación"
+msgstr "&Započni snimanje"
+
+#: src\ui\interface.py:467 src\ui\interface.py:844 src\ui\interface.py:880
+msgid "&Pausar"
+msgstr "&Pauza"
+
+#: src\ui\interface.py:472
+msgid "&Detener Grabación"
+msgstr "&Zaustavi snimanje"
+
+#: src\ui\interface.py:477 src\ui\widgets.py:156
+msgid "&Cancelar"
+msgstr "&Otkaži"
+
+#: src\ui\interface.py:482
+msgid "&Prueba de Audio"
+msgstr "&Audio test"
+
+#: src\ui\interface.py:486
+msgid "&Menú"
+msgstr "Meni"
+
+#: src\ui\interface.py:495 src\ui\interface.py:1496
+#, python-brace-format
+msgid "En espera (Usa {hk} para iniciar)"
+msgstr "Sačekajte (Koristite {hk} za početak)"
+
+#: src\ui\interface.py:497
+msgid "Estado"
+msgstr "Stanje"
+
+#: src\ui\interface.py:586
+msgid "Hay una grabación en curso. ¿Desea detenerla y salir?"
+msgstr "Snimanje je u toku. Da li želite da ga zaustavite i izađete?"
+
+#: src\ui\interface.py:587
+msgid "Confirmar cierre"
+msgstr "Potvrdite zatvaranje"
+
+#: src\ui\interface.py:602
+msgid "Por favor espere, finalizando conversión..."
+msgstr "Molimo vas da sačekate, Konverzija je pri kraju..."
+
+#: src\ui\interface.py:838
+msgid "&Reanudar"
+msgstr "&Nastavi"
+
+#: src\ui\interface.py:899
+msgid "Grabación cancelada. Se han eliminado los archivos."
+msgstr "Snimanje je otkazano. Datoteke su izbrisane."
+
+#: src\ui\interface.py:899 src\ui\interface.py:944
+msgid "Grabación"
+msgstr "Snimanje"
+
+#: src\ui\interface.py:904
+msgid "Por favor espere, convirtiendo a formato final..."
+msgstr "Molimo vas da sačekate, U toku je pretvaranje u finalni format..."
+
+#: src\ui\interface.py:931
+#, python-brace-format
+msgid ""
+"Grabación completada. Archivo guardado como:\n"
+"{file_path}"
+msgstr ""
+"Snimanje je završeno. Datoteka sačuvana kao:\\n\n"
+"{file_path}"
+
+#: src\ui\interface.py:936
+#, python-brace-format
+msgid ""
+"\n"
+"Archivo separado de micrófono: {mic_path}\n"
+"Archivo separado de sistema: {system_path}"
+msgstr ""
+"\n"
+"Odvojeni fajl mikrofona: {mic_path}  \n"
+"Odvojeni fajl sistema: {system_path}"
+
+#: src\ui\interface.py:942
+msgid ""
+"\n"
+"\n"
+"¿Desea abrir la carpeta de grabaciones?"
+msgstr ""
+"\n"
+"\n"
+"¿Da li želite da otvorite folder sa snimcima?"
+
+#: src\ui\interface.py:1090
+msgid "Información"
+msgstr "Informacije"
+
+#: src\ui\interface.py:1272
+msgid "Alemán"
+msgstr "nemački"
+
+#: src\ui\interface.py:1273
+msgid "Árabe"
+msgstr "arapski"
+
+#: src\ui\interface.py:1274
+msgid "Español"
+msgstr "španski"
+
+#: src\ui\interface.py:1275
+msgid "Francés"
+msgstr "francuski"
+
+#: src\ui\interface.py:1276
+msgid "Inglés"
+msgstr "engleski"
+
+#: src\ui\interface.py:1277
+msgid "Italiano"
+msgstr "italijanski"
+
+#: src\ui\interface.py:1278
+msgid "Portugués"
+msgstr "portugalski"
+
+#: src\ui\interface.py:1279
+msgid "Serbio"
+msgstr "српски"
+
+#: src\ui\interface.py:1280
+msgid "Turco"
+msgstr "Turski"
+
+#: src\ui\interface.py:1281
+msgid "Vietnamita"
+msgstr "Vijetnamski"
+
+#: src\ui\interface.py:1316 src\ui\options.py:317
+msgid "Opciones"
+msgstr "Opcije"
+
+#: src\ui\interface.py:1317
+msgid "Buscar actualizaciones"
+msgstr "Proverite ima li ažuriranja"
+
+#: src\ui\interface.py:1318
+msgid "Idioma"
+msgstr "Jezik"
+
+#: src\ui\interface.py:1319 src\ui\interface.py:1334
+msgid "Abrir Grabaciones"
+msgstr "Otvori snimke"
+
+#: src\ui\interface.py:1320
+msgid "&Manual de usuario"
+msgstr "&Korisnički priručnik"
+
+#: src\ui\interface.py:1321
+msgid "Acerca &de..."
+msgstr "&O aplikaciji..."
+
+#: src\ui\interface.py:1322
+msgid "invítame a un &café si te gusta mi trabajo"
+msgstr "pozovi me na kafu ako ti se sviđa moj rad"
+
+#: src\ui\interface.py:1323
+msgid "Salir"
+msgstr "Izađi"
+
+#: src\ui\interface.py:1335
+msgid "&invítame a un café si te gusta mi trabajo"
+msgstr "&pozovi me na kafu ako ti se sviđa moj rad"
+
+#: src\ui\interface.py:1352
+msgid ""
+"Para aplicar el nuevo idioma se necesita reiniciar la aplicación.\n"
+"¿Desea continuar?"
+msgstr ""
+"Da biste primenili novi jezik, morate ponovo pokrenuti aplikaciju.\\n\n"
+"Želite li nastaviti?"
+
+#: src\ui\interface.py:1353
+msgid "Confirmar cambio de idioma"
+msgstr "Potvrdite promenu jezika"
+
+#: src\ui\interface.py:1484
+msgid "Grabación en pausa."
+msgstr "Snimanje je pauzirano."
+
+#: src\ui\interface.py:1488
+msgid "Grabando... (No hay hotkey de detener asignada)"
+msgstr "Snimanje... (Nema dodeljene prečice za zaustavljanje)"
+
+#: src\ui\interface.py:1490
+#, python-brace-format
+msgid "Grabando... (Usa {hk} para detener)"
+msgstr "Snimanje... (Koristite {hk} za zaustavljanje)"
+
+#: src\ui\interface.py:1494
+msgid "En espera. Asigna teclas en Opciones o inicia manualmente."
+msgstr "Na čekanju. Dodelite tastere u opcijama ili pokrenite ručno."
+
+#: src\ui\interface.py:1546
+#, python-brace-format
+msgid "No se pudo abrir el directorio de grabaciones: {error}"
+msgstr "Није могуће отворити директоријум снимака: {error}"
+
+#: src\ui\interface.py:1556
+msgid ""
+"WASAPIRecording\n"
+"Versión: {}\n"
+"Creado por: {}\n"
+"Copyright © 2025\n"
+"\n"
+"Traductores:\n"
+"🇹🇷 Turco: Umut Korkmaz\n"
+"🇸🇦 Árabe: moataz geba\n"
+"🇮🇹 Italiano: Alessio Lenzi\n"
+"🇻🇳 Vietnamita: Đào Đức Trung\n"
+"🇷🇸 Serbio: Mila Kuran (IA)"
+msgstr ""
+"WASAPIRecording  \n"
+"Verzija: {}  \n"
+"Kreirao: {}  \n"
+"Copyright © 2025  \n"
+"\n"
+"Prevodioci:  \n"
+"🇹🇷 Turski: Umut Korkmaz  \n"
+"🇸🇦 Arapski: moataz geba  \n"
+"🇮🇹 Italijanski: Alessio Lenzi  \n"
+"🇻🇳 Vijetnamski: Đào Đức Trung\n"
+"🇷🇸 Serbio: Mila Kuran (IA)"
+
+#: src\ui\interface.py:1567
+msgid "Acerca de..."
+msgstr "O aplikaciji..."
+
+#: src\ui\manual.py:32
+msgid "Manual de Uso"
+msgstr "Uputstvo za upotrebu"
+
+#: src\ui\manual.py:40
+msgid "&Manual de Uso:"
+msgstr "Uputstvo za upotrebu"
+
+#: src\ui\manual.py:53 src\ui\options.py:333
+msgid "Aceptar"
+msgstr "Prihvati"
+
+#: src\ui\options.py:46
+msgid "Minimizar a la bandeja del sistema"
+msgstr "Minimizuj u sistemsku traku"
+
+#: src\ui\options.py:51
+msgid "Carpeta de grabaciones:"
+msgstr "Folder sa snimcima:"
+
+#: src\ui\options.py:59
+msgid "Cambiar carpeta..."
+msgstr "Promeni fasciklu..."
+
+#: src\ui\options.py:73
+msgid "Selecciona la carpeta donde se guardarán las grabaciones"
+msgstr "Fascikla sa snimcima:"
+
+#: src\ui\options.py:133
+msgid "Combinación para Iniciar Grabación:"
+msgstr "Prečica za pokretanje snimanja:"
+
+#: src\ui\options.py:142
+msgid "Capturar Hotkey Inicio"
+msgstr "Zabeleži prečicu za početak"
+
+#: src\ui\options.py:146
+msgid "Combinación para Detener Grabación:"
+msgstr "Prečica za zaustavljanje snimanja:"
+
+#: src\ui\options.py:155
+msgid "Capturar Hotkey Detener"
+msgstr "Zabeleži prečicu za zaustavljanje"
+
+#: src\ui\options.py:159
+msgid "Combinación para Pausar/Reanudar:"
+msgstr "Prečica za pauziranje/nastavljanje:"
+
+#: src\ui\options.py:168
+msgid "Capturar Hotkey Pausa"
+msgstr "Zabeleži prečicu za pauzu"
+
+#: src\ui\options.py:172
+msgid "Combinación para Cancelar Grabación:"
+msgstr "Prečica za otkazivanje snimanja:"
+
+#: src\ui\options.py:181
+msgid "Capturar Hotkey Cancelar"
+msgstr "Zabeleži prečicu za otkazivanje"
+
+#: src\ui\options.py:195 src\ui\options.py:198 src\ui\options.py:201
+#: src\ui\options.py:204
+msgid "Esperando combinación..."
+msgstr "Čekam prečicu..."
+
+#: src\ui\options.py:280
+msgid ""
+"No puede asignar la misma combinación a más de una acción.\n"
+"Se revertirán los cambios."
+msgstr ""
+"Ne možete dodeliti istu prečicu za više od jedne akcije.  \n"
+"Promene će biti poništene."
+
+#: src\ui\options.py:281
+msgid "Error de Hotkeys"
+msgstr "Greška u prečicama"
+
+#: src\ui\options.py:326
+msgid "General"
+msgstr "Opšte"
+
+#: src\ui\options.py:327
+msgid "Teclado"
+msgstr "Tastatura"
+
+#: src\ui\options.py:334 src\ui\update.py:65
+msgid "Cancelar"
+msgstr "Otkaži"
+
+#: src\ui\test_audio.py:62
+msgid "Prueba de Audio"
+msgstr "Audio test"
+
+#: src\ui\test_audio.py:112 src\ui\update.py:60
+msgid "&Información:"
+msgstr "&Informacije:"
+
+#: src\ui\test_audio.py:125
+msgid "&Selecciona qué archivo reproducir:"
+msgstr "&Izaberite koju datoteku želite da reprodukujete:"
+
+#: src\ui\test_audio.py:126 src\ui\test_audio.py:343
+msgid "Prueba micrófono"
+msgstr "Proba mikrofona"
+
+#: src\ui\test_audio.py:126 src\ui\test_audio.py:345
+msgid "Prueba sistema"
+msgstr "Proba sistema"
+
+#: src\ui\test_audio.py:126
+msgid "Ambos"
+msgstr "Oba"
+
+#: src\ui\test_audio.py:133
+msgid "&Detener"
+msgstr "&Zaustavi"
+
+#: src\ui\test_audio.py:137
+msgid "&Cerrar"
+msgstr "&Zatvori"
+
+#: src\ui\test_audio.py:164
+msgid ""
+"Esta ventana realiza una prueba de grabación y reproducción con los mismos "
+"ajustes.\n"
+"Al pulsar 'Detener', podrás luego 'Reproducir'. Si guardas archivos "
+"separados, podrás elegir micrófono, sistema o ambos.\n"
+"No se puede cerrar con Alt+F4 ni con la X; sólo con 'Cerrar'."
+msgstr ""
+"Ovaj prozor vrši test snimanja i reprodukcije sa istim podešavanjima.  \n"
+"Kada pritisnete 'Zaustavi', moći ćete da 'Reprodukujete'. Ako sačuvate "
+"odvojene fajlove, moći ćete da izaberete mikrofon, sistem ili oba.  \n"
+"Ne može se zatvoriti sa Alt+F4 niti sa X; samo sa 'Zatvori'."
+
+#: src\ui\test_audio.py:222 src\ui\test_audio.py:235 src\ui\test_audio.py:289
+msgid "Reproducir"
+msgstr "Reprodukuj"
+
+#: src\ui\test_audio.py:231
+msgid "Detener"
+msgstr "Zaustavi"
+
+#: src\ui\test_audio.py:244
+msgid "No se ha grabado nada aún."
+msgstr "Još uvek ništa nije snimljeno."
+
+#: src\ui\test_audio.py:244
+msgid "Aviso"
+msgstr "Obaveštenje"
+
+#: src\ui\test_audio.py:251
+msgid "No existe el archivo a reproducir"
+msgstr "datoteka koja treba da se reprodukuje ne postoji."
+
+#: src\ui\test_audio.py:301
+msgid "La grabación sigue en curso. ¿Deseas cancelar la prueba de sonido?"
+msgstr "Snimanje je još u toku. Da li želite da otkažete probu zvuka?"
+
+#: src\ui\test_audio.py:302
+msgid "Cancelar Prueba"
+msgstr "Otkaži probu"
+
+#: src\ui\update.py:41
+msgid "Actualización"
+msgstr "Ažuriraj"
+
+#: src\ui\update.py:66
+msgid "Instalar"
+msgstr "Instaliraj"
+
+#: src\ui\update.py:148
+#, python-brace-format
+msgid "Se encontró una nueva versión: {0}. ¿Desea instalarla?"
+msgstr "Pronađena je nova verzija: {0}. Da li želite da je instalirate?"
+
+#: src\ui\update.py:158
+msgid "No hay actualizaciones disponibles. Su aplicación está actualizada."
+msgstr "Nema dostupnih ažuriranja. Vaša aplikacija je ažurirana."
+
+#: src\ui\update.py:174
+msgid "No se pudo conectar al servidor. Verifique su conexión a Internet."
+msgstr ""
+"Nije bilo moguće povezati se sa serverom. Proverite vašu internet vezu."
+
+#: src\ui\update.py:176
+msgid ""
+"Error en la conexión segura (SSL). Por favor, revise la configuración de "
+"seguridad de su red."
+msgstr ""
+"Greška u sigurnoj vezi (SSL). Proverite postavke sigurnosti vaše mreže."
+
+#: src\ui\update.py:178
+msgid "La conexión tardó demasiado tiempo. Intente nuevamente más tarde."
+msgstr "Veza je trajala predugo. Pokušajte ponovo kasnije."
+
+#: src\ui\update.py:180
+#, python-brace-format
+msgid "Error de red desconocido: {0}"
+msgstr "Nepoznata greška u mreži: {0}"
+
+#: src\ui\update.py:186
+msgid "No se encontró el archivo necesario para completar la operación."
+msgstr "Nije pronađena potrebna datoteka za dovršavanje operacije."
+
+#: src\ui\update.py:188
+msgid "Se esperaba un archivo, pero se encontró un directorio."
+msgstr "Očekivali smo datoteku, ali pronađena je fascikla."
+
+#: src\ui\update.py:190
+msgid "Permiso denegado. Ejecute la aplicación con los permisos adecuados."
+msgstr "Dozvola odbijena. Pokrenite aplikaciju sa odgovarajućim dozvolama."
+
+#: src\ui\update.py:192
+msgid ""
+"Error al copiar o mover archivos. Verifique los permisos y el espacio "
+"disponible."
+msgstr ""
+"Greška pri kopiranju ili pomeranju datoteka. Proverite dozvole i dostupni "
+"prostor."
+
+#: src\ui\update.py:194
+msgid ""
+"Se produjo un error en los datos proporcionados. Verifique la información "
+"ingresada."
+msgstr "Došlo je do greške u unetim podacima. Proverite unesene informacije."
+
+#: src\ui\update.py:196
+msgid ""
+"Falta un elemento requerido en los datos. Verifique el formato de la "
+"información."
+msgstr ""
+"Nedostaje obavezni element u podacima. Proverite format unetih informacija."
+
+#: src\ui\update.py:198
+msgid ""
+"Se intentó acceder a un elemento fuera del rango permitido. Revise la "
+"configuración interna."
+msgstr ""
+"Pokušali smo pristupiti elementu van dozvoljenog opsega. Proverite "
+"unutrašnju konfiguraciju."
+
+#: src\ui\update.py:200
+msgid "No se pudo establecer una conexión. Verifique su conexión a Internet."
+msgstr "Nije moguće uspostaviti vezu. Proverite svoju internet konekciju."
+
+#: src\ui\update.py:202
+msgid ""
+"La operación tardó demasiado tiempo en completarse. Inténtelo más tarde."
+msgstr "Operacija je trajala predugo. Pokušajte ponovo kasnije."
+
+#: src\ui\update.py:204
+msgid "Se perdió la conexión con el servidor. Intente reconectarse."
+msgstr "Veza sa serverom je prekinuta. Pokušajte ponovo da se povežete."
+
+#: src\ui\update.py:206
+#, python-brace-format
+msgid "Ocurrió un error inesperado: {0}"
+msgstr "Došlo je do neočekivane greške: {0}."
+
+#: src\ui\update.py:222
+msgid "Descargando la actualización, esto puede tardar unos momentos..."
+msgstr "Preuzimanje ažuriranja, ovo može potrajati nekoliko trenutaka..."
+
+#: src\ui\update.py:255
+msgid "Descarga cancelada."
+msgstr "Preuzimanje je otkazano."
+
+#: src\ui\update.py:271
+msgid "Extrayendo la actualización..."
+msgstr "Izdvajanje ažuriranja..."
+
+#: src\ui\update.py:299
+msgid "Creando el archivo de instalación automática..."
+msgstr "Kreiranje automatske instalacione datoteke..."
+
+#: src\ui\update.py:323
+msgid "Archivo de actualización creado. La aplicación se reiniciará."
+msgstr "Datoteka za ažuriranje je kreirana. Aplikacija će se ponovo pokrenuti."
+
+#: src\ui\update.py:324
+msgid "Reiniciar ahora"
+msgstr "Ponovo pokreni sada"
+
+#: src\ui\update.py:340
+msgid "Reiniciando la aplicación..."
+msgstr "Ponovo pokrećem aplikaciju..."
+
+#: src\ui\widgets.py:154
+msgid "&Aceptar"
+msgstr "&Prihvati"
+
+#: src\ui\widgets.py:158
+msgid "&Sí"
+msgstr "Da"
+
+#: src\ui\widgets.py:160
+msgid "&No"
+msgstr "Ne"
+
+#~ msgid "Tecla inválida detectada."
+#~ msgstr "Detektovan nevažeći taster."
+
+#~ msgid "&Habilitar Mezcla Monoaural"
+#~ msgstr "Omogući mešanje mono zvuka"
+
+#, python-brace-format
+#~ msgid "Error al convertir el archivo: {error}"
+#~ msgstr "Greška prilikom konverzije datoteke: {error}"
+
+#, python-brace-format
+#~ msgid ""
+#~ "\n"
+#~ "Archivo separado de micrófono: {mic_path}\n"
+#~ "Archivo separado de sistema: {sys_path}"
+#~ msgstr ""
+#~ "\n"
+#~ "Засебна датотека микрофона: {mic_path}\n"
+#~ "Системска засебна датотека: {sys_path}"
+
+#~ msgid ""
+#~ "WASAPIRecording\n"
+#~ "Versión {}\n"
+#~ "Creado por {}"
+#~ msgstr ""
+#~ "WASAPIRecording  \n"
+#~ "Verzija {}  \n"
+#~ "Kreirao {}"
+
+#~ msgid ""
+#~ "Esta ventana permite realizar una prueba de grabación y reproducción.\n"
+#~ "\n"
+#~ "1. Al abrirse, inicia la grabación con los mismos ajustes que la ventana "
+#~ "principal.\n"
+#~ "2. Para finalizar la grabación, pulsa 'Detener'. Entonces, el botón "
+#~ "cambiará a 'Reproducir'.\n"
+#~ "3. Si estaba activada la opción de 'Guardar archivos separados' en la "
+#~ "ventana principal, se mostrará el menú desplegable para elegir si "
+#~ "reproducir sólo micrófono, solo sistema o ambos (por defecto 'Ambos').\n"
+#~ "4. Al pulsar 'Reproducir', se inicia la reproducción del WAV de forma "
+#~ "asíncrona. El botón cambia a 'Detener' durante la reproducción. Al "
+#~ "terminar la pista, volverá a 'Reproducir'.\n"
+#~ "5. Si pulsas 'Cerrar' mientras graba, te preguntará si deseas cancelar la "
+#~ "prueba (se borrarán los archivos). Si ya grabaste y/o terminaste, "
+#~ "simplemente cerrará y también borrará los archivos.\n"
+#~ "\n"
+#~ "No puedes cerrar con Alt+F4 ni con la X de la ventana; solo con el botón "
+#~ "'Cerrar'.\n"
+#~ msgstr ""
+#~ "Ovaj prozor omogućava testiranje snimanja i reprodukcije.\n"
+#~ "\n"
+#~ "1. Kada se otvori, započinje snimanje sa istim podešavanjima kao u "
+#~ "glavnom prozoru.\n"
+#~ "2. Da biste završili snimanje, pritisnite 'Zaustavi'. Tada će se dugme "
+#~ "promeniti u 'Reprodukuj'.\n"
+#~ "3. Ako je opcija 'Spremi odvojene datoteke' bila aktivirana u glavnom "
+#~ "prozoru, prikazaće se padajući meni za izbor da li želite da "
+#~ "reprodukujete samo mikrofon, samo sistem ili oba (podrazumevano 'Oba').\n"
+#~ "4. Kada pritisnete 'Reprodukuj', započeće asinkrona reprodukcija WAV "
+#~ "fajla. Dugme će se promeniti u 'Zaustavi' tokom reprodukcije. Po "
+#~ "završetku pesme, vratiće se na 'Reprodukuj'.\n"
+#~ "5. Ako pritisnete 'Zatvori' dok snimate, pitaće vas da li želite da "
+#~ "otkažete testiranje (fajlovi će biti obrisani). Ako ste već snimili i/ili "
+#~ "završili, samo će se zatvoriti i takođe obrisati fajlovi.\n"
+#~ "\n"
+#~ "Ne možete zatvoriti sa Alt+F4 niti sa X u prozoru; samo sa dugmetom "
+#~ "'Zatvori'.\n"
